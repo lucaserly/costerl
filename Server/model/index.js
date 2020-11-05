@@ -5,11 +5,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const config = require('../config');
 
-const sequelize = new Sequelize(config.database, config.username, config.password, {
-  host: 'localhost',
-  dialect: 'postgres',
-  port: '5432'
-});
+const sequelize = new Sequelize(config.database, config.username, config.password, config.config);
 
 const db = {};
 

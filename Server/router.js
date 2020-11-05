@@ -9,5 +9,6 @@ router.get('/', (ctx) => {
 });
 
 router.get('/entries', controller.getAll);
+router.post('/entries', controller.postOne);
 
 module.exports = router;
