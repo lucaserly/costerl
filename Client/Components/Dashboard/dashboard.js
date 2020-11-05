@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 const Dashboard = () => {
   return (
     <>
-      <Text>Dashboard Woods</Text>
+      <Text>Dashboard Bertie</Text>
     </>
   );
 };
