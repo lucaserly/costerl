@@ -4,7 +4,9 @@ const model = require('./../model/');
 
 exports.getAll = async (ctx) => {
   try {
-    console.log('ctx-->', ctx);
+    const res = await model.entry.findAll();
+    ctx.body = res;
+    ctx.status = 200;
   } catch (error) {
     console.error(error);
     ctx.status = 500;

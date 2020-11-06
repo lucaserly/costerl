@@ -1,10 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <>
-      <Text>Dashboard Bertie</Text>
+      {console.log('props-->', props)}
+      <Text>Dashboard</Text>
+      <View>
+        <FlatList
+          data={props.entries}
+          keyExtractor={({ id }) => id.toString()}
+          renderItem={({ item }) =>
+            <Text>{item.item} {item.amount}</Text>
+          }
+        />
+      </View>
     </>
   );
 };

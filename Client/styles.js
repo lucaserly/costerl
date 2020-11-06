@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  dashboard: {
+    alignItems: 'center',
+  }
 });
 
 export default styles;
