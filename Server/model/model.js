@@ -6,9 +6,15 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     descritpion: DataTypes.STRING,
     payment: DataTypes.STRING,
-    amount: DataTypes.BIGINT,
+    amount: {
+      type: DataTypes.BIGINT,
+      allowNull: false
+    },
     currency: DataTypes.STRING,
-    date: DataTypes.STRING
+    date: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
   });
   return entry;
 };

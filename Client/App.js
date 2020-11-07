@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import styles from './styles';
 import ApiService from './ApiService';
@@ -26,11 +26,14 @@ function App () {
   };
 
   return (
+
     <>
-      <View style={styles.container}>
-        <Text>Hello Lucas!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={styles.container}>
+          <Text>Hello Lucas!</Text>
+          <StatusBar style="auto" />
+        </View>
+      </TouchableWithoutFeedback>
 
       <View style={styles.container}>
         <Form postOne={postOne} />
@@ -39,7 +42,6 @@ function App () {
       <View style={styles.container}>
         <Entries entries={entries} />
       </View>
-
 
     </>
   );

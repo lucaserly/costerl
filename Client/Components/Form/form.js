@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View, Button } from 'react-native';
+import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 const Form = (props) => {
 
@@ -51,6 +51,7 @@ const Form = (props) => {
         }}
         value={item}
       />
+
       <TextInput
         placeholder="category"
         onChangeText={(text) => setCategory(text)}
@@ -75,10 +76,10 @@ const Form = (props) => {
       <Button
         onPress={() => {
           { handleSubmit(); }
+          { Keyboard.dismiss(); }
         }}
         title="Submit"
       />
-
     </>
   );
 };
