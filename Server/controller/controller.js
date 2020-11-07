@@ -2,6 +2,16 @@
 
 const model = require('./../model/');
 
+
+exports.routerTester = (ctx) => {
+  try {
+    ctx.body = 'Hello Lucas from Router & Controller';
+  } catch (error) {
+    console.error(error);
+    ctx.status = 500;
+  }
+};
+
 exports.getAll = async (ctx) => {
   try {
     const res = await model.entry.findAll();
@@ -19,6 +29,21 @@ exports.postOne = async (ctx) => {
     const res = await model.entry.create(entry);
     ctx.body = res;
     ctx.status = 201;
+  } catch (error) {
+    console.error(error);
+    ctx.status = 500;
+  }
+};
+
+exports.deleteOne = async (ctx) => {
+  try {
+    const { id } = ctx.params;
+    await model.entry.destroy({
+      where: {
+        id
+      }
+    });
+    ctx.status = 202;
   } catch (error) {
     console.error(error);
     ctx.status = 500;
