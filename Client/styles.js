@@ -7,8 +7,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  dashboard: {
-    alignItems: 'center',
+  entries: {
+    marginBottom: 20,
+  },
+  entryContainer: {
+    marginBottom: 20,
+  },
+  entry: {
+    color: 'green',
+    marginBottom: 7,
   }
 });
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 
 import styles from './styles';
-import Dashboard from './Components/Dashboard/dashboard';
+import Entries from './Components/Entries/entries';
 import ApiService from './ApiService';
 
 function App () {
@@ -14,8 +14,7 @@ function App () {
     ApiService.getAll()
       .then((data) => {
         setEntries(data);
-      })
-      .catch((error) => console.error(error));
+      });
   }, []);
 
   return (
@@ -24,8 +23,8 @@ function App () {
         <Text>Hello Lucas!</Text>
         <StatusBar style="auto" />
       </View>
-      <View style={styles.dashboard}>
-        <Dashboard entries={entries}/>
+      <View style={styles.container}>
+        <Entries entries={entries} />
       </View>
     </>
   );

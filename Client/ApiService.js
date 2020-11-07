@@ -6,7 +6,8 @@ const getAll = () => {
 
 const fetcher = (ext, options) => {
   return fetch(BASE_URL + ext, options)
-    .then((res) => res.json());
+    .then((res) => res.json())
+    .catch((error) => console.error(error));
 };
 
 export default {
