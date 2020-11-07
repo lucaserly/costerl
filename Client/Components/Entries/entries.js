@@ -13,7 +13,7 @@ const Entries = (props) => {
         data={props.entries}
         keyExtractor={({ id }) => id.toString()}
         renderItem={({ item }) => (
-          <View  style={styles.entryContainer}>
+          <View style={styles.entryContainer}>
             <Text>item -> {item.item}</Text>
             <Text>category -> {item.category}</Text>
             <Text>description -> {item.description}</Text>
@@ -23,7 +23,7 @@ const Entries = (props) => {
           </View>
         )} />
 
-         {/* {props.entries.map((entry) => {
+      {/* {props.entries.map((entry) => {
         return <Entry entry={entry} key={entry.id} />;
       })} */}
 

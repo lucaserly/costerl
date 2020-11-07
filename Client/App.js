@@ -19,7 +19,10 @@ function App () {
   }, []);
 
   const postOne = (obj) => {
-    console.log('obj-->', obj);
+    ApiService.postOne(obj)
+      .then((data) => {
+        setEntries([...entries, data]);
+      });
   };
 
   return (
