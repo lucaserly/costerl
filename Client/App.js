@@ -18,10 +18,32 @@ function App () {
       });
   }, []);
 
+  const objCleaner = (obj) => {
+    for (let key in obj) {
+      if (obj[key] === "") {
+        delete obj[key]
+      }
+    }
+    return obj;
+  };
+
   const postOne = (obj) => {
-    ApiService.postOne(obj)
+    const cleanedObj = objCleaner(obj);
+    console.log('cleanedObj-->', cleanedObj);
+    ApiService.postOne(cleanedObj)
       .then((data) => {
         setEntries([...entries, data]);
+      });
+  };
+
+  const deleteOne = (id) => {
+    ApiService.deleteOne(id)
+      .then(() => {
+        setEntries((entrList) => {
+          return entrList.filter((el) => {
+            return el.id !== id;
+          });
+        });
       });
   };
 
@@ -40,7 +62,7 @@ function App () {
       </View>
 
       <View style={styles.container}>
-        <Entries entries={entries} />
+        <Entries entries={entries} deleteOne={deleteOne} />
       </View>
 
     </>

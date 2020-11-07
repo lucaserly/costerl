@@ -14,13 +14,26 @@ const postOne = (obj) => {
   });
 };
 
+const deleteOne = (id) => {
+  return fetcher(`entries/${id}`, {
+    method: 'DELETE'
+  });
+};
+
 const fetcher = (ext, options) => {
   return fetch(BASE_URL + ext, options)
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 204) {
+        return res;
+      } else {
+        return res.json();
+      }
+    })
     .catch((error) => console.error(error));
 };
 
 export default {
   getAll,
-  postOne
+  postOne,
+  deleteOne
 };

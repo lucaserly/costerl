@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, Button } from 'react-native';
 import styles from './../../styles';
 
 import Entry from './../Entry/entry';
@@ -20,6 +20,10 @@ const Entries = (props) => {
             <Text>payment -> {item.payment}</Text>
             <Text>amount -> {item.amount}</Text>
             <Text>date -> {item.date}</Text>
+            <Button
+              onPress={() => { props.deleteOne(item.id); }}
+              title="🗑"
+            />
           </View>
         )} />
 

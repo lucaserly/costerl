@@ -43,7 +43,7 @@ exports.deleteOne = async (ctx) => {
         id
       }
     });
-    ctx.status = 202;
+    ctx.status = 204;
   } catch (error) {
     console.error(error);
     ctx.status = 500;
