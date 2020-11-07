@@ -8,6 +8,10 @@ const Entry = (props) => {
     <>
       <View style={styles.entryContainer}>
 
+        {/* <View style={styles.entry}>
+          <Text style={styles.entry}>Item → {props.entry.item}</Text>
+        </View>
+
         <View style={styles.entry}>
           <Text style={styles.entry}>Category → {props.entry.category}</Text>
         </View>
@@ -15,6 +19,10 @@ const Entry = (props) => {
         <View style={styles.entry}>
           <Text style={styles.entry}>Amount → {props.entry.amount}</Text>
         </View>
+
+        <View style={styles.entry}>
+          <Text style={styles.entry}>Payment → {props.entry.payment}</Text>
+        </View> */}
 
       </View>
     </>
