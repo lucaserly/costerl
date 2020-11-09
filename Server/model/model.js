@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const entry = sequelize.define('entry', {
     item: DataTypes.STRING,
     category: DataTypes.STRING,
-    descritpion: DataTypes.STRING,
+    description: DataTypes.STRING,
     payment: DataTypes.STRING,
     amount: {
       type: DataTypes.BIGINT,

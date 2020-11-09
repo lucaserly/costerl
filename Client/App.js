@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 
 import styles from './styles';
 import ApiService from './ApiService';
-import Entries from './Components/Entries/entries';
-import Form from './Components/Form/form';
+import Entries from './components/entries/Entries';
+import Form from './components/form/Form';
 
 function App () {
 
@@ -21,7 +21,7 @@ function App () {
   const objCleaner = (obj) => {
     for (let key in obj) {
       if (obj[key] === "") {
-        delete obj[key]
+        delete obj[key];
       }
     }
     return obj;
@@ -48,23 +48,21 @@ function App () {
   };
 
   return (
-
     <>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={styles.container}>
-          <Text>Hello Lucas!</Text>
-          <StatusBar style="auto" />
-        </View>
+        <SafeAreaView style={styles.safeArea}>
+          <View style={[styles.container, styles.helloColor]}>
+            <Text style={styles.text}>Hello Lucas 😂</Text>
+          </View>
+        </SafeAreaView>
       </TouchableWithoutFeedback>
 
-      <View style={styles.container}>
-        <Form postOne={postOne} />
-      </View>
 
-      <View style={styles.container}>
+      <Form postOne={postOne} />
+
+      <View>
         <Entries entries={entries} deleteOne={deleteOne} />
       </View>
-
     </>
   );
 }

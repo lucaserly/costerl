@@ -1,29 +1,19 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
-import styles from './../../styles';
+import { Text, View, FlatList, Button } from 'react-native';
+import styles from '../../styles';
+import ButtonApp from './../button/Button';
 
-
-const Entry = (props) => {
+const Entry = ({ item, deleteOne }) => {
   return (
     <>
       <View style={styles.entryContainer}>
-
-        {/* <View style={styles.entry}>
-          <Text style={styles.entry}>Item → {props.entry.item}</Text>
-        </View>
-
-        <View style={styles.entry}>
-          <Text style={styles.entry}>Category → {props.entry.category}</Text>
-        </View>
-
-        <View style={styles.entry}>
-          <Text style={styles.entry}>Amount → {props.entry.amount}</Text>
-        </View>
-
-        <View style={styles.entry}>
-          <Text style={styles.entry}>Payment → {props.entry.payment}</Text>
-        </View> */}
-
+        <Text>item -> {item.item}</Text>
+        <Text>category -> {item.category}</Text>
+        <Text>description -> {item.description}</Text>
+        <Text>payment -> {item.payment}</Text>
+        <Text>amount -> {item.amount}</Text>
+        <Text>date -> {item.date}</Text>
+        <ButtonApp id={item.id} deleteOne={deleteOne} />
       </View>
     </>
   );
