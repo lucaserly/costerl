@@ -7,7 +7,6 @@ import Entry from '../entry/Entry';
 const Entries = ({ entries, deleteOne }) => {
   return (
     <>
-      {/* <Text style={styles.entries}>Entries</Text> */}
       <FlatList
         data={entries}
         keyExtractor={({ id }) => id.toString()}

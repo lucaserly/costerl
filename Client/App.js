@@ -57,7 +57,6 @@ function App () {
         </SafeAreaView>
       </TouchableWithoutFeedback>
 
-
       <Form postOne={postOne} />
 
       <View>

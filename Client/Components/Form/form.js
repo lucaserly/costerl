@@ -4,7 +4,7 @@ import styles from './styles';
 import FormDetails from './../formDetails/FormDetails';
 import ButtonApp from './../button/Button';
 
-const Form = (props) => {
+const Form = ({ postOne }) => {
 
   const [item, setItem] = useState('');
   const [category, setCategory] = useState('');
@@ -39,14 +39,13 @@ const Form = (props) => {
 
   const handleSubmit = () => {
     const obj = createObj();
-    props.postOne(obj);
+    postOne(obj);
     clearStates();
   };
 
   return (
     <>
       <View style={styles.container}>
-
         <Text>Form</Text>
         <FormDetails placeholder='item' handleChange={handleChange} el={item} cb={setItem} />
         <FormDetails placeholder='category' handleChange={handleChange} el={category} cb={setCategory} />
@@ -54,17 +53,7 @@ const Form = (props) => {
         <FormDetails placeholder='payment' handleChange={handleChange} el={payment} cb={setPayment} />
         <FormDetails placeholder='amount' handleChange={handleChange} el={amount} cb={setAmount} />
         <FormDetails placeholder='date' handleChange={handleChange} el={date} cb={setDate} />
-
         <ButtonApp title="Submit" cb={handleSubmit} />
-
-        {/* <Button
-          onPress={() => {
-            { handleSubmit(); }
-            { Keyboard.dismiss(); }
-          }}
-          title="Submit"
-        /> */}
-
       </View>
     </>
   );
