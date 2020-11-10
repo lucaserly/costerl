@@ -7,6 +7,9 @@ import ApiService from './ApiService';
 import Entries from './components/entries/Entries';
 import Form from './components/form/Form';
 
+import config from './config';
+import Test from './components/test/Test';
+
 function App () {
 
   const [entries, setEntries] = useState([]);
@@ -18,17 +21,27 @@ function App () {
       });
   }, []);
 
-  const objCleaner = (obj) => {
-    for (let key in obj) {
-      if (obj[key] === "") {
-        delete obj[key];
+  // const objCleaner = (obj) => {
+  //   for (let key in obj) {
+  //     if (obj[key] === "") {
+  //       delete obj[key];
+  //     }
+  //   }
+  //   return obj;
+  // };
+
+  const dataParser = (arr) => {
+    const obj = {};
+    arr.forEach((el) => {
+      if (el.value !== '') {
+        obj[el.name] = el.value;
       }
-    }
+    });
     return obj;
   };
 
-  const postOne = (obj) => {
-    const cleanedObj = objCleaner(obj);
+  const postOne = (arr) => {
+    const cleanedObj = dataParser(arr);
     console.log('cleanedObj-->', cleanedObj);
     ApiService.postOne(cleanedObj)
       .then((data) => {
@@ -49,15 +62,21 @@ function App () {
 
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={styles.safeArea}>
           <View style={[styles.container, styles.helloColor]}>
             <Text style={styles.text}>Hello Lucas 😂</Text>
           </View>
         </SafeAreaView>
-      </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback> */}
 
-      <Form postOne={postOne} />
+
+      <Text>Prova</Text>
+      <Test form={config.inputForm} postOne={postOne} />
+
+      {/* <Test form={config.loginForm} postOne={postOne} /> */} this works
+
+      {/* <Form postOne={postOne} /> */}
 
       <View>
         <Entries entries={entries} deleteOne={deleteOne} />

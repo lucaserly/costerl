@@ -2,12 +2,11 @@ import React from 'react';
 import { Text, View, Button, Keyboard } from 'react-native';
 
 const ButtonApp = ({ id, cb, title }) => {
-
   return (
     <Button
-      onPress={() => {
+      onPress={(e) => {
         if (title === 'Submit') {
-          { cb(); }
+          { cb(e); }
           { Keyboard.dismiss(); }
         } else {
           cb(id);
