@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 const FormDetails = ({ handleChange, el, cb, placeholder }) => {
-
-
   return (
     <>
       <View>

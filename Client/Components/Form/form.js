@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import styles from './styles';
 import FormDetails from './../formDetails/FormDetails';
+import ButtonApp from './../button/Button';
 
 const Form = (props) => {
 
@@ -45,6 +46,7 @@ const Form = (props) => {
   return (
     <>
       <View style={styles.container}>
+
         <Text>Form</Text>
         <FormDetails placeholder='item' handleChange={handleChange} el={item} cb={setItem} />
         <FormDetails placeholder='category' handleChange={handleChange} el={category} cb={setCategory} />
@@ -53,45 +55,16 @@ const Form = (props) => {
         <FormDetails placeholder='amount' handleChange={handleChange} el={amount} cb={setAmount} />
         <FormDetails placeholder='date' handleChange={handleChange} el={date} cb={setDate} />
 
-        {/* <Text style={styles.title}>Form</Text>
-        <View style={styles.item}>
-          <TextInput
-            placeholder="item"
-            onChangeText={(e) => {
-              handleChange(e, setItem);
-            }}
-            value={item}
-          />
-        </View> */}
+        <ButtonApp title="Submit" cb={handleSubmit} />
 
-        {/* <TextInput
-          placeholder="category"
-          onChangeText={(text) => setCategory(text)}
-          value={category}
-        />
-        <TextInput
-          placeholder="description"
-          onChangeText={(text) => setDescription(text)}
-          value={description}
-        />
-        <TextInput
-          placeholder="payment"
-          onChangeText={(text) => setPayment(text)}
-          value={payment}
-        />
-        <TextInput
-          placeholder="amount"
-          onChangeText={(text) => setAmount(text)}
-          value={amount}
-        /> */}
-
-        <Button
+        {/* <Button
           onPress={() => {
             { handleSubmit(); }
             { Keyboard.dismiss(); }
           }}
           title="Submit"
-        />
+        /> */}
+
       </View>
     </>
   );
