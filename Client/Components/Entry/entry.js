@@ -13,8 +13,8 @@ const Entry = ({ item, deleteOne }) => {
         <Text>payment -> {item.payment}</Text>
         <Text>amount -> {item.amount}</Text>
         <Text>date -> {item.date}</Text>
-        <ButtonApp id={item.id} cb={deleteOne} title="🗑" />
       </View>
+      <View>{item.flag === false ? <></> : <ButtonApp id={item.id} cb={deleteOne} title="🗑" />}</View>
     </>
   );
 };

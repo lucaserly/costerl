@@ -5,9 +5,15 @@ const Home = ({ navigation }) => {
   return (
     <View>
       <TouchableOpacity onPress={() => {
-        navigation.navigate('ExForm');
+        navigation.navigate('Form');
       }}>
-        <Text>Hello, Lucas </Text>
+        <Text>Navigate to Form </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('Entries');
+      }}>
+        <Text>Navigate to Entries </Text>
       </TouchableOpacity>
     </View>
   );

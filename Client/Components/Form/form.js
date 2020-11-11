@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { View, Alert } from 'react-native';
 import styles from './styles';
 import ButtonApp from '../button/Button';
 import Field from '../field/Field';
+
+import config from '../../config';
+const { newFields, emptyFieldCheck, resetField } = config.helperFunctions;
 
 const Form = ({ form, postOne }) => {
 
@@ -14,27 +17,21 @@ const Form = ({ form, postOne }) => {
   );
 
   const handleChange = (text, target) => {
-    const newFields = fields.map((field) => {
-      if (field.name === target) {
-        field.value = text;
-      }
-      return field;
-    });
-    setFields(newFields);
+    const field = newFields(text, target, fields);
+    setFields(field);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postOne(fields);
-    const resetField = fields.map((field) => {
-      if (field !== '') {
-        field.value = '';
-      }
-      return field;
-    });
-    setFields(resetField);
+    const check = emptyFieldCheck(fields);
+    if (!check) {
+      postOne(fields);
+      const field = resetField(fields);
+      setFields(field);
+    } else {
+      Alert.alert('Please enter both input and amount');
+    }
   };
-
 
   return (
     <>

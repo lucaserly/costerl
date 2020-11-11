@@ -5,10 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import styles from './styles';
 import ApiService from './ApiService';
-import Entries from './components/entries/Entries';
 
-import Home from './screens/Home';
-import ExForm from './screens/ExForm';
+import Home from './screens/home/Home';
+import Form from './screens/form/Form';
+import Entries from './screens/entries/Entries';
 
 const Stack = createStackNavigator();
 
@@ -35,7 +35,6 @@ function App () {
 
   const postOne = (arr) => {
     const cleanedObj = dataParser(arr);
-    console.log('cleanedObj-->', cleanedObj);
     ApiService.postOne(cleanedObj)
       .then((data) => {
         setEntries([...entries, data]);
@@ -57,8 +56,17 @@ function App () {
     <>
       <NavigationContainer>
         <Stack.Navigator>
+
           <Stack.Screen name='Home' component={Home} />
-          <Stack.Screen name='ExForm' component={ExForm} postOne={postOne} />
+
+          <Stack.Screen name='Form'>
+            {(props) => <Form {...props} postOne={postOne} entries={entries} />}
+          </Stack.Screen>
+
+          <Stack.Screen name='Entries'>
+            {(props) => <Entries {...props} entries={entries} deleteOne={deleteOne} />}
+          </Stack.Screen>
+
         </Stack.Navigator>
       </NavigationContainer>
     </>
@@ -66,19 +74,3 @@ function App () {
 }
 
 export default App;
-
-
-{/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-<SafeAreaView style={styles.safeArea}>
-  <View style={[styles.container, styles.helloColor]}>
-    <Text style={styles.text}>Hello Lucas 😂</Text>
-  </View>
-</SafeAreaView>
-</TouchableWithoutFeedback> */}
-
-
-{/* <Form form={config.loginForm} postOne={postOne} /> */ }
-
-{/* <View>
-<Entries entries={entries} deleteOne={deleteOne} />
-</View> */}
