@@ -6,20 +6,16 @@ import Entries from '../../components/entries/Entries';
 
 import config from '../../config';
 const { searchForm } = config;
+const { filterHelper, regField } = config.helperFunctions;
 
-
-const Search = ({ entries }) => {
+const Search = ({ entries, deleteOne }) => {
 
   const [search, setSearch] = useState({});
 
-  const filterList = (e) => {
-    const res = entries.filter((el) => {
-      return el.item.includes(e[0].value);
-    });
-    setSearch(res);
+  const filterList = (e, target) => {
+    const field = regField(target);
+    return filterHelper(e, entries, setSearch, target, field);
   };
-
-
 
   return (
     <>
@@ -27,9 +23,7 @@ const Search = ({ entries }) => {
         Search Component
       </Text>
       <Form form={searchForm} filterList={filterList} />
-
-      <Entries entries={search} />
-
+      <Entries entries={search} deleteOne={deleteOne} />
     </>
   );
 

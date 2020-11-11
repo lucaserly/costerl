@@ -9,7 +9,6 @@ const Field = ({ el, handleChange }) => {
         <TextInput
           placeholder={el.name}
           onChangeText={(e) => {
-            console.log('el-->', el);
             handleChange(e, el.name);
           }}
           value={value}

@@ -49,7 +49,7 @@ function App () {
           </Stack.Screen>
 
           <Stack.Screen name='Search'>
-            {(props) => <Search {...props} entries={entries} />}
+            {(props) => <Search {...props} entries={entries} deleteOne={deleteOne} />}
           </Stack.Screen>
 
         </Stack.Navigator>

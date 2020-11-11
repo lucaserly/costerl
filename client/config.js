@@ -12,7 +12,12 @@ export default {
     { label: 'password' }
   ],
   searchForm: [
-    { label: 'search by Item', flag: 'true' }
+    { label: 'search by item', flag: 'true' },
+    { label: 'search by category', flag: 'true' },
+    { label: 'search by description', flag: 'true' },
+    { label: 'search by payment', flag: 'true' },
+    { label: 'search by amount', flag: 'true' },
+    { label: 'search by date', flag: 'true' }
   ],
   helperFunctions: {
     newFields: (text, target, fields) => {
@@ -70,6 +75,20 @@ export default {
         }
       }
       return false;
+    },
+    filterHelper: (e, arr, cb, target, field) => {
+      const ind = e.findIndex(el => el.name === target);
+      const res = arr.filter((el) => {
+        if (el[field]) {
+          return el[field].includes(e[ind].value);
+        }
+      });
+      cb(res);
+    },
+    regField: (target) => {
+      const arr = target.split('');
+      const ind = arr.indexOf('y');
+      return arr.slice(ind + 2).join('');
     }
   }
 }

@@ -18,16 +18,12 @@ const Form = ({ form, postOne, filterList }) => {
 
   const handleChange = (text, target) => {
     if (flagCheck(form)) {
-      // console.log('text INSIDE if-->', text);
-      // console.log('target INSIDE IF-->', target);
       const field = newFields(text, target, fields);
       setFields(field);
     } else {
-      // console.log('target inside ELSE-->', target);
-      // console.log('text inside ELSE-->', text);
       const field = newFields(text, target, fields);
       setFields(field);
-      filterList(fields);
+      filterList(fields, target);
     }
   };
 

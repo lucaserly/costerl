@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import SearchC from '../../components/search/Search';
 
-const Search = ({ entries }) => {
+const Search = ({ entries, deleteOne }) => {
   return (
     <>
       <View>
-        <SearchC entries={entries} />
+        <SearchC entries={entries} deleteOne={deleteOne} />
       </View>
     </>
   );
