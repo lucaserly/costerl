@@ -1,58 +1,48 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import styles from './styles';
-import FormDetails from './../formDetails/FormDetails';
-import ButtonApp from './../button/Button';
+import ButtonApp from '../button/Button';
+import Field from '../field/Field';
 
-const Form = ({ postOne }) => {
+const Form = ({ form, postOne }) => {
 
-  const [item, setItem] = useState('');
-  const [category, setCategory] = useState('');
-  const [description, setDescription] = useState('');
-  const [payment, setPayment] = useState('');
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
+  const [fields, setFields] = useState(
+    form.map((field) => ({
+      name: field.label,
+      value: ''
+    }))
+  );
 
-  const handleChange = (e, cb) => {
-    cb(e);
+  const handleChange = (text, target) => {
+    const newFields = fields.map((field) => {
+      if (field.name === target) {
+        field.value = text;
+      }
+      return field;
+    });
+    setFields(newFields);
   };
 
-  const createObj = () => {
-    return {
-      item,
-      category,
-      description,
-      payment,
-      amount,
-      date
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postOne(fields);
+    const resetField = fields.map((field) => {
+      if (field !== '') {
+        field.value = '';
+      }
+      return field;
+    });
+    setFields(resetField);
   };
 
-  const clearStates = () => {
-    setItem('');
-    setCategory('');
-    setDescription('');
-    setPayment('');
-    setAmount('');
-    setDate('');
-  };
-
-  const handleSubmit = () => {
-    const obj = createObj();
-    postOne(obj);
-    clearStates();
-  };
 
   return (
     <>
       <View style={styles.container}>
-        <Text>Form</Text>
-        <FormDetails placeholder='item' handleChange={handleChange} el={item} cb={setItem} />
-        <FormDetails placeholder='category' handleChange={handleChange} el={category} cb={setCategory} />
-        <FormDetails placeholder='description' handleChange={handleChange} el={description} cb={setDescription} />
-        <FormDetails placeholder='payment' handleChange={handleChange} el={payment} cb={setPayment} />
-        <FormDetails placeholder='amount' handleChange={handleChange} el={amount} cb={setAmount} />
-        <FormDetails placeholder='date' handleChange={handleChange} el={date} cb={setDate} />
+        {fields.map((el, i) => {
+          return <Field handleChange={handleChange} el={el} key={i} />;
+        })
+        }
         <ButtonApp title="Submit" cb={handleSubmit} />
       </View>
     </>

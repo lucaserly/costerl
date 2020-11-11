@@ -7,10 +7,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    // flex: 1
   },
   safeArea: {
-    flex: 2
+    // flex: 2
   },
   text: {
     fontSize: 18,

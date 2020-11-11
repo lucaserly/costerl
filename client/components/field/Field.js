@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
-const TestDetails = ({ el, handleChange }) => {
+const Field = ({ el, handleChange }) => {
   const { value } = el;
   return (
     <>
       <View>
         <TextInput
           placeholder={el.name}
-          onChange={(e) => {
-            handleChange(e);
+          onChangeText={(e) => {
+            handleChange(e, el.name);
           }}
           value={value}
         />
@@ -18,4 +18,4 @@ const TestDetails = ({ el, handleChange }) => {
   );
 };
 
-export default TestDetails;
+export default Field;
