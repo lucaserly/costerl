@@ -5,11 +5,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import styles from './styles';
 import ApiService from './ApiService';
-
 import Home from './screens/home/Home';
 import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
+import config from './config';
 
+const { delHelper, postHelper, dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
 
 function App () {
@@ -23,33 +24,12 @@ function App () {
       });
   }, []);
 
-  const dataParser = (arr) => {
-    const obj = {};
-    arr.forEach((el) => {
-      if (el.value !== '') {
-        obj[el.name] = el.value;
-      }
-    });
-    return obj;
-  };
-
   const postOne = (arr) => {
-    const cleanedObj = dataParser(arr);
-    ApiService.postOne(cleanedObj)
-      .then((data) => {
-        setEntries([...entries, data]);
-      });
+    return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries);
   };
 
   const deleteOne = (id) => {
-    ApiService.deleteOne(id)
-      .then(() => {
-        setEntries((entrList) => {
-          return entrList.filter((el) => {
-            return el.id !== id;
-          });
-        });
-      });
+    return delHelper(ApiService.deleteOne, id, setEntries);
   };
 
   return (

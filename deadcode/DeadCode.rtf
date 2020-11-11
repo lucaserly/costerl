@@ -85,8 +85,7 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \
 \cb3       \cf2 \{\cf10 /* <Text style=\{styles.entries\}>Entries</Text> */\cf2 \}\cf4 \cb1 \
 \
-\pard\pardeftab720\sl360\partightenfactor0
-\cf4 \cb3   \cf10 // const objCleaner = (obj) => \{\cf4 \cb1 \
+\cb3   \cf10 // const objCleaner = (obj) => \{\cf4 \cb1 \
 \cb3   \cf10 //   for (let key in obj) \{\cf4 \cb1 \
 \cb3   \cf10 //     if (obj[key] === "") \{\cf4 \cb1 \
 \cb3   \cf10 //       delete obj[key];\cf4 \cb1 \
@@ -113,22 +112,51 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \
 \
 \pard\pardeftab720\sl360\partightenfactor0
-\cf12 \cb13 \outl0\strokewidth0 \strokec12 \{\cf14 \strokec14 /* <TouchableWithoutFeedback onPress=\{() => Keyboard.dismiss()\}>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14 <SafeAreaView style=\{styles.safeArea\}>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14   <View style=\{[styles.container, styles.helloColor]\}>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14     <Text style=\{styles.text\}>Hello Lucas 
+\cf4 \cb3 \{\cf10 /* <TouchableWithoutFeedback onPress=\{() => Keyboard.dismiss()\}>\cf4 \cb1 \
+\cf10 \cb3 <SafeAreaView style=\{styles.safeArea\}>\cf4 \cb1 \
+\cf10 \cb3   <View style=\{[styles.container, styles.helloColor]\}>\cf4 \cb1 \
+\cf10 \cb3     <Text style=\{styles.text\}>Hello Lucas 
 \f3 \uc0\u55357 \u56834 
-\f0 </Text>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14   </View>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14 </SafeAreaView>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14 </TouchableWithoutFeedback> */\cf12 \strokec12 \}\cb1 \
+\f0 </Text>\cf4 \cb1 \
+\cf10 \cb3   </View>\cf4 \cb1 \
+\cf10 \cb3 </SafeAreaView>\cf4 \cb1 \
+\cf10 \cb3 </TouchableWithoutFeedback> */\cf4 \}\cb1 \
 \
 \
-\cb13 \{\cf14 \strokec14 /* <Form form=\{config.loginForm\} postOne=\{postOne\} /> */\cf12 \strokec12  \}\cb1 \
+\cb3 \{\cf10 /* <Form form=\{config.loginForm\} postOne=\{postOne\} /> */\cf4  \}\cb1 \
 \
-\cb13 \{\cf14 \strokec14 /* <View>\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14 <Entries entries=\{entries\} deleteOne=\{deleteOne\} />\cf12 \cb1 \strokec12 \
-\cf14 \cb13 \strokec14 </View> */\cf12 \strokec12 \}\cb1 \
+\cb3 \{\cf10 /* <View>\cf4 \cb1 \
+\cf10 \cb3 <Entries entries=\{entries\} deleteOne=\{deleteOne\} />\cf4 \cb1 \
+\cf10 \cb3 </View> */\cf4 \}\cb1 \
+\
+\
 \pard\pardeftab720\sl360\partightenfactor0
-\cf4 \outl0\strokewidth0 \
+\cf12 \cb13 \outl0\strokewidth0 \strokec12   \cf14 \strokec14 // const deleteOne = (id) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   ApiService.deleteOne(id)\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //     .then(() => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //       setEntries((entrList) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //         return entrList.filter((el) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //           return el.id !== id;\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //         \});\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //       \});\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //     \});\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 // \};\cf12 \cb1 \strokec12 \
+\
+\cb13  \cf14 \strokec14 // const dataParser = (arr) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   const obj = \{\};\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   arr.forEach((el) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //     if (el.value !== '') \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //       obj[el.name] = el.value;\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //     \}\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   \});\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   return obj;\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 // \};\cf12 \cb1 \strokec12 \
+\
+\cb13   \cf14 \strokec14 // const postOne = (arr) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   const cleanedObj = dataParser(arr);\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //   ApiService.postOne(cleanedObj)\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //     .then((data) => \{\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //       setEntries([...entries, data]);\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 //     \});\cf12 \cb1 \strokec12 \
+\cb13   \cf14 \strokec14 // \};\cf12 \cb1 \strokec12 \
 }

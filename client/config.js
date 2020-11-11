@@ -31,6 +31,32 @@ export default {
     emptyFieldCheck: (fields) => {
       return fields.filter((el) => el.name === 'item' || el.name === 'amount')
         .some((el) => el.value === '');
+    },
+    postHelper: (cleaner, arr, api, cb, list) => {
+      const cleanedObj = cleaner(arr);
+      api(cleanedObj)
+        .then((data) => {
+          cb([...list, data]);
+        });
+    },
+    delHelper: (api, id, cb) => {
+      api(id)
+        .then(() => {
+          cb((list) => {
+            return list.filter((el) => {
+              return el.id !== id;
+            });
+          });
+        });
+    },
+    dataParser: (arr) => {
+      const obj = {};
+      arr.forEach((el) => {
+        if (el.value !== '') {
+          obj[el.name] = el.value;
+        }
+      });
+      return obj;
     }
   }
 }
