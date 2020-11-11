@@ -15,6 +15,12 @@ const Home = ({ navigation }) => {
       }}>
         <Text>Navigate to Entries </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('Search');
+      }}>
+        <Text>Navigate to Search Bar </Text>
+      </TouchableOpacity>
     </View>
   );
 };

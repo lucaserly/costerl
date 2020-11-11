@@ -8,6 +8,7 @@ import ApiService from './ApiService';
 import Home from './screens/home/Home';
 import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
+import Search from './screens/search/Search';
 import config from './config';
 
 const { delHelper, postHelper, dataParser } = config.helperFunctions;
@@ -45,6 +46,10 @@ function App () {
 
           <Stack.Screen name='Entries'>
             {(props) => <Entries {...props} entries={entries} deleteOne={deleteOne} />}
+          </Stack.Screen>
+
+          <Stack.Screen name='Search'>
+            {(props) => <Search {...props} entries={entries} />}
           </Stack.Screen>
 
         </Stack.Navigator>

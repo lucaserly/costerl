@@ -5,9 +5,9 @@ import ButtonApp from '../button/Button';
 import Field from '../field/Field';
 
 import config from '../../config';
-const { newFields, emptyFieldCheck, resetField } = config.helperFunctions;
+const { newFields, emptyFieldCheck, resetField, flagCheck } = config.helperFunctions;
 
-const Form = ({ form, postOne }) => {
+const Form = ({ form, postOne, filterList }) => {
 
   const [fields, setFields] = useState(
     form.map((field) => ({
@@ -17,8 +17,18 @@ const Form = ({ form, postOne }) => {
   );
 
   const handleChange = (text, target) => {
-    const field = newFields(text, target, fields);
-    setFields(field);
+    if (flagCheck(form)) {
+      // console.log('text INSIDE if-->', text);
+      // console.log('target INSIDE IF-->', target);
+      const field = newFields(text, target, fields);
+      setFields(field);
+    } else {
+      // console.log('target inside ELSE-->', target);
+      // console.log('text inside ELSE-->', text);
+      const field = newFields(text, target, fields);
+      setFields(field);
+      filterList(fields);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -33,6 +43,8 @@ const Form = ({ form, postOne }) => {
     }
   };
 
+
+
   return (
     <>
       <View style={styles.container}>
@@ -40,7 +52,7 @@ const Form = ({ form, postOne }) => {
           return <Field handleChange={handleChange} el={el} key={i} />;
         })
         }
-        <ButtonApp title="Submit" cb={handleSubmit} />
+        {flagCheck(form) ? <ButtonApp title="Submit" cb={handleSubmit} /> : <></>}
       </View>
     </>
   );

@@ -11,6 +11,9 @@ export default {
     { label: 'username' },
     { label: 'password' }
   ],
+  searchForm: [
+    { label: 'search by Item', flag: 'true' }
+  ],
   helperFunctions: {
     newFields: (text, target, fields) => {
       return fields.map((field) => {
@@ -57,6 +60,16 @@ export default {
         }
       });
       return obj;
+    },
+    flagCheck: (arr) => {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].flag === undefined) {
+          return true;
+        } else {
+          break;
+        }
+      }
+      return false;
     }
   }
 }
