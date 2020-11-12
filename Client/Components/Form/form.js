@@ -3,7 +3,6 @@ import { View, Alert, Button, Text } from 'react-native';
 import styles from './styles';
 import ButtonApp from '../button/Button';
 import Field from '../field/Field';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import DateInput from '../dateinput/DateInput';
 
 import config from '../../config';

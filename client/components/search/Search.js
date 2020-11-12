@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Alert, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import Form from './../form/Form';
 import Entries from '../../components/entries/Entries';

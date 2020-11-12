@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -9,6 +8,8 @@ import Home from './screens/home/Home';
 import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
 import Search from './screens/search/Search';
+import Analysis from './screens/analysis/Analysis';
+
 import config from './config';
 
 const { delHelper, postHelper, dataParser } = config.helperFunctions;
@@ -50,6 +51,10 @@ function App () {
 
           <Stack.Screen name='Search'>
             {(props) => <Search {...props} entries={entries} deleteOne={deleteOne} />}
+          </Stack.Screen>
+
+          <Stack.Screen name='Analysis'>
+            {(props) => <Analysis {...props} entries={entries} />}
           </Stack.Screen>
 
         </Stack.Navigator>

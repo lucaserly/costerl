@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, TextInput, View, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import React from 'react';
+import { TextInput, View } from 'react-native';
 import styles from './styles';
 
 const Field = ({ el, handleChange }) => {
