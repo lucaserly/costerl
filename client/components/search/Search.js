@@ -6,15 +6,15 @@ import Entries from '../../components/entries/Entries';
 
 import config from '../../config';
 const { searchForm } = config;
-const { filterHelper, regField } = config.helperFunctions;
+const { filterHelper, nullConverter } = config.helperFunctions;
 
 const Search = ({ entries, deleteOne }) => {
 
   const [search, setSearch] = useState({});
 
   const filterList = (e, target) => {
-    const field = regField(target);
-    return filterHelper(e, entries, setSearch, target, field);
+    const arr = nullConverter(entries);
+    return filterHelper(e, arr, setSearch);
   };
 
   return (

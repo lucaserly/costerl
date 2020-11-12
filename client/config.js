@@ -76,11 +76,16 @@ export default {
       }
       return false;
     },
-    filterHelper: (e, arr, cb, target, field) => {
-      const ind = e.findIndex(el => el.name === target);
+    filterHelper: (e, arr, cb) => {
+      const item = e[0].value;
+      const category = e[1].value;
+      const description = e[2].value;
+      const payment = e[3].value;
+      const amount = e[4].value;
+      const date = e[5].value;
       const res = arr.filter((el) => {
-        if (el[field]) {
-          return el[field].includes(e[ind].value);
+        if (el.item.includes(item) && el.category.includes(category) && el.description.includes(description) && el.payment.includes(payment) && el.amount.includes(amount) && el.date.includes(date)) {
+          return el;
         }
       });
       cb(res);
@@ -89,6 +94,17 @@ export default {
       const arr = target.split('');
       const ind = arr.indexOf('y');
       return arr.slice(ind + 2).join('');
+    },
+    nullConverter: (arr) => {
+      const arrCopy = [...arr];
+      for (let i = 0; i < arrCopy.length; i++) {
+        for (let key in arrCopy[i]) {
+          if (!arrCopy[i][key]) {
+            arrCopy[i][key] = '';
+          }
+        }
+      }
+      return arrCopy;
     }
   }
 }
