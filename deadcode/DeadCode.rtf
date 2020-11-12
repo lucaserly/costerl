@@ -274,4 +274,65 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \cb14   \cf22 \strokec22 //     Alert.alert('Please enter both input and amount');\cf13 \cb1 \strokec13 \
 \cb14   \cf22 \strokec22 //   \}\cf13 \cb1 \strokec13 \
 \cb14   \cf22 \strokec22 // \};\cf13 \cb1 \strokec13 \
+\
+\
+\cb14   \cf22 \strokec22 // const totalSum = (filter, arr) => \{\cf13 \cb1 \strokec13 \
+\cb14   \cf22 \strokec22 //   return arr.reduce((pv, cv) => \{\cf13 \cb1 \strokec13 \
+\cb14   \cf22 \strokec22 //     return Number(cv[filter]) + Number(pv[filter]);\cf13 \cb1 \strokec13 \
+\cb14   \cf22 \strokec22 //   \});\cf13 \cb1 \strokec13 \
+\cb14   \cf22 \strokec22 // \};\cf13 \cb1 \strokec13 \
+\
+\cb14   \cf22 \strokec22 // const horizontalAnalysis = (arr, item, type) => \{\cf13 \cb1 \strokec13 \
+\cb14   \cf22 \strokec22 //   return totalSum(item, arr);\cf13 \cb1 \strokec13 \
+\cb14   \cf22 \strokec22 // \};\cf13 \cb1 \strokec13 \
+\
+\cb14   \cf16 \strokec16 const\cf13 \strokec13  \cf15 \strokec15 onValPickerChange\cf13 \strokec13  \cf16 \strokec16 =\cf13 \strokec13  (
+\f1\i \cf17 \strokec17 el
+\f0\i0 \cf13 \strokec13 , 
+\f1\i \cf17 \strokec17 cb
+\f0\i0 \cf13 \strokec13 ) \cf16 \strokec16 =>\cf13 \strokec13  \{\cb1 \
+\cb14     \cf18 \strokec18 console\cf13 \strokec13 .\cf19 \strokec19 log\cf13 \strokec13 (\cf20 \strokec20 '\cf21 \strokec21 el-->\cf20 \strokec20 '\cf13 \strokec13 , 
+\f1\i \cf17 \strokec17 el
+\f0\i0 \cf13 \strokec13 );\cb1 \
+\cb14     \cf18 \strokec18 console\cf13 \strokec13 .\cf19 \strokec19 log\cf13 \strokec13 (\cf20 \strokec20 '\cf21 \strokec21 cb-->\cf20 \strokec20 '\cf13 \strokec13 , 
+\f1\i \cf17 \strokec17 cb
+\f0\i0 \cf13 \strokec13 );\cb1 \
+\cb14     \cf15 \strokec15 cb\cf13 \strokec13 (
+\f1\i \cf17 \strokec17 el
+\f0\i0 \cf13 \strokec13 );\cb1 \
+\cb14     \cf22 \strokec22 // console.log('selectedValue-->', selectedValue);\cf13 \cb1 \strokec13 \
+\cb14     \cf22 \strokec22 // call method that renders based on item and type of analysys\cf13 \cb1 \strokec13 \
+\cb14   \};\cb1 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf22 \cb14 \strokec22 // const [renderC, setRenderC] = useState(false);\cf13 \cb1 \strokec13 \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf13 \cb14     \cf16 \strokec16 const\cf13 \strokec13  \cf18 \strokec18 args\cf13 \strokec13  \cf16 \strokec16 =\cf13 \strokec13  
+\f1\i \cf19 \strokec19 Array
+\f0\i0 \cf13 \strokec13 .\cf18 \strokec18 prototype\cf13 \strokec13 .\cf19 \strokec19 slice\cf13 \strokec13 .\cf19 \strokec19 call\cf13 \strokec13 (
+\f1\i \cf18 \strokec18 arguments
+\f0\i0 \cf13 \strokec13 , \cf18 \strokec18 2\cf13 \strokec13 );\cb1 \
+\
+\cb14   \cf16 \strokec16 return\cf13 \strokec13  
+\f1\i \cf17 \strokec17 arr
+\f0\i0 \cf13 \strokec13 .\cf15 \strokec15 reduce\cf13 \strokec13 ((
+\f1\i \cf17 \strokec17 pv
+\f0\i0 \cf13 \strokec13 , 
+\f1\i \cf17 \strokec17 cv
+\f0\i0 \cf13 \strokec13 ) \cf16 \strokec16 =>\cf13 \strokec13  \{\cb1 \
+\cb14         \cf16 \strokec16 return\cf13 \strokec13  
+\f1\i \cf19 \strokec19 Number
+\f0\i0 \cf13 \strokec13 (
+\f1\i \cf17 \strokec17 cv
+\f0\i0 \cf13 \strokec13 [
+\f1\i \cf17 \strokec17 filter
+\f0\i0 \cf13 \strokec13 ]) \cf16 \strokec16 +\cf13 \strokec13  
+\f1\i \cf19 \strokec19 Number
+\f0\i0 \cf13 \strokec13 (
+\f1\i \cf17 \strokec17 pv
+\f0\i0 \cf13 \strokec13 [
+\f1\i \cf17 \strokec17 filter
+\f0\i0 \cf13 \strokec13 ]);\cb1 \
+\cb14       \});\cb1 \
 }

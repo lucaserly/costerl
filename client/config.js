@@ -136,6 +136,13 @@ export default {
       } else {
         al('Please enter both input and amount');
       }
-    }
+    },
+    getLabels: (obj) => {
+      const res = [];
+      for (let key in obj) {
+        res.push(key);
+      }
+      return res;
+    },
   }
 }

@@ -5,7 +5,6 @@ import AnalysisC from './../../components/analysis/Analysis';
 const Analysis = ({ entries }) => {
   return (
     <>
-      <Text>Hello from Analysis</Text>
       <AnalysisC entries={entries} />
     </>
   );

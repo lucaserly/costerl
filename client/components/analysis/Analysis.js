@@ -1,28 +1,72 @@
 import React, { useState } from 'react';
-import { render } from 'react-dom';
-import { Text, View, FlatList, Button, Picker } from 'react-native';
+import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView } from 'react-native';
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit';
+
+import config from './../../config';
+const { getLabels } = config.helperFunctions;
 
 const Analysis = ({ entries }) => {
-  console.log('entries from AnalysisC-->', entries);
-  const [selectedValue, setSelectedValue] = useState('select');
-  const [selectedAnalysys, setSelectedAnalysys] = useState('select');
-
+  const [selectedValue, setSelectedValue] = useState(getLabels(entries[0])[0]);
+  const [selectedAnalysys, setSelectedAnalysys] = useState(getLabels(entries[0])[0]);
+  const [selectedFilter, setSelectedFilter] = useState('');
+  const [selectedSubFilter, setSelectedSubFilter] = useState('');
   const [result, setResult] = useState('');
+  const [analysis, setAnalysis] = useState(false);
 
-  const getLabels = (obj) => {
-    const res = [];
-    for (let key in obj) {
-      res.push(key);
-    }
-    return res;
+  const renderAnalysisResult = (var1, var2, var3) => {
+    return <>
+      <Text>{var1} -- {var2} -- {var3}</Text>
+      <View>
+        <Text>Bezier Line Chart</Text>
+        <BarChart
+          data={{
+            labels: [var2, 'test'],
+            datasets: [
+              {
+                data: [
+                  var3,
+                  50,
+                ]
+              }
+            ]
+          }}
+          width={Dimensions.get("window").width} // from react-native
+          height={220}
+          yAxisLabel="$"
+          yAxisSuffix="k"
+          yAxisInterval={1} // optional, defaults to 1
+          chartConfig={{
+            backgroundColor: "#e26a00",
+            backgroundGradientFrom: "#fb8c00",
+            backgroundGradientTo: "#ffa726",
+            decimalPlaces: 2, // optional, defaults to 2dp
+            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            style: {
+              borderRadius: 16
+            },
+            propsForDots: {
+              r: "6",
+              strokeWidth: "2",
+              stroke: "#ffa726"
+            }
+          }}
+          bezier
+          style={{
+            marginVertical: 8,
+            borderRadius: 16
+          }}
+        />
+      </View>
+    </>;
   };
-
-  const onValPickerChange = (itemValue, cb) => {
-    cb(itemValue);
-    // call method that renders based on item and type of analysys
-  };
-
-  console.log('selectedValue-->', selectedValue);
 
   const analysisTypes = {
     horizontal: () => {
@@ -34,67 +78,145 @@ const Analysis = ({ entries }) => {
     commonsize: () => {
 
     },
-    totalsum: () => {
-
+    totalsum: (filter, arr, selFil, selSubFil) => {
+      const filteredList = filterBySub(arr, selFil, selSubFil);
+      if (filteredList.length === 1) {
+        return filteredList[0][filter];
+      } else {
+        return filteredList.reduce((pv, cv) => {
+          return Number(pv[filter]) + Number(cv[filter]);
+        });
+      }
     },
-    sumoverall: () => {
-
+    percentageovertot: (filter, arr, selFil, selSubFil) => {
+      // console.log('filter-->', filter);
+      // console.log('arr-->', arr);
+      // console.log('selFil-->', selFil);
+      // console.log('selSubFil-->', selSubFil);
+      // const tot
     },
     sumcategor: () => {
 
     },
   };
 
+  const handleOutput = (arr, filter, selAnalys, selFil, selSubFil) => {
+    console.log('selAnalys-->', selAnalys);
+    console.log('selFil-->', selFil);
+    console.log('selSubFil-->', selSubFil);
 
 
-  const totalSum = (filter, arr) => {
-    return arr.reduce((pv, cv) => {
-      return Number(cv[filter]) + Number(pv[filter]);
-    });
-  };
-
-  const renderOutput = (arr, filter) => {
-    console.log('output-->', output);
-    const output = totalSum(filter, arr);
+    const output = analysisTypes[selAnalys](filter, arr, selFil, selSubFil);
+    // console.log('output-->', output);
     setResult(output);
   };
 
-  // const horizontalAnalysis = (arr, item, type) => {
-  //   return totalSum(item, arr);
-  // };
+  const filterBySub = (arr, secfil, filter) => {
+    // console.log('arr-->', arr);
+    // console.log('secfil-->', secfil);
+    // console.log('filter-->', filter);
+
+
+
+    return arr.filter((el) => {
+      // console.log('el INSIDE FILTERBYSUB-->', el);
+
+      return el[secfil] === filter;
+    });
+  };
+
+  const filteredShit = (arr, filter) => {
+    const notUniq = arr.map((el) => {
+      return el[filter];
+    });
+    return [...new Set(notUniq)];
+  };
+
+  const setDefaultSubFilter = (el) => {
+    console.log('INSIDE SETDEFAULTSUBFILTER-->');
+    // console.log('selectedFilter-->', selectedFilter);
+    // console.log('filteredShit(entries, selectedFilter)-->', filteredShit(entries, selectedFilter));
+    // console.log('(filteredShit(entries, selectedFilter))[0]-->', (filteredShit(entries, selectedFilter))[0]);
+    setSelectedSubFilter((filteredShit(entries, el))[0]);
+  };
+
+  const pickers = (
+    <>
+      <ScrollView>
+        <View styles={styles.container} >
+          <Text>Selected which item to Analyse</Text>
+          <Picker
+            selectedValue={selectedValue}
+            onValueChange={(el) => setSelectedValue(el)}>
+            {getLabels(entries[0]).map((el, i) => {
+              return <Picker.Item key={i} label={el} value={el} />;
+            })
+            }
+          </Picker>
+
+          <Text>Selected which Filter</Text>
+          <Picker
+            selectedValue={selectedFilter}
+            onValueChange={(el) => {
+              setSelectedFilter(el);
+              console.log('el INSIDE 2 FILTER-->', el);
+              setDefaultSubFilter(el);
+            }}>
+            {getLabels(entries[0]).map((el, i) => {
+              return <Picker.Item key={i} label={el} value={el} />;
+            })
+            }
+          </Picker>
+
+          <Text>Selected which SubFilter</Text>
+          <Picker
+            selectedValue={selectedSubFilter}
+            onValueChange={(el) => setSelectedSubFilter(el)}>
+            {
+              filteredShit(entries, selectedFilter).map((el, i) => {
+                return <Picker.Item key={i} label={el} value={el} />;
+              })
+            }
+          </Picker>
+
+          <Text>Selected which type of Analysis</Text>
+          <Picker
+            selectedValue={selectedAnalysys}
+            onValueChange={(el) => setSelectedAnalysys(el)}>
+            {getLabels(analysisTypes).map((el, i) => {
+              return <Picker.Item key={i} label={el} value={el} />;
+            })
+            }
+          </Picker>
+
+          <Button
+            onPress={(e) => {
+              handleOutput(entries, selectedValue, selectedAnalysys, selectedFilter, selectedSubFilter);
+              setAnalysis(true);
+            }}
+            title='Analyse'
+          />
+        </View>
+      </ScrollView>
+    </>
+  );
 
   return (
     <>
-      <Text>Selected which item to Analyse</Text>
-      <Picker value={selectedValue} onValueChange={(el) => (onValPickerChange(el, setSelectedValue))}>
-        {getLabels(entries[0]).map((el, i) => {
-          return <Picker.Item key={i} label={el} value={el} />;
-        })
-        }
-      </Picker>
-
-      <Text>Selected which type of Analysis</Text>
-      <Picker value={selectedAnalysys} onValueChange={(el) => (onValPickerChange(el, setSelectedAnalysys))}>
-        {getLabels(analysisTypes).map((el, i) => {
-          return <Picker.Item key={i} label={el} value={el} />;
-        })
-        }
-      </Picker>
-
-      <Button
-        onPress={(e) => {
-          renderOutput(entries, selectedValue);
-        }}
-        title='Analyse'
-      />
-
-      <View>
-        <Text>
-          {result}
-        </Text>
-      </View>
+      {!analysis ? pickers : renderAnalysisResult(selectedValue, selectedAnalysys, result)}
     </>
   );
 };
+
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 3,
+    // paddingTop: 30,
+    // alignItems: 'center',
+  }
+});
+
 
 export default Analysis;
