@@ -4,6 +4,7 @@ import styles from './styles';
 
 const Field = ({ el, handleChange }) => {
   const { value } = el;
+
   return (
     <>
       <View>

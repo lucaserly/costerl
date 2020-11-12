@@ -105,6 +105,37 @@ export default {
         }
       }
       return arrCopy;
+    },
+    dateInputFinder: (arr) => {
+      for (let i = 0; i < arr.length; i++) {
+        for (let key in arr[i]) {
+          if (arr[i][key] === 'date') {
+            return true;
+          }
+        }
+      }
+      return false;
+    },
+    handleChangeForm: (flagCheck, form, newFields, text, target, fields, setFields, filterList) => {
+      if (flagCheck(form)) {
+        const field = newFields(text, target, fields);
+        setFields(field);
+      } else {
+        const field = newFields(text, target, fields);
+        setFields(field);
+        filterList(fields, target);
+      }
+    },
+    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date) => {
+      const check = emptyFieldCheck(fields);
+      if (!check) {
+        fields[5].value = date;
+        postOne(fields);
+        const field = resetField(fields);
+        setFields(field);
+      } else {
+        al('Please enter both input and amount');
+      }
     }
   }
 }

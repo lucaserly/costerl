@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, Button, Text } from 'react-native';
 import styles from './styles';
 import ButtonApp from '../button/Button';
 import Field from '../field/Field';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import DateInput from '../dateinput/DateInput';
 
 import config from '../../config';
-const { newFields, emptyFieldCheck, resetField, flagCheck } = config.helperFunctions;
+const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
 
 const Form = ({ form, postOne, filterList }) => {
 
+  const [date, setDate] = useState('');
   const [fields, setFields] = useState(
     form.map((field) => ({
       name: field.label,
@@ -17,32 +20,24 @@ const Form = ({ form, postOne, filterList }) => {
   );
 
   const handleChange = (text, target) => {
-    if (flagCheck(form)) {
-      const field = newFields(text, target, fields);
-      setFields(field);
-    } else {
-      const field = newFields(text, target, fields);
-      setFields(field);
-      filterList(fields, target);
-    }
+    handleChangeForm(flagCheck, form, newFields, text, target, fields, setFields, filterList);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const check = emptyFieldCheck(fields);
-    if (!check) {
-      postOne(fields);
-      const field = resetField(fields);
-      setFields(field);
-    } else {
-      Alert.alert('Please enter both input and amount');
-    }
+    handleSubmitForm(emptyFieldCheck, fields, postOne, resetField, setFields, Alert.alert, date);
   };
 
-
+  const handleDateSub = (e) => {
+    setDate(e);
+  };
 
   return (
     <>
+      {dateInputFinder(fields) ? <View>
+        <DateInput handleDateSub={handleDateSub} />
+      </View> : <></>
+      }
       <View style={styles.container}>
         {fields.map((el, i) => {
           return <Field handleChange={handleChange} el={el} key={i} />;
