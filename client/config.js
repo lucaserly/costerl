@@ -139,6 +139,7 @@ export default {
     },
     getLabels: (obj) => {
       const res = [];
+      res.push('none');
       for (let key in obj) {
         res.push(key);
       }
