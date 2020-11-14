@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import styles from './styles';
 import ApiService from './ApiService';
 import Home from './screens/home/Home';
+import Login from './screens/login/Login';
 import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
 import Search from './screens/search/Search';
@@ -18,16 +19,17 @@ const Stack = createStackNavigator();
 function App () {
 
   const [entries, setEntries] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    ApiService.getAll()
+    ApiService.getAll('entries')
       .then((data) => {
         setEntries(data);
       });
   }, []);
 
-  const postOne = (arr) => {
-    return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries);
+  const postOne = (arr, ext) => {
+    return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries, ext);
   };
 
   const deleteOne = (id) => {
@@ -40,6 +42,10 @@ function App () {
         <Stack.Navigator>
 
           <Stack.Screen name='Home' component={Home} />
+
+          <Stack.Screen name='Login'>
+            {(props) => <Login {...props} postOne={postOne} entries={entries} />}
+          </Stack.Screen>
 
           <Stack.Screen name='Form'>
             {(props) => <Form {...props} postOne={postOne} entries={entries} />}

@@ -40,9 +40,9 @@ export default {
       return fields.filter((el) => el.name === 'item' || el.name === 'amount')
         .some((el) => el.value === '');
     },
-    postHelper: (cleaner, arr, api, cb, list) => {
+    postHelper: (cleaner, arr, api, cb, list, ext) => {
       const cleanedObj = cleaner(arr);
-      api(cleanedObj)
+      api(cleanedObj, ext)
         .then((data) => {
           cb([...list, data]);
         });
@@ -126,11 +126,11 @@ export default {
         filterList(fields, target);
       }
     },
-    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date) => {
+    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date, ext) => {
       const check = emptyFieldCheck(fields);
       if (!check) {
         fields[5].value = date;
-        postOne(fields);
+        postOne(fields, ext);
         const field = resetField(fields);
         setFields(field);
         al('You successfully submitted your expense');

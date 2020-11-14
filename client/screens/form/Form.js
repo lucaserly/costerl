@@ -10,7 +10,7 @@ const Form = ({ entries, postOne, deleteOne }) => {
   return (
     <>
       <View>
-        <FormC form={inputForm} postOne={postOne} />
+        <FormC form={inputForm} postOne={postOne} ext='entries' />
       </View>
 
       <View>

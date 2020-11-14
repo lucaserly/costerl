@@ -8,7 +8,7 @@ import DateInput from '../dateinput/DateInput';
 import config from '../../config';
 const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList }) => {
+const Form = ({ form, postOne, filterList, ext }) => {
 
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
@@ -24,7 +24,7 @@ const Form = ({ form, postOne, filterList }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSubmitForm(emptyFieldCheck, fields, postOne, resetField, setFields, Alert.alert, date);
+    handleSubmitForm(emptyFieldCheck, fields, postOne, resetField, setFields, Alert.alert, date, ext);
   };
 
   const handleDateSub = (e) => {

@@ -1,11 +1,11 @@
 const BASE_URL = 'http://10.197.2.147:3002/';
 
-const getAll = () => {
-  return fetcher('entries');
+const getAll = (end) => {
+  return fetcher(end);
 };
 
-const postOne = (obj) => {
-  return fetcher('entries', {
+const postOne = (obj, end) => {
+  return fetcher(end, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
