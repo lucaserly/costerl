@@ -133,6 +133,7 @@ export default {
         postOne(fields);
         const field = resetField(fields);
         setFields(field);
+        al('You successfully submitted your expense');
       } else {
         al('Please enter both input and amount');
       }

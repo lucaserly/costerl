@@ -3,14 +3,12 @@
 \f3\fnil\fcharset0 AppleColorEmoji;}
 {\colortbl;\red255\green255\blue255;\red252\green93\blue186;\red30\green31\blue41;\red246\green246\blue239;
 \red174\green122\blue247;\red124\green228\blue252;\red72\green255\blue104;\red228\green242\blue113;\red238\green252\blue122;
-\red80\green93\blue147;\red0\green0\blue0;\red253\green170\blue90;\red246\green246\blue239;\red30\green31\blue41;
-\red80\green93\blue147;\red252\green93\blue186;\red174\green122\blue247;\red228\green242\blue113;\red238\green252\blue122;
-\red72\green255\blue104;\red253\green170\blue90;}
+\red80\green93\blue147;\red0\green0\blue0;\red253\green170\blue90;\red251\green2\blue255;\red80\green93\blue147;
+\red30\green31\blue41;\red246\green246\blue239;}
 {\*\expandedcolortbl;;\cssrgb\c100000\c47451\c77647;\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;
 \cssrgb\c74118\c57647\c97647;\cssrgb\c54510\c91373\c99216;\cssrgb\c31373\c98039\c48235;\cssrgb\c91373\c94902\c51765;\cssrgb\c94510\c98039\c54902;
-\cssrgb\c38431\c44706\c64314;\cssrgb\c0\c0\c0;\cssrgb\c100000\c72157\c42353;\cssrgb\c97255\c97255\c94902;\cssrgb\c15686\c16471\c21176;
-\cssrgb\c38431\c44706\c64314;\cssrgb\c100000\c47451\c77647;\cssrgb\c74118\c57647\c97647;\cssrgb\c91373\c94902\c51765;\cssrgb\c94510\c98039\c54902;
-\cssrgb\c31373\c98039\c48235;\cssrgb\c100000\c72157\c42353;}
+\cssrgb\c38431\c44706\c64314;\cssrgb\c0\c0\c0;\cssrgb\c100000\c72157\c42353;\cssrgb\c100000\c25279\c100000;\cssrgb\c38431\c44706\c64314;
+\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww23820\viewh14140\viewkind0
 \deftab720
 \pard\pardeftab720\sl360\partightenfactor0
@@ -330,8 +328,7 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \f0\i0 \cf4 ]);\cb1 \
 \cb3       \});\cb1 \
 \
-\pard\pardeftab720\sl360\partightenfactor0
-\cf4 \cb3   \cf10 // const [selectedValue, setSelectedValue] = useState(getLabels(entries[0])[0]);\cf4 \cb1 \
+\cb3   \cf10 // const [selectedValue, setSelectedValue] = useState(getLabels(entries[0])[0]);\cf4 \cb1 \
 \
   // const [secondFilter, setSecondFilter] = useState('');\
 \
@@ -468,70 +465,66 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \cb3         \}\cf2 \}\cf4 \cb1 \
 \cb3       />\cb1 \
 \
-\pard\pardeftab720\sl360\partightenfactor0
 \cf5 \cb3 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 Math.round(Math.random()*colors.length)-->\cf8 '\cf4 , \cf5 Math\cf4 .\cf6 round\cf4 (\cf5 Math\cf4 .\cf6 random\cf4 ()\cf2 *\cf5 colors\cf4 .length));\cb1 \
-\pard\pardeftab720\sl360\partightenfactor0
-\cf4 \cb3       \cf2 let\cf4  color \cf2 =\cf4  \cf5 Math\cf4 .\cf6 round\cf4 (\cf5 Math\cf4 .\cf6 random\cf4 ()\cf2 *\cf5 colors\cf4 .length);\cb1 \
+\cb3       \cf2 let\cf4  color \cf2 =\cf4  \cf5 Math\cf4 .\cf6 round\cf4 (\cf5 Math\cf4 .\cf6 random\cf4 ()\cf2 *\cf5 colors\cf4 .length);\cb1 \
 \
 \
 \cb3     \cf10 // console.log('Math.random(colors.length)-->', Math.round(Math.random()*colors.length));\cf4 \cb1 \
 \
 \pard\pardeftab720\sl360\partightenfactor0
-\cf13 \cb14 \outl0\strokewidth0 \strokec13     \cf15 \strokec15 // const index = Math.round(Math.random() * colors.length);\cf13 \cb1 \strokec13 \
+\cf4 \cb3     \cf10 // const index = Math.round(Math.random() * colors.length);\cf4 \cb1 \
 \
 \
-\cb14  \cf16 \strokec16 const\cf13 \strokec13  \cf17 \strokec17 hardCoded\cf13 \strokec13  \cf16 \strokec16 =\cf13 \strokec13  [\cb1 \
-\cb14     \{\cb1 \
-\cb14       name\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 Seoul\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       population\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 21500000\cf13 \strokec13 ,\cb1 \
-\cb14       color\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 rgba(131, 167, 234, 1)\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontColor\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #7F7F7F\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontSize\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 15\cf13 \cb1 \strokec13 \
-\cb14     \},\cb1 \
-\cb14     \{\cb1 \
-\cb14       name\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 Toronto\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       population\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 2800000\cf13 \strokec13 ,\cb1 \
-\cb14       color\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #F00\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontColor\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #7F7F7F\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontSize\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 15\cf13 \cb1 \strokec13 \
-\cb14     \},\cb1 \
-\cb14     \{\cb1 \
-\cb14       name\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 Beijing\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       population\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 527612\cf13 \strokec13 ,\cb1 \
-\cb14       color\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 red\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontColor\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #7F7F7F\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontSize\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 15\cf13 \cb1 \strokec13 \
-\cb14     \},\cb1 \
-\cb14     \{\cb1 \
-\cb14       name\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 New York\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       population\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 8538000\cf13 \strokec13 ,\cb1 \
-\cb14       color\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #ffffff\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontColor\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #7F7F7F\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontSize\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 15\cf13 \cb1 \strokec13 \
-\cb14     \},\cb1 \
-\cb14     \{\cb1 \
-\cb14       name\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 Moscow\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       population\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 11920000\cf13 \strokec13 ,\cb1 \
-\cb14       color\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 rgb(0, 0, 255)\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontColor\cf16 \strokec16 :\cf13 \strokec13  \cf18 \strokec18 "\cf19 \strokec19 #7F7F7F\cf18 \strokec18 "\cf13 \strokec13 ,\cb1 \
-\cb14       legendFontSize\cf16 \strokec16 :\cf13 \strokec13  \cf17 \strokec17 15\cf13 \cb1 \strokec13 \
-\cb14     \}\cb1 \
-\cb14   ];\cb1 \
+\cb3  \cf2 const\cf4  \cf5 hardCoded\cf4  \cf2 =\cf4  [\cb1 \
+\cb3     \{\cb1 \
+\cb3       name\cf2 :\cf4  \cf8 "\cf9 Seoul\cf8 "\cf4 ,\cb1 \
+\cb3       population\cf2 :\cf4  \cf5 21500000\cf4 ,\cb1 \
+\cb3       color\cf2 :\cf4  \cf8 "\cf9 rgba(131, 167, 234, 1)\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontColor\cf2 :\cf4  \cf8 "\cf9 #7F7F7F\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontSize\cf2 :\cf4  \cf5 15\cf4 \cb1 \
+\cb3     \},\cb1 \
+\cb3     \{\cb1 \
+\cb3       name\cf2 :\cf4  \cf8 "\cf9 Toronto\cf8 "\cf4 ,\cb1 \
+\cb3       population\cf2 :\cf4  \cf5 2800000\cf4 ,\cb1 \
+\cb3       color\cf2 :\cf4  \cf8 "\cf9 #F00\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontColor\cf2 :\cf4  \cf8 "\cf9 #7F7F7F\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontSize\cf2 :\cf4  \cf5 15\cf4 \cb1 \
+\cb3     \},\cb1 \
+\cb3     \{\cb1 \
+\cb3       name\cf2 :\cf4  \cf8 "\cf9 Beijing\cf8 "\cf4 ,\cb1 \
+\cb3       population\cf2 :\cf4  \cf5 527612\cf4 ,\cb1 \
+\cb3       color\cf2 :\cf4  \cf8 "\cf9 red\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontColor\cf2 :\cf4  \cf8 "\cf9 #7F7F7F\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontSize\cf2 :\cf4  \cf5 15\cf4 \cb1 \
+\cb3     \},\cb1 \
+\cb3     \{\cb1 \
+\cb3       name\cf2 :\cf4  \cf8 "\cf9 New York\cf8 "\cf4 ,\cb1 \
+\cb3       population\cf2 :\cf4  \cf5 8538000\cf4 ,\cb1 \
+\cb3       color\cf2 :\cf4  \cf8 "\cf9 #ffffff\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontColor\cf2 :\cf4  \cf8 "\cf9 #7F7F7F\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontSize\cf2 :\cf4  \cf5 15\cf4 \cb1 \
+\cb3     \},\cb1 \
+\cb3     \{\cb1 \
+\cb3       name\cf2 :\cf4  \cf8 "\cf9 Moscow\cf8 "\cf4 ,\cb1 \
+\cb3       population\cf2 :\cf4  \cf5 11920000\cf4 ,\cb1 \
+\cb3       color\cf2 :\cf4  \cf8 "\cf9 rgb(0, 0, 255)\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontColor\cf2 :\cf4  \cf8 "\cf9 #7F7F7F\cf8 "\cf4 ,\cb1 \
+\cb3       legendFontSize\cf2 :\cf4  \cf5 15\cf4 \cb1 \
+\cb3     \}\cb1 \
+\cb3   ];\cb1 \
 \
-\pard\pardeftab720\sl360\partightenfactor0
-\cf13 \cb14  \cf16 \strokec16 const\cf13 \strokec13  \cf20 \strokec20 newObj\cf13 \strokec13  \cf16 \strokec16 =\cf13 \strokec13  (
-\f1\i \cf21 \strokec21 arritem
-\f0\i0 \cf13 \strokec13 , 
-\f1\i \cf21 \strokec21 arramount
-\f0\i0 \cf13 \strokec13 , ) \cf16 \strokec16 =>\cf13 \strokec13  \{\cb1 \
-\cb14   \cf16 \strokec16 return\cf13 \strokec13  \{\cb1 \
+\cb3  \cf2 const\cf4  \cf7 newObj\cf4  \cf2 =\cf4  (
+\f1\i \cf12 arritem
+\f0\i0 \cf4 , 
+\f1\i \cf12 arramount
+\f0\i0 \cf4 , ) \cf2 =>\cf4  \{\cb1 \
+\cb3   \cf2 return\cf4  \{\cb1 \
 \
-\cb14   \}\cb1 \
-\cb14  \}\cb1 \
-\
+\cb3   \}\cb1 \
+\cb3  \}\cb1 \
 \
 \
-      // const labels = arr.map((el) => \{\
+ \cf13      // const labels = arr.map((el) => \{\
       //   return `$\{months[Number(el.date.split('').slice(5, 7).join(''))]\} & $\{el.amount\}`;\
       // \});\
 // for (let i = 0; i < arr.length; i++) \{\
@@ -565,4 +558,46 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
       //   if (arr[i][])\
       // \}\
 \
-      // console.log('data-->', data);}
+      // console.log('data-->', data);\
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf14 \cb15 \outl0\strokewidth0 \strokec14 // const dataGraphCreator = (arr, item) => \{\cf16 \cb1 \strokec16 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf16 \cb15   \cf14 \strokec14 //   const tot = analysisTypes.sum(arr, 'amount');\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   const commoneach = [];\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   arr.forEach((el) => \{\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //     commoneach.push(Number(((Number(el.amount) / tot) * 100).toFixed(2)));\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   \});\cf16 \cb1 \strokec16 \
+\
+\cb15   \cf14 \strokec14 //   let res = [];\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   for (let i = 0; i < arr.length; i++) \{\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //     let newObj = \{\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       name: `% $\{arr[i].item\}`,\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       population: percentageConverter(arr[i].amount, tot),\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       color: colors[1][randomColorIndexGenerator()],\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       legendFontColor: "#7F7F7F",\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       legendFontSize: 15\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //     \};\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //     res.push(newObj);\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   \}\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   console.log('res-->', res);\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   return res;\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 // \};\cf16 \cb1 \strokec16 \
+\
+\cb15   \cf14 \strokec14 // const showPieChart = (data) => \{\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   const dataGraph = dataGraphCreator(data);\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   return (\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //     <PieChart\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       data=\{dataGraph\}\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       width=\{screenWidth\}\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       height=\{220\}\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       chartConfig=\{chartConfig\}\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       accessor="population"\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       backgroundColor="transparent"\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       paddingLeft="15"\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //       absolute\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //     />\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 //   );\cf16 \cb1 \strokec16 \
+\cb15   \cf14 \strokec14 // \};\cf16 \cb1 \strokec16 \
+}
