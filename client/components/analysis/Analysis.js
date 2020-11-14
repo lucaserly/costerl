@@ -14,8 +14,6 @@ const { getLabels } = config.helperFunctions;
 const screenWidth = Dimensions.get("window").width;
 
 import colors from './../../colors';
-console.log('colors-->', colors[1]);
-
 
 const chartConfig = {
   backgroundGradientFrom: "#1E2923",
@@ -28,18 +26,15 @@ const chartConfig = {
   useShadowColorFromDataset: false // optional
 };
 
-const chartTypes = [
-  'none',
-  'LineChart',
-  'BarChart',
-  'PieChart',
-  'ProgressChart',
-  'ContributionGraph',
-  'StackedBarChart'
-];
-
-
-
+// const chartTypes = [
+//   'none',
+//   'LineChart',
+//   'BarChart',
+//   'pieChart',
+//   'ProgressChart',
+//   'ContributionGraph',
+//   'StackedBarChart'
+// ];
 
 const Analysis = ({ entries }) => {
   const [firstFilter, setFirstFilter] = useState(getLabels(entries[0])[0]);
@@ -51,15 +46,11 @@ const Analysis = ({ entries }) => {
   const [analysis, setAnalysis] = useState(false);
   const [chartShow, setChartShow] = useState(false);
 
-
-
   const resCleaner = (str) => {
     const arr = str.split('');
     const percentageIndex = arr.findIndex((el) => el === '%');
     return Number(arr.slice(0, percentageIndex).join(''));
   };
-
-
 
   const percentageConverter = (el, tot) => {
     const res = Number(((Number(el) / tot) * 100).toFixed(2));
@@ -67,90 +58,130 @@ const Analysis = ({ entries }) => {
   };
 
   const randomColorIndexGenerator = () => {
-    // const index = Math.round(Math.random() * colors.length);
     const index = Math.floor(Math.random() * Math.floor(colors[1].length));
-    console.log('index-->', index);
+    // console.log('index-->', index);
     return index;
 
   };
 
-  const dataGraphCreator = (arr, item) => {
-    const tot = analysisTypes.sum(arr, 'amount');
-    console.log('tot-->', tot);
-    const commoneach = [];
-    arr.forEach((el) => {
-      commoneach.push(Number(((Number(el.amount) / tot) * 100).toFixed(2)));
-    });
 
+  const dataGraphCreators = {
+    pieChart: (arr, item) => {
+      const tot = analysisTypes.sum(arr, 'amount');
+      const commoneach = [];
+      arr.forEach((el) => {
+        commoneach.push(Number(((Number(el.amount) / tot) * 100).toFixed(2)));
+      });
 
-    let res = [];
-    for (let i = 0; i < arr.length; i++) {
-      let newObj = {
-        name: `% ${arr[i].item}`,
-        population: percentageConverter(arr[i].amount, tot),
-        color: colors[1][randomColorIndexGenerator()],
-        legendFontColor: "#7F7F7F",
-        legendFontSize: 15
+      let res = [];
+      for (let i = 0; i < arr.length; i++) {
+        let newObj = {
+          name: `% ${arr[i].item}`,
+          population: percentageConverter(arr[i].amount, tot),
+          color: colors[1][randomColorIndexGenerator()],
+          legendFontColor: "#7F7F7F",
+          legendFontSize: 15
+        };
+        res.push(newObj);
+      }
+      // console.log('res-->', res);
+      return res;
+    },
+    lineChart: (arr, item) => {
+      const months = {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December'
       };
-      res.push(newObj);
+
+
+
+      const labels = arr.map((el) => {
+        return `${months[Number(el.date.split('').slice(5, 7).join(''))]}`;
+      });
+
+
+      const monthExtractor = (el) => {
+        return months[Number(el.date.split('').slice(5, 7).join(''))];
+      };
+
+      const labels2 = {};
+
+      arr.forEach((el) => {
+        if (labels2[monthExtractor(el)]) {
+          labels2[monthExtractor(el)] += Number(el.amount);
+        } else {
+          labels2[monthExtractor(el)] = Number(el.amount);
+        }
+      });
+
+      console.log('labels2-->', labels2);
+
+
+
+
+      const dataS = {
+        labels: Object.keys(labels2),
+        datasets: [
+          {
+            data: Object.values(labels2),
+            color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+            strokeWidth: 2 // optional
+          }
+        ],
+        legend: ['All Entries']
+      };
+
+      return dataS;
     }
-    console.log('res-->', res);
-    return res;
   };
 
-  const hardCoded = [
-    {
-      name: "Seoul",
-      population: 21500000,
-      color: "rgba(131, 167, 234, 1)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Toronto",
-      population: 2800000,
-      color: "#F00",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Beijing",
-      population: 527612,
-      color: "red",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "New York",
-      population: 8538000,
-      color: "#ffffff",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Moscow",
-      population: 11920000,
-      color: "rgb(0, 0, 255)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    }
-  ];
+  // const dataGraphCreator = (arr, item) => {
+  //   const tot = analysisTypes.sum(arr, 'amount');
+  //   const commoneach = [];
+  //   arr.forEach((el) => {
+  //     commoneach.push(Number(((Number(el.amount) / tot) * 100).toFixed(2)));
+  //   });
 
-  const showPieChart = (data) => {
-    const dataGraph = dataGraphCreator(data);
-    return (
-      <PieChart
-        data={dataGraph}
-        width={screenWidth}
-        height={220}
-        chartConfig={chartConfig}
-        accessor="population"
-        backgroundColor="transparent"
-        paddingLeft="15"
-        absolute
-      />
-    );
-  };
+  //   let res = [];
+  //   for (let i = 0; i < arr.length; i++) {
+  //     let newObj = {
+  //       name: `% ${arr[i].item}`,
+  //       population: percentageConverter(arr[i].amount, tot),
+  //       color: colors[1][randomColorIndexGenerator()],
+  //       legendFontColor: "#7F7F7F",
+  //       legendFontSize: 15
+  //     };
+  //     res.push(newObj);
+  //   }
+  //   console.log('res-->', res);
+  //   return res;
+  // };
+
+  // const showPieChart = (data) => {
+  //   const dataGraph = dataGraphCreator(data);
+  //   return (
+  //     <PieChart
+  //       data={dataGraph}
+  //       width={screenWidth}
+  //       height={220}
+  //       chartConfig={chartConfig}
+  //       accessor="population"
+  //       backgroundColor="transparent"
+  //       paddingLeft="15"
+  //       absolute
+  //     />
+  //   );
+  // };
 
   const renderAnalysisResult = (...args) => {
     const firstFil = args[0];
@@ -212,6 +243,9 @@ const Analysis = ({ entries }) => {
     const thirdFil = args[3];
     const selAnalys = args[4];
     const selGraph = args[5];
+    // console.log('INSIDE HANDLEOUTPUT-->');
+    // console.log('selGraph-->', selGraph);
+
     if (selGraph === 'none') {
       if (firstFil === 'none' || selAnalys === 'none') {
         Alert.alert('Plese select at least item second last or graph');
@@ -248,6 +282,67 @@ const Analysis = ({ entries }) => {
   const setDefaultSubFilter = (el) => {
     setThirdFilter((filteredShit(entries, el))[0]);
   };
+
+  const data = {
+    labels: ["January", "February", "March", "April", "May", "June"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+        strokeWidth: 2 // optional
+      }
+    ],
+    legend: ["Rainy Days"] // optional
+  };
+
+
+
+  const chartFuncs = {
+    pieChart: (...args) => {
+      const data = args[0];
+      const dataGraphCreator = args[1];
+      const screenWidth = args[2];
+      const chartConfig = args[3];
+      const analysisT = args[4];
+      const dataGraph = dataGraphCreator(data, analysisT);
+      return (
+        <PieChart
+          data={dataGraph}
+          width={screenWidth}
+          height={220}
+          chartConfig={chartConfig}
+          accessor="population"
+          backgroundColor="transparent"
+          paddingLeft="15"
+          absolute
+        />
+      );
+    },
+    lineChart: (...args) => {
+      // console.log('INSIDE LINECHART-->');
+      const data = args[0];
+      const dataGraphCreator = args[1];
+      const screenWidth = args[2];
+      const chartConfig = args[3];
+      const analysisT = args[4];
+      const dataGraph = dataGraphCreator(data, analysisT);
+      // console.log('data-->', data);
+      // console.log('dataGraphCreator-->', dataGraphCreator);
+      // console.log('analysisT-->', analysisT);
+
+      return (
+        <LineChart
+          data={dataGraph}
+          width={screenWidth}
+          height={220}
+          chartConfig={chartConfig}
+        />
+      );
+    }
+  };
+
+  const charts = Object.keys(chartFuncs);
+  charts.unshift('none');
 
   const pickers = (
     <>
@@ -301,7 +396,7 @@ const Analysis = ({ entries }) => {
           <Picker
             selectedValue={selectedChart}
             onValueChange={(el) => setSelectedChart(el)}>
-            {chartTypes.map((el, i) => {
+            {charts.map((el, i) => {
               return <Picker.Item key={i} label={el} value={el} />;
             })
             }
@@ -327,7 +422,16 @@ const Analysis = ({ entries }) => {
       renderEverything = renderAnalysisResult(firstFilter, secondFilter, thirdFilter, selectedAnalysys, result);
     }
   } else {
-    renderEverything = showPieChart(entries);
+    // console.log('selectedChart-->', selectedChart);
+    // console.log('chartFuncs[selectedChart]-->', chartFuncs[selectedChart]);
+    // console.log('dataGraphCreators-->', dataGraphCreators);
+    // console.log('chartFuncs-->', chartFuncs);
+    // console.log('selectedChart-->', selectedChart);
+
+
+    // console.log('selectedChart(entries);-->', selectedChart(entries));
+    // renderEverything = chartFuncs[selectedChart](entries, dataGraphCreator, screenWidth, chartConfig);
+    renderEverything = chartFuncs[selectedChart](entries, dataGraphCreators[selectedChart], screenWidth, chartConfig);
   }
 
   return (

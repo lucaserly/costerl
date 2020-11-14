@@ -144,6 +144,6 @@ export default {
         res.push(key);
       }
       return res;
-    },
+    }
   }
 }
