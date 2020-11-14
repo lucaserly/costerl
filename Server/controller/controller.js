@@ -49,3 +49,13 @@ exports.deleteOne = async (ctx) => {
     ctx.status = 500;
   }
 };
+
+exports.createUser = (ctx) => {
+  try {
+    console.log('ctx.request.body-->', ctx.request.body);
+
+  } catch (error) {
+    console.error(error);
+    ctx.status = 500;
+  }
+};
