@@ -4,11 +4,13 @@
 {\colortbl;\red255\green255\blue255;\red252\green93\blue186;\red30\green31\blue41;\red246\green246\blue239;
 \red174\green122\blue247;\red124\green228\blue252;\red72\green255\blue104;\red228\green242\blue113;\red238\green252\blue122;
 \red80\green93\blue147;\red0\green0\blue0;\red253\green170\blue90;\red251\green2\blue255;\red80\green93\blue147;
-\red30\green31\blue41;\red246\green246\blue239;}
+\red30\green31\blue41;\red246\green246\blue239;\red252\green93\blue186;\red174\green122\blue247;\red124\green228\blue252;
+\red253\green170\blue90;\red72\green255\blue104;\red238\green252\blue122;\red228\green242\blue113;}
 {\*\expandedcolortbl;;\cssrgb\c100000\c47451\c77647;\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;
 \cssrgb\c74118\c57647\c97647;\cssrgb\c54510\c91373\c99216;\cssrgb\c31373\c98039\c48235;\cssrgb\c91373\c94902\c51765;\cssrgb\c94510\c98039\c54902;
 \cssrgb\c38431\c44706\c64314;\cssrgb\c0\c0\c0;\cssrgb\c100000\c72157\c42353;\cssrgb\c100000\c25279\c100000;\cssrgb\c38431\c44706\c64314;
-\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;}
+\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;\cssrgb\c100000\c47451\c77647;\cssrgb\c74118\c57647\c97647;\cssrgb\c54510\c91373\c99216;
+\cssrgb\c100000\c72157\c42353;\cssrgb\c31373\c98039\c48235;\cssrgb\c94510\c98039\c54902;\cssrgb\c91373\c94902\c51765;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww23820\viewh14140\viewkind0
 \deftab720
 \pard\pardeftab720\sl360\partightenfactor0
@@ -600,4 +602,63 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \cb15   \cf14 \strokec14 //     />\cf16 \cb1 \strokec16 \
 \cb15   \cf14 \strokec14 //   );\cf16 \cb1 \strokec16 \
 \cb15   \cf14 \strokec14 // \};\cf16 \cb1 \strokec16 \
+\
+\
+ // const monthIndexe = [];\
+      // for (let month in labels2) \{\
+      //   for (let num in months) \{\
+      //     if (months[num] === month) \{\
+      //       monthIndexe.push(num);\
+      //     \}\
+      //   \}\
+      // \}\
+            // monthIndexe.push(num);\
+\
+\
+\cb15  \cf17 \strokec17 const\cf16 \strokec16  \cf18 \strokec18 getLab\cf16 \strokec16  \cf17 \strokec17 =\cf16 \strokec16  \cf18 \strokec18 sortedArr\cf16 \strokec16 .\cf19 \strokec19 map\cf16 \strokec16 ((
+\f1\i \cf20 \strokec20 el
+\f0\i0 \cf16 \strokec16 ) \cf17 \strokec17 =>\cf16 \strokec16  \{\cb1 \
+\cb15         \cf17 \strokec17 return\cf16 \strokec16  
+\f1\i \cf19 \strokec19 Object
+\f0\i0 \cf16 \strokec16 .\cf19 \strokec19 keys\cf16 \strokec16 (
+\f1\i \cf20 \strokec20 el
+\f0\i0 \cf16 \strokec16 );\cb1 \
+\cb15       \}).\cf21 \strokec21 flat\cf16 \strokec16 ();\cb1 \
+\
+\cb15   \cf17 \strokec17 const\cf16 \strokec16  \cf18 \strokec18 labels\cf16 \strokec16  \cf17 \strokec17 =\cf16 \strokec16  \cf18 \strokec18 arr\cf16 \strokec16 .\cf21 \strokec21 map\cf16 \strokec16 ((
+\f1\i \cf20 \strokec20 el
+\f0\i0 \cf16 \strokec16 ) \cf17 \strokec17 =>\cf16 \strokec16  \{\cb1 \
+\cb15         \cf17 \strokec17 return\cf16 \strokec16  \cf22 \strokec22 `\cf17 \strokec17 $\{\cf18 \strokec18 months\cf16 \strokec16 [
+\f1\i \cf19 \strokec19 Number
+\f0\i0 \cf16 \strokec16 (
+\f1\i \cf20 \strokec20 el
+\f0\i0 \cf16 \strokec16 .date.\cf21 \strokec21 split\cf16 \strokec16 (\cf23 \strokec23 ''\cf16 \strokec16 ).\cf21 \strokec21 slice\cf16 \strokec16 (\cf18 \strokec18 5\cf22 \strokec22 , \cf18 \strokec18 7\cf16 \strokec16 ).\cf21 \strokec21 join\cf16 \strokec16 (\cf23 \strokec23 ''\cf16 \strokec16 ))]\cf17 \strokec17 \}\cf22 \strokec22 `\cf16 \strokec16 ;\cb1 \
+\cb15       \});\cb1 \
+\
+\cb15      \cf14 \strokec14 // let congragatedSum = \{\};\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // filteredData.forEach((el) => \{\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //   if (congragatedSum[secFil]) \{\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //     congragatedSum[el[secFil]] += Number(el.amount);\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //   \} else \{\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //     congragatedSum[el[secFil]] = Number(el.amount);\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //   \}\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // \});\cf16 \cb1 \strokec16 \
+\
+\cb15         \cf14 \strokec14 // let congragatedArr = [];\cf16 \cb1 \strokec16 \
+\
+\cb15         \cf14 \strokec14 // for (let key in congragatedSum) \{\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //   congragatedArr.push(\{\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //     [secFil]: key,\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //     [firstFil]: String(congragatedSum[key])\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 //   \});\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // \}\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // console.log('filteredData-->', filteredData);\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // console.log('congragatedSum-->', congragatedSum);\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // console.log('congragatedArr-->', congragatedArr);\cf16 \cb1 \strokec16 \
+\
+\cb15         \cf14 \strokec14 // console.log('el-->', el);\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // console.log('el.date-->', el.date);\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // console.log('el.date.split-->', el.date.split('').slice(5, 7).join(''));\cf16 \cb1 \strokec16 \
+\cb15         \cf14 \strokec14 // console.log('months[Number-->', months[(el.date.split('').slice(5, 7).join(''))]);\cf16 \cb1 \strokec16 \
+\
 }

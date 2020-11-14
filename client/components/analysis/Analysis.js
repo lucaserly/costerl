@@ -64,6 +64,21 @@ const Analysis = ({ entries }) => {
 
   };
 
+  const months = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December'
+  };
+
 
   const dataGraphCreators = {
     pieChart: (...args) => {
@@ -98,55 +113,100 @@ const Analysis = ({ entries }) => {
       console.log('res-->', res);
       return res;
     },
-    lineChart: (arr, item) => {
-      const months = {
-        1: 'January',
-        2: 'February',
-        3: 'March',
-        4: 'April',
-        5: 'May',
-        6: 'June',
-        7: 'July',
-        8: 'August',
-        9: 'September',
-        10: 'October',
-        11: 'November',
-        12: 'December'
-      };
+    lineChart: (...args) => {
 
-      const labels = arr.map((el) => {
-        return `${months[Number(el.date.split('').slice(5, 7).join(''))]}`;
-      });
 
       const monthExtractor = (el) => {
-        return months[Number(el.date.split('').slice(5, 7).join(''))];
+        // console.log('INSIDE MONTHEXTRACTOR-->');
+        const res = months[(el.date.split('').slice(5, 7).join(''))];
+        // console.log('el.date-->', el.date);
+        // console.log('el.date.split()-->', el.date.split('').slice(5, 7).join(''));
+        // console.log('res-->', res);
+        return res;
       };
 
-      const labels2 = {};
+      const arr = args[0];
+      const firstFil = args[1];
+      const secFil = args[2];
+      const thirFil = args[3];
+      // console.log('INSIDE LINECHART-->');
+      // console.log('arr-->', arr);
+      // console.log('firstFil-->', firstFil);
+      // console.log('secFil-->', secFil);
+      // console.log('thirFil-->', thirFil);
 
-      arr.forEach((el) => {
+      let input;
+
+      if (firstFil !== 'none' || secFil !== '' || thirFil !== '') {
+        console.log('INSIDE IF-->');
+        input = filterBySub(arr, secFil, thirFil);
+      } else {
+        console.log('INSIDE ELSE-->');
+        input = arr;
+      }
+
+      const labels2 = {};
+      // console.log('input-->', input);
+
+      input.forEach((el) => {
+        console.log('el-->', el);
         if (labels2[monthExtractor(el)]) {
+          // console.log('monthExtractor(el)-->', monthExtractor(el));
+
           labels2[monthExtractor(el)] += Number(el.amount);
         } else {
           labels2[monthExtractor(el)] = Number(el.amount);
         }
       });
 
-      console.log('arr-->', arr);
-      console.log('labels2-->', labels2);
+      // console.log('labels2-->', labels2);
+      // GOOTA SORT LABELS2 BASED ON MONTHS
+
+      for (let num in months) {
+        for (let month in labels2) {
+          if (months[num] === month) {
+            labels2[month] = [labels2[month], num];
+          }
+        }
+      }
+
+      const arrToSort = [];
+      for (let key in labels2) {
+        arrToSort.push({
+          [key]: labels2[key]
+        });
+      }
+      // console.log('arrToSort-->', arrToSort);
+
+      const sortedArr = arrToSort.sort((a, b) => {
+        // console.log('a-->', a);
+        // console.log('b-->', b);
+        // console.log('Object.values(a)-->', Object.values(a));
+        // console.log('Object.values(a)[0]-->', (Object.values(a))[0]);
+        const month1 = Number(Object.values(a)[0][1]);
+        const month2 = Number(Object.values(b)[0][1]);
+        // console.log('month1-->', month1);
+        // console.log('month2-->', month2);
+        return month1 - month2;
+      });
+
+      const flattener = (arr, cb, index) => {
+        if (index) return arr.map((el) => cb(el)[index][index]).flat();
+        else return arr.map((el) => cb(el)).flat();
+      };
 
       const dataS = {
-        labels: Object.keys(labels2),
+        labels: flattener(sortedArr, Object.keys),
         datasets: [
           {
-            data: Object.values(labels2),
+            data: flattener(sortedArr, Object.values, '0'),
             color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
             strokeWidth: 2 // optional
           }
         ],
-        legend: ['All Entries']
+        legend: [thirFil]
       };
-
+      console.log('dataS-->', dataS);
       return dataS;
     }
   };
@@ -336,16 +396,20 @@ const Analysis = ({ entries }) => {
       );
     },
     lineChart: (...args) => {
-      // console.log('INSIDE LINECHART-->');
       const data = args[0];
       const dataGraphCreator = args[1];
       const screenWidth = args[2];
       const chartConfig = args[3];
-      const analysisT = args[4];
-      const dataGraph = dataGraphCreator(data, analysisT);
+      const firstFil = args[4];
+      const secFil = args[5];
+      const thirFil = args[6];
+      const dataGraph = dataGraphCreator(data, firstFil, secFil, thirFil);
+      // console.log('INSIDE LINECHART-->');
       // console.log('data-->', data);
-      // console.log('dataGraphCreator-->', dataGraphCreator);
-      // console.log('analysisT-->', analysisT);
+      // console.log('firstFil-->', firstFil);
+      // console.log('secFil-->', secFil);
+      // console.log('thirFil-->', thirFil);
+      // console.log('dataGraph-->', dataGraph);
 
       return (
         <LineChart
