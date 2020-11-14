@@ -1,16 +1,19 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import FormC from '../../components/form/Form';
-import config from '../../config';
 
+import LoginC from '../../components/login/Login';
+
+import config from '../../config';
 const { loginForm } = config;
 
-const Login = ({ entries, }) => {
+const Login = ({ entries, postUser }) => {
   return (
     <>
       <Text>
         Hello From Login Form
       </Text>
+
+      <LoginC postUser={postUser} form={loginForm} />
     </>
   );
 };

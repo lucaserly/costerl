@@ -19,7 +19,7 @@ const Stack = createStackNavigator();
 function App () {
 
   const [entries, setEntries] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
 
   useEffect(() => {
     ApiService.getAll('entries')
@@ -32,9 +32,19 @@ function App () {
     return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries, ext);
   };
 
+  const postUser = (arr, ext) => {
+    ApiService.postOne(arr, 'register')
+      .then((data) => {
+        setCurrentUser([data]);
+      });
+  };
+
   const deleteOne = (id) => {
     return delHelper(ApiService.deleteOne, id, setEntries);
   };
+
+  console.log('currentUser-->', currentUser);
+
 
   return (
     <>
@@ -44,7 +54,7 @@ function App () {
           <Stack.Screen name='Home' component={Home} />
 
           <Stack.Screen name='Login'>
-            {(props) => <Login {...props} postOne={postOne} entries={entries} />}
+            {(props) => <Login {...props} postUser={postUser} entries={entries} />}
           </Stack.Screen>
 
           <Stack.Screen name='Form'>

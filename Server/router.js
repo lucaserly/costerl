@@ -5,10 +5,12 @@ const router = new Router();
 const controller = require('./controller/controller');
 
 router.get('/', controller.routerTester);
+
 router.get('/entries', controller.getAll);
 router.post('/entries', controller.postOne);
 router.delete('/entries/:id', controller.deleteOne);
 
+router.get('/users', controller.getAllUsers);
 router.post('/register', controller.createUser);
 router.post('/login', controller.login);
 router.get('/:id', controller.profile);

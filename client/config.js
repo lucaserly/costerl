@@ -8,7 +8,7 @@ export default {
     { label: 'date' },
   ],
   loginForm: [
-    { label: 'username' },
+    { label: 'email' },
     { label: 'password' }
   ],
   searchForm: [

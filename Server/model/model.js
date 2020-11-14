@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.NOW
     }
   });
+  entry.associate = model => {
+    entry.belongsTo(model.user);
+  };
   return entry;
 };
 
