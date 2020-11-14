@@ -9,6 +9,10 @@ router.get('/', controller.routerTester);
 router.get('/entries', controller.getAll);
 router.post('/entries', controller.postOne);
 router.delete('/entries/:id', controller.deleteOne);
-router.post('/login', authMiddleware, controoler.createUser);
+
+router.post('/register', controller.createUser);
+router.post('/login', controller.login);
+router.get('/me', controller.profile);
+router.get('/me', controller.logout);
 
 module.exports = router;

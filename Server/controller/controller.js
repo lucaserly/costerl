@@ -1,6 +1,7 @@
 'use strict';
 
 const model = require('./../model/');
+const bcrypt = require('bcrypt');
 
 
 exports.routerTester = (ctx) => {
@@ -50,12 +51,51 @@ exports.deleteOne = async (ctx) => {
   }
 };
 
-exports.createUser = (ctx) => {
+exports.createUser = async (ctx) => {
+
+  console.log('ctx.request.body-->', ctx.request.body);
+  const login = ctx.request.body;
+  const { email, password } = ctx.request.body;
+  const user = await model.user.findAll({
+    where: {
+      email: email
+    }
+  });
+  if (user.length !== 0) return ctx.throw(409, 'User already exists');
   try {
-    console.log('ctx.request.body-->', ctx.request.body);
+    if (password === '') throw new Error();
+    const hash = await bcrypt.hash(password, 10);
+    login.password = hash;
+    const newUser = await model.user.create(login);
+    ctx.status = 201;
+    ctx.body = newUser;
+  } catch (error) {
+    console.error(error);
+    ctx.status = 400;
+    ctx.body = 'Could not create user';
+  }
+};
+
+exports.login = async (ctx) => {
+  try {
 
   } catch (error) {
     console.error(error);
-    ctx.status = 500;
+  }
+};
+
+exports.profile = async (ctx) => {
+  try {
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+exports.logout = async (ctx) => {
+  try {
+
+  } catch (error) {
+    console.error(error);
   }
 };
