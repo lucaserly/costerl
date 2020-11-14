@@ -78,24 +78,45 @@ exports.createUser = async (ctx) => {
 
 exports.login = async (ctx) => {
   try {
-
+    const { email, password } = ctx.request.body;
+    const user = await model.user.findAll({
+      where: {
+        email: email
+      }
+    });
+    console.log('user-->', user[0].dataValues.password);
+    const checkPassword = await bcrypt.compare(password, user[0].dataValues.password);
+    if (!checkPassword) throw new Error();
+    ctx.status = 200;
+    ctx.body = user;
   } catch (error) {
     console.error(error);
+    ctx.status = 401;
+    ctx.body = 'Username or password is incorrect';
   }
 };
 
 exports.profile = async (ctx) => {
   try {
-
+    const { id } = ctx.request.params;
+    const user = await model.user.findAll({
+      where: {
+        id: id
+      }
+    });
+    ctx.status = 200;
+    ctx.body = user;
   } catch (error) {
     console.error(error);
+    ctx.status = 404;
+    ctx.body = 'User not found';
   }
 };
 
-exports.logout = async (ctx) => {
-  try {
+// exports.logout = async (ctx) => {
+//   try {
 
-  } catch (error) {
-    console.error(error);
-  }
-};
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };

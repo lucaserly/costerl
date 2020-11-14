@@ -4,6 +4,14 @@ import { View, Text, TouchableOpacity } from 'react-native';
 const Home = ({ navigation }) => {
   return (
     <View>
+      <Text>WELCOME</Text>
+
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('Login');
+      }}>
+        <Text>Navigate to Login </Text>
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={() => {
         navigation.navigate('Form');
       }}>
