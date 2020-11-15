@@ -8,14 +8,15 @@ const { inputForm } = config;
 
 const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUser }) => {
 
-  // const flatData = userEntries.flat();
-  // const data = flatData[0].entries;
+  console.log('userEntries-->', userEntries);
 
-  let index = currentUser.length - 1;
-  let subIndex = currentUser[index].length - 1;
-  const id = Number(currentUser[index][subIndex].id);
-  // console.log('id-->', id);
 
+  let id;
+  if (Array.isArray(currentUser[currentUser.length - 1])) {
+    id = Number(currentUser[currentUser.length - 1][0].id);
+  } else {
+    id = Number(currentUser[currentUser.length - 1].id);
+  }
 
   return (
     <>
@@ -25,6 +26,7 @@ const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUs
 
       <View>
         <EntriesC entries={userEntries.slice(0, 5).map((el) => {
+          console.log('el-->', el);
           el.flag = false;
           return el;
         })} deleteOne={deleteOne} />

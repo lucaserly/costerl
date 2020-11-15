@@ -4,11 +4,16 @@ const getAll = (end) => {
   return fetcher(end);
 };
 
-const postOne = (entry, end) => {
-  // console.log('INSIDE APISERVICE-->', );
+const postOne = (entry, end, id) => {
+  console.log('INSIDE POSTONE-->', );
+  console.log('end-->', end);
+  console.log('id-->', id);
+  console.log('entry-->', entry);
+  console.log('end-->', end);
+  entry.userId = id;
 
-  // console.log('entry-->', entry);
-  // console.log('end-->', end);
+  console.log('entry AFTER-->', entry);
+
   return fetcher(end, {
     method: 'POST',
     headers: {

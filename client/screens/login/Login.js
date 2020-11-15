@@ -6,12 +6,16 @@ import EntriesC from '../../components/entries/Entries';
 
 const { loginForm } = config;
 
-const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser, getUserData, loginUser }) => {
+const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) => {
+
+
 
   const login = 'login';
   let index;
   let subIndex;
 
+  console.log('INSIDE SCREEN LOGIN -->');
+  console.log('currentUser-->', currentUser);
 
   // console.log('currentUser-->', currentUser);
   // console.log('BEGINNING OF LOGIN-->');
@@ -19,12 +23,22 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
 
   const afterLogin = () => {
 
-    // console.log('INSIDE AFTERLOGIN-->');
+    let id;
+    if (Array.isArray(currentUser[currentUser.length - 1])) {
+      id = currentUser[currentUser.length - 1][0].id;
+    } else {
+      id = currentUser[currentUser.length - 1].id;
+    }
 
     // i could trigger the fetch for the userdata
-    index = currentUser.length - 1;
-    subIndex = currentUser[index].length - 1;
-    getUserData('users', Number(currentUser[index][subIndex].id));
+    // index = currentUser.length - 1;
+
+    // console.log('index-->', index);
+    // console.log('subIndex-->', subIndex);
+
+
+
+    getUserData('users', Number(id));
     return <>
       <TouchableOpacity onPress={() => {
         navigation.navigate('Form');
@@ -56,7 +70,8 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
   const beforeLogin = (
     <>
       <View>
-        <FormC form={loginForm} postOne={createUser} ext='register' login={login} loginUser={loginUser} ext2='login' />
+        <FormC form={loginForm} createUser={createUser} ext='register'
+          login={login} loginUser={loginUser} ext2='login' />
       </View>
     </>
   );
@@ -73,7 +88,7 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
   }
 
 
-  // console.log('currentUser-->', currentUser);
+  console.log('currentUser-->', currentUser);
 
   return (
     <>

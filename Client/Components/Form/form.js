@@ -8,7 +8,7 @@ import DateInput from '../dateinput/DateInput';
 import config from '../../config';
 const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id }) => {
+const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id, createUser }) => {
 
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
@@ -39,23 +39,25 @@ const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id }) =>
 
 
   const handleSubmit = (e, title) => {
-    // console.log('INSIDE COMPONENT FORM HANDLESUBMIT-->');
-
-    // console.log('title-->', title);
-    // console.log('fields-->', fields);
-
-
+    console.log('title-->', title);
     // console.log('fields-->', fields);
 
     if (title === 'Login') {
       extSubmit = ext2;
+      postOneSubmit = createUser;
+    } else if (title === 'Submit') {
       postOneSubmit = postOne;
+      extSubmit = 'entries';
     } else {
       extSubmit = ext;
-      postOneSubmit = postOne;
+      postOneSubmit = createUser;
     }
-    e.preventDefault();
 
+    console.log('postOneSubmit-->', postOneSubmit);
+
+    e.preventDefault();
+    // console.log('postOneSubmit-->', postOneSubmit);
+    // console.log('extSubmit-->', extSubmit);
 
     handleSubmitForm(emptyFieldCheck, fields, postOneSubmit, resetField, setFields, Alert.alert, date, extSubmit, id);
   };
@@ -98,7 +100,9 @@ const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id }) =>
 
   );
 
+  // if (id) {
 
+  // }
 
   // console.log('FORMCOMPONENT ZIO PORCO')
   // console.log('id-->', id);

@@ -1,6 +1,6 @@
 export default {
   inputForm: [
-    { label: 'userId' },
+    // { label: 'userId' },
     { label: 'item' },
     { label: 'category' },
     { label: 'description' },
@@ -42,9 +42,9 @@ export default {
       return fields.filter((el) => el.name === 'item' || el.name === 'amount')
         .some((el) => el.value === '');
     },
-    postHelper: (cleaner, arr, api, cb, list, ext) => {
+    postHelper: (cleaner, arr, api, cb, list, ext, id) => {
       const cleanedObj = cleaner(arr);
-      api(cleanedObj, ext)
+      api(cleanedObj, ext, id)
         .then((data) => {
           cb([...list, data]);
         });
@@ -128,13 +128,16 @@ export default {
         filterList(fields, target);
       }
     },
-    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date, ext, id) => {
+    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, alert, date, ext, id) => {
       const findIndexOfDate = fields.findIndex((el, i) => {
         return el.name === 'date';
       });
-      // console.log('INSIDE-->', );
 
-      // console.log('fields-->', fields);
+      console.log('ext-->', ext);
+      let alertMsg
+      // ext -> can be login, register, entries
+      // if (ext )
+      // you set the altert messages bease on function argument passed from above and dynamically set below the message
 
       const check = emptyFieldCheck(fields);
       if (!check) {
@@ -145,9 +148,9 @@ export default {
         postOne(fields, ext, id);
         const field = resetField(fields);
         setFields(field);
-        al('You successfully submitted your expense');
+        alert('You successfully submitted your expense');
       } else {
-        al('Please enter both input and amount');
+        alert('Please enter both input and amount');
       }
     },
     getLabels: (obj) => {

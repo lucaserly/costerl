@@ -2,10 +2,10 @@ import React from 'react';
 import { Text } from 'react-native';
 import AnalysisC from './../../components/analysis/Analysis';
 
-const Analysis = ({ entries }) => {
+const Analysis = ({ entries, userEntries }) => {
   return (
     <>
-      <AnalysisC entries={entries} />
+      <AnalysisC entries={userEntries} />
     </>
   );
 };
