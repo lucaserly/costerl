@@ -8,7 +8,7 @@ import DateInput from '../dateinput/DateInput';
 import config from '../../config';
 const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList, ext, login }) => {
+const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id }) => {
 
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
@@ -19,13 +19,45 @@ const Form = ({ form, postOne, filterList, ext, login }) => {
   );
 
   const handleChange = (text, target) => {
+    // console.log('text-->', text);
+    // console.log('target-->', target);
     handleChangeForm(flagCheck, form, newFields, text, target, fields, setFields, filterList);
   };
 
+  // let postOneSubmit,
+  //   let extSubmit, ;
+
+  // if (title === 'login') {
+  //   ext = ext2,
+  //   } else {
+  //   postOneSubmit = postOne,
+  //     extSubmit = ext,
+  //   }
+
+  let postOneSubmit;
+  let extSubmit;
+
+
   const handleSubmit = (e, title) => {
-    console.log('title-->', title);
+    // console.log('INSIDE COMPONENT FORM HANDLESUBMIT-->');
+
+    // console.log('title-->', title);
+    // console.log('fields-->', fields);
+
+
+    // console.log('fields-->', fields);
+
+    if (title === 'Login') {
+      extSubmit = ext2;
+      postOneSubmit = postOne;
+    } else {
+      extSubmit = ext;
+      postOneSubmit = postOne;
+    }
     e.preventDefault();
-    handleSubmitForm(emptyFieldCheck, fields, postOne, resetField, setFields, Alert.alert, date, ext);
+
+
+    handleSubmitForm(emptyFieldCheck, fields, postOneSubmit, resetField, setFields, Alert.alert, date, extSubmit, id);
   };
 
   const handleDateSub = (e) => {
@@ -66,7 +98,11 @@ const Form = ({ form, postOne, filterList, ext, login }) => {
 
   );
 
-  console.log('login-->', login);
+
+
+  // console.log('FORMCOMPONENT ZIO PORCO')
+  // console.log('id-->', id);
+  // console.log('login-->', login);
 
   return (
     <>

@@ -6,16 +6,26 @@ import EntriesC from '../../components/entries/Entries';
 
 const { loginForm } = config;
 
-const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser, getUserData }) => {
+const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser, getUserData, loginUser }) => {
 
   const login = 'login';
+  let index;
+  let subIndex;
 
-  console.log('currentUser-->', currentUser);
-  console.log('BEGINNING OF LOGIN-->');
+
+  // console.log('currentUser-->', currentUser);
+  // console.log('BEGINNING OF LOGIN-->');
   let flag;
-  const afterLogin = (
+
+  const afterLogin = () => {
+
+    // console.log('INSIDE AFTERLOGIN-->');
+
     // i could trigger the fetch for the userdata
-    <>
+    index = currentUser.length - 1;
+    subIndex = currentUser[index].length - 1;
+    getUserData('users', Number(currentUser[index][subIndex].id));
+    return <>
       <TouchableOpacity onPress={() => {
         navigation.navigate('Form');
       }}>
@@ -40,12 +50,13 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
         <Text>Navigate to Analysis of Entries </Text>
       </TouchableOpacity>
     </>
-  );
+      ;
+  };
 
   const beforeLogin = (
     <>
       <View>
-        <FormC form={loginForm} postOne={createUser} ext='register' login={login} />
+        <FormC form={loginForm} postOne={createUser} ext='register' login={login} loginUser={loginUser} ext2='login' />
       </View>
     </>
   );
@@ -62,14 +73,14 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
   }
 
 
-  console.log('currentUser-->', currentUser);
+  // console.log('currentUser-->', currentUser);
 
   return (
     <>
       <Text>
         LOGIN
       </Text>
-      {tobeRendered ? afterLogin : beforeLogin}
+      {tobeRendered ? afterLogin() : beforeLogin}
     </>
   );
 };

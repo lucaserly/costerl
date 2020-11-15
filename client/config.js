@@ -128,14 +128,21 @@ export default {
         filterList(fields, target);
       }
     },
-    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date, ext) => {
+    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date, ext, id) => {
       const findIndexOfDate = fields.findIndex((el, i) => {
         return el.name === 'date';
       });
+      // console.log('INSIDE-->', );
+
+      // console.log('fields-->', fields);
+
       const check = emptyFieldCheck(fields);
       if (!check) {
+        // console.log('INSIDE CONFIG-->');
+        // console.log('fields-->', fields);
+
         if (fields[findIndexOfDate]) fields[findIndexOfDate].value = date;
-        postOne(fields, ext);
+        postOne(fields, ext, id);
         const field = resetField(fields);
         setFields(field);
         al('You successfully submitted your expense');

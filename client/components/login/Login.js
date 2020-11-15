@@ -11,14 +11,14 @@ const Login = ({ form, postUser, currentUser }) => {
   const [password, setPassword] = useState('');
 
   const handleChange = (text, cb) => {
-    console.log('text-->', text);
+    // console.log('text-->', text);
     cb(text);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('email-->', email);
-    console.log('password-->', password);
+    // console.log('email-->', email);
+    // console.log('password-->', password);
 
     if (email === '' || password === '') {
       Alert.alert('Please insert in both fields');

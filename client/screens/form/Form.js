@@ -7,25 +7,24 @@ import EntriesC from '../../components/entries/Entries';
 const { inputForm } = config;
 
 const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUser }) => {
-  // console.log('entries-->', entries);
-  // console.log('currentUser-->', currentUser);
 
-  console.log('currentUser[currentUser.length-1].id-->', currentUser[currentUser.length - 1].id);
+  // const flatData = userEntries.flat();
+  // const data = flatData[0].entries;
 
-  getUserData('users', currentUser[currentUser.length - 1].id);
-  // getUserData('users', currentUser[currentUser.length-1].id)
+  let index = currentUser.length - 1;
+  let subIndex = currentUser[index].length - 1;
+  const id = Number(currentUser[index][subIndex].id);
+  // console.log('id-->', id);
 
-  console.log('userEntries-->', userEntries);
- 
 
   return (
     <>
       <View>
-        <FormC form={inputForm} postOne={postOne} ext='entries' />
+        <FormC form={inputForm} postOne={postOne} ext='entries' id={id} />
       </View>
 
       <View>
-        <EntriesC entries={entries.slice(0, 5).map((el) => {
+        <EntriesC entries={userEntries.slice(0, 5).map((el) => {
           el.flag = false;
           return el;
         })} deleteOne={deleteOne} />

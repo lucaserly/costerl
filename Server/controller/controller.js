@@ -76,6 +76,7 @@ exports.createUser = async (ctx) => {
 };
 
 exports.login = async (ctx) => {
+  console.log('ctx.request.body-->', ctx.request.body);
   try {
     const { email, password } = ctx.request.body;
     const user = await model.user.findAll({
@@ -90,7 +91,8 @@ exports.login = async (ctx) => {
   } catch (error) {
     console.error(error);
     // 'Username or password is incorrect';
-    ctx.body = { 'error': error };
+    // ctx.body = { 'error': error };
+    ctx.body = 'Username or password is incorrect';
     ctx.status = 401;
   }
 };
@@ -126,6 +128,8 @@ exports.getAllUsers = async (ctx) => {
 };
 
 exports.profile = async (ctx) => {
+  console.log('ctx.request.params-->', ctx.request.params);
+
   try {
     const { id } = ctx.request.params;
     const user = await model.user.findAll({
@@ -150,6 +154,7 @@ exports.profile = async (ctx) => {
         id: id
       }
     });
+    console.log('user INSIDE CONTROLLER-->', user);
     ctx.status = 200;
     ctx.body = user;
   } catch (error) {

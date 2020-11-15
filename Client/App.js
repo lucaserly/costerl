@@ -30,8 +30,12 @@ function App () {
       });
   }, []);
 
+  // const postOne = (arr, ext) => {
+  //   return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries, ext);
+  // };
+
   const postOne = (arr, ext) => {
-    return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries, ext);
+    return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext);
   };
 
   const createUser = (arr, ext) => {
@@ -41,7 +45,7 @@ function App () {
   const postUser = (arr, ext) => {
     ApiService.postOne(arr, 'register')
       .then((data) => {
-        setCurrentUser([data]);
+        setCurrentUser(data);
       });
   };
 
@@ -55,13 +59,30 @@ function App () {
   };
 
   const getUserData = (end, id) => {
+    // console.log('INSIDE APP GET USER DATA-->');
     useEffect(() => {
       ApiService.profile(end, id)
         .then((data) => {
-          setUserEntries([data]);
+          console.log('data INSIDE USE EFFECT-->', data);
+          console.log('data[0] INSIDE USE EFFECT-->', data[0]);
+          console.log('data[0].entries INSIDE USE EFFECT-->', data[0].entries);
+          setUserEntries(data[0].entries);
         });
     }, []
     );
+  };
+
+  // added 15/11
+  const loginUser = (user, end) => {
+    // console.log('INSIDE APP.JS-->');
+
+    // console.log('user-->', user);
+
+    ApiService.login(user, 'login')
+      .then((data) => {
+        // console.log('data-->', data);
+        setCurrentUser([data]);
+      });
   };
 
 
@@ -71,11 +92,11 @@ function App () {
         <Stack.Navigator>
 
           <Stack.Screen name='Home'>
-            {(props) => <Home {...props} component={Home} resetUser={resetUser} entries={entries} getUserData={getUserData} />}
+            {(props) => <Home {...props} component={Home} resetUser={resetUser} entries={entries} getUserData={getUserData} userEntries={userEntries} />}
           </Stack.Screen>
 
           <Stack.Screen name='Login'>
-            {(props) => <Login {...props} createUser={createUser} postUser={postUser} entries={entries} currentUser={currentUser} />}
+            {(props) => <Login {...props} createUser={createUser} postUser={postUser} entries={entries} currentUser={currentUser} loginUser={loginUser} getUserData={getUserData} userEntries={userEntries} />}
           </Stack.Screen>
 
           <Stack.Screen name='Ui'>
@@ -87,7 +108,7 @@ function App () {
           </Stack.Screen>
 
           <Stack.Screen name='Entries'>
-            {(props) => <Entries {...props} entries={entries} deleteOne={deleteOne} />}
+            {(props) => <Entries {...props} entries={entries} deleteOne={deleteOne} currentUser={currentUser} loginUser={loginUser} getUserData={getUserData} userEntries={userEntries} />}
           </Stack.Screen>
 
           <Stack.Screen name='Search'>
