@@ -4,13 +4,13 @@ const getAll = (end) => {
   return fetcher(end);
 };
 
-const postOne = (obj, end) => {
+const postOne = (entry, end) => {
   return fetcher(end, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(obj)
+    body: JSON.stringify(entry)
   });
 };
 
@@ -20,11 +20,43 @@ const deleteOne = (id) => {
   });
 };
 
+const getAllUsers = (end) => {
+  return fetcher(end);
+};
+
+const createUser = (user, end) => {
+  return fetcher(end, {
+    method: 'POST',
+    header: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  });
+};
+
+const login = (user, end) => {
+  return fetcher(end, {
+    method: 'POST',
+    header: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  });
+};
+
+const profile = (end, id) => {
+  return fetcher(`${end}/${id}`);
+};
+
 const fetcher = (ext, options) => {
   return fetch(BASE_URL + ext, options)
     .then((res) => {
       if (res.status === 204) {
         return res;
+      } else if (res.status === 400) {
+        return 'Could not create user';
+      } else if (res.status === 401) {
+        return 'Username or password is incorrect';
       } else {
         return res.json();
       }
@@ -35,5 +67,9 @@ const fetcher = (ext, options) => {
 export default {
   getAll,
   postOne,
-  deleteOne
+  deleteOne,
+  getAllUsers,
+  createUser,
+  login,
+  profile
 };

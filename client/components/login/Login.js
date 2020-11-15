@@ -6,7 +6,7 @@ import DateInput from '../dateinput/DateInput';
 
 import config from '../../config';
 
-const Login = ({ form, postUser }) => {
+const Login = ({ form, postUser, currentUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,16 +27,18 @@ const Login = ({ form, postUser }) => {
         email,
         password
       });
+      // const res = postUser({})
+      // console.log('currentUser after posting-->', currentUser);
+      // if (typeof currentUser[0] === 'string') {
+      //   Alert.alert('Could not create user');
+      // }
       setEmail('');
       setPassword('');
     }
-
-
   };
 
   return (
     <>
-
       <TextInput
         placeholder='Type email'
         onChangeText={email => handleChange(email, setEmail)}
@@ -52,13 +54,17 @@ const Login = ({ form, postUser }) => {
 
       <Button
         onPress={(e) => {
-          console.log('e-->', e);
           handleSubmit(e);
         }}
-        title='Submit'
+        title='Register'
       />
 
-
+      <Button
+        onPress={(e) => {
+          handleSubmit(e);
+        }}
+        title='Login'
+      />
     </>
   );
 };

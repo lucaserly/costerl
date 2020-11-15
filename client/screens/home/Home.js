@@ -1,17 +1,18 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, resetUser }) => {
   return (
     <View>
       <Text>WELCOME</Text>
 
       <TouchableOpacity onPress={() => {
+        resetUser();
         navigation.navigate('Login');
       }}>
         <Text>Navigate to Login </Text>
       </TouchableOpacity>
-
+      {/*
       <TouchableOpacity onPress={() => {
         navigation.navigate('Form');
       }}>
@@ -34,7 +35,7 @@ const Home = ({ navigation }) => {
         navigation.navigate('Analysis');
       }}>
         <Text>Navigate to Analysis of Entries </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };

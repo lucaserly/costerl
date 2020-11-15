@@ -10,6 +10,7 @@ import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
 import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
+import Ui from './screens/ui/Ui';
 
 import config from './config';
 
@@ -20,6 +21,7 @@ function App () {
 
   const [entries, setEntries] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
+  const [userEntries, setUserEntries] = useState([]);
 
   useEffect(() => {
     ApiService.getAll('entries')
@@ -30,6 +32,10 @@ function App () {
 
   const postOne = (arr, ext) => {
     return postHelper(dataParser, arr, ApiService.postOne, setEntries, entries, ext);
+  };
+
+  const createUser = (arr, ext) => {
+    return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
   };
 
   const postUser = (arr, ext) => {
@@ -43,18 +49,27 @@ function App () {
     return delHelper(ApiService.deleteOne, id, setEntries);
   };
 
-  console.log('currentUser-->', currentUser);
+  const resetUser = () => {
+    setCurrentUser([]);
+  };
 
+  
 
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator>
 
-          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Home'>
+            {(props) => <Home {...props} component={Home} resetUser={resetUser} entries={entries} />}
+          </Stack.Screen>
 
           <Stack.Screen name='Login'>
-            {(props) => <Login {...props} postUser={postUser} entries={entries} />}
+            {(props) => <Login {...props} createUser={createUser} postUser={postUser} entries={entries} currentUser={currentUser} />}
+          </Stack.Screen>
+
+          <Stack.Screen name='Ui'>
+            {(props) => <Ui {...props} postUser={postUser} entries={entries} currentUser={currentUser} />}
           </Stack.Screen>
 
           <Stack.Screen name='Form'>

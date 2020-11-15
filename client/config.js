@@ -1,5 +1,6 @@
 export default {
   inputForm: [
+    { label: 'userId' },
     { label: 'item' },
     { label: 'category' },
     { label: 'description' },
@@ -21,12 +22,13 @@ export default {
   ],
   helperFunctions: {
     newFields: (text, target, fields) => {
-      return fields.map((field) => {
+      const output = fields.map((field) => {
         if (field.name === target) {
           field.value = text;
         }
         return field;
       });
+      return output;
     },
     resetField: (fields) => {
       return fields.map((field) => {
@@ -127,9 +129,12 @@ export default {
       }
     },
     handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, al, date, ext) => {
+      const findIndexOfDate = fields.findIndex((el, i) => {
+        return el.name === 'date';
+      });
       const check = emptyFieldCheck(fields);
       if (!check) {
-        fields[5].value = date;
+        if (fields[findIndexOfDate]) fields[findIndexOfDate].value = date;
         postOne(fields, ext);
         const field = resetField(fields);
         setFields(field);

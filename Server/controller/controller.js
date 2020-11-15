@@ -27,8 +27,9 @@ exports.getAll = async (ctx) => {
 exports.postOne = async (ctx) => {
   try {
     const entry = ctx.request.body;
+    entry.userId = Number(entry.userId);
     const newEntry = await model.entry.create(entry);
-    ctx.body = entry;
+    ctx.body = newEntry;
     ctx.status = 201;
   } catch (error) {
     console.error(error);
@@ -59,8 +60,8 @@ exports.createUser = async (ctx) => {
       email: email
     }
   });
-  if (user.length !== 0) return ctx.throw(409, 'User already exists');
   try {
+    if (user.length !== 0) throw new Error();
     if (password === '') throw new Error();
     const hash = await bcrypt.hash(password, 10);
     login.password = hash;
@@ -69,8 +70,8 @@ exports.createUser = async (ctx) => {
     ctx.body = newUser;
   } catch (error) {
     console.error(error);
-    ctx.status = 400;
     ctx.body = 'Could not create user';
+    ctx.status = 400;
   }
 };
 
@@ -88,8 +89,9 @@ exports.login = async (ctx) => {
     ctx.body = user;
   } catch (error) {
     console.error(error);
+    // 'Username or password is incorrect';
+    ctx.body = { 'error': error };
     ctx.status = 401;
-    ctx.body = 'Username or password is incorrect';
   }
 };
 
@@ -100,10 +102,17 @@ exports.getAllUsers = async (ctx) => {
         {
           model: model.entry,
           attributes: [
+            'id',
             'item',
             'category',
+            'description',
+            'payment',
             'amount',
-            'date'
+            'currency',
+            'date',
+            'createdAt',
+            'updatedAt',
+            'userId'
           ]
         }
       ]
@@ -121,14 +130,25 @@ exports.profile = async (ctx) => {
     const { id } = ctx.request.params;
     const user = await model.user.findAll({
       include: [{
-        model: entry,
+        model: model.entry,
         attributes:
           [
+            'id',
             'item',
             'category',
-            'amount'
+            'description',
+            'payment',
+            'amount',
+            'currency',
+            'date',
+            'createdAt',
+            'updatedAt',
+            'userId'
           ]
-      }]
+      }],
+      where: {
+        id: id
+      }
     });
     ctx.status = 200;
     ctx.body = user;

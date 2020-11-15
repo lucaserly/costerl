@@ -5,6 +5,7 @@ import styles from './styles';
 import Entry from '../entry/Entry';
 
 const Entries = ({ entries, deleteOne }) => {
+  console.log('entries-->', entries);
   return (
     <>
       <FlatList

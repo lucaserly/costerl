@@ -13,7 +13,7 @@ router.delete('/entries/:id', controller.deleteOne);
 router.get('/users', controller.getAllUsers);
 router.post('/register', controller.createUser);
 router.post('/login', controller.login);
-router.get('/:id', controller.profile);
+router.get('/users/:id', controller.profile);
 // router.get('/logout', controller.logout);
 
 module.exports = router;
