@@ -6,7 +6,17 @@ import EntriesC from '../../components/entries/Entries';
 
 const { inputForm } = config;
 
-const Form = ({ entries, postOne, deleteOne }) => {
+const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUser }) => {
+  // console.log('entries-->', entries);
+  // console.log('currentUser-->', currentUser);
+
+  console.log('currentUser[currentUser.length-1].id-->', currentUser[currentUser.length-1].id);
+
+  getUserData('users', currentUser[currentUser.length-1].id)
+  // getUserData('users', currentUser[currentUser.length-1].id)
+
+  console.log('userEntries-->', userEntries);
+
   return (
     <>
       <View>

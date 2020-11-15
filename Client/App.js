@@ -51,9 +51,19 @@ function App () {
 
   const resetUser = () => {
     setCurrentUser([]);
+    setUserEntries([]);
   };
 
-  
+  const getUserData = (end, id) => {
+    useEffect(() => {
+      ApiService.profile(end, id)
+        .then((data) => {
+          setUserEntries([data]);
+        });
+    }, []
+    );
+  };
+
 
   return (
     <>
@@ -61,7 +71,7 @@ function App () {
         <Stack.Navigator>
 
           <Stack.Screen name='Home'>
-            {(props) => <Home {...props} component={Home} resetUser={resetUser} entries={entries} />}
+            {(props) => <Home {...props} component={Home} resetUser={resetUser} entries={entries} getUserData={getUserData} />}
           </Stack.Screen>
 
           <Stack.Screen name='Login'>
@@ -73,7 +83,7 @@ function App () {
           </Stack.Screen>
 
           <Stack.Screen name='Form'>
-            {(props) => <Form {...props} postOne={postOne} entries={entries} />}
+            {(props) => <Form {...props} postOne={postOne} entries={entries} getUserData={getUserData} userEntries={userEntries} currentUser={currentUser} />}
           </Stack.Screen>
 
           <Stack.Screen name='Entries'>

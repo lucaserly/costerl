@@ -2,15 +2,17 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import FormC from '../../components/form/Form';
 import config from '../../config';
+import EntriesC from '../../components/entries/Entries';
 
 const { loginForm } = config;
 
-const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser }) => {
+const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser, getUserData }) => {
 
   console.log('currentUser-->', currentUser);
   console.log('BEGINNING OF LOGIN-->');
-
+  let flag;
   const afterLogin = (
+    // i could trigger the fetch for the userdata
     <>
       <TouchableOpacity onPress={() => {
         navigation.navigate('Form');
