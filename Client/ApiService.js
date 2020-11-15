@@ -1,4 +1,4 @@
-const BASE_URL = 'http://10.197.2.147:3002/';
+const BASE_URL = 'http://192.168.0.5:3002/';
 
 const getAll = (end) => {
   return fetcher(end);

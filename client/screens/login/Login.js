@@ -8,6 +8,8 @@ const { loginForm } = config;
 
 const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser, getUserData }) => {
 
+  const login = 'login';
+
   console.log('currentUser-->', currentUser);
   console.log('BEGINNING OF LOGIN-->');
   let flag;
@@ -43,14 +45,14 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
   const beforeLogin = (
     <>
       <View>
-        <FormC form={loginForm} postOne={createUser} ext='register' />
+        <FormC form={loginForm} postOne={createUser} ext='register' login={login} />
       </View>
     </>
   );
 
   let tobeRendered;
 
-  if (typeof currentUser[currentUser.length-1] === 'string') {
+  if (typeof currentUser[currentUser.length - 1] === 'string') {
     Alert.alert('user already exists');
     tobeRendered = false;
   } else if (!currentUser.length) {
@@ -67,7 +69,7 @@ const Login = ({ navigation, postOne, createUser, postUser, entries, currentUser
       <Text>
         LOGIN
       </Text>
-        {tobeRendered ? afterLogin : beforeLogin}
+      {tobeRendered ? afterLogin : beforeLogin}
     </>
   );
 };

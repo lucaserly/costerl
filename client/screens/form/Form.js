@@ -10,12 +10,13 @@ const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUs
   // console.log('entries-->', entries);
   // console.log('currentUser-->', currentUser);
 
-  console.log('currentUser[currentUser.length-1].id-->', currentUser[currentUser.length-1].id);
+  console.log('currentUser[currentUser.length-1].id-->', currentUser[currentUser.length - 1].id);
 
-  getUserData('users', currentUser[currentUser.length-1].id)
+  getUserData('users', currentUser[currentUser.length - 1].id);
   // getUserData('users', currentUser[currentUser.length-1].id)
 
   console.log('userEntries-->', userEntries);
+ 
 
   return (
     <>

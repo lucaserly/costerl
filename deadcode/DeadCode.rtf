@@ -3,14 +3,10 @@
 \f3\fnil\fcharset0 AppleColorEmoji;}
 {\colortbl;\red255\green255\blue255;\red252\green93\blue186;\red30\green31\blue41;\red246\green246\blue239;
 \red174\green122\blue247;\red124\green228\blue252;\red72\green255\blue104;\red228\green242\blue113;\red238\green252\blue122;
-\red80\green93\blue147;\red0\green0\blue0;\red253\green170\blue90;\red251\green2\blue255;\red80\green93\blue147;
-\red30\green31\blue41;\red246\green246\blue239;\red252\green93\blue186;\red174\green122\blue247;\red124\green228\blue252;
-\red253\green170\blue90;\red72\green255\blue104;\red238\green252\blue122;\red228\green242\blue113;}
+\red80\green93\blue147;\red0\green0\blue0;\red253\green170\blue90;\red251\green2\blue255;}
 {\*\expandedcolortbl;;\cssrgb\c100000\c47451\c77647;\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;
 \cssrgb\c74118\c57647\c97647;\cssrgb\c54510\c91373\c99216;\cssrgb\c31373\c98039\c48235;\cssrgb\c91373\c94902\c51765;\cssrgb\c94510\c98039\c54902;
-\cssrgb\c38431\c44706\c64314;\cssrgb\c0\c0\c0;\cssrgb\c100000\c72157\c42353;\cssrgb\c100000\c25279\c100000;\cssrgb\c38431\c44706\c64314;
-\cssrgb\c15686\c16471\c21176;\cssrgb\c97255\c97255\c94902;\cssrgb\c100000\c47451\c77647;\cssrgb\c74118\c57647\c97647;\cssrgb\c54510\c91373\c99216;
-\cssrgb\c100000\c72157\c42353;\cssrgb\c31373\c98039\c48235;\cssrgb\c94510\c98039\c54902;\cssrgb\c91373\c94902\c51765;}
+\cssrgb\c38431\c44706\c64314;\cssrgb\c0\c0\c0;\cssrgb\c100000\c72157\c42353;\cssrgb\c100000\c25279\c100000;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww23820\viewh14140\viewkind0
 \deftab720
 \pard\pardeftab720\sl360\partightenfactor0
@@ -117,8 +113,8 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \cf10 \cb3 <SafeAreaView style=\{styles.safeArea\}>\cf4 \cb1 \
 \cf10 \cb3   <View style=\{[styles.container, styles.helloColor]\}>\cf4 \cb1 \
 \cf10 \cb3     <Text style=\{styles.text\}>Hello Lucas 
-\f3 \uc0\u55357 \u56834 
-\f0 </Text>\cf4 \cb1 \
+\f3 \cf10 \cb3 \uc0\u55357 \u56834 
+\f0 \cf10 \cb3 </Text>\cf4 \cb1 \
 \cf10 \cb3   </View>\cf4 \cb1 \
 \cf10 \cb3 </SafeAreaView>\cf4 \cb1 \
 \cf10 \cb3 </TouchableWithoutFeedback> */\cf4 \}\cb1 \
@@ -305,8 +301,8 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \cb3     \cf2 const\cf4  \cf5 args\cf4  \cf2 =\cf4  
 \f1\i \cf6 Array
 \f0\i0 \cf4 .\cf5 prototype\cf4 .\cf6 slice\cf4 .\cf6 call\cf4 (
-\f1\i \cf5 arguments
-\f0\i0 \cf4 , \cf5 2\cf4 );\cb1 \
+\f1\i \cf5 \cb3 arguments
+\f0\i0 \cf4 \cb3 , \cf5 2\cf4 );\cb1 \
 \
 \cb3   \cf2 return\cf4  
 \f1\i \cf12 arr
@@ -473,8 +469,7 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \
 \cb3     \cf10 // console.log('Math.random(colors.length)-->', Math.round(Math.random()*colors.length));\cf4 \cb1 \
 \
-\pard\pardeftab720\sl360\partightenfactor0
-\cf4 \cb3     \cf10 // const index = Math.round(Math.random() * colors.length);\cf4 \cb1 \
+\cb3     \cf10 // const index = Math.round(Math.random() * colors.length);\cf4 \cb1 \
 \
 \
 \cb3  \cf2 const\cf4  \cf5 hardCoded\cf4  \cf2 =\cf4  [\cb1 \
@@ -564,44 +559,44 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
 \
 \
 \pard\pardeftab720\sl360\partightenfactor0
-\cf14 \cb15 \outl0\strokewidth0 \strokec14 // const dataGraphCreator = (arr, item) => \{\cf16 \cb1 \strokec16 \
+\cf10 \cb3 // const dataGraphCreator = (arr, item) => \{\cf4 \cb1 \
 \pard\pardeftab720\sl360\partightenfactor0
-\cf16 \cb15   \cf14 \strokec14 //   const tot = analysisTypes.sum(arr, 'amount');\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   const commoneach = [];\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   arr.forEach((el) => \{\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //     commoneach.push(Number(((Number(el.amount) / tot) * 100).toFixed(2)));\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   \});\cf16 \cb1 \strokec16 \
+\cf4 \cb3   \cf10 //   const tot = analysisTypes.sum(arr, 'amount');\cf4 \cb1 \
+\cb3   \cf10 //   const commoneach = [];\cf4 \cb1 \
+\cb3   \cf10 //   arr.forEach((el) => \{\cf4 \cb1 \
+\cb3   \cf10 //     commoneach.push(Number(((Number(el.amount) / tot) * 100).toFixed(2)));\cf4 \cb1 \
+\cb3   \cf10 //   \});\cf4 \cb1 \
 \
-\cb15   \cf14 \strokec14 //   let res = [];\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   for (let i = 0; i < arr.length; i++) \{\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //     let newObj = \{\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       name: `% $\{arr[i].item\}`,\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       population: percentageConverter(arr[i].amount, tot),\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       color: colors[1][randomColorIndexGenerator()],\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       legendFontColor: "#7F7F7F",\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       legendFontSize: 15\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //     \};\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //     res.push(newObj);\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   \}\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   console.log('res-->', res);\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   return res;\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 // \};\cf16 \cb1 \strokec16 \
+\cb3   \cf10 //   let res = [];\cf4 \cb1 \
+\cb3   \cf10 //   for (let i = 0; i < arr.length; i++) \{\cf4 \cb1 \
+\cb3   \cf10 //     let newObj = \{\cf4 \cb1 \
+\cb3   \cf10 //       name: `% $\{arr[i].item\}`,\cf4 \cb1 \
+\cb3   \cf10 //       population: percentageConverter(arr[i].amount, tot),\cf4 \cb1 \
+\cb3   \cf10 //       color: colors[1][randomColorIndexGenerator()],\cf4 \cb1 \
+\cb3   \cf10 //       legendFontColor: "#7F7F7F",\cf4 \cb1 \
+\cb3   \cf10 //       legendFontSize: 15\cf4 \cb1 \
+\cb3   \cf10 //     \};\cf4 \cb1 \
+\cb3   \cf10 //     res.push(newObj);\cf4 \cb1 \
+\cb3   \cf10 //   \}\cf4 \cb1 \
+\cb3   \cf10 //   console.log('res-->', res);\cf4 \cb1 \
+\cb3   \cf10 //   return res;\cf4 \cb1 \
+\cb3   \cf10 // \};\cf4 \cb1 \
 \
-\cb15   \cf14 \strokec14 // const showPieChart = (data) => \{\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   const dataGraph = dataGraphCreator(data);\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   return (\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //     <PieChart\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       data=\{dataGraph\}\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       width=\{screenWidth\}\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       height=\{220\}\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       chartConfig=\{chartConfig\}\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       accessor="population"\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       backgroundColor="transparent"\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       paddingLeft="15"\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //       absolute\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //     />\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 //   );\cf16 \cb1 \strokec16 \
-\cb15   \cf14 \strokec14 // \};\cf16 \cb1 \strokec16 \
+\cb3   \cf10 // const showPieChart = (data) => \{\cf4 \cb1 \
+\cb3   \cf10 //   const dataGraph = dataGraphCreator(data);\cf4 \cb1 \
+\cb3   \cf10 //   return (\cf4 \cb1 \
+\cb3   \cf10 //     <PieChart\cf4 \cb1 \
+\cb3   \cf10 //       data=\{dataGraph\}\cf4 \cb1 \
+\cb3   \cf10 //       width=\{screenWidth\}\cf4 \cb1 \
+\cb3   \cf10 //       height=\{220\}\cf4 \cb1 \
+\cb3   \cf10 //       chartConfig=\{chartConfig\}\cf4 \cb1 \
+\cb3   \cf10 //       accessor="population"\cf4 \cb1 \
+\cb3   \cf10 //       backgroundColor="transparent"\cf4 \cb1 \
+\cb3   \cf10 //       paddingLeft="15"\cf4 \cb1 \
+\cb3   \cf10 //       absolute\cf4 \cb1 \
+\cb3   \cf10 //     />\cf4 \cb1 \
+\cb3   \cf10 //   );\cf4 \cb1 \
+\cb3   \cf10 // \};\cf4 \cb1 \
 \
 \
  // const monthIndexe = [];\
@@ -615,50 +610,644 @@ const\cf4  \cf5 styles\cf4  \cf2 =\cf4
             // monthIndexe.push(num);\
 \
 \
-\cb15  \cf17 \strokec17 const\cf16 \strokec16  \cf18 \strokec18 getLab\cf16 \strokec16  \cf17 \strokec17 =\cf16 \strokec16  \cf18 \strokec18 sortedArr\cf16 \strokec16 .\cf19 \strokec19 map\cf16 \strokec16 ((
-\f1\i \cf20 \strokec20 el
-\f0\i0 \cf16 \strokec16 ) \cf17 \strokec17 =>\cf16 \strokec16  \{\cb1 \
-\cb15         \cf17 \strokec17 return\cf16 \strokec16  
-\f1\i \cf19 \strokec19 Object
-\f0\i0 \cf16 \strokec16 .\cf19 \strokec19 keys\cf16 \strokec16 (
-\f1\i \cf20 \strokec20 el
-\f0\i0 \cf16 \strokec16 );\cb1 \
-\cb15       \}).\cf21 \strokec21 flat\cf16 \strokec16 ();\cb1 \
+\cb3  \cf2 const\cf4  \cf5 getLab\cf4  \cf2 =\cf4  \cf5 sortedArr\cf4 .\cf6 map\cf4 ((
+\f1\i \cf12 el
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3         \cf2 return\cf4  
+\f1\i \cf6 Object
+\f0\i0 \cf4 .\cf6 keys\cf4 (
+\f1\i \cf12 el
+\f0\i0 \cf4 );\cb1 \
+\cb3       \}).\cf7 flat\cf4 ();\cb1 \
 \
-\cb15   \cf17 \strokec17 const\cf16 \strokec16  \cf18 \strokec18 labels\cf16 \strokec16  \cf17 \strokec17 =\cf16 \strokec16  \cf18 \strokec18 arr\cf16 \strokec16 .\cf21 \strokec21 map\cf16 \strokec16 ((
-\f1\i \cf20 \strokec20 el
-\f0\i0 \cf16 \strokec16 ) \cf17 \strokec17 =>\cf16 \strokec16  \{\cb1 \
-\cb15         \cf17 \strokec17 return\cf16 \strokec16  \cf22 \strokec22 `\cf17 \strokec17 $\{\cf18 \strokec18 months\cf16 \strokec16 [
-\f1\i \cf19 \strokec19 Number
-\f0\i0 \cf16 \strokec16 (
-\f1\i \cf20 \strokec20 el
-\f0\i0 \cf16 \strokec16 .date.\cf21 \strokec21 split\cf16 \strokec16 (\cf23 \strokec23 ''\cf16 \strokec16 ).\cf21 \strokec21 slice\cf16 \strokec16 (\cf18 \strokec18 5\cf22 \strokec22 , \cf18 \strokec18 7\cf16 \strokec16 ).\cf21 \strokec21 join\cf16 \strokec16 (\cf23 \strokec23 ''\cf16 \strokec16 ))]\cf17 \strokec17 \}\cf22 \strokec22 `\cf16 \strokec16 ;\cb1 \
-\cb15       \});\cb1 \
+\cb3   \cf2 const\cf4  \cf5 labels\cf4  \cf2 =\cf4  \cf5 arr\cf4 .\cf7 map\cf4 ((
+\f1\i \cf12 el
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3         \cf2 return\cf4  \cf9 `\cf2 $\{\cf5 months\cf4 [
+\f1\i \cf6 Number
+\f0\i0 \cf4 (
+\f1\i \cf12 el
+\f0\i0 \cf4 .date.\cf7 split\cf4 (\cf8 ''\cf4 ).\cf7 slice\cf4 (\cf5 5\cf9 , \cf5 7\cf4 ).\cf7 join\cf4 (\cf8 ''\cf4 ))]\cf2 \}\cf9 `\cf4 ;\cb1 \
+\cb3       \});\cb1 \
 \
-\cb15      \cf14 \strokec14 // let congragatedSum = \{\};\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // filteredData.forEach((el) => \{\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //   if (congragatedSum[secFil]) \{\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //     congragatedSum[el[secFil]] += Number(el.amount);\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //   \} else \{\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //     congragatedSum[el[secFil]] = Number(el.amount);\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //   \}\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // \});\cf16 \cb1 \strokec16 \
+\cb3      \cf10 // let congragatedSum = \{\};\cf4 \cb1 \
+\cb3         \cf10 // filteredData.forEach((el) => \{\cf4 \cb1 \
+\cb3         \cf10 //   if (congragatedSum[secFil]) \{\cf4 \cb1 \
+\cb3         \cf10 //     congragatedSum[el[secFil]] += Number(el.amount);\cf4 \cb1 \
+\cb3         \cf10 //   \} else \{\cf4 \cb1 \
+\cb3         \cf10 //     congragatedSum[el[secFil]] = Number(el.amount);\cf4 \cb1 \
+\cb3         \cf10 //   \}\cf4 \cb1 \
+\cb3         \cf10 // \});\cf4 \cb1 \
 \
-\cb15         \cf14 \strokec14 // let congragatedArr = [];\cf16 \cb1 \strokec16 \
+\cb3         \cf10 // let congragatedArr = [];\cf4 \cb1 \
 \
-\cb15         \cf14 \strokec14 // for (let key in congragatedSum) \{\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //   congragatedArr.push(\{\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //     [secFil]: key,\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //     [firstFil]: String(congragatedSum[key])\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 //   \});\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // \}\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // console.log('filteredData-->', filteredData);\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // console.log('congragatedSum-->', congragatedSum);\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // console.log('congragatedArr-->', congragatedArr);\cf16 \cb1 \strokec16 \
+\cb3         \cf10 // for (let key in congragatedSum) \{\cf4 \cb1 \
+\cb3         \cf10 //   congragatedArr.push(\{\cf4 \cb1 \
+\cb3         \cf10 //     [secFil]: key,\cf4 \cb1 \
+\cb3         \cf10 //     [firstFil]: String(congragatedSum[key])\cf4 \cb1 \
+\cb3         \cf10 //   \});\cf4 \cb1 \
+\cb3         \cf10 // \}\cf4 \cb1 \
+\cb3         \cf10 // console.log('filteredData-->', filteredData);\cf4 \cb1 \
+\cb3         \cf10 // console.log('congragatedSum-->', congragatedSum);\cf4 \cb1 \
+\cb3         \cf10 // console.log('congragatedArr-->', congragatedArr);\cf4 \cb1 \
 \
-\cb15         \cf14 \strokec14 // console.log('el-->', el);\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // console.log('el.date-->', el.date);\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // console.log('el.date.split-->', el.date.split('').slice(5, 7).join(''));\cf16 \cb1 \strokec16 \
-\cb15         \cf14 \strokec14 // console.log('months[Number-->', months[(el.date.split('').slice(5, 7).join(''))]);\cf16 \cb1 \strokec16 \
+\cb3         \cf10 // console.log('el-->', el);\cf4 \cb1 \
+\cb3         \cf10 // console.log('el.date-->', el.date);\cf4 \cb1 \
+\cb3         \cf10 // console.log('el.date.split-->', el.date.split('').slice(5, 7).join(''));\cf4 \cb1 \
+\cb3         \cf10 // console.log('months[Number-->', months[(el.date.split('').slice(5, 7).join(''))]);\cf4 \cb1 \
 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \cb3 import\cf4  React \cf2 from\cf4  \cf8 '\cf9 react\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  \{ View, Text, TouchableOpacity, Alert \} \cf2 from\cf4  \cf8 '\cf9 react-native\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  LoginC \cf2 from\cf4  \cf8 '\cf9 ../../components/login/Login\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  Ui \cf2 from\cf4  \cf8 '\cf9 ../ui/Ui\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  config \cf2 from\cf4  \cf8 '\cf9 ../../config\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  ApiService \cf2 from\cf4  \cf8 '\cf9 ./ApiService\cf8 '\cf4 ;\cb1 \
+\
+\
+\
+\cf2 \cb3 const\cf4  \cf7 Login\cf4  \cf2 =\cf4  (\{ 
+\f1\i \cf12 entries
+\f0\i0 \cf4 , 
+\f1\i \cf12 postUser
+\f0\i0 \cf4 , 
+\f1\i \cf12 currentUser
+\f0\i0 \cf4 , 
+\f1\i \cf12 navigation
+\f0\i0 \cf4  \}) \cf2 =>\cf4  \{\cb1 \
+\
+\cb3   \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 INSIDE SCREEN LOGIN-->\cf8 '\cf4 );\cb1 \
+\cb3   \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 currentUser-->\cf8 '\cf4 , 
+\f1\i \cf12 currentUser
+\f0\i0 \cf4 );\cb1 \
+\
+\cb3   \cf10 // const [flag, setFlag] = useState(false);\cf4 \cb1 \
+\
+\cb3   \cf10 // console.log('currentUser-->', currentUser);\cf4 \cb1 \
+\
+\
+\cb3   \cf2 const\cf4  [\cf5 currentUser\cf4 , \cf5 setCurrentUser\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 ([]);\cb1 \
+\
+\
+\
+\cb3   \cf10 // const error = (\cf4 \cb1 \
+\cb3   \cf10 //   <>\cf4 \cb1 \
+\cb3   \cf10 //     Alert.alert()\cf4 \cb1 \
+\cb3   \cf10 //   </>\cf4 \cb1 \
+\cb3   \cf10 // );\cf4 \cb1 \
+\
+\cb3   \cf10 // let render;\cf4 \cb1 \
+\cb3   \cf10 // const userInterface = (\cf4 \cb1 \
+\cb3   \cf10 //   <>\cf4 \cb1 \
+\cb3   \cf10 //     <Ui />\cf4 \cb1 \
+\cb3   \cf10 //   </>\cf4 \cb1 \
+\cb3   \cf10 // );\cf4 \cb1 \
+\
+\cb3   \cf10 // const loginForm = (\cf4 \cb1 \
+\cb3   \cf10 //   <>\cf4 \cb1 \
+\cb3   \cf10 //     <Text>\cf4 \cb1 \
+\cb3   \cf10 //       Hello From Login Form\cf4 \cb1 \
+\cb3   \cf10 //     </Text>\cf4 \cb1 \
+\cb3   \cf10 //     <LoginC postUser=\{postUser\} form=\{loginForm\} currentUser=\{currentUser\} />\cf4 \cb1 \
+\cb3   \cf10 //   </>\cf4 \cb1 \
+\cb3   \cf10 // );\cf4 \cb1 \
+\
+\
+\cb3   \cf10 // if (typeof currentUser[0] === 'string') \{\cf4 \cb1 \
+\cb3   \cf10 //   Alert.alert('Could not create user');\cf4 \cb1 \
+\cb3   \cf10 //   render = loginForm;\cf4 \cb1 \
+\cb3   \cf10 // \} else if (typeof currentUser[0] === 'undefined') \{\cf4 \cb1 \
+\cb3   \cf10 //   render = loginForm;\cf4 \cb1 \
+\cb3   \cf10 // \} else \{\cf4 \cb1 \
+\cb3   \cf10 //   render = userInterface;\cf4 \cb1 \
+\cb3   \cf10 // \}\cf4 \cb1 \
+\
+\cb3   \cf10 // if (!flag) \{\cf4 \cb1 \
+\cb3   \cf10 //   loginForm\cf4 \cb1 \
+\cb3   \cf10 // \} else \{\cf4 \cb1 \
+\
+\cb3   \cf10 // \}\cf4 \cb1 \
+\
+\
+\cb3   \cf10 // console.log('currentUser-->', typeof currentUser[0] === 'string');\cf4 \cb1 \
+\cb3   \cf10 // console.log('form-->', form);\cf4 \cb1 \
+\
+\cb3   \cf2 return\cf4  (\cb1 \
+\cb3     <>\cb1 \
+\cb3       \cf2 \{\cf10 /* \{render ? \{render\} : <Text>Failed</Text>\} */\cf2 \}\cf4 \cb1 \
+\
+\cb3       \cf2 \{\cf10 /* \{render\} */\cf2 \}\cf4 \cb1 \
+\
+\cb3       <>\cb1 \
+\cb3         <
+\f1\i \cf6 Text
+\f0\i0 \cf4 >\cb1 \
+\cb3           Hello From Login Form\cb1 \
+\cb3       </
+\f1\i \cf6 Text
+\f0\i0 \cf4 >\cb1 \
+\cb3         <
+\f1\i \cf6 LoginC
+\f0\i0 \cf4  
+\f1\i \cf7 postUser
+\f0\i0 \cf2 =\{
+\f1\i \cf12 postUser
+\f0\i0 \cf2 \}\cf4  
+\f1\i \cf7 form
+\f0\i0 \cf2 =\{\cf4 loginForm\cf2 \}\cf4  
+\f1\i \cf7 currentUser
+\f0\i0 \cf2 =\{
+\f1\i \cf12 currentUser
+\f0\i0 \cf2 \}\cf4  />\cb1 \
+\cb3       </>\cb1 \
+\
+\cb3       \cf2 \{\cf10 /* <TouchableOpacity onPress=\{() => \{\cf4 \cb1 \
+\cf10 \cb3         navigation.navigate('Ui');\cf4 \cb1 \
+\cf10 \cb3       \}\}>\cf4 \cb1 \
+\cf10 \cb3         <Text>Navigate to Ui </Text>\cf4 \cb1 \
+\cf10 \cb3       </TouchableOpacity> */\cf2 \}\cf4 \cb1 \
+\
+\cb3     </>\cb1 \
+\
+\cb3   );\cb1 \
+\cb3 \};\cb1 \
+\
+\cf2 \cb3 export\cf4  \cf2 default\cf4  \cf7 Login\cf4 ;\cb1 \
+\
+\
+http://localhost:19006\
+\
+\
+\cf2 \cb3 import\cf4  React, \{ useState, useEffect \} \cf2 from\cf4  \cf8 '\cf9 react\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  \{ View, Text, TouchableOpacity, Alert, TextInput, Button \} \cf2 from\cf4  \cf8 '\cf9 react-native\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  Ui \cf2 from\cf4  \cf8 '\cf9 ../ui/Ui\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  config \cf2 from\cf4  \cf8 '\cf9 ../../config\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  ApiService \cf2 from\cf4  \cf8 '\cf9 ./../../ApiService\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 const\cf4  \cf7 Login\cf4  \cf2 =\cf4  (\{ 
+\f1\i \cf12 entries
+\f0\i0 \cf4 , 
+\f1\i \cf12 navigation
+\f0\i0 \cf4  \}) \cf2 =>\cf4  \{\cb1 \
+\
+\cb3   \cf2 const\cf4  [\cf5 email\cf4 , \cf7 setEmail\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 password\cf4 , \cf7 setPassword\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 flag\cf4 , \cf7 setFlag\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\cf5 false\cf4 );\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 user\cf4 , \cf7 setUser\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 loggedUser\cf4 , \cf7 setLoggedUser\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\
+\
+\cb3   \cf2 const\cf4  \cf7 handleChange\cf4  \cf2 =\cf4  (
+\f1\i \cf12 text
+\f0\i0 \cf4 , 
+\f1\i \cf12 cb
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3     \cf7 cb\cf4 (
+\f1\i \cf12 text
+\f0\i0 \cf4 );\cb1 \
+\cb3   \};\cb1 \
+\
+\cb3   \cf2 const\cf4  \cf7 checker\cf4  \cf2 =\cf4  (
+\f1\i \cf12 user
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3     \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 INSIDE CHECKER-->\cf8 '\cf4 );\cb1 \
+\cb3     \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 user-->\cf8 '\cf4 , 
+\f1\i \cf12 user
+\f0\i0 \cf4 );\cb1 \
+\
+\cb3     ApiService.\cf7 createUser\cf4 (
+\f1\i \cf12 user
+\f0\i0 \cf4 , \cf8 '\cf9 register\cf8 '\cf4 )\cb1 \
+\cb3       .\cf6 then\cf4 ((
+\f1\i \cf12 el
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3         \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 el-->\cf8 '\cf4 , 
+\f1\i \cf12 el
+\f0\i0 \cf4 );\cb1 \
+\
+\cb3       \});\cb1 \
+\cb3   \};\cb1 \
+\
+\cb3   \cf2 const\cf4  \cf7 handleSubmit\cf4  \cf2 =\cf4  (
+\f1\i \cf12 e
+\f0\i0 \cf4 , 
+\f1\i \cf12 button
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3     
+\f1\i \cf12 e
+\f0\i0 \cf4 .\cf7 preventDefault\cf4 ();\cb1 \
+\
+\cb3     \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 INSIDE HANDLESUBMIT-->\cf8 '\cf4 );\cb1 \
+\
+\cb3     \cf2 const\cf4  \cf5 obj\cf4  \cf2 =\cf4  \{\cb1 \
+\cb3       \cf8 '\cf9 email\cf8 '\cf2 :\cf4  \cf8 ''\cf4 ,\cb1 \
+\cb3       \cf8 '\cf9 password\cf8 '\cf2 :\cf4  \cf8 ''\cf4 \cb1 \
+\cb3     \};\cb1 \
+\cb3     \cf10 // first make api call to check whether use exists\cf4 \cb1 \
+\cb3     \cf7 checker\cf4 (\{\cb1 \
+\cb3       \cf8 '\cf9 email\cf8 '\cf2 :\cf4  \cf5 email\cf4 ,\cb1 \
+\cb3       \cf8 '\cf9 password\cf8 '\cf2 :\cf4  \cf5 password\cf4 \cb1 \
+\cb3     \});\cb1 \
+\cb3     \cf10 // console.log('authcheck-->', authcheck);\cf4 \cb1 \
+\
+\cb3     \cf10 // then if successful\cf4 \cb1 \
+\cb3     \cf10 // redirect to new screen\cf4 \cb1 \
+\cb3     \cf10 // if not alert\cf4 \cb1 \
+\cb3     \cf10 // set new state with logged in user\cf4 \cb1 \
+\cb3     \cf7 setEmail\cf4 (\cf8 ''\cf4 );\cb1 \
+\cb3     \cf7 setPassword\cf4 (\cf8 ''\cf4 );\cb1 \
+\cb3   \};\cb1 \
+\
+\cb3   \cf2 return\cf4  (\cb1 \
+\cb3     <>\cb1 \
+\
+\cb3       <
+\f1\i \cf6 TextInput
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 placeholder
+\f0\i0 \cf2 =\cf8 '\cf9 Type email\cf8 '\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onChangeText
+\f0\i0 \cf2 =\{
+\f1\i \cf12 email
+\f0\i0 \cf4  \cf2 =>\cf4  \cf7 handleChange\cf4 (
+\f1\i \cf12 email
+\f0\i0 \cf4 , \cf7 setEmail\cf4 )\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 defualtValue
+\f0\i0 \cf2 =\{\cf5 email\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 value
+\f0\i0 \cf2 =\{\cf5 email\cf2 \}\cf4 \cb1 \
+\cb3       />\cb1 \
+\cb3       <
+\f1\i \cf6 TextInput
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 placeholder
+\f0\i0 \cf2 =\cf8 '\cf9 password\cf8 '\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onChangeText
+\f0\i0 \cf2 =\{
+\f1\i \cf12 password
+\f0\i0 \cf4  \cf2 =>\cf4  \cf7 handleChange\cf4 (
+\f1\i \cf12 password
+\f0\i0 \cf4 , \cf7 setPassword\cf4 )\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 defualtValue
+\f0\i0 \cf2 =\{\cf5 password\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 value
+\f0\i0 \cf2 =\{\cf5 password\cf2 \}\cf4 \cb1 \
+\cb3       />\cb1 \
+\
+\cb3       <
+\f1\i \cf6 Button
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onPress
+\f0\i0 \cf2 =\{\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3           \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 e-->\cf8 '\cf4 , 
+\f1\i \cf12 e
+\f0\i0 \cf4 );\cb1 \
+\cb3           \cf7 handleSubmit\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 , \cf8 '\cf9 register\cf8 '\cf4 );\cb1 \
+\cb3         \}\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 title
+\f0\i0 \cf2 =\cf8 '\cf9 Register\cf8 '\cf4 \cb1 \
+\cb3       />\cb1 \
+\
+\cb3       <
+\f1\i \cf6 Button
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onPress
+\f0\i0 \cf2 =\{\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3           \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 e-->\cf8 '\cf4 , 
+\f1\i \cf12 e
+\f0\i0 \cf4 );\cb1 \
+\cb3           \cf7 handleSubmit\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 , \cf8 '\cf9 login\cf8 '\cf4 );\cb1 \
+\cb3         \}\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 title
+\f0\i0 \cf2 =\cf8 '\cf9 Login\cf8 '\cf4 \cb1 \
+\cb3       />\cb1 \
+\
+\cb3     </>\cb1 \
+\cb3   );\cb1 \
+\
+\
+\cb3 \};\cb1 \
+\
+\cf2 \cb3 export\cf4  \cf2 default\cf4  \cf7 Login\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  React \cf2 from\cf4  \cf8 '\cf9 react\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  \{ View, Text, TouchableOpacity, Alert \} \cf2 from\cf4  \cf8 '\cf9 react-native\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  LoginC \cf2 from\cf4  \cf8 '\cf9 ../../components/login/Login\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  Ui \cf2 from\cf4  \cf8 '\cf9 ../ui/Ui\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  config \cf2 from\cf4  \cf8 '\cf9 ../../config\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  ApiService \cf2 from\cf4  \cf8 '\cf9 ./ApiService\cf8 '\cf4 ;\cb1 \
+\
+\
+\
+\cf2 \cb3 const\cf4  \cf7 Login\cf4  \cf2 =\cf4  (\{ 
+\f1\i \cf12 entries
+\f0\i0 \cf4 , 
+\f1\i \cf12 postUser
+\f0\i0 \cf4 , 
+\f1\i \cf12 currentUser
+\f0\i0 \cf4 , 
+\f1\i \cf12 navigation
+\f0\i0 \cf4  \}) \cf2 =>\cf4  \{\cb1 \
+\
+\cb3   \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 INSIDE SCREEN LOGIN-->\cf8 '\cf4 );\cb1 \
+\cb3   \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 currentUser-->\cf8 '\cf4 , 
+\f1\i \cf12 currentUser
+\f0\i0 \cf4 );\cb1 \
+\
+\cb3   \cf10 // const [flag, setFlag] = useState(false);\cf4 \cb1 \
+\
+\cb3   \cf10 // console.log('currentUser-->', currentUser);\cf4 \cb1 \
+\
+\
+\cb3   \cf2 const\cf4  [\cf5 currentUser\cf4 , \cf5 setCurrentUser\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 ([]);\cb1 \
+\
+\
+\
+\cb3   \cf10 // const error = (\cf4 \cb1 \
+\cb3   \cf10 //   <>\cf4 \cb1 \
+\cb3   \cf10 //     Alert.alert()\cf4 \cb1 \
+\cb3   \cf10 //   </>\cf4 \cb1 \
+\cb3   \cf10 // );\cf4 \cb1 \
+\
+\cb3   \cf10 // let render;\cf4 \cb1 \
+\cb3   \cf10 // const userInterface = (\cf4 \cb1 \
+\cb3   \cf10 //   <>\cf4 \cb1 \
+\cb3   \cf10 //     <Ui />\cf4 \cb1 \
+\cb3   \cf10 //   </>\cf4 \cb1 \
+\cb3   \cf10 // );\cf4 \cb1 \
+\
+\cb3   \cf10 // const loginForm = (\cf4 \cb1 \
+\cb3   \cf10 //   <>\cf4 \cb1 \
+\cb3   \cf10 //     <Text>\cf4 \cb1 \
+\cb3   \cf10 //       Hello From Login Form\cf4 \cb1 \
+\cb3   \cf10 //     </Text>\cf4 \cb1 \
+\cb3   \cf10 //     <LoginC postUser=\{postUser\} form=\{loginForm\} currentUser=\{currentUser\} />\cf4 \cb1 \
+\cb3   \cf10 //   </>\cf4 \cb1 \
+\cb3   \cf10 // );\cf4 \cb1 \
+\
+\
+\cb3   \cf10 // if (typeof currentUser[0] === 'string') \{\cf4 \cb1 \
+\cb3   \cf10 //   Alert.alert('Could not create user');\cf4 \cb1 \
+\cb3   \cf10 //   render = loginForm;\cf4 \cb1 \
+\cb3   \cf10 // \} else if (typeof currentUser[0] === 'undefined') \{\cf4 \cb1 \
+\cb3   \cf10 //   render = loginForm;\cf4 \cb1 \
+\cb3   \cf10 // \} else \{\cf4 \cb1 \
+\cb3   \cf10 //   render = userInterface;\cf4 \cb1 \
+\cb3   \cf10 // \}\cf4 \cb1 \
+\
+\cb3   \cf10 // if (!flag) \{\cf4 \cb1 \
+\cb3   \cf10 //   loginForm\cf4 \cb1 \
+\cb3   \cf10 // \} else \{\cf4 \cb1 \
+\
+\cb3   \cf10 // \}\cf4 \cb1 \
+\
+\
+\cb3   \cf10 // console.log('currentUser-->', typeof currentUser[0] === 'string');\cf4 \cb1 \
+\cb3   \cf10 // console.log('form-->', form);\cf4 \cb1 \
+\
+\cb3   \cf2 return\cf4  (\cb1 \
+\cb3     <>\cb1 \
+\cb3       \cf2 \{\cf10 /* \{render ? \{render\} : <Text>Failed</Text>\} */\cf2 \}\cf4 \cb1 \
+\
+\cb3       \cf2 \{\cf10 /* \{render\} */\cf2 \}\cf4 \cb1 \
+\
+\cb3       <>\cb1 \
+\cb3         <
+\f1\i \cf6 Text
+\f0\i0 \cf4 >\cb1 \
+\cb3           Hello From Login Form\cb1 \
+\cb3       </
+\f1\i \cf6 Text
+\f0\i0 \cf4 >\cb1 \
+\cb3         <
+\f1\i \cf6 LoginC
+\f0\i0 \cf4  
+\f1\i \cf7 postUser
+\f0\i0 \cf2 =\{
+\f1\i \cf12 postUser
+\f0\i0 \cf2 \}\cf4  
+\f1\i \cf7 form
+\f0\i0 \cf2 =\{\cf4 loginForm\cf2 \}\cf4  
+\f1\i \cf7 currentUser
+\f0\i0 \cf2 =\{
+\f1\i \cf12 currentUser
+\f0\i0 \cf2 \}\cf4  />\cb1 \
+\cb3       </>\cb1 \
+\
+\cb3       \cf2 \{\cf10 /* <TouchableOpacity onPress=\{() => \{\cf4 \cb1 \
+\cf10 \cb3         navigation.navigate('Ui');\cf4 \cb1 \
+\cf10 \cb3       \}\}>\cf4 \cb1 \
+\cf10 \cb3         <Text>Navigate to Ui </Text>\cf4 \cb1 \
+\cf10 \cb3       </TouchableOpacity> */\cf2 \}\cf4 \cb1 \
+\
+\cb3     </>\cb1 \
+\
+\cb3   );\cb1 \
+\cb3 \};\cb1 \
+\
+\cf2 \cb3 export\cf4  \cf2 default\cf4  \cf7 Login\cf4 ;\cb1 \
+\
+\
+http://localhost:19006\
+\
+\
+\cf2 \cb3 import\cf4  React, \{ useState, useEffect \} \cf2 from\cf4  \cf8 '\cf9 react\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  \{ View, Text, TouchableOpacity, Alert, TextInput, Button \} \cf2 from\cf4  \cf8 '\cf9 react-native\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  Ui \cf2 from\cf4  \cf8 '\cf9 ../ui/Ui\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 import\cf4  config \cf2 from\cf4  \cf8 '\cf9 ../../config\cf8 '\cf4 ;\cb1 \
+\cf2 \cb3 import\cf4  ApiService \cf2 from\cf4  \cf8 '\cf9 ./../../ApiService\cf8 '\cf4 ;\cb1 \
+\
+\cf2 \cb3 const\cf4  \cf7 Login\cf4  \cf2 =\cf4  (\{ 
+\f1\i \cf12 entries
+\f0\i0 \cf4 , 
+\f1\i \cf12 navigation
+\f0\i0 \cf4  \}) \cf2 =>\cf4  \{\cb1 \
+\
+\cb3   \cf2 const\cf4  [\cf5 email\cf4 , \cf7 setEmail\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 password\cf4 , \cf7 setPassword\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 flag\cf4 , \cf7 setFlag\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\cf5 false\cf4 );\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 user\cf4 , \cf7 setUser\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\cb3   \cf2 const\cf4  [\cf5 loggedUser\cf4 , \cf7 setLoggedUser\cf4 ] \cf2 =\cf4  \cf7 useState\cf4 (\{\});\cb1 \
+\
+\
+\cb3   \cf2 const\cf4  \cf7 handleChange\cf4  \cf2 =\cf4  (
+\f1\i \cf12 text
+\f0\i0 \cf4 , 
+\f1\i \cf12 cb
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3     \cf7 cb\cf4 (
+\f1\i \cf12 text
+\f0\i0 \cf4 );\cb1 \
+\cb3   \};\cb1 \
+\
+\cb3   \cf2 const\cf4  \cf7 checker\cf4  \cf2 =\cf4  (
+\f1\i \cf12 user
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3     \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 INSIDE CHECKER-->\cf8 '\cf4 );\cb1 \
+\cb3     \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 user-->\cf8 '\cf4 , 
+\f1\i \cf12 user
+\f0\i0 \cf4 );\cb1 \
+\
+\cb3     ApiService.\cf7 createUser\cf4 (
+\f1\i \cf12 user
+\f0\i0 \cf4 , \cf8 '\cf9 register\cf8 '\cf4 )\cb1 \
+\cb3       .\cf6 then\cf4 ((
+\f1\i \cf12 el
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3         \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 el-->\cf8 '\cf4 , 
+\f1\i \cf12 el
+\f0\i0 \cf4 );\cb1 \
+\
+\cb3       \});\cb1 \
+\cb3   \};\cb1 \
+\
+\cb3   \cf2 const\cf4  \cf7 handleSubmit\cf4  \cf2 =\cf4  (
+\f1\i \cf12 e
+\f0\i0 \cf4 , 
+\f1\i \cf12 button
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3     
+\f1\i \cf12 e
+\f0\i0 \cf4 .\cf7 preventDefault\cf4 ();\cb1 \
+\
+\cb3     \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 INSIDE HANDLESUBMIT-->\cf8 '\cf4 );\cb1 \
+\
+\cb3     \cf2 const\cf4  \cf5 obj\cf4  \cf2 =\cf4  \{\cb1 \
+\cb3       \cf8 '\cf9 email\cf8 '\cf2 :\cf4  \cf8 ''\cf4 ,\cb1 \
+\cb3       \cf8 '\cf9 password\cf8 '\cf2 :\cf4  \cf8 ''\cf4 \cb1 \
+\cb3     \};\cb1 \
+\cb3     \cf10 // first make api call to check whether use exists\cf4 \cb1 \
+\cb3     \cf7 checker\cf4 (\{\cb1 \
+\cb3       \cf8 '\cf9 email\cf8 '\cf2 :\cf4  \cf5 email\cf4 ,\cb1 \
+\cb3       \cf8 '\cf9 password\cf8 '\cf2 :\cf4  \cf5 password\cf4 \cb1 \
+\cb3     \});\cb1 \
+\cb3     \cf10 // console.log('authcheck-->', authcheck);\cf4 \cb1 \
+\
+\cb3     \cf10 // then if successful\cf4 \cb1 \
+\cb3     \cf10 // redirect to new screen\cf4 \cb1 \
+\cb3     \cf10 // if not alert\cf4 \cb1 \
+\cb3     \cf10 // set new state with logged in user\cf4 \cb1 \
+\cb3     \cf7 setEmail\cf4 (\cf8 ''\cf4 );\cb1 \
+\cb3     \cf7 setPassword\cf4 (\cf8 ''\cf4 );\cb1 \
+\cb3   \};\cb1 \
+\
+\cb3   \cf2 return\cf4  (\cb1 \
+\cb3     <>\cb1 \
+\
+\cb3       <
+\f1\i \cf6 TextInput
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 placeholder
+\f0\i0 \cf2 =\cf8 '\cf9 Type email\cf8 '\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onChangeText
+\f0\i0 \cf2 =\{
+\f1\i \cf12 email
+\f0\i0 \cf4  \cf2 =>\cf4  \cf7 handleChange\cf4 (
+\f1\i \cf12 email
+\f0\i0 \cf4 , \cf7 setEmail\cf4 )\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 defualtValue
+\f0\i0 \cf2 =\{\cf5 email\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 value
+\f0\i0 \cf2 =\{\cf5 email\cf2 \}\cf4 \cb1 \
+\cb3       />\cb1 \
+\cb3       <
+\f1\i \cf6 TextInput
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 placeholder
+\f0\i0 \cf2 =\cf8 '\cf9 password\cf8 '\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onChangeText
+\f0\i0 \cf2 =\{
+\f1\i \cf12 password
+\f0\i0 \cf4  \cf2 =>\cf4  \cf7 handleChange\cf4 (
+\f1\i \cf12 password
+\f0\i0 \cf4 , \cf7 setPassword\cf4 )\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 defualtValue
+\f0\i0 \cf2 =\{\cf5 password\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 value
+\f0\i0 \cf2 =\{\cf5 password\cf2 \}\cf4 \cb1 \
+\cb3       />\cb1 \
+\
+\cb3       <
+\f1\i \cf6 Button
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onPress
+\f0\i0 \cf2 =\{\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3           \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 e-->\cf8 '\cf4 , 
+\f1\i \cf12 e
+\f0\i0 \cf4 );\cb1 \
+\cb3           \cf7 handleSubmit\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 , \cf8 '\cf9 register\cf8 '\cf4 );\cb1 \
+\cb3         \}\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 title
+\f0\i0 \cf2 =\cf8 '\cf9 Register\cf8 '\cf4 \cb1 \
+\cb3       />\cb1 \
+\
+\cb3       <
+\f1\i \cf6 Button
+\f0\i0 \cf4 \cb1 \
+\cb3         
+\f1\i \cf7 onPress
+\f0\i0 \cf2 =\{\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 ) \cf2 =>\cf4  \{\cb1 \
+\cb3           \cf5 console\cf4 .\cf6 log\cf4 (\cf8 '\cf9 e-->\cf8 '\cf4 , 
+\f1\i \cf12 e
+\f0\i0 \cf4 );\cb1 \
+\cb3           \cf7 handleSubmit\cf4 (
+\f1\i \cf12 e
+\f0\i0 \cf4 , \cf8 '\cf9 login\cf8 '\cf4 );\cb1 \
+\cb3         \}\cf2 \}\cf4 \cb1 \
+\cb3         
+\f1\i \cf7 title
+\f0\i0 \cf2 =\cf8 '\cf9 Login\cf8 '\cf4 \cb1 \
+\cb3       />\cb1 \
+\
+\cb3     </>\cb1 \
+\cb3   );\cb1 \
+\
+\
+\cb3 \};\cb1 \
+\
+\cf2 \cb3 export\cf4  \cf2 default\cf4  \cf7 Login\cf4 ;\cb1 \
 }
