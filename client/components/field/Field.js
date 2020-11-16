@@ -1,13 +1,13 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
-import styles from './styles';
+import { TextInput, View, StyleSheet } from 'react-native';
+// import styles from './styles';
 
 const Field = ({ el, handleChange }) => {
   const { value } = el;
 
   return (
     <>
-      <View>
+      <View style={styles.container}>
         <TextInput
           style={styles.input}
           placeholder={el.name}
@@ -22,3 +22,17 @@ const Field = ({ el, handleChange }) => {
 };
 
 export default Field;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 5,
+    backgroundColor: 'white',
+    // flex: 1
+  },
+  input: {
+    borderColor: 'grey',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  }
+});

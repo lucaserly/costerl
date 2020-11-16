@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Alert, Button, Text } from 'react-native';
-import styles from './styles';
+import { View, Alert, Button, Text, StyleSheet } from 'react-native';
+// import styles from './styles';
 import ButtonApp from '../button/Button';
 import Field from '../field/Field';
 import DateInput from '../dateinput/DateInput';
@@ -10,13 +10,7 @@ const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, hand
 
 const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
 
-
-  // console.log('ext-->', ext);
-  // console.log('ext2-->', ext2);
-  // console.log('form-->', form);
-
   let renderDate;
-  // if ext entries then render date else don't
   if (ext === 'entries') {
     renderDate = true;
   } else {
@@ -85,7 +79,7 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
         <DateInput handleDateSub={handleDateSub} />
       </View> : <></>
       }
-      <View style={styles.container}>
+      <View styles={styles.container}>
         {fields.map((el, i) => {
           return <Field handleChange={handleChange} el={el} key={i} />;
         })
@@ -105,3 +99,21 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
 };
 
 export default Form;
+
+
+const styles = StyleSheet.create({
+  container: {
+    // padding: 5,
+    // backgroundColor: 'white',
+    // borderRadius: 5
+  },
+  title: {
+    // fontWeight: 'bold',
+    // paddingBottom: 5
+  },
+  item: {
+    // backgroundColor: 'white',
+    // padding: 1.5,
+  },
+});
+

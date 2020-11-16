@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
 import FormC from '../../components/form/Form';
 import config from '../../config';
 import EntriesC from '../../components/entries/Entries';
@@ -11,48 +11,8 @@ const { loginForm } = config;
 const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) => {
 
   const login = 'login';
-  console.log('INSIDE SCREEN LOGIN-->',);
-  console.log('currentUser-->', currentUser);
 
-  // const afterLogin = () => {
-  //   let id;
-  //   if (Array.isArray(currentUser[currentUser.length - 1])) {
-  //     id = currentUser[currentUser.length - 1][0].id;
-  //   } else {
-  //     id = currentUser[currentUser.length - 1].id;
-  //   }
-
-  //   getUserData('users', Number(id));
-  //   return <>
-  //     <TouchableOpacity onPress={() => {
-  //       navigation.navigate('Form');
-  //     }}>
-  //       <Text>Navigate to Form </Text>
-  //     </TouchableOpacity>
-
-  //     <TouchableOpacity onPress={() => {
-  //       navigation.navigate('Entries');
-  //     }}>
-  //       <Text>Navigate to Entries </Text>
-  //     </TouchableOpacity>
-
-  //     <TouchableOpacity onPress={() => {
-  //       navigation.navigate('Search');
-  //     }}>
-  //       <Text>Navigate to Search Bar </Text>
-  //     </TouchableOpacity>
-
-  //     <TouchableOpacity onPress={() => {
-  //       navigation.navigate('Analysis');
-  //     }}>
-  //       <Text>Navigate to Analysis of Entries </Text>
-  //     </TouchableOpacity>
-  //   </>
-  //     ;
-  // };
-
-  let showMsg;
-  const beforeLogin = () => {
+  const loginRender = () => {
 
     return <>
       <View>
@@ -74,19 +34,40 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
   } else if (!currentUser.length) {
     tobeRendered = false;
   } else {
-    // Alert.alert('Successfully registered at CostErl');
-    showMsg = true;
     tobeRendered = true;
   }
 
   return (
-    <>
-      <Text>
-        LOGIN
-      </Text>
-      {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} showMsg={showMsg} /> : beforeLogin()}
-    </>
+
+    <View style={styles.container}>
+      <Text style={styles.text}>LOGIN</Text>
+      <View style={styles.loginFormBox}>
+        {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} /> : loginRender()}
+      </View>
+    </View>
+    // <>
+    //   <Text>
+    //     LOGIN
+    //   </Text>
+    //   {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} /> : loginRender()}
+    // </>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  loginFormBox: {
+
+  }
+
+});
 
 export default Login;

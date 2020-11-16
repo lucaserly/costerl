@@ -141,15 +141,7 @@ export default {
       let errMsg;
       let succMsg;
       let conditions;
-      // ext -> can be login, register, entries
-      // if (ext)
-      // you set the altert messages bease on function argument passed from above and dynamically set below the message
 
-      // other strtegy ->
-      // if ext is entries handle error
-      // messaging here else handle it in login screen
-      console.log('ext-->', ext);
-    
       if (ext === 'register') {
         conditions = {
           names: {
