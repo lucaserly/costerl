@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView, Alert } from 'react-native';
+import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView, Alert, StyleSheet } from 'react-native';
 import {
   LineChart,
   BarChart,
@@ -376,8 +376,13 @@ const Analysis = ({ entries }) => {
   const pickers = (
     <>
       <ScrollView>
-        <View styles={styles.container} >
-          <Text>Selected which item to Analyse</Text>
+        <View style={styles.container}>
+
+
+
+          <View style={styles.textBox}>
+            <Text style={styles.text}>Selected Item</Text>
+          </View>
           <Picker
             selectedValue={firstFilter}
             onValueChange={(el) => setFirstFilter(el)}>
@@ -387,7 +392,9 @@ const Analysis = ({ entries }) => {
             }
           </Picker>
 
-          <Text>Selected which Filter</Text>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>Select Filter</Text>
+          </View>
           <Picker
             selectedValue={secondFilter}
             onValueChange={(el) => {
@@ -400,7 +407,9 @@ const Analysis = ({ entries }) => {
             }
           </Picker>
 
-          <Text>Selected which SubFilter</Text>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>Select Filter</Text>
+          </View>
           <Picker
             selectedValue={thirdFilter}
             onValueChange={(el) => setThirdFilter(el)}>
@@ -411,7 +420,9 @@ const Analysis = ({ entries }) => {
             }
           </Picker>
 
-          <Text>Selected which type of Analysis</Text>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>Analysis Method</Text>
+          </View>
           <Picker
             selectedValue={selectedAnalysys}
             onValueChange={(el) => setSelectedAnalysys(el)}>
@@ -421,7 +432,9 @@ const Analysis = ({ entries }) => {
             }
           </Picker>
 
-          <Text>Selected which type of Graph</Text>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>Graphs</Text>
+          </View>
           <Picker
             selectedValue={selectedChart}
             onValueChange={(el) => setSelectedChart(el)}>
@@ -461,16 +474,22 @@ const Analysis = ({ entries }) => {
   );
 };
 
-import { StyleSheet } from 'react-native';
-import { render } from 'react-dom';
+export default Analysis;
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 3,
-    // paddingTop: 30,
-    // alignItems: 'center',
-  }
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+  textBox: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+    backgroundColor: '#cb4b16',
+  },
+  text: {
+    color: 'white',
+    fontWeight: 'bold'
+  },
 });
-
-
-export default Analysis;
