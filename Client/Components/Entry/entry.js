@@ -3,9 +3,6 @@ import { Text, View, StyleSheet } from 'react-native';
 import ButtonApp from './../button/Button';
 
 const Entry = ({ item, deleteOne }) => {
-  console.log('item-->', item);
-  console.log('item.id-->', item.id);
-
   return (
     <>
       <View style={styles.entryContainer}>

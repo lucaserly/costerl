@@ -15,8 +15,8 @@ export default {
     { label: 'search by item', flag: 'true' },
     { label: 'search by category', flag: 'true' },
     { label: 'search by description', flag: 'true' },
-    { label: 'search by payment', flag: 'true' },
-    { label: 'search by amount', flag: 'true' },
+    // { label: 'search by payment', flag: 'true' },
+    // { label: 'search by amount', flag: 'true' },
     { label: 'search by date', flag: 'true' }
   ],
   helperFunctions: {
@@ -82,13 +82,16 @@ export default {
       const item = e[0].value;
       const category = e[1].value;
       const description = e[2].value;
-      const payment = e[3].value;
-      const amount = e[4].value;
-      const date = e[5].value;
+      // const payment = e[3].value;
+      // const amount = e[4].value;
+      // && el.payment.includes(payment)
+      //&& el.date.includes(date)
+      // && el.amount.includes(amount)
+      const date = e[3].value;
       const res = arr.filter((el) => {
         if (el.item.includes(item) && el.category.includes(category)
-          && el.description.includes(description) && el.payment.includes(payment)
-          && el.amount.includes(amount) && el.date.includes(date)) {
+          && el.description.includes(description)
+        ) {
           return el;
         }
       });

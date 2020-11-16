@@ -13,6 +13,8 @@ const TableC = ({ entries, deleteOne }) => {
   ];
 
   const valuesExtractor = (arr) => {
+    console.log('INSIDE VALUESEXTRACTOR-->');
+
     const result = [];
     arr.forEach((el) => {
       let val = [];
@@ -41,24 +43,28 @@ const TableC = ({ entries, deleteOne }) => {
     </TouchableOpacity >
   );
 
+  const tableRender = () => {
+    return <Table borderStyle={{ borderColor: 'transparent' }}>
+      <Row data={tableHead} style={styles.head} textStyle={styles.text} />
+      {
+        valuesExtractor(entries).map((rowData, index) => (
+          <TableWrapper key={index} style={styles.row}>
+            {
+              rowData.map((cellData, cellIndex, cellRow, rowIndex) => (
+                <Cell key={cellIndex} data={cellIndex === 4 ? element(cellData,
+                  cellRow[0]) : cellData} textStyle={styles.text} />
+              ))
+            }
+          </TableWrapper>
+        ))
+      }
+    </Table>;
+  };
 
   return (
     <>
-      <Table borderStyle={{ borderColor: 'transparent' }}>
-        <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-        {
-          valuesExtractor(entries).map((rowData, index) => (
-            <TableWrapper key={index} style={styles.row}>
-              {
-                rowData.map((cellData, cellIndex, cellRow, rowIndex) => (
-                  <Cell key={cellIndex} data={cellIndex === 4 ? element(cellData,
-                    cellRow[0]) : cellData} textStyle={styles.text} />
-                ))
-              }
-            </TableWrapper>
-          ))
-        }
-      </Table>
+      {Array.isArray(entries) ? tableRender() : <></>}
+
     </>
 
   );
@@ -69,7 +75,7 @@ export default TableC;
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-  head: { height: 40, backgroundColor: '#2aa198', marginBottom: 5},
+  head: { height: 40, backgroundColor: '#2aa198', marginBottom: 5 },
   text: { margin: 6, color: 'white' },
   row: { flexDirection: 'row', backgroundColor: '#268bd2', marginBottom: 10 },
   btn: { width: 58, height: 18, backgroundColor: '#268bd2' },

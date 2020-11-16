@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Text } from 'react-native';
+import { Text, ScrollView, View } from 'react-native';
 
 import Form from './../form/Form';
 import Entries from '../../components/entries/Entries';
+import TableC from '../../components/table/Table';
 
 import config from '../../config';
 const { searchForm } = config;
@@ -19,11 +20,14 @@ const Search = ({ entries, deleteOne }) => {
 
   return (
     <>
-      <Text>
-        Search Component
-      </Text>
-      <Form form={searchForm} filterList={filterList} />
-      <Entries entries={search} deleteOne={deleteOne} />
+      <View>
+        <ScrollView>
+          <Form form={searchForm} filterList={filterList} />
+        </ScrollView>
+      </View>
+      <ScrollView>
+        <TableC entries={search} deleteOne={deleteOne} />
+      </ScrollView>
     </>
   );
 
