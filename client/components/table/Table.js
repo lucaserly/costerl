@@ -13,10 +13,13 @@ const TableC = ({ entries, deleteOne }) => {
   ];
 
   const valuesExtractor = (arr) => {
-    console.log('INSIDE VALUESEXTRACTOR-->');
+    console.log('INSIDE VALUES EXTRACTOR-->');
+    console.log('arr-->', arr);
+
 
     const result = [];
     arr.forEach((el) => {
+      console.log('el-->', el);
       let val = [];
       for (let key in el) {
         if (key !== 'flag'
@@ -31,9 +34,13 @@ const TableC = ({ entries, deleteOne }) => {
     return result;
   };
 
+  const alertDelete = (item) => {
+    Alert.alert(`The item has been deleted`);
+  };
 
   const element = (data, id, index) => (
     <TouchableOpacity onPress={() => {
+      alertDelete(data);
       deleteOne(id);
     }
     }>

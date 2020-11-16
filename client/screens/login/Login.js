@@ -26,9 +26,9 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
 
   if (typeof currentUser[currentUser.length - 1] === 'string') {
     if (currentUser[currentUser.length - 1].includes('password')) {
-      Alert.alert('Username or password is incorrect');
+      Alert.alert('Username or password is incorrect 🖕');
     } else {
-      Alert.alert('user already exists');
+      Alert.alert('user already exists ☠️');
     }
     tobeRendered = false;
   } else if (!currentUser.length) {

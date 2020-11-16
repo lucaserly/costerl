@@ -38,8 +38,16 @@ export default {
       });
     },
     emptyFieldCheck: (fields, conditions) => {
-      const result = fields.filter((el) => el.name === conditions.names.first || el.name === conditions.names.second)
-        .some((el) => el.value === '');
+      let result;
+      if (Object.keys(conditions.names).length === 2) {
+        result = fields.filter((el) => el.name === conditions.names.first || el.name === conditions.names.second)
+          .some((el) => el.value === '');
+      } else {
+        result = fields.filter((el) => el.name === conditions.names.first || el.name === conditions.names.second
+          || el.name === conditions.names.third
+        )
+          .some((el) => el.value === '');
+      }
       return result;
     },
     postHelper: (cleaner, arr, api, cb, list, ext, id) => {
@@ -152,7 +160,7 @@ export default {
             second: 'password'
           }
         };
-        errMsg = 'Failed to register. Please try again';
+        errMsg = 'Failed to register. Please try again ☠️';
       } else if (ext === 'login') {
         conditions = {
           names: {
@@ -160,17 +168,18 @@ export default {
             second: 'password'
           }
         };
-        errMsg = 'Failed to login. Please try again';
+        errMsg = 'Failed to login. Please try again 🖕';
         succMsg = 'Logged in. Vai cosi';
       } else {
         conditions = {
           names: {
             first: 'item',
-            second: 'amount'
+            second: 'amount',
+            third: 'category'
           }
         };
         succMsg = 'You successfully submitted your expense';
-        errMsg = 'Please enter both input and amount';
+        errMsg = 'Please enter input, category & amount. Thank you 😀';
       }
 
       const check = emptyFieldCheck(fields, conditions);
