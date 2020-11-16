@@ -26,8 +26,8 @@ export default ButtonApp;
 const styles = StyleSheet.create({
   button: {
     height: 40,
-    backgroundColor: 'teal',
-    borderRadius: 5,
+    backgroundColor: '#2aa198',
+    // borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,

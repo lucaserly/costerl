@@ -58,36 +58,53 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   };
 
   const oneButtonRender = (
-    <>
-      {renderDate ? <View>
-        <DateInput handleDateSub={handleDateSub} />
-      </View> : <></>
-      }
-      <View style={styles.container}>
+    <View style={styles.container}>
+
+      <View style={styles.dateBox}>
+        {renderDate ? <View>
+          <DateInput handleDateSub={handleDateSub} />
+        </View> : <></>
+        }
+      </View>
+
+      <View style={styles.fieldBox}>
         {fields.map((el, i) => {
           return <Field handleChange={handleChange} el={el} key={i} />;
         })
         }
+      </View>
+
+      <View styles={styles.buttonBox}>
         {flagCheck(form) ? <ButtonApp title="Submit" cb={handleSubmit} /> : <></>}
       </View>
-    </>
+
+    </View>
   );
 
   const twoButtonRender = (
-    <>
-      {renderDate ? <View>
-        <DateInput handleDateSub={handleDateSub} />
-      </View> : <></>
-      }
-      <View styles={styles.container}>
+
+    <View>
+
+      <View style={styles.dateBox}>
+        {renderDate ? <View>
+          <DateInput handleDateSub={handleDateSub} />
+        </View> : <></>
+        }
+      </View>
+
+      <View styles={styles.fieldBox}>
         {fields.map((el, i) => {
           return <Field handleChange={handleChange} el={el} key={i} />;
         })
         }
+      </View>
+
+      <View styles={styles.buttonBox}>
         {flagCheck(form) ? <ButtonApp title="Register" cb={handleSubmit} /> : <></>}
         {flagCheck(form) ? <ButtonApp title="Login" cb={handleSubmit} /> : <></>}
       </View>
-    </>
+
+    </View>
 
   );
 
@@ -102,18 +119,19 @@ export default Form;
 
 
 const styles = StyleSheet.create({
-  container: {
-    // padding: 5,
-    // backgroundColor: 'white',
-    // borderRadius: 5
+  dateBox: {
+    backgroundColor: 'white',
+    // borderRadius: 5,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    marginBottom: 10,
   },
-  title: {
-    // fontWeight: 'bold',
-    // paddingBottom: 5
+  fieldBox: {
+    marginBottom: 15,
   },
-  item: {
-    // backgroundColor: 'white',
-    // padding: 1.5,
+  buttonBox: {
+    marginBottom: 15,
+
   },
 });
 

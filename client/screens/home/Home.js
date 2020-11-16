@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
     paddingTop: 10,
+    // fontFamily: 'Iowan'
   },
   text: {
     fontSize: 18,

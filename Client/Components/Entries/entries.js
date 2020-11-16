@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, FlatList, Button } from 'react-native';
-import styles from './styles';
+import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 import Entry from '../entry/Entry';
 
 const Entries = ({ entries, deleteOne }) => {
+
   return (
     <>
       <FlatList
@@ -16,3 +17,12 @@ const Entries = ({ entries, deleteOne }) => {
 };
 
 export default Entries;
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const DateInput = ({ handleDateSub }) => {
@@ -37,25 +37,39 @@ const DateInput = ({ handleDateSub }) => {
 
   return (
     <View>
-      <View>
-        <Button onPress={showDatepicker} title="Show date picker!" />
+      <View style={styles.dateButton}>
+        <Button onPress={showDatepicker}
+          title="Select Date"
+          color="white"
+        />
       </View>
-      <View>
-        <Button onPress={showTimepicker} title="Show time picker!" />
+
+      <View style={styles.dateButton}>
+        <Button onPress={submitDate}
+          title="Inser Date"
+          color="white"
+        />
       </View>
-      <View>
-        <Button onPress={submitDate} title="Inser Date!" />
+
+      <View style={styles.dateButton}>
+        <Button onPress={hideDatePicker}
+          title="Exit"
+          color="white"
+        />
       </View>
-      <View>
-        <Button onPress={hideDatePicker} title="EXIT!" />
-      </View>
+
+      {/* <TouchableOpacity onPress={showDatepicker} />
+      <TouchableOpacity onPress={submitDate} />
+      <TouchableOpacity onPress={hideDatePicker} /> */}
+
+
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
           mode={mode}
           is24Hour={true}
-          display="default"
+          display="spinner"
           onChange={onChange}
         />
       )}
@@ -64,3 +78,19 @@ const DateInput = ({ handleDateSub }) => {
 };
 
 export default DateInput;
+
+const styles = StyleSheet.create({
+  dateButton: {
+    height: 40,
+    backgroundColor: 'teal',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  }
+
+});

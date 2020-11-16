@@ -1,9 +1,11 @@
 import React from 'react';
-import { Text, View, FlatList, Button } from 'react-native';
-import styles from '../../styles';
+import { Text, View, StyleSheet } from 'react-native';
 import ButtonApp from './../button/Button';
 
 const Entry = ({ item, deleteOne }) => {
+  console.log('item-->', item);
+  console.log('item.id-->', item.id);
+
   return (
     <>
       <View style={styles.entryContainer}>
@@ -20,3 +22,7 @@ const Entry = ({ item, deleteOne }) => {
 };
 
 export default Entry;
+
+const styles = StyleSheet.create({
+
+});
