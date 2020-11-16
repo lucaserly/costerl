@@ -26,7 +26,6 @@ function App () {
     useEffect(() => {
       ApiService.profile(end, id)
         .then((data) => {
-          console.log('data INSIDE USE EFFECT-->', data);
           setUserEntries(data[0].entries);
         });
     }, []
@@ -34,11 +33,6 @@ function App () {
   };
 
   const postOne = (arr, ext, id) => {
-    console.log('INSIDE POSTONE')
-    console.log('arr-->', arr);
-    console.log('ext-->', ext);
-    console.log('id-->', id);
-
     return postHelper(dataParser, arr, ApiService.postOne,
       setUserEntries, userEntries, ext, id);
   };
@@ -83,7 +77,7 @@ function App () {
 
           <Stack.Screen name='Ui'>
             {(props) => <Ui {...props} postUser={postUser}
-              userEntries={userEntries} currentUser={currentUser} />}
+              userEntries={userEntries} currentUser={currentUser} getUserData={getUserData} />}
           </Stack.Screen>
 
           <Stack.Screen name='Form'>
@@ -107,6 +101,7 @@ function App () {
           <Stack.Screen name='Analysis'>
             {(props) => <Analysis {...props} userEntries={userEntries} />}
           </Stack.Screen>
+
 
         </Stack.Navigator>
       </NavigationContainer>

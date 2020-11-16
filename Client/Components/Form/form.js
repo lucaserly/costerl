@@ -10,6 +10,21 @@ const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, hand
 
 const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
 
+
+  // console.log('ext-->', ext);
+  // console.log('ext2-->', ext2);
+  // console.log('form-->', form);
+
+  let renderDate;
+  // if ext entries then render date else don't
+  if (ext === 'entries') {
+    renderDate = true;
+  } else {
+    renderDate = false;
+  }
+
+
+
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
     form.map((field) => ({
@@ -50,7 +65,7 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
 
   const oneButtonRender = (
     <>
-      {dateInputFinder(fields) ? <View>
+      {renderDate ? <View>
         <DateInput handleDateSub={handleDateSub} />
       </View> : <></>
       }
@@ -66,7 +81,7 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
 
   const twoButtonRender = (
     <>
-      {dateInputFinder(fields) ? <View>
+      {renderDate ? <View>
         <DateInput handleDateSub={handleDateSub} />
       </View> : <></>
       }
