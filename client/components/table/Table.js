@@ -9,7 +9,7 @@ const TableC = ({ entries, deleteOne }) => {
     'item',
     'category',
     'amount',
-    '🗑'
+    'delete'
   ];
 
   const valuesExtractor = (arr) => {
@@ -36,7 +36,7 @@ const TableC = ({ entries, deleteOne }) => {
     }
     }>
       <View style={styles.btn}>
-        <Text style={styles.btnText}>button</Text>
+        <Text style={styles.btnText}>🗑</Text>
       </View>
     </TouchableOpacity >
   );
@@ -69,9 +69,9 @@ export default TableC;
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-  head: { height: 40, backgroundColor: '#808B97' },
-  text: { margin: 6, fontWeight: 'bold' },
-  row: { flexDirection: 'row', backgroundColor: '#FFF1C1' },
-  btn: { width: 58, height: 18, backgroundColor: '#78B7BB', borderRadius: 2 },
-  btnText: { textAlign: 'center', color: '#fff' }
+  head: { height: 40, backgroundColor: '#2aa198', marginBottom: 5},
+  text: { margin: 6, color: 'white' },
+  row: { flexDirection: 'row', backgroundColor: '#268bd2', marginBottom: 10 },
+  btn: { width: 58, height: 18, backgroundColor: '#268bd2' },
+  btnText: { textAlign: 'center', color: '#fff' },
 });
