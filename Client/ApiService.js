@@ -5,14 +5,8 @@ const getAll = (end) => {
 };
 
 const postOne = (entry, end, id) => {
-  console.log('INSIDE POSTONE-->', );
-  console.log('end-->', end);
-  console.log('id-->', id);
-  console.log('entry-->', entry);
-  console.log('end-->', end);
-  entry.userId = id;
 
-  console.log('entry AFTER-->', entry);
+  entry.userId = id;
 
   return fetcher(end, {
     method: 'POST',
@@ -34,10 +28,6 @@ const getAllUsers = (end) => {
 };
 
 const createUser = (user, end) => {
-  // console.log('INSIDE APISERVICE-->', );
-
-  // console.log('user-->', user);
-  // console.log('end-->', end);
   return fetcher(end, {
     method: 'POST',
     header: {
@@ -48,12 +38,6 @@ const createUser = (user, end) => {
 };
 
 const login = (user, end) => {
-  // console.log('INSIDE APISERVICE-->', );
-
-  // console.log('user-->', user);
-  // console.log('end-->', end);
-
-
   return fetcher(end, {
     method: 'POST',
     header: {
@@ -64,10 +48,6 @@ const login = (user, end) => {
 };
 
 const profile = (end, id) => {
-  // console.log('INSIDE API PROFILE')
-  // console.log('end-->', end);
-  // console.log('id-->', id);
-
   return fetcher(`${end}/${id}`);
 };
 

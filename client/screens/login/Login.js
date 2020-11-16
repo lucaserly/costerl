@@ -8,35 +8,15 @@ const { loginForm } = config;
 
 const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) => {
 
-
-
   const login = 'login';
-  let index;
-  let subIndex;
-
-  console.log('INSIDE SCREEN LOGIN -->');
-  console.log('currentUser-->', currentUser);
-
-  // console.log('currentUser-->', currentUser);
-  // console.log('BEGINNING OF LOGIN-->');
-  let flag;
 
   const afterLogin = () => {
-
     let id;
     if (Array.isArray(currentUser[currentUser.length - 1])) {
       id = currentUser[currentUser.length - 1][0].id;
     } else {
       id = currentUser[currentUser.length - 1].id;
     }
-
-    // i could trigger the fetch for the userdata
-    // index = currentUser.length - 1;
-
-    // console.log('index-->', index);
-    // console.log('subIndex-->', subIndex);
-
-
 
     getUserData('users', Number(id));
     return <>
@@ -68,6 +48,7 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
   };
 
   const beforeLogin = (
+
     <>
       <View>
         <FormC form={loginForm} createUser={createUser} ext='register'
@@ -78,17 +59,23 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
 
   let tobeRendered;
 
+  console.log('currentUser-->', currentUser);
+
+
   if (typeof currentUser[currentUser.length - 1] === 'string') {
-    Alert.alert('user already exists');
+
+    if (currentUser[currentUser.length - 1].includes('password')) {
+      Alert.alert('Username or password is incorrect');
+    } else {
+      Alert.alert('user already exists');
+    }
     tobeRendered = false;
   } else if (!currentUser.length) {
     tobeRendered = false;
   } else {
+    Alert.alert('Successfully registered at CostErl');
     tobeRendered = true;
   }
-
-
-  console.log('currentUser-->', currentUser);
 
   return (
     <>

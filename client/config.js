@@ -1,6 +1,5 @@
 export default {
   inputForm: [
-    // { label: 'userId' },
     { label: 'item' },
     { label: 'category' },
     { label: 'description' },
@@ -38,9 +37,10 @@ export default {
         return field;
       });
     },
-    emptyFieldCheck: (fields) => {
-      return fields.filter((el) => el.name === 'item' || el.name === 'amount')
+    emptyFieldCheck: (fields, conditions) => {
+      const result = fields.filter((el) => el.name === conditions.names.first || el.name === conditions.names.second)
         .some((el) => el.value === '');
+      return result;
     },
     postHelper: (cleaner, arr, api, cb, list, ext, id) => {
       const cleanedObj = cleaner(arr);
@@ -86,7 +86,9 @@ export default {
       const amount = e[4].value;
       const date = e[5].value;
       const res = arr.filter((el) => {
-        if (el.item.includes(item) && el.category.includes(category) && el.description.includes(description) && el.payment.includes(payment) && el.amount.includes(amount) && el.date.includes(date)) {
+        if (el.item.includes(item) && el.category.includes(category)
+          && el.description.includes(description) && el.payment.includes(payment)
+          && el.amount.includes(amount) && el.date.includes(date)) {
           return el;
         }
       });
@@ -118,7 +120,8 @@ export default {
       }
       return false;
     },
-    handleChangeForm: (flagCheck, form, newFields, text, target, fields, setFields, filterList) => {
+    handleChangeForm: (flagCheck, form, newFields, text,
+      target, fields, setFields, filterList) => {
       if (flagCheck(form)) {
         const field = newFields(text, target, fields);
         setFields(field);
@@ -128,29 +131,73 @@ export default {
         filterList(fields, target);
       }
     },
-    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, alert, date, ext, id) => {
+    handleSubmitForm: (emptyFieldCheck, fields, postOne,
+      resetField, setFields, alert,
+      date, ext, id, currentUser) => {
       const findIndexOfDate = fields.findIndex((el, i) => {
         return el.name === 'date';
       });
 
       console.log('ext-->', ext);
-      let alertMsg
+
       // ext -> can be login, register, entries
       // if (ext )
       // you set the altert messages bease on function argument passed from above and dynamically set below the message
+      let errMsg;
+      let succMsg;
+      let conditions;
+      // ext -> can be login, register, entries
+      // if (ext)
+      // you set the altert messages bease on function argument passed from above and dynamically set below the message
 
-      const check = emptyFieldCheck(fields);
-      if (!check) {
-        // console.log('INSIDE CONFIG-->');
-        // console.log('fields-->', fields);
+      // other strtegy ->
+      // if ext is entries handle error
+      // messaging here else handle it in login screen
 
-        if (fields[findIndexOfDate]) fields[findIndexOfDate].value = date;
-        postOne(fields, ext, id);
-        const field = resetField(fields);
-        setFields(field);
-        alert('You successfully submitted your expense');
+      if (ext === 'register') {
+        conditions = {
+          names: {
+            first: 'email',
+            second: 'password'
+          }
+        };
+        errMsg = 'Failed to register. Please try again';
+      } else if (ext === 'login') {
+        conditions = {
+          names: {
+            first: 'email',
+            second: 'password'
+          }
+        };
+        errMsg = 'Failed to login. Please try again';
+        succMsg = 'Logged in. Vai cosi';
       } else {
-        alert('Please enter both input and amount');
+        conditions = {
+          names: {
+            first: 'item',
+            second: 'amount'
+          }
+        };
+        errMsg = 'You successfully submitted your expense';
+        succMsg = 'Please enter both input and amount';
+      }
+
+      const check = emptyFieldCheck(fields, conditions);
+      if (!check) {
+        if (ext === 'register' || ext === 'login') {
+          postOne(fields, ext, id);
+          const field = resetField(fields);
+          setFields(field);
+        } else {
+          if (fields[findIndexOfDate]) fields[findIndexOfDate].value = date;
+          postOne(fields, ext, id);
+          const field = resetField(fields);
+          setFields(field);
+          alert(succMsg);
+        }
+      } else {
+        console.log('INSIDE ALERT ELSE-->');
+        alert(errMsg);
       }
     },
     getLabels: (obj) => {
@@ -162,4 +209,5 @@ export default {
       return res;
     }
   }
-}
+};
+

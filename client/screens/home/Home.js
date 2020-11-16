@@ -12,7 +12,7 @@ const Home = ({ navigation, resetUser }) => {
       }}>
         <Text>Navigate to Login </Text>
       </TouchableOpacity>
-      
+
     </View>
   );
 };

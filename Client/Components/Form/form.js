@@ -8,7 +8,7 @@ import DateInput from '../dateinput/DateInput';
 import config from '../../config';
 const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id, createUser }) => {
+const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
 
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
@@ -19,28 +19,14 @@ const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id, crea
   );
 
   const handleChange = (text, target) => {
-    // console.log('text-->', text);
-    // console.log('target-->', target);
-    handleChangeForm(flagCheck, form, newFields, text, target, fields, setFields, filterList);
+    handleChangeForm(flagCheck, form, newFields, text,
+      target, fields, setFields, filterList);
   };
-
-  // let postOneSubmit,
-  //   let extSubmit, ;
-
-  // if (title === 'login') {
-  //   ext = ext2,
-  //   } else {
-  //   postOneSubmit = postOne,
-  //     extSubmit = ext,
-  //   }
 
   let postOneSubmit;
   let extSubmit;
 
-
   const handleSubmit = (e, title) => {
-    console.log('title-->', title);
-    // console.log('fields-->', fields);
 
     if (title === 'Login') {
       extSubmit = ext2;
@@ -53,13 +39,9 @@ const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id, crea
       postOneSubmit = createUser;
     }
 
-    console.log('postOneSubmit-->', postOneSubmit);
-
     e.preventDefault();
-    // console.log('postOneSubmit-->', postOneSubmit);
-    // console.log('extSubmit-->', extSubmit);
-
-    handleSubmitForm(emptyFieldCheck, fields, postOneSubmit, resetField, setFields, Alert.alert, date, extSubmit, id);
+    handleSubmitForm(emptyFieldCheck, fields, postOneSubmit,
+      resetField, setFields, Alert.alert, date, extSubmit, id, currentUser);
   };
 
   const handleDateSub = (e) => {
@@ -99,14 +81,6 @@ const Form = ({ form, postOne, filterList, ext, login, loginUser, ext2, id, crea
     </>
 
   );
-
-  // if (id) {
-
-  // }
-
-  // console.log('FORMCOMPONENT ZIO PORCO')
-  // console.log('id-->', id);
-  // console.log('login-->', login);
 
   return (
     <>

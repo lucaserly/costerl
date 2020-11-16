@@ -23,8 +23,6 @@ function App () {
 
   const getUserData = (end, id) => {
 
-    console.log('INSIDE APP GET USER DATA-->');
-    console.log('id-->', id);
     useEffect(() => {
       ApiService.profile(end, id)
         .then((data) => {
@@ -36,9 +34,15 @@ function App () {
   };
 
   const postOne = (arr, ext, id) => {
+    console.log('INSIDE POSTONE')
+    console.log('arr-->', arr);
+    console.log('ext-->', ext);
+    console.log('id-->', id);
+
     return postHelper(dataParser, arr, ApiService.postOne,
       setUserEntries, userEntries, ext, id);
   };
+
 
   const createUser = (arr, ext) => {
     return postHelper(dataParser, arr, ApiService.postOne,
@@ -96,7 +100,8 @@ function App () {
           </Stack.Screen>
 
           <Stack.Screen name='Search'>
-            {(props) => <Search {...props} userEntries={userEntries} deleteOne={deleteOne} />}
+            {(props) => <Search {...props} userEntries={userEntries}
+              deleteOne={deleteOne} />}
           </Stack.Screen>
 
           <Stack.Screen name='Analysis'>

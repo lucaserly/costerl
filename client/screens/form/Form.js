@@ -6,10 +6,7 @@ import EntriesC from '../../components/entries/Entries';
 
 const { inputForm } = config;
 
-const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUser }) => {
-
-  console.log('userEntries-->', userEntries);
-
+const Form = ({ postOne, deleteOne, userEntries, currentUser }) => {
 
   let id;
   if (Array.isArray(currentUser[currentUser.length - 1])) {
@@ -21,12 +18,11 @@ const Form = ({ entries, postOne, deleteOne, getUserData, userEntries, currentUs
   return (
     <>
       <View>
-        <FormC form={inputForm} postOne={postOne} ext='entries' id={id} />
+        <FormC form={inputForm} postOne={postOne} ext='entries' id={id} currentUser={currentUser} />
       </View>
 
       <View>
         <EntriesC entries={userEntries.slice(0, 5).map((el) => {
-          console.log('el-->', el);
           el.flag = false;
           return el;
         })} deleteOne={deleteOne} />

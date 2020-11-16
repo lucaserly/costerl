@@ -11,15 +11,11 @@ const Login = ({ form, postUser, currentUser }) => {
   const [password, setPassword] = useState('');
 
   const handleChange = (text, cb) => {
-    // console.log('text-->', text);
     cb(text);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('email-->', email);
-    // console.log('password-->', password);
-
     if (email === '' || password === '') {
       Alert.alert('Please insert in both fields');
     } else {
@@ -27,11 +23,6 @@ const Login = ({ form, postUser, currentUser }) => {
         email,
         password
       });
-      // const res = postUser({})
-      // console.log('currentUser after posting-->', currentUser);
-      // if (typeof currentUser[0] === 'string') {
-      //   Alert.alert('Could not create user');
-      // }
       setEmail('');
       setPassword('');
     }
