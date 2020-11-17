@@ -4,12 +4,12 @@ import SearchC from '../../components/search/Search';
 
 const Search = ({ deleteOne, userEntries }) => {
   return (
-
     <View style={styles.container}>
-      <Text style={styles.text}>SEARCH BAR</Text>
+      <View style={styles.textBox}>
+        <Text style={styles.text}>SEARCH BAR</Text>
+      </View>
       <SearchC entries={userEntries} deleteOne={deleteOne} />
     </View>
-
   );
 };
 
@@ -21,8 +21,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   text: {
-    fontSize: 18,
-    fontWeight: 'bold',
     marginBottom: 10,
+    color: 'white',
+    fontWeight: 'bold'
   },
+  textBox: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d33682',
+  }
 });
