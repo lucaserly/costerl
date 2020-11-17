@@ -5,8 +5,8 @@ import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 const TableC = ({ entries, deleteOne }) => {
 
   const tableHead = [
-    'cat',
-    '% tot',
+    'CAT',
+    '% TOT',
     '>',
     'σ',
   ];
@@ -56,6 +56,11 @@ const TableC = ({ entries, deleteOne }) => {
   // FIRST COLUMN OF TABLE DATA -> below -> { 'Extra', 'Food', 'Sport' }
   const categories = new Set(entries.map((el) => el.category));
   console.log('categories-->', categories);
+  let cat = [];
+  categories.forEach((el) => cat.push(el));
+
+  console.log('cat-->', cat);
+
 
 
 
@@ -64,7 +69,7 @@ const TableC = ({ entries, deleteOne }) => {
   const totalSumOfEntries = entries.reduce((pv, cv) => {
     return Number(cv.amount) + pv;
   }, 0);
-  // console.log('totalSumOfEntries-->', totalSumOfEntries);
+  console.log('totalSumOfEntries-->', totalSumOfEntries);
 
   const categoryValues = {};
 
@@ -76,7 +81,7 @@ const TableC = ({ entries, deleteOne }) => {
     }
   });
 
-  // console.log('categoryValues-->', categoryValues);
+  console.log('categoryValues-->', categoryValues);
 
   // needs to be like this [[76%], [2%], [22%]]
   // THIS IS SECOND COLUMN
@@ -84,31 +89,10 @@ const TableC = ({ entries, deleteOne }) => {
 
   for (let key in categoryValues) {
     const res = Math.round((categoryValues[key] / totalSumOfEntries) * 100);
-    catPercentage.push([`${res}%`]);
+    catPercentage.push([`${res} %`]);
   }
 
-  // console.log('catPercentage-->', catPercentage);
-
-
-  // THIRD COLUMN SHOWING LARGEST ITEM
-
-  const foodItems = itemExtractor(entries, 'category', 'Food');
-  // console.log('foodItems-->', foodItems);
-  const sportItems = itemExtractor(entries, 'category', 'sport');
-  const extraItems = itemExtractor(entries, 'category', 'extra');
-
-  const allItems = [];
-
-  categories.forEach((el) => {
-    console.log('el-->', el);
-    console.log('itemExtractorentries, category, el-->', itemExtractor(entries, 'category', el));
-    allItems.push({ [el]: itemExtractor(entries, 'category', el) });
-  });
-
-
-  console.log('allItems-->', allItems);
-
-
+  console.log('catPercentage-->', catPercentage);
 
   const largestEntryExtractor = (arr, filter) => {
     let largestEntryVal = 0;
@@ -120,64 +104,163 @@ const TableC = ({ entries, deleteOne }) => {
       }
     });
     const res = Math.round((largestEntryVal / categoryValues[filter]) * 100);
-    return `${res}%`;
+    return `${res} %`;
   };
 
-  // console.log('largestEntryExtractor(foodItems)-->', largestEntryExtractor(foodItems, 'Food'));
-  const largestFoodItem = largestEntryExtractor(foodItems, 'Food');
-  const largestSportItem = largestEntryExtractor(foodItems, 'Sport');
-  const largesExtraItem = largestEntryExtractor(foodItems, 'Extra');
+
+  // THIRD COLUMN SHOWING LARGEST ITEM
+  const largestPecentages = [];
+  console.log('BEFORE CATFOREACH-->');
+  console.log('cat-->', cat);
+
+  cat.forEach((el) => {
+    const item = itemExtractor(entries, 'category', el);
+    console.log('item-->', item);
+    const res = largestEntryExtractor(item, el);
+    console.log('res-->', res);
+    largestPecentages.push([res]);
+  });
+
+  console.log('largestPecentages-->', largestPecentages);
+
+
+
+
+  // const extraItems = itemExtractor(entries, 'category', 'Extra');
+  // const foodItems = itemExtractor(entries, 'category', 'Food');
+  // const sportItems = itemExtractor(entries, 'category', 'Sport');
+
+  const allItems = [];
+
+  categories.forEach((el) => {
+    allItems.push({ [el]: itemExtractor(entries, 'category', el) });
+  });
+
+
+
+  // const largesExtraItem = largestEntryExtractor(extraItems, 'Extra');
+  // const largestFoodItem = largestEntryExtractor(foodItems, 'Food');
+  // const largestSportItem = largestEntryExtractor(sportItems, 'Sport');
 
   // console.log('largestFoodItem-->', largestFoodItem);
   // console.log('largestSportItem-->', largestSportItem);
   // console.log('largesExtraItem-->', largesExtraItem);
 
-  const largestPecentages = [];
+  // const largestPecentages = [];
 
-  largestPecentages.push([largestFoodItem]);
-  largestPecentages.push([largestSportItem]);
-  largestPecentages.push([largesExtraItem]);
+  // largestPecentages.push([largesExtraItem]);
+  // largestPecentages.push([largestFoodItem]);
+  // largestPecentages.push([largestSportItem]);
   // THIS IS THIRD COLUMN
   console.log('largestPecentages-->', largestPecentages);
 
   // 4TH COLUMNS IS STANDARD DEVIATION
-    // INPUT IS ALLITMES
-    // steps
-    // get count of observations per category
-    // sum all the observations amount of each category
-    // calculate the mean
-    // caluclate the variance
-        // for each observation of the category substract the mean and square it
-          // sum the above line's result of each observation
-          // divivde the total by the count
-          // square root of the above line
+  // INPUT IS ALLITMES
+  // steps
+  // get count of observations per category
 
-  const alertDelete = (item) => {
-    Alert.alert(`The item has been deleted`);
-  };
+  const standardDeviations = [];
 
-  const element = (data, id, index) => (
-    <TouchableOpacity onPress={() => {
-      alertDelete(data);
-      deleteOne(id);
-    }
-    }>
-      <View style={styles.btn}>
-        <Text style={styles.btnText}>🗑</Text>
-      </View>
-    </TouchableOpacity >
-  );
+  allItems.forEach((el) => {
+    const key = Object.keys(el);
+    let counter = 0;
+    let sum = 0;
+    let mean = 0;
+    el[key].forEach((el) => {
+      counter++;
+      sum += Number(el.amount);
+    });
+    mean = sum / counter;
+    let sumOfVariance = 0;
+    el[key].forEach((el) => {
+      sumOfVariance += Math.pow((Number(el.amount) - mean), 2);
+    });
+    let variance = sumOfVariance / counter;
+    let stdDev = Math.sqrt(variance);
+    standardDeviations.push([`${stdDev} σ`]);
+  });
+  // sum all the observations amount of each category
+  // calculate the mean
+  // caluclate the variance
+  // for each observation of the category substract the mean and square it
+  // sum the above line's result of each observation
+  // divivde the total by the count
+  // square root of the above line
+
+  // THIS IS FOURTH COLUMN
+  console.log('DATA TO RENDER-->');
+  console.log('catPercentage-->', catPercentage);
+  console.log('largestPecentages-->', largestPecentages);
+
+  console.log('standardDeviations-->', standardDeviations);
+
+  const data = [];
+
+
+
+
+  data.push(catPercentage.flat());
+  data.push(largestPecentages.flat());
+  data.push(standardDeviations.flat());
+
+  console.log('data BEFORE CAT PUSH-->', data);
+
+
+  let final = [];
+
+  const flatCatP = catPercentage.flat();
+  const flatLarP = largestPecentages.flat();
+  const flatStd = standardDeviations.flat();
+
+  for (let i = 0; i < cat.length; i++) {
+    final.push([cat[i], flatCatP[i], flatLarP[i], flatStd[i]]);
+  }
+
+  // for (let i = 0; i < cat.length; i++) {
+  //   for (let a = 0; a < data.length; a++) {
+  //     data[i].unshift(cat[a]);
+  //   }
+  // }
+
+  for (let i = 0; i < data.length; i++) {
+    data[i].unshift(cat[i]);
+  }
+
+  console.log('data AFTER CAT PUSH-->', data);
+  console.log('cat-->', cat);
+
+
+
+  //   catPercentage
+  // largestPecentages
+  // standardDeviations
+
+
+  // const alertDelete = (item) => {
+  //   Alert.alert(`The item has been deleted`);
+  // };
+
+  // const element = (data, id, index) => (
+  //   <TouchableOpacity onPress={() => {
+  //     alertDelete(data);
+  //     deleteOne(id);
+  //   }
+  //   }>
+  //     <View style={styles.btn}>
+  //       <Text style={styles.btnText}>🗑</Text>
+  //     </View>
+  //   </TouchableOpacity >
+  // );
 
   const tableRender = () => {
     return <Table borderStyle={{ borderColor: 'transparent' }}>
       <Row data={tableHead} style={styles.head} textStyle={styles.text} />
       {
-        valuesExtractor(entries).map((rowData, index) => (
+        final.map((rowData, index) => (
           <TableWrapper key={index} style={styles.row}>
             {
               rowData.map((cellData, cellIndex, cellRow, rowIndex) => (
-                <Cell key={cellIndex} data={cellIndex === 4 ? element(cellData,
-                  cellRow[0]) : cellData} textStyle={styles.text} />
+                <Cell key={cellIndex} data={cellData} textStyle={styles.text} />
               ))
             }
           </TableWrapper>
@@ -227,7 +310,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   textTitle: {
-    marginBottom: 10,
+    marginBottom: 20,
     color: 'white',
     fontWeight: 'bold'
   },
@@ -237,7 +320,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'grey',
-    marginBottom: 10,
+    marginBottom: 18,
   },
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
   head: { height: 40, backgroundColor: '#2aa198', marginBottom: 5 },
