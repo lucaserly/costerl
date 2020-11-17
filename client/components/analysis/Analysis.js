@@ -15,16 +15,52 @@ const screenWidth = Dimensions.get("window").width;
 
 import colors from './../../colors';
 
-const chartConfig = {
-  backgroundGradientFrom: "#1E2923",
-  backgroundGradientFromOpacity: 0,
-  backgroundGradientTo: "#08130D",
-  backgroundGradientToOpacity: 0.5,
-  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-  strokeWidth: 2, // optional, default 3
-  barPercentage: 0.5,
-  useShadowColorFromDataset: false // optional
+
+const chartConfigs = {
+  pieChart: {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false // optional
+  },
+  lineChart: {
+    backgroundColor: "#e26a00",
+    backgroundGradientFrom: "#cb4b16",
+    backgroundGradientTo: "#cb4b16",
+    backgroundGradientToOpacity: 0.8,
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    // labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false // optional
+  }
 };
+const chartConfig = {
+  // backgroundColor: "#e26a00",
+  // backgroundGradientFrom: "#cb4b16",
+  // backgroundGradientTo: "#cb4b16",
+  // backgroundGradientToOpacity: 0.8,
+  // color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+  // // labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+  // strokeWidth: 2, // optional, default 3
+  // barPercentage: 0.5,
+  // useShadowColorFromDataset: false // optional
+};
+
+// const chartConfig = {
+//   backgroundGradientFrom: "#1E2923",
+//   backgroundGradientFromOpacity: 0,
+//   backgroundGradientTo: "#08130D",
+//   backgroundGradientToOpacity: 0.5,
+//   color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+//   strokeWidth: 2, // optional, default 3
+//   barPercentage: 0.5,
+//   useShadowColorFromDataset: false // optional
+// };
 
 // const chartTypes = [
 //   'none',
@@ -336,18 +372,27 @@ const Analysis = ({ entries }) => {
       } else {
         dataGraph = dataGraphCreator(data, firstFil);
       }
+      console.log('screenWidth-->', screenWidth);
 
       return (
-        <PieChart
-          data={dataGraph}
-          width={screenWidth}
-          height={220}
-          chartConfig={chartConfig}
-          accessor="population"
-          backgroundColor="transparent"
-          paddingLeft="15"
-          absolute
-        />
+        <View style={styles.pieChart}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>PIE CHART</Text>
+          </View>
+
+          <View>
+            <PieChart
+              data={dataGraph}
+              width={screenWidth - 30}
+              height={220}
+              chartConfig={chartConfig}
+              accessor="population"
+              backgroundColor="transparent"
+              paddingLeft="15"
+              absolute
+            />
+          </View>
+        </View>
       );
     },
     lineChart: (...args) => {
@@ -359,13 +404,23 @@ const Analysis = ({ entries }) => {
       const secFil = args[5];
       const thirFil = args[6];
       const dataGraph = dataGraphCreator(data, firstFil, secFil, thirFil);
+
       return (
-        <LineChart
-          data={dataGraph}
-          width={screenWidth}
-          height={220}
-          chartConfig={chartConfig}
-        />
+
+        <View style={styles.pieChart}>
+          <View style={styles.textBox}>
+            <Text style={styles.text}>PIE CHART</Text>
+          </View>
+
+          {/* <View> */}
+          <LineChart
+            data={dataGraph}
+            width={screenWidth - 20}
+            height={220}
+            chartConfig={chartConfig}
+          />
+          {/* </View> */}
+        </View>
       );
     }
   };
@@ -377,8 +432,6 @@ const Analysis = ({ entries }) => {
     <>
       <ScrollView>
         <View style={styles.container}>
-
-
 
           <View style={styles.textBox}>
             <Text style={styles.text}>Selected Item</Text>
@@ -447,7 +500,8 @@ const Analysis = ({ entries }) => {
           <Button
             onPress={(e) => {
               setAnalysis(true);
-              handleOutput(entries, firstFilter, secondFilter, thirdFilter, selectedAnalysys, selectedChart);
+              handleOutput(entries, firstFilter, secondFilter,
+                thirdFilter, selectedAnalysys, selectedChart);
             }}
             title='Analyse'
           />
@@ -461,10 +515,14 @@ const Analysis = ({ entries }) => {
     if (!analysis) {
       renderEverything = pickers;
     } else {
-      renderEverything = renderAnalysisResult(firstFilter, secondFilter, thirdFilter, selectedAnalysys, result);
+      renderEverything = renderAnalysisResult(firstFilter,
+        secondFilter, thirdFilter,
+        selectedAnalysys, result);
     }
   } else {
-    renderEverything = chartFuncs[selectedChart](entries, dataGraphCreators[selectedChart], screenWidth, chartConfig, firstFilter, secondFilter, thirdFilter);
+    renderEverything = chartFuncs[selectedChart](entries,
+      dataGraphCreators[selectedChart], screenWidth,
+      chartConfigs[selectedChart], firstFilter, secondFilter, thirdFilter);
   }
 
   return (
@@ -492,4 +550,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold'
   },
+  pieChart: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  }
 });
