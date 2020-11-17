@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView, Alert, StyleSheet } from 'react-native';
+import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import {
   LineChart,
   BarChart,
@@ -497,14 +497,17 @@ const Analysis = ({ entries }) => {
             }
           </Picker>
 
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={(e) => {
               setAnalysis(true);
               handleOutput(entries, firstFilter, secondFilter,
                 thirdFilter, selectedAnalysys, selectedChart);
             }}
             title='Analyse'
-          />
+          >
+            <Text style={styles.buttonText}>Analyse</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>
@@ -553,5 +556,18 @@ const styles = StyleSheet.create({
   pieChart: {
     paddingHorizontal: 10,
     paddingTop: 10,
+  },
+  button: {
+    height: 40,
+    backgroundColor: '#cb4b16',
+    // borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 5,
+
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
   }
 });
