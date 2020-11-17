@@ -11,23 +11,6 @@ const TableC = ({ entries, deleteOne }) => {
     'σ',
   ];
 
-  const valuesExtractor = (arr) => {
-    const result = [];
-    arr.forEach((el) => {
-      let val = [];
-      for (let key in el) {
-        if (key !== 'flag'
-          && key !== 'currency' && key !== 'createdAt' && key !== 'updatedAt'
-          && key !== 'userId' && key !== 'flag' && key !== 'payment' && key !== 'date' && key !== 'description') {
-          val.push(el[key]);
-        }
-      }
-      val.push('');
-      result.push(val);
-    });
-    return result;
-  };
-
   const itemExtractor = (arr, filter, subfilter) => {
     return arr.filter((el) => {
       if (el[filter] === subfilter) {
@@ -36,11 +19,6 @@ const TableC = ({ entries, deleteOne }) => {
     }
     );
   };
-
-
-  // const items = new Set(entries.map((el) => el.item));
-
-
 
   // TODO
   /*
@@ -52,24 +30,19 @@ const TableC = ({ entries, deleteOne }) => {
     ]
   */
 
-
   // FIRST COLUMN OF TABLE DATA -> below -> { 'Extra', 'Food', 'Sport' }
   const categories = new Set(entries.map((el) => el.category));
-  console.log('categories-->', categories);
+  // console.log('categories-->', categories);
   let cat = [];
   categories.forEach((el) => cat.push(el));
 
-  console.log('cat-->', cat);
-
-
-
-
+  // console.log('cat-->', cat);
 
   // SECOND COLUMN OF TABLE DATA -> for each item in categoryvalues divide by totalsumofentries
   const totalSumOfEntries = entries.reduce((pv, cv) => {
     return Number(cv.amount) + pv;
   }, 0);
-  console.log('totalSumOfEntries-->', totalSumOfEntries);
+  // console.log('totalSumOfEntries-->', totalSumOfEntries);
 
   const categoryValues = {};
 
@@ -81,7 +54,7 @@ const TableC = ({ entries, deleteOne }) => {
     }
   });
 
-  console.log('categoryValues-->', categoryValues);
+  // console.log('categoryValues-->', categoryValues);
 
   // needs to be like this [[76%], [2%], [22%]]
   // THIS IS SECOND COLUMN
@@ -92,7 +65,7 @@ const TableC = ({ entries, deleteOne }) => {
     catPercentage.push([`${res} %`]);
   }
 
-  console.log('catPercentage-->', catPercentage);
+  // console.log('catPercentage-->', catPercentage);
 
   const largestEntryExtractor = (arr, filter) => {
     let largestEntryVal = 0;
@@ -110,25 +83,18 @@ const TableC = ({ entries, deleteOne }) => {
 
   // THIRD COLUMN SHOWING LARGEST ITEM
   const largestPecentages = [];
-  console.log('BEFORE CATFOREACH-->');
-  console.log('cat-->', cat);
+  // console.log('BEFORE CATFOREACH-->');
+  // console.log('cat-->', cat);
 
   cat.forEach((el) => {
     const item = itemExtractor(entries, 'category', el);
-    console.log('item-->', item);
+    // console.log('item-->', item);
     const res = largestEntryExtractor(item, el);
-    console.log('res-->', res);
+    // console.log('res-->', res);
     largestPecentages.push([res]);
   });
 
-  console.log('largestPecentages-->', largestPecentages);
-
-
-
-
-  // const extraItems = itemExtractor(entries, 'category', 'Extra');
-  // const foodItems = itemExtractor(entries, 'category', 'Food');
-  // const sportItems = itemExtractor(entries, 'category', 'Sport');
+  // console.log('largestPecentages-->', largestPecentages);
 
   const allItems = [];
 
@@ -136,23 +102,8 @@ const TableC = ({ entries, deleteOne }) => {
     allItems.push({ [el]: itemExtractor(entries, 'category', el) });
   });
 
-
-
-  // const largesExtraItem = largestEntryExtractor(extraItems, 'Extra');
-  // const largestFoodItem = largestEntryExtractor(foodItems, 'Food');
-  // const largestSportItem = largestEntryExtractor(sportItems, 'Sport');
-
-  // console.log('largestFoodItem-->', largestFoodItem);
-  // console.log('largestSportItem-->', largestSportItem);
-  // console.log('largesExtraItem-->', largesExtraItem);
-
-  // const largestPecentages = [];
-
-  // largestPecentages.push([largesExtraItem]);
-  // largestPecentages.push([largestFoodItem]);
-  // largestPecentages.push([largestSportItem]);
   // THIS IS THIRD COLUMN
-  console.log('largestPecentages-->', largestPecentages);
+  // console.log('largestPecentages-->', largestPecentages);
 
   // 4TH COLUMNS IS STANDARD DEVIATION
   // INPUT IS ALLITMES
@@ -188,23 +139,11 @@ const TableC = ({ entries, deleteOne }) => {
   // square root of the above line
 
   // THIS IS FOURTH COLUMN
-  console.log('DATA TO RENDER-->');
-  console.log('catPercentage-->', catPercentage);
-  console.log('largestPecentages-->', largestPecentages);
-
-  console.log('standardDeviations-->', standardDeviations);
-
-  const data = [];
-
-
-
-
-  data.push(catPercentage.flat());
-  data.push(largestPecentages.flat());
-  data.push(standardDeviations.flat());
-
-  console.log('data BEFORE CAT PUSH-->', data);
-
+  // console.log('DATA TO RENDER-->');
+  // console.log('catPercentage-->', catPercentage);
+  // console.log('largestPecentages-->', largestPecentages);
+  //
+  // console.log('standardDeviations-->', standardDeviations);
 
   let final = [];
 
@@ -215,42 +154,6 @@ const TableC = ({ entries, deleteOne }) => {
   for (let i = 0; i < cat.length; i++) {
     final.push([cat[i], flatCatP[i], flatLarP[i], flatStd[i]]);
   }
-
-  // for (let i = 0; i < cat.length; i++) {
-  //   for (let a = 0; a < data.length; a++) {
-  //     data[i].unshift(cat[a]);
-  //   }
-  // }
-
-  for (let i = 0; i < data.length; i++) {
-    data[i].unshift(cat[i]);
-  }
-
-  console.log('data AFTER CAT PUSH-->', data);
-  console.log('cat-->', cat);
-
-
-
-  //   catPercentage
-  // largestPecentages
-  // standardDeviations
-
-
-  // const alertDelete = (item) => {
-  //   Alert.alert(`The item has been deleted`);
-  // };
-
-  // const element = (data, id, index) => (
-  //   <TouchableOpacity onPress={() => {
-  //     alertDelete(data);
-  //     deleteOne(id);
-  //   }
-  //   }>
-  //     <View style={styles.btn}>
-  //       <Text style={styles.btnText}>🗑</Text>
-  //     </View>
-  //   </TouchableOpacity >
-  // );
 
   const tableRender = () => {
     return <Table borderStyle={{ borderColor: 'transparent' }}>
@@ -278,10 +181,7 @@ const TableC = ({ entries, deleteOne }) => {
   );
 };
 
-
-
 const Overview = ({ userEntries, deleteOne }) => {
-
 
   // console.log('userEntries-->', userEntries);
 

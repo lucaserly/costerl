@@ -37,7 +37,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Form');
         }}>
-          <Text style={styles.uiText}>Navigate to Form </Text>
+          <Text style={styles.uiText}>Form</Text>
         </TouchableOpacity>
       </View>
 
@@ -45,7 +45,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Entries');
         }}>
-          <Text style={styles.uiText}>Navigate to Entries </Text>
+          <Text style={styles.uiText}>Entries</Text>
         </TouchableOpacity>
       </View>
 
@@ -54,7 +54,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Search');
         }}>
-          <Text style={styles.uiText}>Navigate to Search Bar </Text>
+          <Text style={styles.uiText}>Search Bar</Text>
         </TouchableOpacity>
       </View>
 
@@ -62,7 +62,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Analysis');
         }}>
-          <Text style={styles.uiText}>Navigate to Analysis of Entries </Text>
+          <Text style={styles.uiText}>Analysis of Entriesx</Text>
         </TouchableOpacity>
       </View>
 
@@ -71,7 +71,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Overview');
         }}>
-          <Text style={styles.uiText}>Navigate to Overview </Text>
+          <Text style={styles.uiText}>Overview </Text>
         </TouchableOpacity>
       </View>
 
