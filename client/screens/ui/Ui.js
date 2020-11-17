@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Alert, Button, Text, TextInput, Keyboard, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import Analysis from './../analysis/Analysis';
+import Form from './../form/Form';
+
+
+
+const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
+  const Tab = createBottomTabNavigator();
   const [alertMsg, setAlertMsg] = useState('');
 
   let id;
@@ -11,6 +18,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
   } else {
     id = currentUser[currentUser.length - 1].id;
   }
+
   getUserData('users', Number(id));
 
   useEffect(() => {
@@ -57,6 +65,18 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
           <Text style={styles.uiText}>Navigate to Analysis of Entries </Text>
         </TouchableOpacity>
       </View>
+
+
+      <View style={[styles.uiBox, styles.grey]}>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('Overview');
+        }}>
+          <Text style={styles.uiText}>Navigate to Overview </Text>
+        </TouchableOpacity>
+      </View>
+
+
+
     </>
   );
 };
@@ -86,4 +106,7 @@ const styles = StyleSheet.create({
   orange: {
     backgroundColor: '#cb4b16',
   },
+  grey: {
+    backgroundColor: 'grey'
+  }
 });

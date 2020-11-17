@@ -13,13 +13,8 @@ const TableC = ({ entries, deleteOne }) => {
   ];
 
   const valuesExtractor = (arr) => {
-    console.log('INSIDE VALUES EXTRACTOR-->');
-    console.log('arr-->', arr);
-
-
     const result = [];
     arr.forEach((el) => {
-      console.log('el-->', el);
       let val = [];
       for (let key in el) {
         if (key !== 'flag'

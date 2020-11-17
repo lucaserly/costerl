@@ -10,6 +10,8 @@ import Entries from './screens/entries/Entries';
 import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
 import Ui from './screens/ui/Ui';
+import Overview from './screens/overview/Overview';
+import Tabs from './screens/tabs/Tabs';
 
 import config from './config';
 
@@ -36,7 +38,6 @@ function App () {
     return postHelper(dataParser, arr, ApiService.postOne,
       setUserEntries, userEntries, ext, id);
   };
-
 
   const createUser = (arr, ext) => {
     return postHelper(dataParser, arr, ApiService.postOne,
@@ -100,6 +101,10 @@ function App () {
 
           <Stack.Screen name='Analysis'>
             {(props) => <Analysis {...props} userEntries={userEntries} />}
+          </Stack.Screen>
+
+          <Stack.Screen name='Overview'>
+            {(props) => <Overview {...props} userEntries={userEntries} deleteOne={deleteOne} />}
           </Stack.Screen>
 
 

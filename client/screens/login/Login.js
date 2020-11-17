@@ -45,12 +45,7 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
         {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} /> : loginRender()}
       </View>
     </View>
-    // <>
-    //   <Text>
-    //     LOGIN
-    //   </Text>
-    //   {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} /> : loginRender()}
-    // </>
+
   );
 };
 

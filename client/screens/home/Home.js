@@ -1,23 +1,35 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { createStackNavigator, NavigationContainer } from '@react-navigation/stack';
+
+import Tabs from './../tabs/Tabs';
+const Stack = createStackNavigator();
 
 const Home = ({ navigation, resetUser }) => {
   return (
+    <>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <Text style={styles.text}>WELCOME TO COSTERL APP</Text>
 
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Text style={styles.text}>WELCOME TO COSTERL APP</Text>
-
-        <View style={styles.loginBox}>
-          <TouchableOpacity onPress={() => {
-            resetUser();
-            navigation.navigate('Login');
-          }}>
-            <Text style={styles.loginText}>Navigate to Login</Text>
-          </TouchableOpacity>
+          <View style={styles.loginBox}>
+            <TouchableOpacity onPress={() => {
+              resetUser();
+              navigation.navigate('Login');
+            }}>
+              <Text style={styles.loginText}>Navigate to Login</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+
+        {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
+      </SafeAreaView>
+      {/* <View>
+        <NavigationContainer>
+          <Tabs />
+        </NavigationContainer>
+      </View> */}
+    </>
 
   );
 };
@@ -48,16 +60,3 @@ const styles = StyleSheet.create({
   }
 
 });;
-
-
-
-// ANDRE'S SUGGESTION
-// make home screen be app.js
-  // have user state there
-    // if user populated then
-
-    // after login function make it home screen
-
-    // pass in login form setcurrent user
-    // afterlogin function should be the home screen
-    //

@@ -36,7 +36,7 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   let extSubmit;
 
   const handleSubmit = (e, title) => {
-
+    e.preventDefault();
     if (title === 'Login') {
       extSubmit = ext2;
       postOneSubmit = createUser;
@@ -47,8 +47,6 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
       extSubmit = ext;
       postOneSubmit = createUser;
     }
-
-    e.preventDefault();
     handleSubmitForm(emptyFieldCheck, fields, postOneSubmit,
       resetField, setFields, Alert.alert, date, extSubmit, id, currentUser);
   };
