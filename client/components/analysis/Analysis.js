@@ -230,7 +230,7 @@ const Analysis = ({ entries }) => {
     const thirdFil = args[2];
     const selAnalysis = args[3];
     const result = typeof args[4] === string ? resCleaner(result) : args[4];
-    const stringHeader = `The result of the ${selAnalysis} analysis of ${secFil}`;
+    const stringHeader = `The result of the ${selAnalysis} of ${secFil}`;
     const string = ` - ${thirdFil} is: ${result} €`;
     const chart = (<View>
       {/* <Text>Bezier Line Chart</Text> */}
