@@ -230,16 +230,27 @@ const Analysis = ({ entries }) => {
     const thirdFil = args[2];
     const selAnalysis = args[3];
     const result = typeof args[4] === string ? resCleaner(result) : args[4];
-    const string = `The result of the ${selAnalysis} of ${secFil} - ${thirdFil} is: ${result}`;
-
+    const stringHeader = `The result of the ${selAnalysis} analysis of ${secFil}`;
+    const string = ` - ${thirdFil} is: ${result} €`;
     const chart = (<View>
       {/* <Text>Bezier Line Chart</Text> */}
       <Text>{string}</Text>
 
     </View>
     );
+
     return <>
-      { selAnalysis === 'sum' ? <Text>{string}</Text> : chart}
+      { selAnalysis === 'sum' || 'commonsize' ? <>
+        <View style={styles.container}>
+          <View style={styles.textAnalysisBox}>
+            <Text style={styles.textAnalysis}>{stringHeader}</Text>
+          </View>
+          <View style={styles.textAnalysisBox}>
+            <Text style={styles.textAnalysis}>{string}</Text>
+          </View>
+        </View>
+      </>
+        : chart}
     </>;
   };
 
@@ -569,5 +580,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  textAnalysisBox: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+    backgroundColor: '#cb4b16',
+  },
+  textAnalysis: {
+    color: 'black',
+    fontWeight: 'bold'
   }
 });

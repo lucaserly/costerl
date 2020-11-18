@@ -62,7 +62,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         <TouchableOpacity onPress={() => {
           navigation.navigate('Analysis');
         }}>
-          <Text style={styles.uiText}>Analysis of Entriesx</Text>
+          <Text style={styles.uiText}>Analysis of Entries</Text>
         </TouchableOpacity>
       </View>
 

@@ -1,5 +1,8 @@
 const colors = {
   1: [
+
+  ],
+  2: [
     "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177", "#0d5ac1",
     "#f205e6", "#1c0365", "#14a9ad", "#4ca2f9", "#a4e43f", "#d298e2", "#6119d0",
     "#d2737d", "#c0a43c", "#f2510e", "#651be6", "#79806e", "#61da5e", "#cd2f00",
@@ -60,5 +63,12 @@ const colors = {
     '#C0C0C0'
   ]
 };
+
+while (colors[1].length < 10000) {
+  do {
+    var color = Math.floor((Math.random() * 10000000) + 1);
+  } while (colors[1].indexOf(color) >= 0);
+  colors[1].push("#" + ("000000" + color.toString(16)).slice(-6));
+}
 
 export default colors;

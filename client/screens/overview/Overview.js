@@ -127,7 +127,7 @@ const TableC = ({ entries, deleteOne }) => {
       sumOfVariance += Math.pow((Number(el.amount) - mean), 2);
     });
     let variance = sumOfVariance / counter;
-    let stdDev = Math.sqrt(variance);
+    let stdDev = Math.round(Math.sqrt(variance));
     standardDeviations.push([`${stdDev} σ`]);
   });
   // sum all the observations amount of each category
