@@ -9,17 +9,23 @@ import Ui from '../../screens/ui/Ui';
 const { loginForm } = config;
 
 const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) => {
-
   const login = 'login';
 
   const loginRender = () => {
-
-    return <>
-      <View>
-        <FormC form={loginForm} createUser={createUser} ext='register'
-          login={login} loginUser={loginUser} ext2='login' />
-      </View>
-    </>;
+    return (
+      <>
+        <View>
+          <FormC
+            form={loginForm}
+            createUser={createUser}
+            ext="register"
+            login={login}
+            loginUser={loginUser}
+            ext2="login"
+          />
+        </View>
+      </>
+    );
   };
 
   let tobeRendered;
@@ -38,14 +44,16 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
   }
 
   return (
-
     <View style={styles.container}>
       <Text style={styles.text}>LOGIN</Text>
       <View style={styles.loginFormBox}>
-        {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} /> : loginRender()}
+        {tobeRendered ? (
+          <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} />
+        ) : (
+          loginRender()
+        )}
       </View>
     </View>
-
   );
 };
 
@@ -59,10 +67,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  loginFormBox: {
-
-  }
-
+  loginFormBox: {},
 });
 
 export default Login;

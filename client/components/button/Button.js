@@ -3,13 +3,16 @@ import { Text, View, Button, Keyboard, TouchableOpacity, StyleSheet } from 'reac
 
 const ButtonApp = ({ id, cb, title }) => {
   return (
-
     <TouchableOpacity
       style={styles.button}
       onPress={(e) => {
         if (title === 'Submit' || title === 'Register' || title === 'Login') {
-          { cb(e, title); }
-          { Keyboard.dismiss(); }
+          {
+            cb(e, title);
+          }
+          {
+            Keyboard.dismiss();
+          }
         } else {
           cb(id);
         }
@@ -31,11 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,
-
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-  }
-
+  },
 });

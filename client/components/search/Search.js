@@ -10,7 +10,6 @@ const { searchForm } = config;
 const { filterHelper, nullConverter } = config.helperFunctions;
 
 const Search = ({ entries, deleteOne }) => {
-
   const [search, setSearch] = useState({});
 
   const filterList = (e, target) => {
@@ -30,7 +29,6 @@ const Search = ({ entries, deleteOne }) => {
       </ScrollView>
     </>
   );
-
 };
 
 export default Search;

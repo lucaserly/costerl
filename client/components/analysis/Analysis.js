@@ -1,43 +1,53 @@
 import React, { useState } from 'react';
-import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  View,
+  FlatList,
+  Button,
+  Picker,
+  Dimensions,
+  ScrollView,
+  Alert,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import {
   LineChart,
   BarChart,
   PieChart,
   ProgressChart,
   ContributionGraph,
-  StackedBarChart
+  StackedBarChart,
 } from 'react-native-chart-kit';
 
 import config from './../../config';
 const { getLabels } = config.helperFunctions;
-const screenWidth = Dimensions.get("window").width;
+const screenWidth = Dimensions.get('window').width;
 
 import colors from './../../colors';
 
-
 const chartConfigs = {
   pieChart: {
-    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFrom: '#1E2923',
     backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "#08130D",
+    backgroundGradientTo: '#08130D',
     backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
-    useShadowColorFromDataset: false // optional
+    useShadowColorFromDataset: false, // optional
   },
   lineChart: {
-    backgroundColor: "#e26a00",
-    backgroundGradientFrom: "#cb4b16",
-    backgroundGradientTo: "#cb4b16",
+    backgroundColor: '#e26a00',
+    backgroundGradientFrom: '#cb4b16',
+    backgroundGradientTo: '#cb4b16',
     backgroundGradientToOpacity: 0.8,
     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
     // labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
-    useShadowColorFromDataset: false // optional
-  }
+    useShadowColorFromDataset: false, // optional
+  },
 };
 const chartConfig = {
   // backgroundColor: "#e26a00",
@@ -97,7 +107,6 @@ const Analysis = ({ entries }) => {
     const index = Math.floor(Math.random() * Math.floor(colors[1].length));
 
     return index;
-
   };
 
   const months = {
@@ -110,9 +119,9 @@ const Analysis = ({ entries }) => {
     '07': 'July',
     '08': 'August',
     '09': 'September',
-    '10': 'October',
-    '11': 'November',
-    '12': 'December'
+    10: 'October',
+    11: 'November',
+    12: 'December',
   };
 
   const dataGraphCreators = {
@@ -140,8 +149,8 @@ const Analysis = ({ entries }) => {
           name: `% ${arr[i][key]}`,
           population: percentageConverter(arr[i].amount, tot),
           color: colors[1][randomColorIndexGenerator()],
-          legendFontColor: "#7F7F7F",
-          legendFontSize: 15
+          legendFontColor: '#7F7F7F',
+          legendFontSize: 15,
         };
         res.push(newObj);
       }
@@ -149,11 +158,8 @@ const Analysis = ({ entries }) => {
       return res;
     },
     lineChart: (...args) => {
-
-
       const monthExtractor = (el) => {
-
-        const res = months[(el.date.split('').slice(5, 7).join(''))];
+        const res = months[el.date.split('').slice(5, 7).join('')];
         return res;
       };
 
@@ -193,7 +199,7 @@ const Analysis = ({ entries }) => {
       const arrToSort = [];
       for (let key in labels2) {
         arrToSort.push({
-          [key]: labels2[key]
+          [key]: labels2[key],
         });
       }
 
@@ -214,14 +220,14 @@ const Analysis = ({ entries }) => {
           {
             data: flattener(sortedArr, Object.values, '0'),
             color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-            strokeWidth: 2 // optional
-          }
+            strokeWidth: 2, // optional
+          },
         ],
-        legend: [thirFil]
+        legend: [thirFil],
       };
 
       return dataS;
-    }
+    },
   };
 
   const renderAnalysisResult = (...args) => {
@@ -232,26 +238,31 @@ const Analysis = ({ entries }) => {
     const result = typeof args[4] === string ? resCleaner(result) : args[4];
     const stringHeader = `The result of the ${selAnalysis} analysis of ${secFil}`;
     const string = ` - ${thirdFil} is: ${result} €`;
-    const chart = (<View>
-      {/* <Text>Bezier Line Chart</Text> */}
-      <Text>{string}</Text>
-
-    </View>
+    const chart = (
+      <View>
+        {/* <Text>Bezier Line Chart</Text> */}
+        <Text>{string}</Text>
+      </View>
     );
 
-    return <>
-      { selAnalysis === 'sum' || 'commonsize' ? <>
-        <View style={styles.container}>
-          <View style={styles.textAnalysisBox}>
-            <Text style={styles.textAnalysis}>{stringHeader}</Text>
-          </View>
-          <View style={styles.textAnalysisBox}>
-            <Text style={styles.textAnalysis}>{string}</Text>
-          </View>
-        </View>
+    return (
+      <>
+        {selAnalysis === 'sum' || 'commonsize' ? (
+          <>
+            <View style={styles.container}>
+              <View style={styles.textAnalysisBox}>
+                <Text style={styles.textAnalysis}>{stringHeader}</Text>
+              </View>
+              <View style={styles.textAnalysisBox}>
+                <Text style={styles.textAnalysis}>{string}</Text>
+              </View>
+            </View>
+          </>
+        ) : (
+          chart
+        )}
       </>
-        : chart}
-    </>;
+    );
   };
 
   const analysisTypes = {
@@ -297,7 +308,6 @@ const Analysis = ({ entries }) => {
     const selGraph = args[5];
 
     if (selGraph === 'none') {
-
       if (firstFil === 'none' || selAnalys === 'none') {
         Alert.alert('Plese select at least item second last or graph');
         setAnalysis(false);
@@ -331,19 +341,19 @@ const Analysis = ({ entries }) => {
   };
 
   const setDefaultSubFilter = (el) => {
-    setThirdFilter((filteredShit(entries, el))[0]);
+    setThirdFilter(filteredShit(entries, el)[0]);
   };
 
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [
       {
         data: [20, 45, 28, 80, 99, 43],
         color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-        strokeWidth: 2 // optional
-      }
+        strokeWidth: 2, // optional
+      },
     ],
-    legend: ["Rainy Days"] // optional
+    legend: ['Rainy Days'], // optional
   };
 
   const chartFuncs = {
@@ -358,7 +368,6 @@ const Analysis = ({ entries }) => {
 
       let dataGraph;
       if (firstFil !== 'none' || secFil !== '' || thirFil !== '') {
-
         const filteredData = filterBySub(data, secFil, thirFil);
 
         let congragatedSum = {};
@@ -376,7 +385,7 @@ const Analysis = ({ entries }) => {
         for (let key in congragatedSum) {
           congragatedArr.push({
             [secFil]: key,
-            [firstFil]: String(congragatedSum[key])
+            [firstFil]: String(congragatedSum[key]),
           });
         }
         dataGraph = dataGraphCreator(congragatedArr, firstFil, secFil, thirFil);
@@ -417,23 +426,17 @@ const Analysis = ({ entries }) => {
       const dataGraph = dataGraphCreator(data, firstFil, secFil, thirFil);
 
       return (
-
         <View style={styles.pieChart}>
           <View style={styles.textBox}>
             <Text style={styles.text}>PIE CHART</Text>
           </View>
 
           {/* <View> */}
-          <LineChart
-            data={dataGraph}
-            width={screenWidth - 20}
-            height={220}
-            chartConfig={chartConfig}
-          />
+          <LineChart data={dataGraph} width={screenWidth - 20} height={220} chartConfig={chartConfig} />
           {/* </View> */}
         </View>
       );
-    }
+    },
   };
 
   const charts = Object.keys(chartFuncs);
@@ -443,17 +446,13 @@ const Analysis = ({ entries }) => {
     <>
       <ScrollView>
         <View style={styles.container}>
-
           <View style={styles.textBox}>
             <Text style={styles.text}>Selected Item</Text>
           </View>
-          <Picker
-            selectedValue={firstFilter}
-            onValueChange={(el) => setFirstFilter(el)}>
+          <Picker selectedValue={firstFilter} onValueChange={(el) => setFirstFilter(el)}>
             {getLabels(entries[0]).map((el, i) => {
               return <Picker.Item key={i} label={el} value={el} />;
-            })
-            }
+            })}
           </Picker>
 
           <View style={styles.textBox}>
@@ -464,58 +463,47 @@ const Analysis = ({ entries }) => {
             onValueChange={(el) => {
               setSecondFilter(el);
               setDefaultSubFilter(el);
-            }}>
+            }}
+          >
             {getLabels(entries[0]).map((el, i) => {
               return <Picker.Item key={i} label={el} value={el} />;
-            })
-            }
+            })}
           </Picker>
 
           <View style={styles.textBox}>
             <Text style={styles.text}>Select Filter</Text>
           </View>
-          <Picker
-            selectedValue={thirdFilter}
-            onValueChange={(el) => setThirdFilter(el)}>
-            {
-              filteredShit(entries, secondFilter).map((el, i) => {
-                return <Picker.Item key={i} label={el} value={el} />;
-              })
-            }
+          <Picker selectedValue={thirdFilter} onValueChange={(el) => setThirdFilter(el)}>
+            {filteredShit(entries, secondFilter).map((el, i) => {
+              return <Picker.Item key={i} label={el} value={el} />;
+            })}
           </Picker>
 
           <View style={styles.textBox}>
             <Text style={styles.text}>Analysis Method</Text>
           </View>
-          <Picker
-            selectedValue={selectedAnalysys}
-            onValueChange={(el) => setSelectedAnalysys(el)}>
+          <Picker selectedValue={selectedAnalysys} onValueChange={(el) => setSelectedAnalysys(el)}>
             {getLabels(analysisTypes).map((el, i) => {
               return <Picker.Item key={i} label={el} value={el} />;
-            })
-            }
+            })}
           </Picker>
 
           <View style={styles.textBox}>
             <Text style={styles.text}>Graphs</Text>
           </View>
-          <Picker
-            selectedValue={selectedChart}
-            onValueChange={(el) => setSelectedChart(el)}>
+          <Picker selectedValue={selectedChart} onValueChange={(el) => setSelectedChart(el)}>
             {charts.map((el, i) => {
               return <Picker.Item key={i} label={el} value={el} />;
-            })
-            }
+            })}
           </Picker>
 
           <TouchableOpacity
             style={styles.button}
             onPress={(e) => {
               setAnalysis(true);
-              handleOutput(entries, firstFilter, secondFilter,
-                thirdFilter, selectedAnalysys, selectedChart);
+              handleOutput(entries, firstFilter, secondFilter, thirdFilter, selectedAnalysys, selectedChart);
             }}
-            title='Analyse'
+            title="Analyse"
           >
             <Text style={styles.buttonText}>Analyse</Text>
           </TouchableOpacity>
@@ -529,21 +517,21 @@ const Analysis = ({ entries }) => {
     if (!analysis) {
       renderEverything = pickers;
     } else {
-      renderEverything = renderAnalysisResult(firstFilter,
-        secondFilter, thirdFilter,
-        selectedAnalysys, result);
+      renderEverything = renderAnalysisResult(firstFilter, secondFilter, thirdFilter, selectedAnalysys, result);
     }
   } else {
-    renderEverything = chartFuncs[selectedChart](entries,
-      dataGraphCreators[selectedChart], screenWidth,
-      chartConfigs[selectedChart], firstFilter, secondFilter, thirdFilter);
+    renderEverything = chartFuncs[selectedChart](
+      entries,
+      dataGraphCreators[selectedChart],
+      screenWidth,
+      chartConfigs[selectedChart],
+      firstFilter,
+      secondFilter,
+      thirdFilter,
+    );
   }
 
-  return (
-    <>
-      {renderEverything}
-    </>
-  );
+  return <>{renderEverything}</>;
 };
 
 export default Analysis;
@@ -562,7 +550,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   pieChart: {
     paddingHorizontal: 10,
@@ -575,7 +563,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,
-
   },
   buttonText: {
     color: 'white',
@@ -590,6 +577,6 @@ const styles = StyleSheet.create({
   },
   textAnalysis: {
     color: 'black',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

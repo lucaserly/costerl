@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   text: {
     marginBottom: 10,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   textBox: {
     paddingHorizontal: 10,
@@ -31,5 +31,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#d33682',
-  }
+  },
 });

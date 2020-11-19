@@ -21,7 +21,7 @@ const Login = ({ form, postUser, currentUser }) => {
     } else {
       postUser({
         email,
-        password
+        password,
       });
       setEmail('');
       setPassword('');
@@ -31,14 +31,14 @@ const Login = ({ form, postUser, currentUser }) => {
   return (
     <>
       <TextInput
-        placeholder='Type email'
-        onChangeText={email => handleChange(email, setEmail)}
+        placeholder="Type email"
+        onChangeText={(email) => handleChange(email, setEmail)}
         defualtValue={email}
         value={email}
       />
       <TextInput
-        placeholder='password'
-        onChangeText={password => handleChange(password, setPassword)}
+        placeholder="password"
+        onChangeText={(password) => handleChange(password, setPassword)}
         defualtValue={password}
         value={password}
       />
@@ -47,14 +47,14 @@ const Login = ({ form, postUser, currentUser }) => {
         onPress={(e) => {
           handleSubmit(e);
         }}
-        title='Register'
+        title="Register"
       />
 
       <Button
         onPress={(e) => {
           handleSubmit(e);
         }}
-        title='Login'
+        title="Login"
       />
     </>
   );

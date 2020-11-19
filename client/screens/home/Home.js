@@ -13,10 +13,12 @@ const Home = ({ navigation, resetUser }) => {
           <Text style={styles.text}>COSTERL APP</Text>
 
           <View style={styles.loginBox}>
-            <TouchableOpacity onPress={() => {
-              resetUser();
-              navigation.navigate('Login');
-            }}>
+            <TouchableOpacity
+              onPress={() => {
+                resetUser();
+                navigation.navigate('Login');
+              }}
+            >
               <Text style={styles.loginText}>Navigate to Login</Text>
             </TouchableOpacity>
           </View>
@@ -30,12 +32,10 @@ const Home = ({ navigation, resetUser }) => {
         </NavigationContainer>
       </View> */}
     </>
-
   );
 };
 
 export default Home;
-
 
 const styles = StyleSheet.create({
   container: {
@@ -52,11 +52,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#2aa198',
     padding: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   loginText: {
     color: 'white',
-    fontWeight: 'bold'
-  }
-
-});;
+    fontWeight: 'bold',
+  },
+});
