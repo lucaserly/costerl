@@ -8,7 +8,6 @@ import EntriesC from '../../components/entries/Entries';
 const { inputForm } = config;
 
 const Form = ({ postOne, deleteOne, userEntries, currentUser }) => {
-
   let id;
   if (Array.isArray(currentUser[currentUser.length - 1])) {
     id = Number(currentUser[currentUser.length - 1][0].id);
@@ -19,7 +18,7 @@ const Form = ({ postOne, deleteOne, userEntries, currentUser }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <FormC form={inputForm} postOne={postOne} ext='entries' id={id} currentUser={currentUser} />
+        <FormC form={inputForm} postOne={postOne} ext="entries" id={id} currentUser={currentUser} />
       </View>
     </ScrollView>
   );
@@ -31,9 +30,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
     paddingTop: 10,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
-  text: {
-
-  }
+  text: {},
 });

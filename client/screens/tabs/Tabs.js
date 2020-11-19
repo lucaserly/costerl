@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-function Lucas () {
+function Lucas() {
   console.log('INSIDE LUCAS-->');
 
   return (
@@ -14,7 +14,6 @@ function Lucas () {
     </View>
   );
 }
-
 
 const Tabs = () => {
   console.log('INSIDE tabs-->');
@@ -26,4 +25,3 @@ const Tabs = () => {
 };
 
 export default Tabs;
-

@@ -6,8 +6,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Analysis from './../analysis/Analysis';
 import Form from './../form/Form';
 
-
-
 const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
   const Tab = createBottomTabNavigator();
   const [alertMsg, setAlertMsg] = useState('');
@@ -23,8 +21,7 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
 
   useEffect(() => {
     setAlertMsg('Successfully registered at CostErl');
-  }, []
-  );
+  }, []);
 
   if (alertMsg !== '') {
     Alert.alert(alertMsg);
@@ -34,49 +31,54 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
   return (
     <>
       <View style={[styles.uiBox, styles.cyan]}>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('Form');
-        }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Form');
+          }}
+        >
           <Text style={styles.uiText}>Form</Text>
         </TouchableOpacity>
       </View>
 
       <View style={[styles.uiBox, styles.blue]}>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('Entries');
-        }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Entries');
+          }}
+        >
           <Text style={styles.uiText}>Entries</Text>
         </TouchableOpacity>
       </View>
 
-
       <View style={[styles.uiBox, styles.magenta]}>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('Search');
-        }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Search');
+          }}
+        >
           <Text style={styles.uiText}>Search Bar</Text>
         </TouchableOpacity>
       </View>
 
       <View style={[styles.uiBox, styles.orange]}>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('Analysis');
-        }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Analysis');
+          }}
+        >
           <Text style={styles.uiText}>Analysis of Entries</Text>
         </TouchableOpacity>
       </View>
 
-
       <View style={[styles.uiBox, styles.grey]}>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('Overview');
-        }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Overview');
+          }}
+        >
           <Text style={styles.uiText}>Overview </Text>
         </TouchableOpacity>
       </View>
-
-
-
     </>
   );
 };
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
   },
   uiText: {
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   cyan: {
     backgroundColor: '#2aa198',
@@ -107,6 +109,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#cb4b16',
   },
   grey: {
-    backgroundColor: 'grey'
-  }
+    backgroundColor: 'grey',
+  },
 });

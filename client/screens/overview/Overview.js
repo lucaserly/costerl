@@ -3,21 +3,14 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert, FlatList, Button, Scro
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 const TableC = ({ entries, deleteOne }) => {
-
-  const tableHead = [
-    'CAT',
-    '% TOT',
-    '>',
-    'σ',
-  ];
+  const tableHead = ['CAT', '% TOT', '>', 'σ'];
 
   const itemExtractor = (arr, filter, subfilter) => {
     return arr.filter((el) => {
       if (el[filter] === subfilter) {
         return el.amount;
       }
-    }
-    );
+    });
   };
 
   // TODO
@@ -80,7 +73,6 @@ const TableC = ({ entries, deleteOne }) => {
     return `${res} %`;
   };
 
-
   // THIRD COLUMN SHOWING LARGEST ITEM
   const largestPecentages = [];
   // console.log('BEFORE CATFOREACH-->');
@@ -124,7 +116,7 @@ const TableC = ({ entries, deleteOne }) => {
     mean = sum / counter;
     let sumOfVariance = 0;
     el[key].forEach((el) => {
-      sumOfVariance += Math.pow((Number(el.amount) - mean), 2);
+      sumOfVariance += Math.pow(Number(el.amount) - mean, 2);
     });
     let variance = sumOfVariance / counter;
     let stdDev = Math.round(Math.sqrt(variance));
@@ -156,33 +148,24 @@ const TableC = ({ entries, deleteOne }) => {
   }
 
   const tableRender = () => {
-    return <Table borderStyle={{ borderColor: 'transparent' }}>
-      <Row data={tableHead} style={styles.head} textStyle={styles.text} />
-      {
-        final.map((rowData, index) => (
+    return (
+      <Table borderStyle={{ borderColor: 'transparent' }}>
+        <Row data={tableHead} style={styles.head} textStyle={styles.text} />
+        {final.map((rowData, index) => (
           <TableWrapper key={index} style={styles.row}>
-            {
-              rowData.map((cellData, cellIndex, cellRow, rowIndex) => (
-                <Cell key={cellIndex} data={cellData} textStyle={styles.text} />
-              ))
-            }
+            {rowData.map((cellData, cellIndex, cellRow, rowIndex) => (
+              <Cell key={cellIndex} data={cellData} textStyle={styles.text} />
+            ))}
           </TableWrapper>
-        ))
-      }
-    </Table>;
+        ))}
+      </Table>
+    );
   };
 
-  return (
-    <>
-      {Array.isArray(entries) ? tableRender() : <></>}
-
-    </>
-
-  );
+  return <>{Array.isArray(entries) ? tableRender() : <></>}</>;
 };
 
 const Overview = ({ userEntries, deleteOne }) => {
-
   // console.log('userEntries-->', userEntries);
 
   return (
@@ -192,17 +175,19 @@ const Overview = ({ userEntries, deleteOne }) => {
       </View>
 
       <ScrollView style={styles.entriesBox}>
-        <TableC entries={userEntries.map((el) => {
-          el.flag = true;
-          return el;
-        })} deleteOne={deleteOne} />
+        <TableC
+          entries={userEntries.map((el) => {
+            el.flag = true;
+            return el;
+          })}
+          deleteOne={deleteOne}
+        />
       </ScrollView>
     </View>
   );
 };
 
 export default Overview;
-
 
 const styles = StyleSheet.create({
   container: {
@@ -212,7 +197,7 @@ const styles = StyleSheet.create({
   textTitle: {
     marginBottom: 20,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   textBox: {
     paddingHorizontal: 10,
@@ -229,5 +214,3 @@ const styles = StyleSheet.create({
   btn: { width: 58, height: 18, backgroundColor: '#268bd2' },
   btnText: { textAlign: 'center', color: '#fff' },
 });
-
-

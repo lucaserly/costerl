@@ -38,30 +38,20 @@ const DateInput = ({ handleDateSub }) => {
   return (
     <View>
       <View style={styles.dateButton}>
-        <Button onPress={showDatepicker}
-          title="Select Date"
-          color="white"
-        />
+        <Button onPress={showDatepicker} title="Select Date" color="white" />
       </View>
 
       <View style={styles.dateButton}>
-        <Button onPress={submitDate}
-          title="Inser Date"
-          color="white"
-        />
+        <Button onPress={submitDate} title="Inser Date" color="white" />
       </View>
 
       <View style={styles.dateButton}>
-        <Button onPress={hideDatePicker}
-          title="Exit"
-          color="white"
-        />
+        <Button onPress={hideDatePicker} title="Exit" color="white" />
       </View>
 
       {/* <TouchableOpacity onPress={showDatepicker} />
       <TouchableOpacity onPress={submitDate} />
       <TouchableOpacity onPress={hideDatePicker} /> */}
-
 
       {show && (
         <DateTimePicker
@@ -91,6 +81,5 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-  }
-
+  },
 });
