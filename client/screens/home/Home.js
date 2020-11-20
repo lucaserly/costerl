@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
-import { createStackNavigator, NavigationContainer } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Tabs from './../tabs/Tabs';
 const Stack = createStackNavigator();

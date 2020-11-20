@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Button, Keyboard, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, Keyboard, TouchableOpacity, StyleSheet } from 'react-native';
 
 const ButtonApp = ({ id, cb, title }) => {
   return (

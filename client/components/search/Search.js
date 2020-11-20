@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import Form from '../Form';
-import TableC from '../table/Table';
+import TableC from '../Table';
 
 import config from '../../config';
 const { searchForm } = config;

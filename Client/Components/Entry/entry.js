@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import ButtonApp from './../button/Button';
+import ButtonApp from './../Button';
 
 const Entry = ({ item, deleteOne }) => {
   return (
@@ -20,6 +20,4 @@ const Entry = ({ item, deleteOne }) => {
 
 export default Entry;
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
