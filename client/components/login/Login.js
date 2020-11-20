@@ -6,7 +6,7 @@ import DateInput from '../dateinput/DateInput';
 
 import config from '../../config';
 
-const Login = ({ form, postUser, currentUser }) => {
+const Login = ({ postUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
