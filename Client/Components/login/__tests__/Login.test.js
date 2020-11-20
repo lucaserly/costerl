@@ -1,48 +1,61 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
+import { Alert } from 'react-native';
 import Login from '../Login';
-//import { onChange } from 'react-native-reanimated';
-
 
 describe('Login', () => {
-  test('render Login form', () => {
-    const { debug } = render(<Login />);
-    debug();
+  // test('render Login form', () => {
+  //   const { debug } = render(<Login />);
+  //   debug();
+  // });
+
+  test('snapshot', () => {
+    const { toJSON } = render(<Login />);
+    expect(toJSON()).toMatchSnapshot();
   });
 
-  test ('snapshot', () => {
-    const {toJSON} = render(<Login/>);
-    expect(toJSON()).toMatchSnapshot();
-  })
-
-  test ('displays input fields', () => {
-    const { getByPlaceholderText } = render(<Login/>)
-    expect (getByPlaceholderText('Type email')).toBeTruthy();
-    expect (getByPlaceholderText('password')).toBeTruthy();
-
-    // fireEvent.change(input, { target: { value: '' } })
-    // expect(input.value).toBe('$23.0')
-  })
+  test('displays input fields', () => {
+    const { getByPlaceholderText } = render(<Login />);
+    expect(getByPlaceholderText('Type email')).toBeTruthy();
+    expect(getByPlaceholderText('password')).toBeTruthy();
+  });
 
   test('displays buttons text', () => {
-    const { getByText } = render(<Login/>)
+    const { getByText } = render(<Login />);
     expect(getByText('Login')).toBeTruthy();
     expect(getByText('Register')).toBeTruthy();
-  })
+  });
 
   test('calls "handleSubmit" when clicking on submit button', () => {
-
     const mockOnClick = jest.fn();
-        const { getByText, getByPlaceholderText } = render(
-          <Login postUser={mockOnClick}>
-          </Login>
-        );
-         fireEvent.changeText(getByPlaceholderText('password'), "mypassword");
-         fireEvent.changeText(getByPlaceholderText('Type email'), "john@doe.com");
-         fireEvent(getByText('Register'), 'click', {preventDefault: jest.fn()});
-         expect(mockOnClick).toHaveBeenCalledTimes(1);
-  })
+    const { getByText, getByPlaceholderText } = render(<Login postUser={mockOnClick}></Login>);
+    fireEvent.changeText(getByPlaceholderText('password'), 'mypassword');
+    fireEvent.changeText(getByPlaceholderText('Type email'), 'john@doe.com');
+    fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
 
-// handleSubmit fires alert if empty
+  test('returns error when password field is empty', () => {
+    const mockOnClick = jest.fn();
+    jest.spyOn(Alert, 'alert');
 
+    const { getByText, getByPlaceholderText } = render(<Login postUser={mockOnClick}></Login>);
+    fireEvent.changeText(getByPlaceholderText('password'), '');
+    fireEvent.changeText(getByPlaceholderText('Type email'), 'john@doe.com');
+    fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
+    expect(Alert.alert).toHaveBeenCalled();
+  });
+
+  test('returns error when email field is empty', () => {
+    const mockOnClick = jest.fn();
+    jest.spyOn(Alert, 'alert');
+
+    const { getByText, getByPlaceholderText } = render(<Login postUser={mockOnClick}></Login>);
+    fireEvent.changeText(getByPlaceholderText('password'), 'test');
+    fireEvent.changeText(getByPlaceholderText('Type email'), '');
+    fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
+    expect(Alert.alert).toHaveBeenCalled();
+  });
+
+  // handleSubmit fires alert if empty
 });
