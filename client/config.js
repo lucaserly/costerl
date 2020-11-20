@@ -7,17 +7,14 @@ export default {
     { label: 'amount' },
     { label: 'date' },
   ],
-  loginForm: [
-    { label: 'email' },
-    { label: 'password' }
-  ],
+  loginForm: [{ label: 'email' }, { label: 'password' }],
   searchForm: [
     { label: 'search by item', flag: 'true' },
     { label: 'search by category', flag: 'true' },
     { label: 'search by description', flag: 'true' },
     // { label: 'search by payment', flag: 'true' },
     // { label: 'search by amount', flag: 'true' },
-    { label: 'search by date', flag: 'true' }
+    { label: 'search by date', flag: 'true' },
   ],
   helperFunctions: {
     newFields: (text, target, fields) => {
@@ -40,32 +37,35 @@ export default {
     emptyFieldCheck: (fields, conditions) => {
       let result;
       if (Object.keys(conditions.names).length === 2) {
-        result = fields.filter((el) => el.name === conditions.names.first || el.name === conditions.names.second)
+        result = fields
+          .filter((el) => el.name === conditions.names.first || el.name === conditions.names.second)
           .some((el) => el.value === '');
       } else {
-        result = fields.filter((el) => el.name === conditions.names.first || el.name === conditions.names.second
-          || el.name === conditions.names.third
-        )
+        result = fields
+          .filter(
+            (el) =>
+              el.name === conditions.names.first ||
+              el.name === conditions.names.second ||
+              el.name === conditions.names.third,
+          )
           .some((el) => el.value === '');
       }
       return result;
     },
     postHelper: (cleaner, arr, api, cb, list, ext, id) => {
       const cleanedObj = cleaner(arr);
-      api(cleanedObj, ext, id)
-        .then((data) => {
-          cb([...list, data]);
-        });
+      api(cleanedObj, ext, id).then((data) => {
+        cb([...list, data]);
+      });
     },
     delHelper: (api, id, cb) => {
-      api(id)
-        .then(() => {
-          cb((list) => {
-            return list.filter((el) => {
-              return el.id !== id;
-            });
+      api(id).then(() => {
+        cb((list) => {
+          return list.filter((el) => {
+            return el.id !== id;
           });
         });
+      });
     },
     dataParser: (arr) => {
       const obj = {};
@@ -97,9 +97,7 @@ export default {
       // && el.amount.includes(amount)
       const date = e[3].value;
       const res = arr.filter((el) => {
-        if (el.item.includes(item) && el.category.includes(category)
-          && el.description.includes(description)
-        ) {
+        if (el.item.includes(item) && el.category.includes(category) && el.description.includes(description)) {
           return el;
         }
       });
@@ -131,8 +129,7 @@ export default {
       }
       return false;
     },
-    handleChangeForm: (flagCheck, form, newFields, text,
-      target, fields, setFields, filterList) => {
+    handleChangeForm: (flagCheck, form, newFields, text, target, fields, setFields, filterList) => {
       if (flagCheck(form)) {
         const field = newFields(text, target, fields);
         setFields(field);
@@ -142,9 +139,7 @@ export default {
         filterList(fields, target);
       }
     },
-    handleSubmitForm: (emptyFieldCheck, fields, postOne,
-      resetField, setFields, alert,
-      date, ext, id, currentUser) => {
+    handleSubmitForm: (emptyFieldCheck, fields, postOne, resetField, setFields, alert, date, ext, id, currentUser) => {
       const findIndexOfDate = fields.findIndex((el, i) => {
         return el.name === 'date';
       });
@@ -157,16 +152,16 @@ export default {
         conditions = {
           names: {
             first: 'email',
-            second: 'password'
-          }
+            second: 'password',
+          },
         };
         errMsg = 'Failed to register. Please try again ☠️';
       } else if (ext === 'login') {
         conditions = {
           names: {
             first: 'email',
-            second: 'password'
-          }
+            second: 'password',
+          },
         };
         errMsg = 'Failed to login. Please try again 🖕';
         succMsg = 'Logged in. Vai cosi';
@@ -175,8 +170,8 @@ export default {
           names: {
             first: 'item',
             second: 'amount',
-            third: 'category'
-          }
+            third: 'category',
+          },
         };
         succMsg = 'You successfully submitted your expense';
         errMsg = 'Please enter input, category & amount. Thank you 😀';
@@ -207,7 +202,6 @@ export default {
         res.push(key);
       }
       return res;
-    }
-  }
+    },
+  },
 };
-
