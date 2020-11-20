@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const DateInput = ({ handleDateSub }) => {
