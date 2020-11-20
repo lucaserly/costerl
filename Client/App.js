@@ -18,37 +18,30 @@ import config from './config';
 const { delHelper, postHelper, dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
 
-function App () {
-
+function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const [userEntries, setUserEntries] = useState([]);
 
   const getUserData = (end, id) => {
-
     useEffect(() => {
-      ApiService.profile(end, id)
-        .then((data) => {
-          setUserEntries(data[0].entries);
-        });
-    }, []
-    );
+      ApiService.profile(end, id).then((data) => {
+        setUserEntries(data[0].entries);
+      });
+    }, []);
   };
 
   const postOne = (arr, ext, id) => {
-    return postHelper(dataParser, arr, ApiService.postOne,
-      setUserEntries, userEntries, ext, id);
+    return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
   };
 
   const createUser = (arr, ext) => {
-    return postHelper(dataParser, arr, ApiService.postOne,
-      setCurrentUser, currentUser, ext);
+    return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
   };
 
   const postUser = (arr, ext) => {
-    ApiService.postOne(arr, 'register')
-      .then((data) => {
-        setCurrentUser(data);
-      });
+    ApiService.postOne(arr, 'register').then((data) => {
+      setCurrentUser(data);
+    });
   };
 
   const deleteOne = (id) => {
@@ -64,50 +57,67 @@ function App () {
     <>
       <NavigationContainer>
         <Stack.Navigator>
-
-          <Stack.Screen name='Home'>
-            {(props) => <Home {...props} component={Home}
-              resetUser={resetUser} />}
+          <Stack.Screen name="Home">
+            {(props) => <Home {...props} component={Home} resetUser={resetUser} />}
           </Stack.Screen>
 
-          <Stack.Screen name='Login'>
-            {(props) => <Login {...props} createUser={createUser}
-              postUser={postUser} currentUser={currentUser}
-              getUserData={getUserData} />}
+          <Stack.Screen name="Login">
+            {(props) => (
+              <Login
+                {...props}
+                createUser={createUser}
+                postUser={postUser}
+                currentUser={currentUser}
+                getUserData={getUserData}
+              />
+            )}
           </Stack.Screen>
 
-          <Stack.Screen name='Ui'>
-            {(props) => <Ui {...props} postUser={postUser}
-              userEntries={userEntries} currentUser={currentUser} getUserData={getUserData} />}
+          <Stack.Screen name="Ui">
+            {(props) => (
+              <Ui
+                {...props}
+                postUser={postUser}
+                userEntries={userEntries}
+                currentUser={currentUser}
+                getUserData={getUserData}
+              />
+            )}
           </Stack.Screen>
 
-          <Stack.Screen name='Form'>
-            {(props) => <Form {...props} postOne={postOne}
-              getUserData={getUserData}
-              userEntries={userEntries} currentUser={currentUser} />}
+          <Stack.Screen name="Form">
+            {(props) => (
+              <Form
+                {...props}
+                postOne={postOne}
+                getUserData={getUserData}
+                userEntries={userEntries}
+                currentUser={currentUser}
+              />
+            )}
           </Stack.Screen>
 
-          <Stack.Screen name='Entries'>
-            {(props) => <Entries {...props}
-              deleteOne={deleteOne}
-              currentUser={currentUser}
-              getUserData={getUserData} userEntries={userEntries} />}
+          <Stack.Screen name="Entries">
+            {(props) => (
+              <Entries
+                {...props}
+                deleteOne={deleteOne}
+                currentUser={currentUser}
+                getUserData={getUserData}
+                userEntries={userEntries}
+              />
+            )}
           </Stack.Screen>
 
-          <Stack.Screen name='Search'>
-            {(props) => <Search {...props} userEntries={userEntries}
-              deleteOne={deleteOne} />}
+          <Stack.Screen name="Search">
+            {(props) => <Search {...props} userEntries={userEntries} deleteOne={deleteOne} />}
           </Stack.Screen>
 
-          <Stack.Screen name='Analysis'>
-            {(props) => <Analysis {...props} userEntries={userEntries} />}
-          </Stack.Screen>
+          <Stack.Screen name="Analysis">{(props) => <Analysis {...props} userEntries={userEntries} />}</Stack.Screen>
 
-          <Stack.Screen name='Overview'>
+          <Stack.Screen name="Overview">
             {(props) => <Overview {...props} userEntries={userEntries} deleteOne={deleteOne} />}
           </Stack.Screen>
-
-
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import FormC from '../../components/form/Form';
+import Form from '../../components/Form';
 import config from '../../config';
-import EntriesC from '../../components/entries/Entries';
+// import EntriesC from '../../components/entries/Entries';
 // import styles from '../../components/entries/styles';
 
 const { inputForm } = config;
 
-const Form = ({ postOne, deleteOne, userEntries, currentUser }) => {
+const FormC = ({ postOne, currentUser }) => {
   let id;
   if (Array.isArray(currentUser[currentUser.length - 1])) {
     id = Number(currentUser[currentUser.length - 1][0].id);
@@ -18,13 +18,13 @@ const Form = ({ postOne, deleteOne, userEntries, currentUser }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <FormC form={inputForm} postOne={postOne} ext="entries" id={id} currentUser={currentUser} />
+        <Form form={inputForm} postOne={postOne} ext="entries" id={id} currentUser={currentUser} />
       </View>
     </ScrollView>
   );
 };
 
-export default Form;
+export default FormC;
 
 const styles = StyleSheet.create({
   container: {

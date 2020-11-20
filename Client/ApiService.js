@@ -1,25 +1,24 @@
-const BASE_URL = 'http://10.197.4.171:3002/';
+const BASE_URL = 'http://10.197.6.154:3002/';
 
 const getAll = (end) => {
   return fetcher(end);
 };
 
 const postOne = (entry, end, id) => {
-
   entry.userId = id;
 
   return fetcher(end, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(entry)
+    body: JSON.stringify(entry),
   });
 };
 
 const deleteOne = (id) => {
   return fetcher(`entries/${id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
   });
 };
 
@@ -31,9 +30,9 @@ const createUser = (user, end) => {
   return fetcher(end, {
     method: 'POST',
     header: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   });
 };
 
@@ -41,9 +40,9 @@ const login = (user, end) => {
   return fetcher(end, {
     method: 'POST',
     header: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   });
 };
 
@@ -74,5 +73,5 @@ export default {
   getAllUsers,
   createUser,
   login,
-  profile
+  profile,
 };

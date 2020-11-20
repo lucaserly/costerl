@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
-import FormC from '../../components/form/Form';
+import Form from '../../components/Form';
 import config from '../../config';
-import EntriesC from '../../components/entries/Entries';
 
 import Ui from '../../screens/ui/Ui';
 
@@ -15,7 +14,7 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
     return (
       <>
         <View>
-          <FormC
+          <Form
             form={loginForm}
             createUser={createUser}
             ext="register"
