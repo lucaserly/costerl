@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import AnalysisC from './../../components/analysis/Analysis';
+import AnalysisC from './../../components/Analysis';
 
 const Analysis = ({ userEntries }) => {
   return (

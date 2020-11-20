@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Alert, Button, Text, StyleSheet } from 'react-native';
 // import styles from './styles';
-import ButtonApp from '../button/Button';
-import Field from '../field/Field';
-import DateInput from '../dateinput/DateInput';
+import ButtonApp from '../Button';
+import Field from '../Field';
+import DateInput from '../DateInput';
 
 import config from '../../config';
 const {
