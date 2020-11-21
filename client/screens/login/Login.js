@@ -8,14 +8,12 @@ import Ui from '../../screens/ui/Ui';
 
 const { loginForm } = config;
 
-const LoginC = ({ navigation, postUser, currentUser, getUserData, loginUser }) => {
-  const login = 'login';
-
+const LoginC = ({ navigation, handleRegisterUser, currentUser, getUserData, loginUser }) => {
   const loginRender = () => {
     return (
       <>
         <View>
-          <Login postUser={postUser} />
+          <Login handleRegisterUser={handleRegisterUser} />
           {/* <Form
             form={loginForm}
             createUser={createUser}

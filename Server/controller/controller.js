@@ -53,7 +53,6 @@ exports.deleteOne = async (ctx) => {
 };
 
 exports.createUser = async (ctx) => {
-  const login = ctx.request.body;
   const { email, password } = ctx.request.body;
   const user = await model.user.findAll({
     where: {
@@ -61,15 +60,17 @@ exports.createUser = async (ctx) => {
     }
   });
   try {
-    if (user.length !== 0) throw new Error();
-    if (password === '') throw new Error();
-    const hash = await bcrypt.hash(password, 10);
-    login.password = hash;
-    const newUser = await model.user.create(login);
-    ctx.status = 201;
-    ctx.body = newUser;
+    if (user.length === 0) {
+      const hash = await bcrypt.hash(password, 10);
+      const hashedPW = hash;
+      const newUser = await model.user.create({email, password: hashedPW});
+      ctx.status = 201;
+      ctx.body = newUser;
+    } else {
+      ctx.status = 400;
+      ctx.body = 'User already exists'
+    }
   } catch (error) {
-    console.error(error);
     ctx.body = 'Could not create user';
     ctx.status = 400;
   }
@@ -90,8 +91,6 @@ exports.login = async (ctx) => {
     ctx.body = user;
   } catch (error) {
     console.error(error);
-    // 'Username or password is incorrect';
-    // ctx.body = { 'error': error };
     ctx.body = 'Username or password is incorrect';
     ctx.status = 401;
   }

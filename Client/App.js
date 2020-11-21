@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ApiService from './services/ApiService';
+// import ApiService from './services/ApiService';
+import { createUser, loginUser } from './services/ApiService';
 import Home from './screens/home/Home';
 import LoginC from './screens/login/Login';
 import Form from './screens/form/Form';
@@ -34,17 +35,19 @@ function App() {
     return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
   };
 
-  const createUser = (arr, ext) => {
-    return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
-  };
+  // const createUser = (arr, ext) => {
+  //   return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
+  // };
 
-  const postUser = (user) => {
-    console.log('postuser got called from app', user);
-    ApiService.createUser(user);
-    // ApiService.createUser(user).then((data) => {
-    //   console.log('data in app', data);
-    //   setCurrentUser(data);
-    // });
+  const handleRegisterUser = async (user) => {
+    console.log('postuser got called from app with ---->', user);
+    const res = await createUser(user);
+    console.log('res --->', res);
+    if (res) {
+      setCurrentUser(res);
+    } else {
+      console.log('username already taken');
+    }
   };
 
   const deleteOne = (id) => {
@@ -68,8 +71,8 @@ function App() {
             {(props) => (
               <LoginC
                 {...props}
-                createUser={createUser}
-                postUser={postUser}
+                // createUser={createUser}
+                handleRegisterUser={handleRegisterUser}
                 currentUser={currentUser}
                 getUserData={getUserData}
               />

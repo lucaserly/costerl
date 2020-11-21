@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, TextInput } from 'react-native';
 
-const Login = ({ postUser }) => {
+const Login = ({ handleRegisterUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,7 +14,7 @@ const Login = ({ postUser }) => {
     if (email === '' || password === '') {
       Alert.alert('Please insert in both fields');
     } else {
-      postUser({
+      handleRegisterUser({
         email,
         password,
       });

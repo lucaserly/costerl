@@ -1,4 +1,7 @@
-const BASE_URL = 'http://10.197.6.154:3002/';
+import { Alert } from 'react-native';
+
+// const BASE_URL = 'http://192.168.1.19:3002/';
+const BASE_URL = 'http://192.168.178.77:3002';
 
 const getAll = (end) => {
   return fetcher(end);
@@ -26,18 +29,18 @@ const getAllUsers = (end) => {
   return fetcher(end);
 };
 
-const createUser = (user, end) => {
-  return fetcher(end, {
+export const createUser = (user) => {
+  return fetcher('/register', {
     method: 'POST',
-    header: {
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   });
 };
 
-const login = (user, end) => {
-  return fetcher(end, {
+export const loginUser = (user) => {
+  return fetcher('/login', {
     method: 'POST',
     header: {
       'Content-Type': 'application/json',
@@ -52,26 +55,20 @@ const profile = (end, id) => {
 
 const fetcher = (ext, options) => {
   return fetch(BASE_URL + ext, options)
-    .then((res) => {
-      if (res.status === 204) {
-        return res;
-      } else if (res.status === 400) {
-        return 'Could not create user';
-      } else if (res.status === 401) {
-        return 'Username or password is incorrect';
-      } else {
-        return res.json();
-      }
-    })
-    .catch((error) => console.error(error));
+    .then((res) => (res.status < 400 ? res : Promise.reject()))
+    .then((res) => (res.status !== 204 ? res.json() : res))
+    .then((res) => (res.status === 400 ? Alert.alert('Username already taken') : res))
+    .catch((err) => {
+      console.error('fetch request didnt work :( Error: ', err);
+    });
 };
 
-export default {
-  getAll,
-  postOne,
-  deleteOne,
-  getAllUsers,
-  createUser,
-  login,
-  profile,
-};
+// export default {
+//   getAll,
+//   postOne,
+//   deleteOne,
+//   getAllUsers,
+//   createUser,
+//   login,
+//   profile,
+// };
