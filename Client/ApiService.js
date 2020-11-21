@@ -1,4 +1,5 @@
-const BASE_URL = 'http://10.197.6.154:3002/';
+// const BASE_URL = 'http://192.168.1.19:3002/';
+const BASE_URL = 'http://192.168.178.77:3002/';
 
 const getAll = (end) => {
   return fetcher(end);
@@ -26,14 +27,15 @@ const getAllUsers = (end) => {
   return fetcher(end);
 };
 
-const createUser = (user, end) => {
-  return fetcher(end, {
-    method: 'POST',
-    header: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  });
+const createUser = (user) => {
+  console.log('createUser getting called with', user);
+  // return fetcher('/register', {
+  //   method: 'POST',
+  //   header: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(user),
+  // });
 };
 
 const login = (user, end) => {
@@ -51,6 +53,7 @@ const profile = (end, id) => {
 };
 
 const fetcher = (ext, options) => {
+  console.log('fetcher getting called');
   return fetch(BASE_URL + ext, options)
     .then((res) => {
       if (res.status === 204) {
@@ -60,6 +63,7 @@ const fetcher = (ext, options) => {
       } else if (res.status === 401) {
         return 'Username or password is incorrect';
       } else {
+        console.log('res json', res.json());
         return res.json();
       }
     })
