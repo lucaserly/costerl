@@ -124,18 +124,6 @@ const FormC = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cu
 
 export default FormC;
 
-
-
-
-
-
-
-
-
-
-
-
-
 const styles = StyleSheet.create({
   dateBox: {
     backgroundColor: 'white',
