@@ -124,6 +124,8 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
 
 export default Form;
 
+
+
 const styles = StyleSheet.create({
   dateBox: {
     backgroundColor: 'white',
