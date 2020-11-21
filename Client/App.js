@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ApiService from './ApiService';
+import ApiService from './services/ApiService';
 import Home from './screens/home/Home';
-import Login from './screens/login/Login';
+import LoginC from './screens/login/Login';
 import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
 import Search from './screens/search/Search';
@@ -38,10 +38,13 @@ function App() {
     return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
   };
 
-  const postUser = (arr, ext) => {
-    ApiService.postOne(arr, 'register').then((data) => {
-      setCurrentUser(data);
-    });
+  const postUser = (user) => {
+    console.log('postuser got called from app', user);
+    ApiService.createUser(user);
+    // ApiService.createUser(user).then((data) => {
+    //   console.log('data in app', data);
+    //   setCurrentUser(data);
+    // });
   };
 
   const deleteOne = (id) => {
@@ -63,7 +66,7 @@ function App() {
 
           <Stack.Screen name="Login">
             {(props) => (
-              <Login
+              <LoginC
                 {...props}
                 createUser={createUser}
                 postUser={postUser}
@@ -85,7 +88,7 @@ function App() {
             )}
           </Stack.Screen>
 
-          <Stack.Screen name="Form">
+          {/* <Stack.Screen name="Form">
             {(props) => (
               <Form
                 {...props}
@@ -95,7 +98,7 @@ function App() {
                 currentUser={currentUser}
               />
             )}
-          </Stack.Screen>
+          </Stack.Screen> */}
 
           <Stack.Screen name="Entries">
             {(props) => (

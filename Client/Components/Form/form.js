@@ -33,6 +33,9 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   );
 
   const handleChange = (text, target) => {
+    console.log('handlechange being called from inside Form');
+    console.log('text', text);
+    console.log('target', target);
     handleChangeForm(flagCheck, form, newFields, text, target, fields, setFields, filterList);
   };
 

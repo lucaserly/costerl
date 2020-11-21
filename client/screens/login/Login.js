@@ -1,27 +1,29 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
-import Form from '../../components/Form';
+// import Form from '../../components/Form';
+import Login from '../../components/Login';
 import config from '../../config';
 
 import Ui from '../../screens/ui/Ui';
 
 const { loginForm } = config;
 
-const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) => {
+const LoginC = ({ navigation, postUser, currentUser, getUserData, loginUser }) => {
   const login = 'login';
 
   const loginRender = () => {
     return (
       <>
         <View>
-          <Form
+          <Login postUser={postUser} />
+          {/* <Form
             form={loginForm}
             createUser={createUser}
             ext="register"
             login={login}
             loginUser={loginUser}
             ext2="login"
-          />
+          /> */}
         </View>
       </>
     );
@@ -69,4 +71,4 @@ const styles = StyleSheet.create({
   loginFormBox: {},
 });
 
-export default Login;
+export default LoginC;

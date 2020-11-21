@@ -18,6 +18,7 @@ export default {
   ],
   helperFunctions: {
     newFields: (text, target, fields) => {
+      console.log('new fields', text, target, fields);
       const output = fields.map((field) => {
         if (field.name === target) {
           field.value = text;
@@ -130,6 +131,7 @@ export default {
       return false;
     },
     handleChangeForm: (flagCheck, form, newFields, text, target, fields, setFields, filterList) => {
+      // console.log('handleChangeForm fired', new Date(Date.now()));
       if (flagCheck(form)) {
         const field = newFields(text, target, fields);
         setFields(field);
