@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ApiService from './ApiService';
+import ApiService from './services/ApiService';
 import Home from './screens/home/Home';
 import Login from './screens/login/Login';
 import Form from './screens/form/Form';
@@ -85,7 +85,7 @@ function App() {
             )}
           </Stack.Screen>
 
-          <Stack.Screen name="Form">
+          {/* <Stack.Screen name="Form">
             {(props) => (
               <Form
                 {...props}
@@ -95,7 +95,7 @@ function App() {
                 currentUser={currentUser}
               />
             )}
-          </Stack.Screen>
+          </Stack.Screen> */}
 
           <Stack.Screen name="Entries">
             {(props) => (

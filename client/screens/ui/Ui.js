@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Alert, Button, Text, TextInput, Keyboard, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Alert, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Analysis from './../analysis/Analysis';
-import Form from './../form/Form';
-
-const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
+const Ui = ({ navigation, currentUser, getUserData }) => {
   const Tab = createBottomTabNavigator();
   const [alertMsg, setAlertMsg] = useState('');
 
