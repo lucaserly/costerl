@@ -1,6 +1,5 @@
 import { Alert } from 'react-native';
 
-// const BASE_URL = 'http://192.168.1.19:3002/';
 const BASE_URL = 'http://192.168.178.77:3002';
 
 const getAll = (end) => {
@@ -29,7 +28,7 @@ const getAllUsers = (end) => {
   return fetcher(end);
 };
 
-export const createUser = (user) => {
+export const registerUserRequest = (user) => {
   return fetcher('/register', {
     method: 'POST',
     headers: {
@@ -39,17 +38,17 @@ export const createUser = (user) => {
   });
 };
 
-export const loginUser = (user) => {
+export const loginUserRequest = (user) => {
   return fetcher('/login', {
     method: 'POST',
-    header: {
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   });
 };
 
-const profile = (end, id) => {
+export const profile = (end, id) => {
   return fetcher(`${end}/${id}`);
 };
 

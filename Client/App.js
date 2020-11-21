@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import ApiService from './services/ApiService';
-import { createUser, loginUser } from './services/ApiService';
+import { registerUserRequest, loginUserRequest, profile } from './services/ApiService';
 import Home from './screens/home/Home';
 import LoginC from './screens/login/Login';
 import Form from './screens/form/Form';
@@ -15,6 +15,7 @@ import Overview from './screens/overview/Overview';
 import Tabs from './screens/tabs/Tabs';
 
 import config from './config';
+import { Alert } from 'react-native';
 
 const { delHelper, postHelper, dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
@@ -24,8 +25,10 @@ function App() {
   const [userEntries, setUserEntries] = useState([]);
 
   const getUserData = (end, id) => {
+    console.log('I get called, outside of use effect');
     useEffect(() => {
-      ApiService.profile(end, id).then((data) => {
+      console.log('I get called, inside of use effect');
+      profile(end, id).then((data) => {
         setUserEntries(data[0].entries);
       });
     }, []);
@@ -39,14 +42,24 @@ function App() {
   //   return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
   // };
 
-  const handleRegisterUser = async (user) => {
-    console.log('postuser got called from app with ---->', user);
-    const res = await createUser(user);
-    console.log('res --->', res);
+  const registerUser = async (user) => {
+    const res = await registerUserRequest(user);
     if (res) {
       setCurrentUser(res);
+      Alert.alert('User created succesfully');
     } else {
-      console.log('username already taken');
+      Alert.alert('Username already taken');
+    }
+  };
+
+  const loginUser = async (user) => {
+    const res = await loginUserRequest(user);
+    console.log('loginUser fires');
+    if (res) {
+      setCurrentUser(res);
+      Alert.alert('User logged in succesfully');
+    } else {
+      Alert.alert('Username or password incorrect');
     }
   };
 
@@ -71,8 +84,8 @@ function App() {
             {(props) => (
               <LoginC
                 {...props}
-                // createUser={createUser}
-                handleRegisterUser={handleRegisterUser}
+                registerUser={registerUser}
+                loginUser={loginUser}
                 currentUser={currentUser}
                 getUserData={getUserData}
               />

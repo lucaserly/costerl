@@ -28,7 +28,7 @@ describe('Login', () => {
 
   test('calls "handleSubmit" when clicking on submit button', () => {
     const mockOnClick = jest.fn();
-    const { getByText, getByPlaceholderText } = render(<Login handleRegisterUser={mockOnClick}></Login>);
+    const { getByText, getByPlaceholderText } = render(<Login registerUser={mockOnClick}></Login>);
     fireEvent.changeText(getByPlaceholderText('password'), 'mypassword');
     fireEvent.changeText(getByPlaceholderText('Type email'), 'john@doe.com');
     fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
@@ -39,7 +39,7 @@ describe('Login', () => {
     const mockOnClick = jest.fn();
     jest.spyOn(Alert, 'alert');
 
-    const { getByText, getByPlaceholderText } = render(<Login handleRegisterUser={mockOnClick}></Login>);
+    const { getByText, getByPlaceholderText } = render(<Login registerUser={mockOnClick}></Login>);
     fireEvent.changeText(getByPlaceholderText('password'), '');
     fireEvent.changeText(getByPlaceholderText('Type email'), 'john@doe.com');
     fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
@@ -50,7 +50,7 @@ describe('Login', () => {
     const mockOnClick = jest.fn();
     jest.spyOn(Alert, 'alert');
 
-    const { getByText, getByPlaceholderText } = render(<Login handleRegisterUser={mockOnClick}></Login>);
+    const { getByText, getByPlaceholderText } = render(<Login registerUser={mockOnClick}></Login>);
     fireEvent.changeText(getByPlaceholderText('password'), 'test');
     fireEvent.changeText(getByPlaceholderText('Type email'), '');
     fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
