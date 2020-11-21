@@ -16,7 +16,7 @@ const {
   handleSubmitForm,
 } = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
+const FormC = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
   let renderDate;
   if (ext === 'entries') {
     renderDate = true;
@@ -122,7 +122,7 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   return <>{login === 'login' ? twoButtonRender : oneButtonRender}</>;
 };
 
-export default Form;
+export default FormC;
 
 
 

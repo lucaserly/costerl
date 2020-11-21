@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import Form from '../../components/Form';
+import FormC from '../../components/Form';
 import config from '../../config';
 // import EntriesC from '../../components/entries/Entries';
 // import styles from '../../components/entries/styles';
