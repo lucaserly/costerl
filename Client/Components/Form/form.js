@@ -126,6 +126,8 @@ export default FormC;
 
 
 
+
+
 const styles = StyleSheet.create({
   dateBox: {
     backgroundColor: 'white',
