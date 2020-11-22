@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import TableC from '../../components/Table';
+import TableC from '../../components/Table/Table';
 
-const EntriesC = ({ deleteOne, userEntries }) => {
+const Entries = ({ deleteOne, userEntries }) => {
   return (
     <ScrollView style={styles.entriesBox}>
       <TableC
@@ -22,7 +22,7 @@ const EntriesC = ({ deleteOne, userEntries }) => {
   );
 };
 
-export default EntriesC;
+export default Entries;
 
 const styles = StyleSheet.create({
   entriesBox: {

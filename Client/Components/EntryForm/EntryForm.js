@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { View, Alert, Button, Text, StyleSheet } from 'react-native';
-// import styles from './styles';
-import ButtonApp from '../Button';
-import Field from '../Field';
-import DateInput from '../DateInput';
+import { View, Alert, StyleSheet } from 'react-native';
+import ButtonApp from '../Button/Button';
+import Field from '../Field/Field';
+import DateInput from '../DateInput/DateInput';
 
 import config from '../../config';
 const {
@@ -16,7 +15,7 @@ const {
   handleSubmitForm,
 } = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
+const EntryForm = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
   let renderDate;
   if (ext === 'entries') {
     renderDate = true;
@@ -122,7 +121,7 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   return <>{login === 'login' ? twoButtonRender : oneButtonRender}</>;
 };
 
-export default Form;
+export default EntryForm;
 
 const styles = StyleSheet.create({
   dateBox: {

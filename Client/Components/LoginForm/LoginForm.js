@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, TextInput } from 'react-native';
 
-const Login = ({ registerUser, loginUser }) => {
+const LoginForm = ({ registerUser, loginUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -59,4 +59,4 @@ const Login = ({ registerUser, loginUser }) => {
   );
 };
 
-export default Login;
+export default LoginForm;
