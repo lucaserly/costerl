@@ -1,30 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  Button,
-  Picker,
-  Dimensions,
-  ScrollView,
-  Alert,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
-} from 'react-native-chart-kit';
+import { Text, View, Picker, Dimensions, ScrollView, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { LineChart, PieChart } from 'react-native-chart-kit';
 
-import config from './../../config';
+import config from '../../config';
 const { getLabels } = config.helperFunctions;
 const screenWidth = Dimensions.get('window').width;
 
-import colors from './../../colors';
+import colors from '../../colors';
 
 const chartConfigs = {
   pieChart: {
@@ -49,40 +31,8 @@ const chartConfigs = {
     useShadowColorFromDataset: false, // optional
   },
 };
-const chartConfig = {
-  // backgroundColor: "#e26a00",
-  // backgroundGradientFrom: "#cb4b16",
-  // backgroundGradientTo: "#cb4b16",
-  // backgroundGradientToOpacity: 0.8,
-  // color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  // // labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  // strokeWidth: 2, // optional, default 3
-  // barPercentage: 0.5,
-  // useShadowColorFromDataset: false // optional
-};
 
-// const chartConfig = {
-//   backgroundGradientFrom: "#1E2923",
-//   backgroundGradientFromOpacity: 0,
-//   backgroundGradientTo: "#08130D",
-//   backgroundGradientToOpacity: 0.5,
-//   color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-//   strokeWidth: 2, // optional, default 3
-//   barPercentage: 0.5,
-//   useShadowColorFromDataset: false // optional
-// };
-
-// const chartTypes = [
-//   'none',
-//   'LineChart',
-//   'BarChart',
-//   'pieChart',
-//   'ProgressChart',
-//   'ContributionGraph',
-//   'StackedBarChart'
-// ];
-
-const Analysis = ({ entries }) => {
+const Analytics = ({ entries }) => {
   const [firstFilter, setFirstFilter] = useState(getLabels(entries[0])[0]);
   const [secondFilter, setSecondFilter] = useState('');
   const [thirdFilter, setThirdFilter] = useState('');
@@ -286,17 +236,6 @@ const Analysis = ({ entries }) => {
       const res = `${((filteredTotalExp / totalExp) * 100).toFixed(2)}%`;
       return res;
     },
-
-    // percentageovertot: (filter, arr, selFil, selSubFil) => {
-    // },
-    // sumcategor: () => {
-    // },
-    // horizontal: () => {
-    // },
-    // trend: () => {
-    // },
-    // commonsize: () => {
-    // },
   };
 
   const handleOutput = (...args) => {
@@ -534,7 +473,7 @@ const Analysis = ({ entries }) => {
   return <>{renderEverything}</>;
 };
 
-export default Analysis;
+export default Analytics;
 
 const styles = StyleSheet.create({
   container: {

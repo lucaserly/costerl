@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
-// import Search from '../../components/Search';
 import EntryForm from '../../components/EntryForm/EntryForm';
 import TableC from '../../components/Table/Table';
 
@@ -8,7 +7,7 @@ import config from '../../config';
 const { searchForm } = config;
 const { filterHelper, nullConverter } = config.helperFunctions;
 
-const SearchC = ({ deleteOne, userEntries }) => {
+const Search = ({ deleteOne, userEntries }) => {
   const [search, setSearch] = useState({});
 
   const filterList = (e) => {
@@ -21,7 +20,6 @@ const SearchC = ({ deleteOne, userEntries }) => {
       <View style={styles.textBox}>
         <Text style={styles.text}>SEARCH BAR</Text>
       </View>
-      {/* <Search entries={userEntries} deleteOne={deleteOne} /> */}
       <View>
         <ScrollView>
           <EntryForm form={searchForm} filterList={filterList} />
@@ -34,7 +32,7 @@ const SearchC = ({ deleteOne, userEntries }) => {
   );
 };
 
-export default SearchC;
+export default Search;
 
 const styles = StyleSheet.create({
   container: {
