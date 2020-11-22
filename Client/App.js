@@ -3,16 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import ApiService from './services/ApiService';
-import { registerUserRequest, loginUserRequest, getUserEntries } from './services/ApiService';
+import { registerUserRequest, loginUserRequest, getUserEntries, postEntryRequest } from './services/ApiService';
 import Home from './screens/home/Home';
-import LoginC from './screens/login/Login';
+import Login from './screens/login/Login';
 import Form from './screens/form/Form';
 import Entries from './screens/entries/Entries';
 import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
 import Ui from './screens/ui/Ui';
 import Overview from './screens/overview/Overview';
-import Tabs from './screens/tabs/Tabs';
 
 import config from './config';
 import { Alert } from 'react-native';
@@ -21,38 +20,31 @@ const { delHelper, postHelper, dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState([]);
   const [userEntries, setUserEntries] = useState([]);
 
   useEffect(() => {
     if (currentUser.length > 0) {
       const id = currentUser[0].id;
       getUserEntries(id).then((data) => {
-        console.log('data', data);
-        console.log('currentUser', currentUser);
         setUserEntries(data[0].entries);
       });
     }
   }, [currentUser]);
 
-  // const  = (id) => {
-  //   console.log('I get called, outside of use effect');
-  //   useEffect(() => {
-  //     console.log('I get called, inside of use effect');
-  //     getUserEntries(id).then((data) => {
-  //       console.log('data', data);
-  //       console.log('currentUser', currentUser);
-  //       setUserEntries(data[0].entries);
-  //     });
-  //   }, []);
-
-  const postOne = (arr, ext, id) => {
-    return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
-  };
-
-  // const createUser = (arr, ext) => {
-  //   return postHelper(dataParser, arr, ApiService.postOne, setCurrentUser, currentUser, ext);
+  // const postOne = (arr, ext, id) => {
+  //   return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
   // };
+  // const postEntry = (arr, ext, id) => {
+  const postEntry = (entry) => {
+    const res = postEntryRequest(entry);
+    if (res) {
+      setUserEntries((prev) => {
+        return [...prev, res[0]];
+      });
+      Alert.alert('Entry created succesful');
+    }
+  };
 
   const registerUser = async (user) => {
     const res = await registerUserRequest(user);
@@ -66,7 +58,6 @@ function App() {
 
   const loginUser = async (user) => {
     const res = await loginUserRequest(user);
-    console.log('loginUser fires');
     if (res) {
       setCurrentUser(res);
       Alert.alert('User logged in succesfully');
@@ -94,7 +85,7 @@ function App() {
 
           <Stack.Screen name="Login">
             {(props) => (
-              <LoginC {...props} registerUser={registerUser} loginUser={loginUser} currentUser={currentUser} />
+              <Login {...props} registerUser={registerUser} loginUser={loginUser} currentUser={currentUser} />
             )}
           </Stack.Screen>
 
@@ -102,17 +93,9 @@ function App() {
             {(props) => <Ui {...props} postUser={postUser} userEntries={userEntries} currentUser={currentUser} />}
           </Stack.Screen>
 
-          {/* <Stack.Screen name="Form">
-            {(props) => (
-              <Form
-                {...props}
-                postOne={postOne}
-                ={}
-                userEntries={userEntries}
-                currentUser={currentUser}
-              />
-            )}
-          </Stack.Screen> */}
+          <Stack.Screen name="Form">
+            {(props) => <Form {...props} userEntries={userEntries} currentUser={currentUser} postEntry={postEntry} />}
+          </Stack.Screen>
 
           <Stack.Screen name="Entries">
             {(props) => (

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
-import AnalysisC from './../../components/Analysis';
+import Analytics from '../../components/Analytics/Analytics';
 
 const Analysis = ({ userEntries }) => {
   return (
     <>
-      <AnalysisC entries={userEntries} />
+      <Analytics entries={userEntries} />
     </>
   );
 };

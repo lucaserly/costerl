@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
-import Login from '../../components/Login';
+import { View, Text, Alert, StyleSheet } from 'react-native';
+import LoginForm from '../../components/LoginForm/LoginForm.js';
 
 import Ui from '../../screens/ui/Ui';
 
-const LoginC = ({ navigation, registerUser, currentUser, loginUser }) => {
+const Login = ({ navigation, registerUser, currentUser, loginUser }) => {
   const loginRender = () => {
     return (
       <>
         <View>
-          <Login registerUser={registerUser} loginUser={loginUser} />
+          <LoginForm registerUser={registerUser} loginUser={loginUser} />
         </View>
       </>
     );
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   loginFormBox: {},
 });
 
-export default LoginC;
+export default Login;
