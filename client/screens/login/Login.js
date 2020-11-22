@@ -1,27 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
-// import Form from '../../components/Form';
 import Login from '../../components/Login';
-import config from '../../config';
 
 import Ui from '../../screens/ui/Ui';
 
-const { loginForm } = config;
-
-const LoginC = ({ navigation, registerUser, currentUser, getUserData, loginUser }) => {
+const LoginC = ({ navigation, registerUser, currentUser, loginUser }) => {
   const loginRender = () => {
     return (
       <>
         <View>
           <Login registerUser={registerUser} loginUser={loginUser} />
-          {/* <Form
-            form={loginForm}
-            createUser={createUser}
-            ext="register"
-            login={login}
-            loginUser={loginUser}
-            ext2="login"
-          /> */}
         </View>
       </>
     );
