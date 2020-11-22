@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import Form from '../../components/Form';
+import EntryForm from '../../components/EntryForm/EntryForm';
 import config from '../../config';
-// import EntriesC from '../../components/entries/Entries';
-// import styles from '../../components/entries/styles';
 
 const { inputForm } = config;
 
@@ -18,7 +16,7 @@ const FormC = ({ postOne, currentUser }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Form form={inputForm} postOne={postOne} ext="entries" id={id} currentUser={currentUser} />
+        <EntryForm form={inputForm} postOne={postOne} ext="entries" id={id} currentUser={currentUser} />
       </View>
     </ScrollView>
   );

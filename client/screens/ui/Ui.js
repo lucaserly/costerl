@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { View, Alert, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Ui = ({ navigation, currentUser }) => {
   const Tab = createBottomTabNavigator();
-  // const [alertMsg, setAlertMsg] = useState('');
 
   let id;
 
@@ -15,17 +14,6 @@ const Ui = ({ navigation, currentUser }) => {
   } else {
     id = currentUser[currentUser.length - 1].id;
   }
-
-  // getUserData(Number(id));
-
-  // useEffect(() => {
-  //   setAlertMsg('Successfully registered at CostErl');
-  // }, []);
-
-  // if (alertMsg !== '') {
-  //   Alert.alert(alertMsg);
-  //   setAlertMsg('');
-  // }
 
   return (
     <>
