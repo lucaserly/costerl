@@ -8,14 +8,12 @@ import Ui from '../../screens/ui/Ui';
 
 const { loginForm } = config;
 
-const LoginC = ({ navigation, postUser, currentUser, getUserData, loginUser }) => {
-  const login = 'login';
-
+const LoginC = ({ navigation, registerUser, currentUser, getUserData, loginUser }) => {
   const loginRender = () => {
     return (
       <>
         <View>
-          <Login postUser={postUser} />
+          <Login registerUser={registerUser} loginUser={loginUser} />
           {/* <Form
             form={loginForm}
             createUser={createUser}
@@ -48,11 +46,7 @@ const LoginC = ({ navigation, postUser, currentUser, getUserData, loginUser }) =
     <View style={styles.container}>
       <Text style={styles.text}>LOGIN</Text>
       <View style={styles.loginFormBox}>
-        {tobeRendered ? (
-          <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} />
-        ) : (
-          loginRender()
-        )}
+        {tobeRendered ? <Ui currentUser={currentUser} navigation={navigation} /> : loginRender()}
       </View>
     </View>
   );

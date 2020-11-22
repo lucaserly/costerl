@@ -3,9 +3,9 @@ import { View, Alert, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Ui = ({ navigation, currentUser, getUserData }) => {
+const Ui = ({ navigation, currentUser }) => {
   const Tab = createBottomTabNavigator();
-  const [alertMsg, setAlertMsg] = useState('');
+  // const [alertMsg, setAlertMsg] = useState('');
 
   let id;
   if (Array.isArray(currentUser[currentUser.length - 1])) {
@@ -14,16 +14,16 @@ const Ui = ({ navigation, currentUser, getUserData }) => {
     id = currentUser[currentUser.length - 1].id;
   }
 
-  getUserData('users', Number(id));
+  // getUserData(Number(id));
 
-  useEffect(() => {
-    setAlertMsg('Successfully registered at CostErl');
-  }, []);
+  // useEffect(() => {
+  //   setAlertMsg('Successfully registered at CostErl');
+  // }, []);
 
-  if (alertMsg !== '') {
-    Alert.alert(alertMsg);
-    setAlertMsg('');
-  }
+  // if (alertMsg !== '') {
+  //   Alert.alert(alertMsg);
+  //   setAlertMsg('');
+  // }
 
   return (
     <>

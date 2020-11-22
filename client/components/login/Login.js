@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, TextInput } from 'react-native';
 
-const Login = ({ postUser }) => {
+const Login = ({ registerUser, loginUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -9,12 +9,26 @@ const Login = ({ postUser }) => {
     field === 'email' ? setEmail(text) : setPassword(text);
   };
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     if (email === '' || password === '') {
       Alert.alert('Please insert in both fields');
     } else {
-      postUser({
+      registerUser({
+        email,
+        password,
+      });
+      setEmail('');
+      setPassword('');
+    }
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (email === '' || password === '') {
+      Alert.alert('Please insert in both fields');
+    } else {
+      loginUser({
         email,
         password,
       });
@@ -38,9 +52,9 @@ const Login = ({ postUser }) => {
         value={password}
       />
 
-      <Button onPress={handleSubmit} title="Register" />
+      <Button onPress={handleRegister} title="Register" />
 
-      <Button onPress={handleSubmit} title="Login" />
+      <Button onPress={handleLogin} title="Login" />
     </>
   );
 };

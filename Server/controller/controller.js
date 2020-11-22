@@ -53,7 +53,6 @@ exports.deleteOne = async (ctx) => {
 };
 
 exports.createUser = async (ctx) => {
-  const login = ctx.request.body;
   const { email, password } = ctx.request.body;
   const user = await model.user.findAll({
     where: {
@@ -61,22 +60,23 @@ exports.createUser = async (ctx) => {
     }
   });
   try {
-    if (user.length !== 0) throw new Error();
-    if (password === '') throw new Error();
-    const hash = await bcrypt.hash(password, 10);
-    login.password = hash;
-    const newUser = await model.user.create(login);
-    ctx.status = 201;
-    ctx.body = newUser;
+    if (user.length === 0) {
+      const hash = await bcrypt.hash(password, 10);
+      const hashedPW = hash;
+      const newUser = await model.user.create({email, password: hashedPW});
+      ctx.status = 201;
+      ctx.body = newUser;
+    } else {
+      ctx.status = 400;
+      ctx.body = 'User already exists'
+    }
   } catch (error) {
-    console.error(error);
     ctx.body = 'Could not create user';
     ctx.status = 400;
   }
 };
 
 exports.login = async (ctx) => {
-  console.log('ctx.request.body-->', ctx.request.body);
   try {
     const { email, password } = ctx.request.body;
     const user = await model.user.findAll({
@@ -84,14 +84,17 @@ exports.login = async (ctx) => {
         email: email
       }
     });
-    const checkPassword = await bcrypt.compare(password, user[0].dataValues.password);
-    if (!checkPassword) throw new Error();
-    ctx.status = 200;
-    ctx.body = user;
+    if (user.length !== 0) {
+      const checkPassword = await bcrypt.compare(password, user[0].dataValues.password);
+      if (!checkPassword) throw new Error();
+      ctx.status = 200;
+      ctx.body = user;
+    } else {
+      ctx.body = 'User does not exist';
+      ctx.status = 401;
+    }
+
   } catch (error) {
-    console.error(error);
-    // 'Username or password is incorrect';
-    // ctx.body = { 'error': error };
     ctx.body = 'Username or password is incorrect';
     ctx.status = 401;
   }
@@ -128,8 +131,7 @@ exports.getAllUsers = async (ctx) => {
 };
 
 exports.profile = async (ctx) => {
-  console.log('ctx.request.params-->', ctx.request.params);
-
+  console.log('profile ctx.request-->', ctx.request);
   try {
     const { id } = ctx.request.params;
     const user = await model.user.findAll({

@@ -1,4 +1,6 @@
-const BASE_URL = 'http://10.197.6.154:3002/';
+import { Alert } from 'react-native';
+
+const BASE_URL = 'http://10.194.2.155:3002';
 
 const getAll = (end) => {
   return fetcher(end);
@@ -22,56 +24,53 @@ const deleteOne = (id) => {
   });
 };
 
-const getAllUsers = (end) => {
-  return fetcher(end);
+const getAllUsers = () => {
+  return fetcher('/users');
 };
 
-const createUser = (user, end) => {
-  return fetcher(end, {
+export const registerUserRequest = (user) => {
+  return fetcher('/register', {
     method: 'POST',
-    header: {
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   });
 };
 
-const login = (user, end) => {
-  return fetcher(end, {
+export const loginUserRequest = (user) => {
+  return fetcher('/login', {
     method: 'POST',
-    header: {
+    headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   });
 };
 
-const profile = (end, id) => {
-  return fetcher(`${end}/${id}`);
+export const getUserEntries = (id) => {
+  // console.log('end', end);
+  console.log('id inside userEntries', id);
+  return fetcher(`/users/${id}`);
 };
 
 const fetcher = (ext, options) => {
   return fetch(BASE_URL + ext, options)
-    .then((res) => {
-      if (res.status === 204) {
-        return res;
-      } else if (res.status === 400) {
-        return 'Could not create user';
-      } else if (res.status === 401) {
-        return 'Username or password is incorrect';
-      } else {
-        return res.json();
-      }
-    })
-    .catch((error) => console.error(error));
+    .then((res) => (res.status < 400 ? res : Promise.reject()))
+    .then((res) => (res.status !== 204 ? res.json() : res))
+    .then((res) => (res.status === 400 ? Alert.alert('Username already taken') : res))
+    .then((res) => (res.status === 401 ? Alert.alert('User does not exist') : res))
+    .catch((err) => {
+      console.error('fetch request didnt work :( Error: ', err);
+    });
 };
 
-export default {
-  getAll,
-  postOne,
-  deleteOne,
-  getAllUsers,
-  createUser,
-  login,
-  profile,
-};
+// export default {
+//   getAll,
+//   postOne,
+//   deleteOne,
+//   getAllUsers,
+//   createUser,
+//   login,
+//   profile,
+// };
