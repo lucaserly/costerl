@@ -77,7 +77,6 @@ exports.createUser = async (ctx) => {
 };
 
 exports.login = async (ctx) => {
-  console.log('ctx.request.body-->', ctx.request.body);
   try {
     const { email, password } = ctx.request.body;
     const user = await model.user.findAll({
@@ -85,12 +84,17 @@ exports.login = async (ctx) => {
         email: email
       }
     });
-    const checkPassword = await bcrypt.compare(password, user[0].dataValues.password);
-    if (!checkPassword) throw new Error();
-    ctx.status = 200;
-    ctx.body = user;
+    if (user.length !== 0) {
+      const checkPassword = await bcrypt.compare(password, user[0].dataValues.password);
+      if (!checkPassword) throw new Error();
+      ctx.status = 200;
+      ctx.body = user;
+    } else {
+      ctx.body = 'User does not exist';
+      ctx.status = 401;
+    }
+
   } catch (error) {
-    console.error(error);
     ctx.body = 'Username or password is incorrect';
     ctx.status = 401;
   }
@@ -127,8 +131,7 @@ exports.getAllUsers = async (ctx) => {
 };
 
 exports.profile = async (ctx) => {
-  console.log('ctx.request.params-->', ctx.request.params);
-
+  console.log('profile ctx.request-->', ctx.request);
   try {
     const { id } = ctx.request.params;
     const user = await model.user.findAll({

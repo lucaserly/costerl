@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
 
-const BASE_URL = 'http://192.168.178.77:3002';
+const BASE_URL = 'http://10.194.2.155:3002';
 
 const getAll = (end) => {
   return fetcher(end);
@@ -24,8 +24,8 @@ const deleteOne = (id) => {
   });
 };
 
-const getAllUsers = (end) => {
-  return fetcher(end);
+const getAllUsers = () => {
+  return fetcher('/users');
 };
 
 export const registerUserRequest = (user) => {
@@ -48,8 +48,10 @@ export const loginUserRequest = (user) => {
   });
 };
 
-export const profile = (end, id) => {
-  return fetcher(`${end}/${id}`);
+export const getUserEntries = (id) => {
+  // console.log('end', end);
+  console.log('id inside userEntries', id);
+  return fetcher(`/users/${id}`);
 };
 
 const fetcher = (ext, options) => {
@@ -57,6 +59,7 @@ const fetcher = (ext, options) => {
     .then((res) => (res.status < 400 ? res : Promise.reject()))
     .then((res) => (res.status !== 204 ? res.json() : res))
     .then((res) => (res.status === 400 ? Alert.alert('Username already taken') : res))
+    .then((res) => (res.status === 401 ? Alert.alert('User does not exist') : res))
     .catch((err) => {
       console.error('fetch request didnt work :( Error: ', err);
     });

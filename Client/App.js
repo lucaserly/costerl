@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import ApiService from './services/ApiService';
-import { registerUserRequest, loginUserRequest, profile } from './services/ApiService';
+import { registerUserRequest, loginUserRequest, getUserEntries } from './services/ApiService';
 import Home from './screens/home/Home';
 import LoginC from './screens/login/Login';
 import Form from './screens/form/Form';
@@ -21,18 +21,30 @@ const { delHelper, postHelper, dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
 
 function App() {
-  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
   const [userEntries, setUserEntries] = useState([]);
 
-  const getUserData = (end, id) => {
-    console.log('I get called, outside of use effect');
-    useEffect(() => {
-      console.log('I get called, inside of use effect');
-      profile(end, id).then((data) => {
+  useEffect(() => {
+    if (currentUser.length > 0) {
+      const id = currentUser[0].id;
+      getUserEntries(id).then((data) => {
+        console.log('data', data);
+        console.log('currentUser', currentUser);
         setUserEntries(data[0].entries);
       });
-    }, []);
-  };
+    }
+  }, [currentUser]);
+
+  // const  = (id) => {
+  //   console.log('I get called, outside of use effect');
+  //   useEffect(() => {
+  //     console.log('I get called, inside of use effect');
+  //     getUserEntries(id).then((data) => {
+  //       console.log('data', data);
+  //       console.log('currentUser', currentUser);
+  //       setUserEntries(data[0].entries);
+  //     });
+  //   }, []);
 
   const postOne = (arr, ext, id) => {
     return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
@@ -82,26 +94,12 @@ function App() {
 
           <Stack.Screen name="Login">
             {(props) => (
-              <LoginC
-                {...props}
-                registerUser={registerUser}
-                loginUser={loginUser}
-                currentUser={currentUser}
-                getUserData={getUserData}
-              />
+              <LoginC {...props} registerUser={registerUser} loginUser={loginUser} currentUser={currentUser} />
             )}
           </Stack.Screen>
 
           <Stack.Screen name="Ui">
-            {(props) => (
-              <Ui
-                {...props}
-                postUser={postUser}
-                userEntries={userEntries}
-                currentUser={currentUser}
-                getUserData={getUserData}
-              />
-            )}
+            {(props) => <Ui {...props} postUser={postUser} userEntries={userEntries} currentUser={currentUser} />}
           </Stack.Screen>
 
           {/* <Stack.Screen name="Form">
@@ -109,7 +107,7 @@ function App() {
               <Form
                 {...props}
                 postOne={postOne}
-                getUserData={getUserData}
+                ={}
                 userEntries={userEntries}
                 currentUser={currentUser}
               />
@@ -118,13 +116,7 @@ function App() {
 
           <Stack.Screen name="Entries">
             {(props) => (
-              <Entries
-                {...props}
-                deleteOne={deleteOne}
-                currentUser={currentUser}
-                getUserData={getUserData}
-                userEntries={userEntries}
-              />
+              <Entries {...props} deleteOne={deleteOne} currentUser={currentUser} userEntries={userEntries} />
             )}
           </Stack.Screen>
 
