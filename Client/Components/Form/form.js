@@ -6,6 +6,7 @@ import Field from '../Field';
 import DateInput from '../DateInput';
 
 import config from '../../config';
+
 const {
   newFields,
   emptyFieldCheck,
@@ -16,7 +17,7 @@ const {
   handleSubmitForm,
 } = config.helperFunctions;
 
-const FormC = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
+const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
   let renderDate;
   if (ext === 'entries') {
     renderDate = true;
@@ -24,6 +25,7 @@ const FormC = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cu
     renderDate = false;
   }
 
+    // label = amount, description, etc.
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
     form.map((field) => ({
@@ -122,7 +124,7 @@ const FormC = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cu
   return <>{login === 'login' ? twoButtonRender : oneButtonRender}</>;
 };
 
-export default FormC;
+export default Form;
 
 const styles = StyleSheet.create({
   dateBox: {
