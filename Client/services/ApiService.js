@@ -6,10 +6,9 @@ const getAll = (end) => {
   return fetcher(end);
 };
 
-const postOne = (entry, end, id) => {
-  entry.userId = id;
-
-  return fetcher(end, {
+export const postEntryRequest = (entry) => {
+  // entry.userId = id;
+  return fetcher('/entries', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

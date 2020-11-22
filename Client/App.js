@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import ApiService from './services/ApiService';
-import { registerUserRequest, loginUserRequest, getUserEntries } from './services/ApiService';
+import { registerUserRequest, loginUserRequest, getUserEntries, postEntryRequest } from './services/ApiService';
 import Home from './screens/home/Home';
 import Login from './screens/login/Login';
 import Form from './screens/form/Form';
@@ -32,8 +32,18 @@ function App() {
     }
   }, [currentUser]);
 
-  const postOne = (arr, ext, id) => {
-    return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
+  // const postOne = (arr, ext, id) => {
+  //   return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
+  // };
+  // const postEntry = (arr, ext, id) => {
+  const postEntry = (entry) => {
+    const res = postEntryRequest(entry);
+    if (res) {
+      setUserEntries((prev) => {
+        return [...prev, res[0]];
+      });
+      Alert.alert('Entry created succesful');
+    }
   };
 
   const registerUser = async (user) => {
@@ -84,7 +94,7 @@ function App() {
           </Stack.Screen>
 
           <Stack.Screen name="Form">
-            {(props) => <Form {...props} userEntries={userEntries} currentUser={currentUser} />}
+            {(props) => <Form {...props} userEntries={userEntries} currentUser={currentUser} postEntry={postEntry} />}
           </Stack.Screen>
 
           <Stack.Screen name="Entries">

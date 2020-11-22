@@ -15,27 +15,27 @@ const {
   handleSubmitForm,
 } = config.helperFunctions;
 
-const EntryForm = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
+const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUser, currentUser }) => {
   let renderDate;
   if (ext === 'entries') {
     renderDate = true;
   } else {
     renderDate = false;
   }
+  const fieldsInit = { item: '', category: '', description: '', payment: '', amount: '', date: '' };
 
   const [date, setDate] = useState('');
-  const [fields, setFields] = useState(
-    form.map((field) => ({
-      name: field.label,
-      value: '',
-    })),
-  );
+  const [fields, setFields] = useState(fieldsInit);
 
   const handleChange = (text, target) => {
-    console.log('handlechange being called from inside Form');
-    console.log('text', text);
-    console.log('target', target);
-    handleChangeForm(flagCheck, form, newFields, text, target, fields, setFields, filterList);
+    console.log(text);
+    console.log(target);
+    console.log(fields);
+    setFields((prev) => {
+      const newState = { ...prev };
+      newState[target] = text;
+      return newState;
+    });
   };
 
   let postOneSubmit;
@@ -71,54 +71,22 @@ const EntryForm = ({ form, postOne, filterList, ext, login, ext2, id, createUser
     setDate(e);
   };
 
-  const oneButtonRender = (
+  return (
     <View style={styles.container}>
       <View style={styles.dateBox}>
-        {renderDate ? (
-          <View>
-            <DateInput handleDateSub={handleDateSub} />
-          </View>
-        ) : (
-          <></>
-        )}
+        <View>
+          <DateInput handleDateSub={handleDateSub} />
+        </View>
       </View>
-
       <View style={styles.fieldBox}>
-        {fields.map((el, i) => {
-          return <Field handleChange={handleChange} el={el} key={i} />;
+        {Object.keys(fields).map((el, i) => {
+          return <Field handleChange={(text) => handleChange(text, el)} el={el} key={i} />;
         })}
       </View>
 
       <View styles={styles.buttonBox}>{flagCheck(form) ? <ButtonApp title="Submit" cb={handleSubmit} /> : <></>}</View>
     </View>
   );
-
-  const twoButtonRender = (
-    <View>
-      <View style={styles.dateBox}>
-        {renderDate ? (
-          <View>
-            <DateInput handleDateSub={handleDateSub} />
-          </View>
-        ) : (
-          <></>
-        )}
-      </View>
-
-      <View styles={styles.fieldBox}>
-        {fields.map((el, i) => {
-          return <Field handleChange={handleChange} el={el} key={i} />;
-        })}
-      </View>
-
-      <View styles={styles.buttonBox}>
-        {flagCheck(form) ? <ButtonApp title="Register" cb={handleSubmit} /> : <></>}
-        {flagCheck(form) ? <ButtonApp title="Login" cb={handleSubmit} /> : <></>}
-      </View>
-    </View>
-  );
-
-  return <>{login === 'login' ? twoButtonRender : oneButtonRender}</>;
 };
 
 export default EntryForm;
