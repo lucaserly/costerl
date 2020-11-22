@@ -83,6 +83,10 @@ function App() {
             {(props) => <Ui {...props} postUser={postUser} userEntries={userEntries} currentUser={currentUser} />}
           </Stack.Screen>
 
+          <Stack.Screen name="Form">
+            {(props) => <Form {...props} userEntries={userEntries} currentUser={currentUser} />}
+          </Stack.Screen>
+
           <Stack.Screen name="Entries">
             {(props) => (
               <Entries {...props} deleteOne={deleteOne} currentUser={currentUser} userEntries={userEntries} />
