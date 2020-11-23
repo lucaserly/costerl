@@ -3,12 +3,7 @@ import fetch from 'node-fetch';
 
 export const BASE_URL = 'http://10.197.0.223:3002';
 
-const getAll = (end) => {
-  return fetcher(end);
-};
-
 export const postEntryRequest = (entry) => {
-  // entry.userId = id;
   return fetcher('/entries', {
     method: 'POST',
     headers: {
@@ -22,10 +17,6 @@ const deleteOne = (id) => {
   return fetcher(`entries/${id}`, {
     method: 'DELETE',
   });
-};
-
-const getAllUsers = () => {
-  return fetcher('/users');
 };
 
 export const registerUserRequest = (user) => {
@@ -49,8 +40,6 @@ export const loginUserRequest = (user) => {
 };
 
 export const getUserEntries = (id) => {
-  // console.log('end', end);
-  console.log('id inside userEntries', id);
   return fetcher(`/users/${id}`);
 };
 
@@ -64,13 +53,3 @@ const fetcher = (ext, options) => {
       console.error('fetch request didnt work :( Error: ', err);
     });
 };
-
-// export default {
-//   getAll,
-//   postOne,
-//   deleteOne,
-//   getAllUsers,
-//   createUser,
-//   login,
-//   profile,
-// };
