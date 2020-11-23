@@ -30,9 +30,7 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   const [fields, setFields] = useState(fieldsInit);
 
   const handleChange = (text, target) => {
-    console.log(text);
-    console.log(target);
-    console.log(fields);
+
     setFields((prev) => {
       const newState = { ...prev };
       newState[target] = text;
@@ -45,16 +43,17 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
 
   const handleSubmit = (e, title) => {
     e.preventDefault();
-    if (title === 'Login') {
-      extSubmit = ext2;
-      postOneSubmit = createUser;
-    } else if (title === 'Submit') {
+    // if (title === 'Login') {
+    //   extSubmit = ext2;
+    //   postOneSubmit = createUser;
+     if (title === 'Submit') {
       postOneSubmit = postOne;
       extSubmit = 'entries';
     } else {
       extSubmit = ext;
       postOneSubmit = createUser;
     }
+
     handleSubmitForm(
       emptyFieldCheck,
       fields,
@@ -76,20 +75,26 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   return (
     <View style={styles.container}>
       <View style={styles.dateBox}>
-        <View>
+        {/* <View>
           <DateInput handleDateSub={handleDateSub} />
-        </View>
+        </View> */}
       </View>
       <View style={styles.fieldBox}>
+       
         {Object.keys(fields).map((el, i) => {
-          return <Field handleChange={(text) => handleChange(text, el)} el={el} key={i} />;
-        })}
+          if (el !== "date") {
+            return <Field handleChange={(text) => handleChange(text, el)} el={el} key={i} />;
+          }
+          else {
+              return <DateInput />;
+          }}
+        )}
       </View>
 
       <View styles={styles.buttonBox}>{flagCheck(form) ? <ButtonApp title="Submit" cb={handleSubmit} /> : <></>}</View>
     </View>
   );
-};
+}; 
 
 export default EntryForm;
 

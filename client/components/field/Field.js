@@ -4,13 +4,13 @@ import { TextInput, View, StyleSheet } from 'react-native';
 
 const Field = ({ el, handleChange }) => {
   const { value } = el;
-
+  
   return (
     <>
       <View style={styles.container}>
         <TextInput
           style={styles.input}
-          placeholder={el.name}
+          placeholder={el}
           onChangeText={(e) => {
             handleChange(e, el.name);
           }}

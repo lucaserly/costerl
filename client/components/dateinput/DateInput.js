@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { TextInput, View, Button, StyleSheet } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const DateInput = ({ handleDateSub }) => {
@@ -35,25 +35,27 @@ const DateInput = ({ handleDateSub }) => {
     setShow(false);
   };
 
-  return (
-    <View>
-      <View style={styles.dateButton}>
-        <Button onPress={showDatepicker} title="Select Date" color="white" />
-      </View>
+  return (  
+      <View style={styles.container}>
+        <TextInput
+        style={styles.input}
+        placeholder={"date"}
+        />
+    
+    
+      {/* <View style={styles.dateButton}>
+        <Button onPress={submitDate} title="Insert Date" color="white" />
+      </View> */}
 
-      <View style={styles.dateButton}>
-        <Button onPress={submitDate} title="Inser Date" color="white" />
-      </View>
-
-      <View style={styles.dateButton}>
+      {/* <View style={styles.dateButton}>
         <Button onPress={hideDatePicker} title="Exit" color="white" />
-      </View>
+      </View> */}
 
       {/* <TouchableOpacity onPress={showDatepicker} />
       <TouchableOpacity onPress={submitDate} />
       <TouchableOpacity onPress={hideDatePicker} /> */}
 
-      {show && (
+      {/* {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
@@ -62,24 +64,39 @@ const DateInput = ({ handleDateSub }) => {
           display="spinner"
           onChange={onChange}
         />
-      )}
+      )} */}
     </View>
   );
 };
 
 export default DateInput;
 
+// const styles = StyleSheet.create({
+//   dateButton: {
+//     height: 40,
+//     backgroundColor: 'teal',
+//     borderRadius: 5,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     marginBottom: 5,
+//   },
+//   buttonText: {
+//     color: 'white',
+//     fontWeight: 'bold',
+//   },
+// });
+
+
 const styles = StyleSheet.create({
-  dateButton: {
-    height: 40,
-    backgroundColor: 'teal',
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 5,
+  container: {
+    padding: 5,
+    backgroundColor: 'white',
+    // flex: 1
   },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
+  input: {
+    borderColor: 'grey',
+    borderWidth: 1,
+    padding: 10,
+    // borderRadius: 5,
   },
 });
