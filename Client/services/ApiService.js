@@ -1,6 +1,7 @@
 import { Alert } from 'react-native';
+import fetch from 'node-fetch';
 
-const BASE_URL = 'http://10.197.0.223:3002';
+export const BASE_URL = 'http://10.197.0.223:3002';
 
 const getAll = (end) => {
   return fetcher(end);

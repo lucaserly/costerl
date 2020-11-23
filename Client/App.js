@@ -25,6 +25,7 @@ function App() {
 
   useEffect(() => {
     if (currentUser.length > 0) {
+      console.log(currentUser);
       const id = currentUser[0].id;
       getUserEntries(id).then((data) => {
         setUserEntries(data[0].entries);
@@ -32,10 +33,6 @@ function App() {
     }
   }, [currentUser]);
 
-  // const postOne = (arr, ext, id) => {
-  //   return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
-  // };
-  // const postEntry = (arr, ext, id) => {
   const postEntry = (entry) => {
     const res = postEntryRequest(entry);
     if (res) {

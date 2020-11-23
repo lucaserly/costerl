@@ -34,11 +34,6 @@ const mockEntries = [
 ];
 
 describe('EntriesTable', () => {
-  test('renders entries in table', () => {
-    const { debug } = render(<EntriesTable entries={mockEntries} />);
-    debug();
-  });
-
   test('snapshot', () => {
     const { toJSON } = render(<EntriesTable entries={mockEntries} />);
     expect(toJSON()).toMatchSnapshot();
