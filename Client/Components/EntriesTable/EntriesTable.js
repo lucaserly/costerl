@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert, FlatList, Button } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
-const TableC = ({ entries, deleteOne }) => {
+const EntriesTable = ({ entries, deleteOne }) => {
   const tableHead = ['id', 'item', 'category', 'amount', 'delete'];
 
   const valuesExtractor = (arr) => {
@@ -69,7 +69,7 @@ const TableC = ({ entries, deleteOne }) => {
   return <>{Array.isArray(entries) ? tableRender() : <></>}</>;
 };
 
-export default TableC;
+export default EntriesTable;
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },

@@ -4,11 +4,6 @@ import { Alert } from 'react-native';
 import LoginForm from '../LoginForm';
 
 describe('LoginForm', () => {
-  // test('render Login form', () => {
-  //   const { debug } = render(<Login />);
-  //   debug();
-  // });
-
   test('snapshot', () => {
     const { toJSON } = render(<LoginForm />);
     expect(toJSON()).toMatchSnapshot();
