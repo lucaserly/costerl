@@ -3,16 +3,6 @@
 const model = require('./../model/');
 const bcrypt = require('bcrypt');
 
-
-exports.routerTester = (ctx) => {
-  try {
-    ctx.body = 'Hello Lucas from Router & Controller';
-  } catch (error) {
-    console.error(error);
-    ctx.status = 500;
-  }
-};
-
 exports.getAll = async (ctx) => {
   try {
     const res = await model.entry.findAll();
@@ -25,13 +15,14 @@ exports.getAll = async (ctx) => {
 };
 
 exports.postOne = async (ctx) => {
-  console.log('ctx req body --->', ctx.request.body);
   try {
     const entry = ctx.request.body;
     entry.userId = Number(entry.userId);
     const newEntry = await model.entry.create(entry);
+    console.log(newEntry);
     ctx.body = newEntry;
     ctx.status = 201;
+
   } catch (error) {
     console.error(error);
     ctx.status = 500;
@@ -166,11 +157,3 @@ exports.profile = async (ctx) => {
     ctx.body = 'User not found';
   }
 };
-
-// exports.logout = async (ctx) => {
-//   try {
-
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };

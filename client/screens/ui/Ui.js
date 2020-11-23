@@ -7,8 +7,10 @@ const Ui = ({ navigation, currentUser }) => {
   const Tab = createBottomTabNavigator();
 
   let id;
+
   if (Array.isArray(currentUser[currentUser.length - 1])) {
     id = currentUser[currentUser.length - 1][0].id;
+    console.log(currentUser);
   } else {
     id = currentUser[currentUser.length - 1].id;
   }
