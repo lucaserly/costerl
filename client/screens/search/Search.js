@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import EntryForm from '../../components/EntryForm/EntryForm';
-import TableC from '../../components/Table/Table';
+import EntriesTable from '../../components/EntriesTable/EntriesTable';
 
 import config from '../../config';
 const { searchForm } = config;
@@ -26,7 +26,7 @@ const Search = ({ deleteOne, userEntries }) => {
         </ScrollView>
       </View>
       <ScrollView>
-        <TableC entries={search} deleteOne={deleteOne} />
+        <EntriesTable entries={search} deleteOne={deleteOne} />
       </ScrollView>
     </View>
   );
