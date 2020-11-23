@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+// import ApiService from './services/ApiService';
 import { registerUserRequest, loginUserRequest, getUserEntries, postEntryRequest } from './services/ApiService';
 import Home from './screens/home/Home';
 import Login from './screens/login/Login';
@@ -10,34 +12,30 @@ import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
 import Ui from './screens/ui/Ui';
 import Overview from './screens/overview/Overview';
-import config from './config';
+
 import { Alert } from 'react-native';
 
-const { delHelper, postHelper, dataParser } = config.helperFunctions;
+import { Entry, User, UserInput } from './interfaces';
+
 const Stack = createStackNavigator();
 
-function App() {
-  const [currentUser, setCurrentUser] = useState([]);
-  const [userEntries, setUserEntries] = useState([]);
+function App(): JSX.Element {
+  const [currentUser, setCurrentUser] = useState<User[]>([]);
+  const [userEntries, setUserEntries] = useState<Entry[]>([]);
 
   useEffect(() => {
     if (currentUser.length > 0) {
-      const id = currentUser[0].id;
-      getUserEntries(id).then((data) => {
-        setUserEntries(data[0].entries);
-      });
+      (async () => {
+        const id = currentUser[0].id;
+        const ent: User[] = await getUserEntries(id);
+        setUserEntries(ent[0].entries);
+      })();
     }
   }, [currentUser]);
 
-  // const postOne = (arr, ext, id) => {
-  //   return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
-  // };
-  // const postEntry = (arr, ext, id) => {
-  const postEntry = async (entry) => {
+  const postEntry = async (entry: Entry): Promise<void> => {
     entry.userId = currentUser[0].id;
-    
     const res = await postEntryRequest(entry);
-
     if (res) {
       setUserEntries((prev) => {
         return [...prev, res[0]];
@@ -46,7 +44,7 @@ function App() {
     }
   };
 
-  const registerUser = async (user) => {
+  const registerUser = async (user: User): Promise<void> => {
     const res = await registerUserRequest(user);
     if (res) {
       setCurrentUser(res);
@@ -56,7 +54,7 @@ function App() {
     }
   };
 
-  const loginUser = async (user) => {
+  const loginUser = async (user: UserInput): Promise<void> => {
     const res = await loginUserRequest(user);
     if (res) {
       setCurrentUser(res);
@@ -66,22 +64,22 @@ function App() {
     }
   };
 
-  const deleteOne = (id) => {
-    return delHelper(ApiService.deleteOne, id, setUserEntries);
+  const deleteOne = (id: number): void => {
+    console.log(id);
+    // return delHelper(ApiService.deleteOne, id, setUserEntries);
   };
 
-  const resetUser = () => {
-    setCurrentUser([]);
-    setUserEntries([]);
-  };
+  // const resetUser = (): void => {
+  //   setCurrentUser([]);
+  //   setUserEntries([]);
+  // };
 
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home">
-            {(props) => <Home {...props} component={Home} resetUser={resetUser} />}
-          </Stack.Screen>
+          {/* <Stack.Screen name="Home">{(props) => <Home {...props} resetUser={resetUser} />}</Stack.Screen> */}
+          <Stack.Screen name="Home">{(props) => <Home {...props} />}</Stack.Screen>
 
           <Stack.Screen name="Login">
             {(props) => (
@@ -89,18 +87,14 @@ function App() {
             )}
           </Stack.Screen>
 
-          <Stack.Screen name="Ui">
-            {(props) => <Ui {...props} postUser={postUser} userEntries={userEntries} currentUser={currentUser} />}
-          </Stack.Screen>
+          <Stack.Screen name="Ui">{(props) => <Ui {...props} currentUser={currentUser} />}</Stack.Screen>
 
           <Stack.Screen name="Form">
-            {(props) => <Form {...props} userEntries={userEntries} currentUser={currentUser} postEntry={postEntry} />}
+            {(props) => <Form {...props} currentUser={currentUser} postEntry={postEntry} />}
           </Stack.Screen>
 
           <Stack.Screen name="Entries">
-            {(props) => (
-              <Entries {...props} deleteOne={deleteOne} currentUser={currentUser} userEntries={userEntries} />
-            )}
+            {(props) => <Entries {...props} deleteOne={deleteOne} userEntries={userEntries} />}
           </Stack.Screen>
 
           <Stack.Screen name="Search">

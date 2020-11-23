@@ -1,19 +1,15 @@
 import React from 'react';
-
 import { View, Text, Alert, StyleSheet } from 'react-native';
 import LoginForm from '../../components/LoginForm/LoginForm.js';
 
 import Ui from '../../screens/ui/Ui';
 
 const Login = ({ navigation, registerUser, currentUser, loginUser }) => {
-
   const loginRender = () => {
     return (
       <>
         <View>
-
           <LoginForm registerUser={registerUser} loginUser={loginUser} />
-
         </View>
       </>
     );

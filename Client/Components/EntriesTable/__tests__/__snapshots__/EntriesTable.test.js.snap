@@ -1,0 +1,654 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntriesTable snapshot 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      Object {
+        "borderBottomWidth": 0,
+        "borderColor": "transparent",
+        "borderLeftWidth": 0,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        undefined,
+        0,
+        Object {
+          "flexDirection": "row",
+          "overflow": "hidden",
+        },
+        Object {
+          "backgroundColor": "#2aa198",
+          "height": 40,
+          "marginBottom": 5,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        id
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        item
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        category
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        amount
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        delete
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#268bd2",
+        "flexDirection": "row",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        1
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        Food
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        1
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        Pizza
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#268bd2",
+              "height": 18,
+              "width": 58,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#fff",
+                "textAlign": "center",
+              }
+            }
+          >
+            🗑
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#268bd2",
+        "flexDirection": "row",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        2
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        Food
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        1
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        Risotto
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#268bd2",
+              "height": 18,
+              "width": 58,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#fff",
+                "textAlign": "center",
+              }
+            }
+          >
+            🗑
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entries snapshot 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "padding": 8,
+    }
+  }
+>
+  <View />
+</RCTScrollView>
+`;

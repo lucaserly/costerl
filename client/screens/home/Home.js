@@ -5,7 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Tabs from './../tabs/Tabs';
 const Stack = createStackNavigator();
 
-const Home = ({ navigation, resetUser }) => {
+// const Home = ({ navigation, resetUser }) => {
+const Home = ({ navigation }) => {
   return (
     <>
       <SafeAreaView>
@@ -15,7 +16,7 @@ const Home = ({ navigation, resetUser }) => {
           <View style={styles.loginBox}>
             <TouchableOpacity
               onPress={() => {
-                resetUser();
+                // resetUser();
                 navigation.navigate('Login');
               }}
             >
@@ -23,14 +24,7 @@ const Home = ({ navigation, resetUser }) => {
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
       </SafeAreaView>
-      {/* <View>
-        <NavigationContainer>
-          <Tabs />
-        </NavigationContainer>
-      </View> */}
     </>
   );
 };
@@ -41,7 +35,6 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
     paddingTop: 10,
-    // fontFamily: 'Iowan'
   },
   text: {
     fontSize: 18,
