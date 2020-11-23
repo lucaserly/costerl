@@ -42,30 +42,6 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   const handleSubmit = (e) => {
     e.preventDefault();
     postEntry (fields);
-    // // if (title === 'Login') {
-    // //   extSubmit = ext2;
-    // //   postOneSubmit = createUser;
-    //  if (title === 'Submit') {
-   
-    //   extSubmit = 'entries';
-    // } else {
-    //   extSubmit = ext;
-    //   postOneSubmit = createUser;
-    // }
-  
-
-    // handleSubmitForm(
-    //   emptyFieldCheck,
-    //   fields,
-    //   postOneSubmit,
-    //   resetField,
-    //   setFields,
-    //   Alert.alert,
-    //   date,
-    //   extSubmit,
-    //   id,
-    //   currentUser,
-    // );
   };
 
   const handleDateSub = (e) => {
@@ -82,9 +58,7 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
           return <DateInput key={i}/>;
         }}
       )}
-
       <View styles={styles.buttonBox}>{flagCheck(form) ? <ButtonApp title="Submit" cb={handleSubmit} /> : <></>}</View>
-    
     </>
   );
 }; 
