@@ -7,14 +7,15 @@ const getAll = (end) => {
 };
 
 export const postEntryRequest = (entry) => {
-  // entry.userId = id;
+  console.log(entry);
   return fetcher('/entries', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(entry),
+    body: JSON.stringify(entry)
   });
+  
 };
 
 const deleteOne = (id) => {
