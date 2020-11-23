@@ -25,6 +25,7 @@ exports.getAll = async (ctx) => {
 };
 
 exports.postOne = async (ctx) => {
+  console.log('ctx req body --->', ctx.request.body);
   try {
     const entry = ctx.request.body;
     entry.userId = Number(entry.userId);
