@@ -1,13 +1,12 @@
 import { Alert } from 'react-native';
 
-const BASE_URL = 'http://10.197.0.170:3002';
+const BASE_URL = 'http://10.197.0.223:3002';
 
 const getAll = (end) => {
   return fetcher(end);
 };
 
 export const postEntryRequest = (entry) => {
-  console.log(entry);
   return fetcher('/entries', {
     method: 'POST',
     headers: {
@@ -64,13 +63,3 @@ const fetcher = (ext, options) => {
       console.error('fetch request didnt work :( Error: ', err);
     });
 };
-
-// export default {
-//   getAll,
-//   postOne,
-//   deleteOne,
-//   getAllUsers,
-//   createUser,
-//   login,
-//   profile,
-// };

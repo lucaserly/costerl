@@ -10,6 +10,7 @@ import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
 import Ui from './screens/ui/Ui';
 import Overview from './screens/overview/Overview';
+
 import config from './config';
 import { Alert } from 'react-native';
 
@@ -29,15 +30,10 @@ function App() {
     }
   }, [currentUser]);
 
-  // const postOne = (arr, ext, id) => {
-  //   return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
-  // };
-  // const postEntry = (arr, ext, id) => {
   const postEntry = async (entry) => {
     entry.userId = currentUser[0].id;
     
     const res = await postEntryRequest(entry);
-
     if (res) {
       setUserEntries((prev) => {
         return [...prev, res[0]];

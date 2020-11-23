@@ -1,23 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import TableC from '../../components/Table/Table';
+import EntriesTable from '../../components/EntriesTable/EntriesTable';
 
 const Entries = ({ deleteOne, userEntries }) => {
+  useEffect(() => {
+    console.log(userEntries);
+  }, [userEntries]);
   return (
     <ScrollView style={styles.entriesBox}>
-      <TableC
-        entries={userEntries
-          .sort((a, b) => {
-            const dateA = new Date(a.date);
-            const dateB = new Date(b.date);
-            return dateB - dateA;
-          })
-          .map((el) => {
-            el.flag = true;
-            return el;
-          })}
-        deleteOne={deleteOne}
-      />
+      <EntriesTable entries={userEntries} deleteOne={deleteOne} />
     </ScrollView>
   );
 };

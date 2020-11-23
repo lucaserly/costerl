@@ -3,6 +3,7 @@ import { View, Alert, StyleSheet } from 'react-native';
 import ButtonApp from '../Button/Button';
 import Field from '../Field/Field';
 import DateInput from '../DateInput/DateInput';
+
 import config from '../../config';
 
 const {
@@ -22,9 +23,11 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   } else {
     renderDate = false;
   }
+
   const fieldsInit = { item: '', category: '', description: '', payment: '', amount: '', date: '2020-11-20T10:56:43.580Z' };
 
     // label = amount, description, etc.
+
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(fieldsInit);
 
