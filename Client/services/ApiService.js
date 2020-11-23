@@ -39,6 +39,7 @@ export const registerUserRequest = (user) => {
 };
 
 export const loginUserRequest = (user) => {
+  
   return fetcher('/login', {
     method: 'POST',
     headers: {
