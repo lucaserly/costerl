@@ -3,9 +3,6 @@ import { StyleSheet, ScrollView } from 'react-native';
 import EntriesTable from '../../components/EntriesTable/EntriesTable';
 
 const Entries = ({ deleteOne, userEntries }) => {
-  useEffect(() => {
-    console.log(userEntries);
-  }, [userEntries]);
   return (
     <ScrollView style={styles.entriesBox}>
       <EntriesTable entries={userEntries} deleteOne={deleteOne} />
