@@ -51,6 +51,4 @@ describe('LoginForm', () => {
     fireEvent(getByText('Register'), 'click', { preventDefault: jest.fn() });
     expect(Alert.alert).toHaveBeenCalled();
   });
-
-  // handleSubmit fires alert if empty
 });

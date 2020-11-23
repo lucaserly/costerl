@@ -5,6 +5,7 @@ import Field from '../Field/Field';
 import DateInput from '../DateInput/DateInput';
 
 import config from '../../config';
+
 const {
   newFields,
   emptyFieldCheck,
@@ -22,15 +23,15 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   } else {
     renderDate = false;
   }
-  const fieldsInit = { item: '', category: '', description: '', payment: '', amount: '', date: '' };
+
+  const fieldsInit = { item: '', category: '', description: '', payment: '', amount: '', date: '2020-11-20T10:56:43.580Z' };
+
+    // label = amount, description, etc.
 
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(fieldsInit);
 
   const handleChange = (text, target) => {
-    console.log(text);
-    console.log(target);
-    console.log(fields);
     setFields((prev) => {
       const newState = { ...prev };
       newState[target] = text;
@@ -41,30 +42,9 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   let postOneSubmit;
   let extSubmit;
 
-  const handleSubmit = (e, title) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (title === 'Login') {
-      extSubmit = ext2;
-      postOneSubmit = createUser;
-    } else if (title === 'Submit') {
-      postOneSubmit = postOne;
-      extSubmit = 'entries';
-    } else {
-      extSubmit = ext;
-      postOneSubmit = createUser;
-    }
-    handleSubmitForm(
-      emptyFieldCheck,
-      fields,
-      postOneSubmit,
-      resetField,
-      setFields,
-      Alert.alert,
-      date,
-      extSubmit,
-      id,
-      currentUser,
-    );
+    postEntry (fields);
   };
 
   const handleDateSub = (e) => {
@@ -72,31 +52,25 @@ const EntryForm = ({ form, postEntry, filterList, ext, login, ext2, id, createUs
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.dateBox}>
-        <View>
-          <DateInput handleDateSub={handleDateSub} />
-        </View>
-      </View>
-      <View style={styles.fieldBox}>
-        {Object.keys(fields).map((el, i) => {
+    <>
+      {Object.keys(fields).map((el, i) => {
+        if (el !== "date") {
           return <Field handleChange={(text) => handleChange(text, el)} el={el} key={i} />;
-        })}
-      </View>
-
+        }
+        else {
+          return <DateInput key={i}/>;
+        }}
+      )}
       <View styles={styles.buttonBox}>{flagCheck(form) ? <ButtonApp title="Submit" cb={handleSubmit} /> : <></>}</View>
-    </View>
+    </>
   );
-};
+}; 
 
 export default EntryForm;
 
 const styles = StyleSheet.create({
   dateBox: {
     backgroundColor: 'white',
-    // borderRadius: 5,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginBottom: 10,
   },
   fieldBox: {

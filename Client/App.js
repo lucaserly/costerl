@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-// import ApiService from './services/ApiService';
 import { registerUserRequest, loginUserRequest, getUserEntries, postEntryRequest } from './services/ApiService';
 import Home from './screens/home/Home';
 import Login from './screens/login/Login';
@@ -32,17 +30,15 @@ function App() {
     }
   }, [currentUser]);
 
-  // const postOne = (arr, ext, id) => {
-  //   return postHelper(dataParser, arr, ApiService.postOne, setUserEntries, userEntries, ext, id);
-  // };
-  // const postEntry = (arr, ext, id) => {
-  const postEntry = (entry) => {
-    const res = postEntryRequest(entry);
+  const postEntry = async (entry) => {
+    entry.userId = currentUser[0].id;
+    
+    const res = await postEntryRequest(entry);
     if (res) {
       setUserEntries((prev) => {
         return [...prev, res[0]];
       });
-      Alert.alert('Entry created succesful');
+      Alert.alert('Entry created succesfully');
     }
   };
 

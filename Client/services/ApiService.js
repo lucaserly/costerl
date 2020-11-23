@@ -7,14 +7,14 @@ const getAll = (end) => {
 };
 
 export const postEntryRequest = (entry) => {
-  // entry.userId = id;
   return fetcher('/entries', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(entry),
+    body: JSON.stringify(entry)
   });
+  
 };
 
 const deleteOne = (id) => {
@@ -63,13 +63,3 @@ const fetcher = (ext, options) => {
       console.error('fetch request didnt work :( Error: ', err);
     });
 };
-
-// export default {
-//   getAll,
-//   postOne,
-//   deleteOne,
-//   getAllUsers,
-//   createUser,
-//   login,
-//   profile,
-// };
