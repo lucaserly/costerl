@@ -81,7 +81,7 @@ function App(): JSX.Element {
             )}
           </Stack.Screen>
 
-          <Stack.Screen name="Ui">{(props) => <Ui {...props} currentUser={currentUser} />}</Stack.Screen>
+          <Stack.Screen name="Ui">{(props) => <Ui {...props} />}</Stack.Screen>
 
           <Stack.Screen name="Form">
             {(props) => <Form {...props} currentUser={currentUser} postEntry={postEntry} />}
