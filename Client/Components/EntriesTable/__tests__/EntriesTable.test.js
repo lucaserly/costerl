@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import EntriesTable from '../EntriesTable';
+import EntriesTable from '../EntriesTable.tsx';
 
 const mockEntries = [
   {
@@ -35,12 +35,12 @@ const mockEntries = [
 
 describe('EntriesTable', () => {
   test('snapshot', () => {
-    const { toJSON } = render(<EntriesTable entries={mockEntries} />);
+    const { toJSON } = render(<EntriesTable userEntries={mockEntries} />);
     expect(toJSON()).toMatchSnapshot();
   });
 
   test('displays table header when input is empty', () => {
-    const { getByText } = render(<EntriesTable entries={[]} />);
+    const { getByText } = render(<EntriesTable userEntries={[]} />);
     expect(getByText('id')).toBeTruthy();
     expect(getByText('item')).toBeTruthy();
     expect(getByText('category')).toBeTruthy();
@@ -49,7 +49,7 @@ describe('EntriesTable', () => {
   });
 
   test('displays table header when input not empty', () => {
-    const { getByText } = render(<EntriesTable entries={mockEntries} />);
+    const { getByText } = render(<EntriesTable userEntries={mockEntries} />);
     expect(getByText('id')).toBeTruthy();
     expect(getByText('item')).toBeTruthy();
     expect(getByText('category')).toBeTruthy();
@@ -58,7 +58,7 @@ describe('EntriesTable', () => {
   });
 
   test('displays correct entries', () => {
-    const { getByText, getAllByText } = render(<EntriesTable entries={mockEntries} />);
+    const { getByText, getAllByText } = render(<EntriesTable userEntries={mockEntries} />);
     expect(getAllByText('Food').length).toBe(2);
     expect(getByText('Pizza')).toBeTruthy();
     expect(getByText('Risotto')).toBeTruthy();
@@ -66,7 +66,7 @@ describe('EntriesTable', () => {
 
   test('calls delete button', () => {
     const mockOnClick = jest.fn();
-    const { getAllByText } = render(<EntriesTable entries={mockEntries} deleteOne={mockOnClick} />);
+    const { getAllByText } = render(<EntriesTable userEntries={mockEntries} deleteOne={mockOnClick} />);
     fireEvent(getAllByText('🗑')[0], 'click', { preventDefault: jest.fn() });
   });
 });

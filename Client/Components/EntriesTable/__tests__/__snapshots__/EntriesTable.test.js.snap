@@ -296,6 +296,43 @@ exports[`EntriesTable snapshot 1`] = `
           ]
         }
       >
+        Pizza
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
         Food
       </Text>
     </View>
@@ -332,46 +369,7 @@ exports[`EntriesTable snapshot 1`] = `
             },
           ]
         }
-      >
-        1
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "borderColor": "transparent",
-            "borderRightWidth": 0,
-            "borderTopWidth": 0,
-          },
-          Object {
-            "justifyContent": "center",
-          },
-          undefined,
-          undefined,
-          undefined,
-          Object {
-            "flex": 1,
-          },
-          undefined,
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "white",
-              "margin": 6,
-            },
-            Object {
-              "backgroundColor": "transparent",
-            },
-          ]
-        }
-      >
-        Pizza
-      </Text>
+      />
     </View>
     <View
       style={
@@ -476,7 +474,44 @@ exports[`EntriesTable snapshot 1`] = `
           ]
         }
       >
-        2
+        1
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "borderColor": "transparent",
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          },
+          Object {
+            "justifyContent": "center",
+          },
+          undefined,
+          undefined,
+          undefined,
+          Object {
+            "flex": 1,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "margin": 6,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      >
+        Risotto
       </Text>
     </View>
     <View
@@ -549,46 +584,7 @@ exports[`EntriesTable snapshot 1`] = `
             },
           ]
         }
-      >
-        1
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "borderColor": "transparent",
-            "borderRightWidth": 0,
-            "borderTopWidth": 0,
-          },
-          Object {
-            "justifyContent": "center",
-          },
-          undefined,
-          undefined,
-          undefined,
-          Object {
-            "flex": 1,
-          },
-          undefined,
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "white",
-              "margin": 6,
-            },
-            Object {
-              "backgroundColor": "transparent",
-            },
-          ]
-        }
-      >
-        Risotto
-      </Text>
+      />
     </View>
     <View
       style={
