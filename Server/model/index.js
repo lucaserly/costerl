@@ -3,10 +3,11 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const config = require('../config');
+// const config = require('../config');
+// const dotenv = require('dotenv');
 
 // const sequelize = new Sequelize(config.database, config.username, config.password, config.config);
-const sequelize = new Sequelize(config.database);
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 const db = {};
 
@@ -32,7 +33,7 @@ db.Sequelize = Sequelize;
 sequelize
   .authenticate()
   .then(() => {
-    console.log(`Connection with database: ${config.database}`);
+    console.log(`Connection with database: ${process.env.DATABASE_URL}`);
   }, (error) => {
     console.log('Unable to connect to the database:', error);
   });
