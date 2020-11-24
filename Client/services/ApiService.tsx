@@ -36,9 +36,7 @@ export const registerUserRequest = (user: UserInput): Promise<User[]> => {
   });
 };
 
-export const loginUserRequest = (user) => {
-  
-
+export const loginUserRequest = (user: UserInput): Promise<User[]> => {
   return fetcher('/login', {
     method: 'POST',
     headers: {

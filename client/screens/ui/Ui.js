@@ -1,44 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-
-const Ui = ({ navigation, currentUser }) => {
-  
-  // const Tab = createBottomTabNavigator();
-
-  var storeCategories = [
-    ['Form', 'Form'],
-    ['Entries', 'Entries'],
-    ['Search', 'Search Bar'],
-    ['Analysis', 'Analysis of Entries'],
-    ['Overview', 'Overview']
-  ];
-
-  let id;
-
-  if (Array.isArray(currentUser[currentUser.length - 1])) {
-    id = currentUser[currentUser.length - 1][0].id;
-  } else {
-    id = currentUser[currentUser.length - 1].id;
-  }
-
+const Ui = ({ navigation }) => {
   return (
     <>
-      {storeCategories.map ((category) => {
-        <View style={[styles.uiBox, styles.cyan]}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('`${category[0]}`'); 
-            }}
-          >
-            <Text style={styles.uiText}>{`${category[1]}`}</Text>
-          </TouchableOpacity>
-        </View>
-        })
-      };
-      {/* <View style={[styles.uiBox, styles.cyan]}>
+      <View style={[styles.uiBox, styles.cyan]}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Form');
@@ -86,7 +52,7 @@ const Ui = ({ navigation, currentUser }) => {
         >
           <Text style={styles.uiText}>Overview </Text>
         </TouchableOpacity>
-      </View> */}
+      </View>
     </>
   );
 };
