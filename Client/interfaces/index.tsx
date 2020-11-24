@@ -19,6 +19,7 @@ export interface Entry {
   payment: null;
   updatedAt: string;
   userId: number;
+  [key: string]: any;
 }
 
 export interface UserInput {

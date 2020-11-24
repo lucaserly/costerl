@@ -14,7 +14,6 @@ import Ui from './screens/ui/Ui';
 import Overview from './screens/overview/Overview';
 
 import { Alert } from 'react-native';
-
 import { Entry, User, UserInput } from './interfaces';
 
 const Stack = createStackNavigator();
@@ -68,11 +67,6 @@ function App(): JSX.Element {
     console.log(id);
     // return delHelper(ApiService.deleteOne, id, setUserEntries);
   };
-
-  // const resetUser = (): void => {
-  //   setCurrentUser([]);
-  //   setUserEntries([]);
-  // };
 
   return (
     <>
