@@ -45,6 +45,7 @@
     "@types/node-fetch": "^2.5.7",
     "@types/react": "^16.9.56",
     "@types/react-native": "^0.63.35",
+    "@types/react-native-table-component": "^1.2.0",
     "@types/react-test-renderer": "^16.9.3",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
