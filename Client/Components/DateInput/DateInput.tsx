@@ -15,32 +15,33 @@ interface Props {
 const DateInput = ({ handleDateSub }: Props) : JSX.Element => {
   const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState<boolean>(false);
+  const [isPressed, setIsPressed] = useState<boolean>(false);
   
-  const onChange = (e: Event) => {
+  const onChange = (date: Date) => {
+    setIsPressed(true);
+    console.log('I am a date ', date)
     setShow(Platform.OS === 'ios');
-    // @ts-expect-error
-    var dateToSet = e.nativeEvent.timestamp;
-    setDate(dateToSet);
+    setDate(date);
     handleDateSub(date);
   }; 
-
+  
   const showMode = () => {
     setShow(true);
   };
 
   return (   
-      <View style={styles.container}>
-          <Text style={styles.input} onPress={showMode} >
-            add date
-          </Text>
-
+    <View style={styles.container}>
+      {console.log(isPressed)}
+      <Text style={styles.input} onPress={showMode} >
+        {isPressed ? date.toLocaleDateString() : 'add date'}
+      </Text>
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
           is24Hour={true}
           display="spinner"
-          onChange={onChange} 
+          onChange={(event: Event, date: Date | undefined) => date && onChange(date)} 
         />
       )}
     </View>

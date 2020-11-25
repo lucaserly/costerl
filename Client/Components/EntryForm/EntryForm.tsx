@@ -30,7 +30,7 @@ const EntryForm = ({ form, postEntry, ext }: Props) : JSX.Element => {
     renderDate = false;
   }
 
-  const fieldsInit : Entry = { item: '', category: '', description: '', payment: null, amount: '', date: '', createdAt: '', currency: '', updatedAt: '', id: 0, userId: 0 };
+  const fieldsInit : Entry = { item: '', category: '', description: '', payment: null, amount: '', date: new Date().toISOString(), createdAt: '', currency: '', updatedAt: '', id: 0, userId: 0 };
   const [date, setDate] = useState<Date>(new Date());
   const [fields, setFields] = useState<Entry>(fieldsInit);
  
@@ -45,18 +45,20 @@ const EntryForm = ({ form, postEntry, ext }: Props) : JSX.Element => {
   };
 
   const handleDateSub = (convertDate: Date) => {
-    setDate(convertDate); 
+    console.log("#####");
+    setFields(fields => ({...fields, date: convertDate.toISOString()}));
   };
 
   return (
     <>
+    {console.log(fields.date)}
       {Object.keys(fields).map((el, i) => {
         if (el !== 'date' && el !== 'id' && el !== 'userId' && el !== 'createdAt' && el !== 'updatedAt' && el !== 'currency') {
           return <Field el={el} handleChange={(text : string | Date | number, target: keyof Entry) => handleChange(text, target)} key={i} />;
         }
         else {
           if (el === 'date') {
-            return <DateInput key={i} handleDateSub={handleDateSub}/>;
+            return <DateInput key="dateInput" handleDateSub={handleDateSub}/>;
           }
         }}
       )}
@@ -64,6 +66,15 @@ const EntryForm = ({ form, postEntry, ext }: Props) : JSX.Element => {
     </>
   );
 }; 
+
+// item: '', category: '', description: '', payment: null, amount: '', date:
+
+/**
+ * <Field el={fields.item} handleChange={(text: string, target: keyof Entry) => handleChange(text, target)} />
+ * <Field el={fields.payment} handleChange={(amount: number, target: keyof Entry) => handleChange(amount, target)} />
+ * <DateInput el={fields.date} handleChange={handleDateSub} />
+ * 
+ */
 
 export default EntryForm;
 
