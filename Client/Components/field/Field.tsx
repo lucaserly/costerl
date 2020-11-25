@@ -1,18 +1,26 @@
 import React from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 
-const Field = ({ el, handleChange }) => {
-  const { value } = el;
-  
+interface handleChange {
+  (
+    e : string,
+    el: string
+  ) : void
+}
+
+interface Props {
+  el: string;
+  handleChange: handleChange;
+}
+
+const Field = ({ el, handleChange } : Props) : JSX.Element  => {
   return (
       <View style={styles.container}>
         <TextInput
           style={styles.input}
           placeholder={el}
-          onChangeText={(e) => {
-            handleChange(e, el);
+          onChangeText={(e) => { handleChange(e, el);
           }}
-          value={value}
         />
       </View>
   );

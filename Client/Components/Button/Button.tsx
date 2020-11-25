@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Keyboard, TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
+import { Text, Keyboard, TouchableOpacity, StyleSheet} from 'react-native';
 
 interface Cb {
   (
@@ -31,7 +31,6 @@ const ButtonApp = ({ id, cb, title }: Props) : JSX.Element => {
           cb(id);
         }
       }}
-      // title={title} 
     >
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
     backgroundColor: '#2aa198',
-    // borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,

@@ -23,6 +23,7 @@ interface Props {
 const EntryForm = ({ form, postEntry, ext }: Props) : JSX.Element => {
   
   let renderDate : boolean;
+
   if (ext === 'entries') {
     renderDate = true;
   } else {
@@ -40,7 +41,6 @@ const EntryForm = ({ form, postEntry, ext }: Props) : JSX.Element => {
   };
 
   const handleSubmit = () => {
-    // e.preventDefault(); + e: React.MouseEvent<HTMLButtonElement>
     postEntry (fields);
   };
 
@@ -52,7 +52,7 @@ const EntryForm = ({ form, postEntry, ext }: Props) : JSX.Element => {
     <>
       {Object.keys(fields).map((el, i) => {
         if (el !== 'date' && el !== 'id' && el !== 'userId' && el !== 'createdAt' && el !== 'updatedAt' && el !== 'currency') {
-          return <Field handleChange={(text : string | Date | number, target: keyof Entry) => handleChange(text, target)} el={el} key={i} />;
+          return <Field el={el} handleChange={(text : string | Date | number, target: keyof Entry) => handleChange(text, target)} key={i} />;
         }
         else {
           if (el === 'date') {

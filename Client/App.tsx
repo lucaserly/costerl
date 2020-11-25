@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-// import ApiService from './services/ApiService';
 import { registerUserRequest, loginUserRequest, getUserEntries, postEntryRequest } from './services/ApiService';
 import Home from './screens/home/Home';
 import Login from './screens/login/Login';

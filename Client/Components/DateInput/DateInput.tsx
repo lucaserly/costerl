@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Platform, NativeSyntheticEvent, TextInputChangeEventData} from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 interface HandleDateSub {
@@ -14,32 +14,19 @@ interface Props {
 
 const DateInput = ({ handleDateSub }: Props) : JSX.Element => {
   const [date, setDate] = useState<Date>(new Date());
-  const [mode, setMode] = useState<string>('date'); // remove?
   const [show, setShow] = useState<boolean>(false);
   
-
   const onChange = (e: Event) => {
     setShow(Platform.OS === 'ios');
     // @ts-expect-error
     var dateToSet = e.nativeEvent.timestamp;
-    setDate(dateToSet); // still in timestamp format
+    setDate(dateToSet);
     handleDateSub(date);
   }; 
 
   const showMode = () => {
     setShow(true);
-    // setMode(currentMode);
   };
-
-  // const showDatepicker = () => {
-  //   showMode('date'); 
-  // };
-
-  // const submitDate = () => {
-  //   handleDateSub(date);
-  //   // console.log("------");
-  //   // console.log(date);
-  // };
 
   return (   
       <View style={styles.container}>
@@ -51,7 +38,6 @@ const DateInput = ({ handleDateSub }: Props) : JSX.Element => {
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          // mode= {mode}
           is24Hour={true}
           display="spinner"
           onChange={onChange} 
