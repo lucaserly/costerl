@@ -10,7 +10,7 @@ const Field = ({ el, handleChange }) => {
           style={styles.input}
           placeholder={el}
           onChangeText={(e) => {
-            handleChange(e);
+            handleChange(e, el);
           }}
           value={value}
         />

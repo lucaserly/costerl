@@ -12,7 +12,6 @@ import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
 import Ui from './screens/ui/Ui';
 import Overview from './screens/overview/Overview';
-
 import { Alert } from 'react-native';
 import { Entry, User, UserInput } from './interfaces';
 

@@ -1,7 +1,21 @@
 import React from 'react';
-import { Text, Keyboard, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, Keyboard, TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
 
-const ButtonApp = ({ id, cb, title }) => {
+interface Cb {
+  (
+  e?: Event,
+  title? : string,
+  id?: number,
+  ) : void;
+}
+
+interface Props {
+ id : number;
+ title : string;
+ cb : Cb;
+}
+
+const ButtonApp = ({ id, cb, title }: Props) : JSX.Element => {
   return (
     <TouchableOpacity
       style={styles.button}
@@ -17,7 +31,7 @@ const ButtonApp = ({ id, cb, title }) => {
           cb(id);
         }
       }}
-      title={title}
+      // title={title} 
     >
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>

@@ -33,10 +33,9 @@ const EntriesTable = ({ userEntries, deleteOne }: Props): JSX.Element => {
       <Table borderStyle={{ borderColor: 'transparent' }}>
         <Row data={tableHead} style={styles.head} textStyle={styles.text} />
         {userEntries.map((entry: Entry, index: number) => {
-          console.log('entry', entry, 'index', index);
           return (
             <TableWrapper key={index} style={styles.row}>
-              {['id', 'item', 'category', 'amoount', 'delete'].map((cellData, cellIndex: number) => (
+              {['id', 'item', 'category', 'amount', 'delete'].map((cellData, cellIndex: number) => (
                 <Cell
                   key={cellIndex}
                   data={cellIndex === 4 ? element(cellIndex) : entry[cellData]}

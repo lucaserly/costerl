@@ -8,7 +8,7 @@ interface Options {
   body: string;
 }
 
-export const BASE_URL = 'http://10.197.0.223:3002';
+export const BASE_URL = 'http://10.197.3.25:3002';
 
 export const postEntryRequest = (entry: Entry): Promise<Entry[]> => {
   return fetcher('/entries', {
