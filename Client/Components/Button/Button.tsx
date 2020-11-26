@@ -10,9 +10,9 @@ interface Cb {
 }
 
 interface Props {
- id : number;
- title : string;
- cb : Cb;
+  id : number;
+  title : string;
+  cb : Cb;
 }
 
 const ButtonApp = ({ id, cb, title }: Props) : JSX.Element => {
@@ -28,8 +28,8 @@ const ButtonApp = ({ id, cb, title }: Props) : JSX.Element => {
             Keyboard.dismiss();
           }
         } else {
-          cb(id);
-        }
+            cb(id);
+          }
       }}
     >
       <Text style={styles.buttonText}>{title}</Text>

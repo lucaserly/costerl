@@ -15,14 +15,14 @@ interface Props {
 
 const Field = ({ el, handleChange } : Props) : JSX.Element  => {
   return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder={el}
-          onChangeText={(e) => { handleChange(e, el);
-          }}
-        />
-      </View>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder={el}
+        onChangeText={(e) => { handleChange(e, el);
+        }}
+      />
+    </View>
   );
 };
 

@@ -19,7 +19,6 @@ const DateInput = ({ handleDateSub }: Props) : JSX.Element => {
   
   const onChange = (date: Date) => {
     setIsPressed(true);
-    console.log('I am a date ', date)
     setShow(Platform.OS === 'ios');
     setDate(date);
     handleDateSub(date);
@@ -31,7 +30,6 @@ const DateInput = ({ handleDateSub }: Props) : JSX.Element => {
 
   return (   
     <View style={styles.container}>
-      {console.log(isPressed)}
       <Text style={styles.input} onPress={showMode} >
         {isPressed ? date.toLocaleDateString() : 'add date'}
       </Text>

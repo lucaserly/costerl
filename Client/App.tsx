@@ -69,7 +69,6 @@ function App(): JSX.Element {
     <>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* <Stack.Screen name="Home">{(props) => <Home {...props} resetUser={resetUser} />}</Stack.Screen> */}
           <Stack.Screen name="Home">{(props) => <Home {...props} />}</Stack.Screen>
 
           <Stack.Screen name="Login">
