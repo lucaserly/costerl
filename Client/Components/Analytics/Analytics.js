@@ -331,8 +331,7 @@ const Analytics = ({ entries }) => {
       } else {
         dataGraph = dataGraphCreator(data, firstFil);
       }
-      console.log('screenWidth-->', screenWidth);
-
+      
       return (
         <View style={styles.pieChart}>
           <View style={styles.textBox}>

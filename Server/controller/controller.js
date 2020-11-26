@@ -19,12 +19,10 @@ exports.postOne = async (ctx) => {
     const entry = ctx.request.body;
     entry.userId = Number(entry.userId);
     const newEntry = await model.entry.create(entry);
-    console.log(newEntry);
     ctx.body = newEntry;
     ctx.status = 201;
 
   } catch (error) {
-    console.error(error);
     ctx.status = 500;
   }
 };
