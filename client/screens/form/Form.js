@@ -2,12 +2,10 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import FormC from '../../components/form/Form';
 import config from '../../config';
-import EntriesC from '../../components/entries/Entries';
-// import styles from '../../components/entries/styles';
 
 const { inputForm } = config;
 
-const Form = ({ postOne, deleteOne, userEntries, currentUser }) => {
+const Form = ({ postOne, currentUser }) => {
 
   let id;
   if (Array.isArray(currentUser[currentUser.length - 1])) {

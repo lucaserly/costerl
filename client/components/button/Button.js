@@ -3,7 +3,6 @@ import { Text, View, Button, Keyboard, TouchableOpacity, StyleSheet } from 'reac
 
 const ButtonApp = ({ id, cb, title }) => {
   return (
-
     <TouchableOpacity
       style={styles.button}
       onPress={(e) => {
@@ -27,15 +26,12 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
     backgroundColor: '#2aa198',
-    // borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,
-
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
   }
-
 });

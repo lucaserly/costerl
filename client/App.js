@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import ApiService from './ApiService';
 import Home from './screens/home/Home';
 import Login from './screens/login/Login';
@@ -11,11 +10,9 @@ import Search from './screens/search/Search';
 import Analysis from './screens/analysis/Analysis';
 import Ui from './screens/ui/Ui';
 import Overview from './screens/overview/Overview';
-import Tabs from './screens/tabs/Tabs';
-
 import config from './config';
 
-const { delHelper, postHelper, dataParser } = config.helperFunctions;
+const { dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
 
 function App () {
@@ -35,9 +32,6 @@ function App () {
   };
 
   const postOne = (arr, ext, id) => {
-    // return postHelper(dataParser, arr, ApiService.postOne,
-    //   setUserEntries, userEntries, ext, id);
-
     const cleanedObj = dataParser(arr);
     ApiService.postOne(cleanedObj, ext, id)
       .then((data) => {
@@ -46,14 +40,11 @@ function App () {
   };
 
   const createUser = (arr, ext) => {
-    // return postHelper(dataParser, arr, ApiService.postOne,
-    //   setCurrentUser, currentUser, ext);
     const cleanedObj = dataParser(arr);
     ApiService.postOne(cleanedObj, ext)
       .then((data) => {
         setCurrentUser([...currentUser, data]);
       });
-
   };
 
   const postUser = (arr, ext) => {
@@ -64,7 +55,6 @@ function App () {
   };
 
   const deleteOne = (id) => {
-    // return delHelper(ApiService.deleteOne, id, setUserEntries);
     ApiService.deleteOne(id)
       .then(() => {
         setUserEntries((list) => {
@@ -126,7 +116,6 @@ function App () {
           <Stack.Screen name='Overview'>
             {(props) => <Overview {...props} userEntries={userEntries} deleteOne={deleteOne} />}
           </Stack.Screen>
-
 
         </Stack.Navigator>
       </NavigationContainer>

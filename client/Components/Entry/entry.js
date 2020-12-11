@@ -19,7 +19,3 @@ const Entry = ({ item, deleteOne }) => {
 };
 
 export default Entry;
-
-const styles = StyleSheet.create({
-
-});

@@ -20,7 +20,6 @@ const Entries = ({ deleteOne, userEntries }) => {
 
 export default Entries;
 
-
 const styles = StyleSheet.create({
   entriesBox: {
     padding: 8,

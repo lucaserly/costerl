@@ -74,7 +74,6 @@ const TableC = ({ entries, deleteOne }) => {
 
 export default TableC;
 
-
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
   head: { height: 40, backgroundColor: '#2aa198', marginBottom: 5 },

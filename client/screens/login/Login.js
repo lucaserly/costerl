@@ -1,9 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Alert, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, Alert, StyleSheet } from 'react-native';
 import FormC from '../../components/form/Form';
 import config from '../../config';
-import EntriesC from '../../components/entries/Entries';
-
 import Ui from '../../screens/ui/Ui';
 
 const { loginForm } = config;
@@ -58,11 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-  },
-  loginFormBox: {
-
   }
-
 });
 
 export default Login;

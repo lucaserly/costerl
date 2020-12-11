@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, FlatList, Button } from 'react-native';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
+import React from 'react';
+import { FlatList } from 'react-native';
 
 import Entry from '../entry/Entry';
 

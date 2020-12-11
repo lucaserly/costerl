@@ -8,7 +8,6 @@ const cors = require('@koa/cors');
 const router = require('./router');
 const db = require('./model');
 
-
 app.use(cors());
 app.use(bodyParser());
 

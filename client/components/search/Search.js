@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Text, ScrollView, View } from 'react-native';
-
+import { ScrollView, View } from 'react-native';
 import Form from './../form/Form';
-import Entries from '../../components/entries/Entries';
 import TableC from '../../components/table/Table';
-
 import config from '../../config';
+
 const { searchForm } = config;
 const { filterHelper, nullConverter } = config.helperFunctions;
 

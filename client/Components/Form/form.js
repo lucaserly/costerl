@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { View, Alert, Button, Text, StyleSheet } from 'react-native';
-// import styles from './styles';
 import ButtonApp from '../button/Button';
 import Field from '../field/Field';
 import DateInput from '../dateinput/DateInput';
-
 import config from '../../config';
+
 const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
 
 const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
@@ -16,9 +15,6 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   } else {
     renderDate = false;
   }
-
-
-
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
     form.map((field) => ({
@@ -119,9 +115,6 @@ export default Form;
 const styles = StyleSheet.create({
   dateBox: {
     backgroundColor: 'white',
-    // borderRadius: 5,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginBottom: 10,
   },
   fieldBox: {
@@ -129,7 +122,6 @@ const styles = StyleSheet.create({
   },
   buttonBox: {
     marginBottom: 15,
-
   },
 });
 

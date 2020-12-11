@@ -5,9 +5,7 @@ const getAll = (end) => {
 };
 
 const postOne = (entry, end, id) => {
-
   entry.userId = id;
-
   return fetcher(end, {
     method: 'POST',
     headers: {

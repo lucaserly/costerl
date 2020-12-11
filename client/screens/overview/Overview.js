@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert, FlatList, Button, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 const TableC = ({ entries, deleteOne }) => {
@@ -20,29 +20,13 @@ const TableC = ({ entries, deleteOne }) => {
     );
   };
 
-  // TODO
-  /*
-  TABLE DATA
-    [
-    [Food, %tot, biggestItem, delta, deviation]
-      [Sport, %tot, biggestItem, delta, deviation]
-      [Extra, %tot, biggestItem, delta, deviation]
-    ]
-  */
-
-  // FIRST COLUMN OF TABLE DATA -> below -> { 'Extra', 'Food', 'Sport' }
   const categories = new Set(entries.map((el) => el.category));
-  // console.log('categories-->', categories);
   let cat = [];
   categories.forEach((el) => cat.push(el));
 
-  // console.log('cat-->', cat);
-
-  // SECOND COLUMN OF TABLE DATA -> for each item in categoryvalues divide by totalsumofentries
   const totalSumOfEntries = entries.reduce((pv, cv) => {
     return Number(cv.amount) + pv;
   }, 0);
-  // console.log('totalSumOfEntries-->', totalSumOfEntries);
 
   const categoryValues = {};
 
@@ -54,18 +38,12 @@ const TableC = ({ entries, deleteOne }) => {
     }
   });
 
-  // console.log('categoryValues-->', categoryValues);
-
-  // needs to be like this [[76%], [2%], [22%]]
-  // THIS IS SECOND COLUMN
   const catPercentage = [];
 
   for (let key in categoryValues) {
     const res = Math.round((categoryValues[key] / totalSumOfEntries) * 100);
     catPercentage.push([`${res} %`]);
   }
-
-  // console.log('catPercentage-->', catPercentage);
 
   const largestEntryExtractor = (arr, filter) => {
     let largestEntryVal = 0;
@@ -80,35 +58,19 @@ const TableC = ({ entries, deleteOne }) => {
     return `${res} %`;
   };
 
-
-  // THIRD COLUMN SHOWING LARGEST ITEM
   const largestPecentages = [];
-  // console.log('BEFORE CATFOREACH-->');
-  // console.log('cat-->', cat);
 
   cat.forEach((el) => {
     const item = itemExtractor(entries, 'category', el);
-    // console.log('item-->', item);
     const res = largestEntryExtractor(item, el);
-    // console.log('res-->', res);
     largestPecentages.push([res]);
   });
-
-  // console.log('largestPecentages-->', largestPecentages);
 
   const allItems = [];
 
   categories.forEach((el) => {
     allItems.push({ [el]: itemExtractor(entries, 'category', el) });
   });
-
-  // THIS IS THIRD COLUMN
-  // console.log('largestPecentages-->', largestPecentages);
-
-  // 4TH COLUMNS IS STANDARD DEVIATION
-  // INPUT IS ALLITMES
-  // steps
-  // get count of observations per category
 
   const standardDeviations = [];
 

@@ -1,9 +1,5 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
-import { createStackNavigator, NavigationContainer } from '@react-navigation/stack';
-
-import Tabs from './../tabs/Tabs';
-const Stack = createStackNavigator();
 
 const Home = ({ navigation, resetUser }) => {
   return (
@@ -22,13 +18,7 @@ const Home = ({ navigation, resetUser }) => {
           </View>
         </View>
 
-        {/* <Stack.Screen name='Tabs' component={Tabs} /> */}
       </SafeAreaView>
-      {/* <View>
-        <NavigationContainer>
-          <Tabs />
-        </NavigationContainer>
-      </View> */}
     </>
 
   );
@@ -36,12 +26,10 @@ const Home = ({ navigation, resetUser }) => {
 
 export default Home;
 
-
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
     paddingTop: 10,
-    // fontFamily: 'Iowan'
   },
   text: {
     fontSize: 18,
@@ -58,5 +46,4 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold'
   }
-
 });;

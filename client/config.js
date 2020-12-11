@@ -15,8 +15,6 @@ export default {
     { label: 'search by item', flag: 'true' },
     { label: 'search by category', flag: 'true' },
     { label: 'search by description', flag: 'true' },
-    // { label: 'search by payment', flag: 'true' },
-    // { label: 'search by amount', flag: 'true' },
     { label: 'search by date', flag: 'true' }
   ],
   helperFunctions: {
@@ -50,23 +48,6 @@ export default {
       }
       return result;
     },
-    // postHelper: (cleaner, arr, api, cb, list, ext, id) => {
-    //   const cleanedObj = cleaner(arr);
-    //   api(cleanedObj, ext, id)
-    //     .then((data) => {
-    //       cb([...list, data]);
-    //     });
-    // },
-    delHelper: (api, id, cb) => {
-      // api(id)
-      //   .then(() => {
-      //     cb((list) => {
-      //       return list.filter((el) => {
-      //         return el.id !== id;
-      //       });
-      //     });
-      //   });
-    },
     dataParser: (arr) => {
       const obj = {};
       arr.forEach((el) => {
@@ -90,11 +71,6 @@ export default {
       const item = e[0].value;
       const category = e[1].value;
       const description = e[2].value;
-      // const payment = e[3].value;
-      // const amount = e[4].value;
-      // && el.payment.includes(payment)
-      //&& el.date.includes(date)
-      // && el.amount.includes(amount)
       const date = e[3].value;
       const res = arr.filter((el) => {
         if (el.item.includes(item) && el.category.includes(category)
@@ -148,11 +124,9 @@ export default {
       const findIndexOfDate = fields.findIndex((el, i) => {
         return el.name === 'date';
       });
-
       let errMsg;
       let succMsg;
       let conditions;
-
       if (ext === 'register') {
         conditions = {
           names: {
@@ -181,7 +155,6 @@ export default {
         succMsg = 'You successfully submitted your expense';
         errMsg = 'Please enter input, category & amount. Thank you 😀';
       }
-
       const check = emptyFieldCheck(fields, conditions);
       if (!check) {
         if (ext === 'register' || ext === 'login') {
@@ -196,7 +169,6 @@ export default {
           alert(succMsg);
         }
       } else {
-        console.log('INSIDE ALERT ELSE-->');
         alert(errMsg);
       }
     },

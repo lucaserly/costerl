@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import { View, Alert, Button, Text, TextInput, Keyboard } from 'react-native';
-import ButtonApp from '../button/Button';
-import Field from '../field/Field';
-import DateInput from '../dateinput/DateInput';
-
-import config from '../../config';
+import { Alert, Button, TextInput } from 'react-native';
 
 const Login = ({ form, postUser, currentUser }) => {
   const [email, setEmail] = useState('');

@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { Text, View, FlatList, Button, Picker, Dimensions, ScrollView, Alert, StyleSheet, TouchableOpacity } from 'react-native';
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart
-} from 'react-native-chart-kit';
-
+import { LineChart, PieChart } from 'react-native-chart-kit';
 import config from './../../config';
+
 const { getLabels } = config.helperFunctions;
 const screenWidth = Dimensions.get("window").width;
 
 import colors from './../../colors';
-
 
 const chartConfigs = {
   pieChart: {
@@ -33,44 +25,11 @@ const chartConfigs = {
     backgroundGradientTo: "#cb4b16",
     backgroundGradientToOpacity: 0.8,
     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-    // labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false // optional
   }
 };
-const chartConfig = {
-  // backgroundColor: "#e26a00",
-  // backgroundGradientFrom: "#cb4b16",
-  // backgroundGradientTo: "#cb4b16",
-  // backgroundGradientToOpacity: 0.8,
-  // color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  // // labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  // strokeWidth: 2, // optional, default 3
-  // barPercentage: 0.5,
-  // useShadowColorFromDataset: false // optional
-};
-
-// const chartConfig = {
-//   backgroundGradientFrom: "#1E2923",
-//   backgroundGradientFromOpacity: 0,
-//   backgroundGradientTo: "#08130D",
-//   backgroundGradientToOpacity: 0.5,
-//   color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-//   strokeWidth: 2, // optional, default 3
-//   barPercentage: 0.5,
-//   useShadowColorFromDataset: false // optional
-// };
-
-// const chartTypes = [
-//   'none',
-//   'LineChart',
-//   'BarChart',
-//   'pieChart',
-//   'ProgressChart',
-//   'ContributionGraph',
-//   'StackedBarChart'
-// ];
 
 const Analysis = ({ entries }) => {
   const [firstFilter, setFirstFilter] = useState(getLabels(entries[0])[0]);
@@ -150,7 +109,6 @@ const Analysis = ({ entries }) => {
     },
     lineChart: (...args) => {
 
-
       const monthExtractor = (el) => {
 
         const res = months[(el.date.split('').slice(5, 7).join(''))];
@@ -179,8 +137,6 @@ const Analysis = ({ entries }) => {
           labels2[monthExtractor(el)] = Number(el.amount);
         }
       });
-
-      // GOOTA SORT LABELS2 BASED ON MONTHS
 
       for (let num in months) {
         for (let month in labels2) {
@@ -233,7 +189,6 @@ const Analysis = ({ entries }) => {
     const stringHeader = `The result of the ${selAnalysis} of ${secFil}`;
     const string = ` - ${thirdFil} is: ${result} €`;
     const chart = (<View>
-      {/* <Text>Bezier Line Chart</Text> */}
       <Text>{string}</Text>
 
     </View>
@@ -274,18 +229,7 @@ const Analysis = ({ entries }) => {
       const filteredTotalExp = analysisTypes.sum(arr, firstFil, secFil, thirdFil);
       const res = `${((filteredTotalExp / totalExp) * 100).toFixed(2)}%`;
       return res;
-    },
-
-    // percentageovertot: (filter, arr, selFil, selSubFil) => {
-    // },
-    // sumcategor: () => {
-    // },
-    // horizontal: () => {
-    // },
-    // trend: () => {
-    // },
-    // commonsize: () => {
-    // },
+    }
   };
 
   const handleOutput = (...args) => {
@@ -321,7 +265,7 @@ const Analysis = ({ entries }) => {
     });
   };
 
-  const filteredShit = (arr, filter) => {
+  const filteredS = (arr, filter) => {
     const notUniq = arr.map((el) => {
       return el[filter] + '';
     });
@@ -331,7 +275,7 @@ const Analysis = ({ entries }) => {
   };
 
   const setDefaultSubFilter = (el) => {
-    setThirdFilter((filteredShit(entries, el))[0]);
+    setThirdFilter((filteredS(entries, el))[0]);
   };
 
   const data = {
@@ -357,10 +301,10 @@ const Analysis = ({ entries }) => {
       const thirFil = args[6];
 
       let dataGraph;
+
       if (firstFil !== 'none' || secFil !== '' || thirFil !== '') {
 
         const filteredData = filterBySub(data, secFil, thirFil);
-
         let congragatedSum = {};
 
         filteredData.forEach((el) => {
@@ -383,7 +327,6 @@ const Analysis = ({ entries }) => {
       } else {
         dataGraph = dataGraphCreator(data, firstFil);
       }
-      console.log('screenWidth-->', screenWidth);
 
       return (
         <View style={styles.pieChart}>
@@ -422,15 +365,12 @@ const Analysis = ({ entries }) => {
           <View style={styles.textBox}>
             <Text style={styles.text}>PIE CHART</Text>
           </View>
-
-          {/* <View> */}
           <LineChart
             data={dataGraph}
             width={screenWidth - 20}
             height={220}
             chartConfig={chartConfig}
           />
-          {/* </View> */}
         </View>
       );
     }
@@ -478,7 +418,7 @@ const Analysis = ({ entries }) => {
             selectedValue={thirdFilter}
             onValueChange={(el) => setThirdFilter(el)}>
             {
-              filteredShit(entries, secondFilter).map((el, i) => {
+              filteredS(entries, secondFilter).map((el, i) => {
                 return <Picker.Item key={i} label={el} value={el} />;
               })
             }
@@ -571,7 +511,6 @@ const styles = StyleSheet.create({
   button: {
     height: 40,
     backgroundColor: '#cb4b16',
-    // borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,
