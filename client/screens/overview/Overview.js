@@ -92,20 +92,6 @@ const TableC = ({ entries, deleteOne }) => {
     let stdDev = Math.round(Math.sqrt(variance));
     standardDeviations.push([`${stdDev} σ`]);
   });
-  // sum all the observations amount of each category
-  // calculate the mean
-  // caluclate the variance
-  // for each observation of the category substract the mean and square it
-  // sum the above line's result of each observation
-  // divivde the total by the count
-  // square root of the above line
-
-  // THIS IS FOURTH COLUMN
-  // console.log('DATA TO RENDER-->');
-  // console.log('catPercentage-->', catPercentage);
-  // console.log('largestPecentages-->', largestPecentages);
-  //
-  // console.log('standardDeviations-->', standardDeviations);
 
   let final = [];
 
@@ -145,8 +131,6 @@ const TableC = ({ entries, deleteOne }) => {
 
 const Overview = ({ userEntries, deleteOne }) => {
 
-  // console.log('userEntries-->', userEntries);
-
   return (
     <View style={styles.container}>
       <View style={styles.textBox}>
@@ -164,7 +148,6 @@ const Overview = ({ userEntries, deleteOne }) => {
 };
 
 export default Overview;
-
 
 const styles = StyleSheet.create({
   container: {

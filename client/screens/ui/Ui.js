@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Alert, Button, Text, TextInput, Keyboard, TouchableOpacity, StyleSheet } from 'react-native';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Analysis from './../analysis/Analysis';
-import Form from './../form/Form';
-
-
-
 const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
-  const Tab = createBottomTabNavigator();
+
   const [alertMsg, setAlertMsg] = useState('');
 
   let id;
@@ -49,7 +43,6 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         </TouchableOpacity>
       </View>
 
-
       <View style={[styles.uiBox, styles.magenta]}>
         <TouchableOpacity onPress={() => {
           navigation.navigate('Search');
@@ -66,7 +59,6 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
         </TouchableOpacity>
       </View>
 
-
       <View style={[styles.uiBox, styles.grey]}>
         <TouchableOpacity onPress={() => {
           navigation.navigate('Overview');
@@ -74,9 +66,6 @@ const Ui = ({ navigation, userEntries, currentUser, getUserData }) => {
           <Text style={styles.uiText}>Overview </Text>
         </TouchableOpacity>
       </View>
-
-
-
     </>
   );
 };
