@@ -35,13 +35,25 @@ function App () {
   };
 
   const postOne = (arr, ext, id) => {
-    return postHelper(dataParser, arr, ApiService.postOne,
-      setUserEntries, userEntries, ext, id);
+    // return postHelper(dataParser, arr, ApiService.postOne,
+    //   setUserEntries, userEntries, ext, id);
+
+    const cleanedObj = dataParser(arr);
+    ApiService.postOne(cleanedObj, ext, id)
+      .then((data) => {
+        setUserEntries([...userEntries, data]);
+      });
   };
 
   const createUser = (arr, ext) => {
-    return postHelper(dataParser, arr, ApiService.postOne,
-      setCurrentUser, currentUser, ext);
+    // return postHelper(dataParser, arr, ApiService.postOne,
+    //   setCurrentUser, currentUser, ext);
+    const cleanedObj = dataParser(arr);
+    ApiService.postOne(cleanedObj, ext)
+      .then((data) => {
+        setCurrentUser([...currentUser, data]);
+      });
+
   };
 
   const postUser = (arr, ext) => {
@@ -52,7 +64,15 @@ function App () {
   };
 
   const deleteOne = (id) => {
-    return delHelper(ApiService.deleteOne, id, setUserEntries);
+    // return delHelper(ApiService.deleteOne, id, setUserEntries);
+    ApiService.deleteOne(id)
+      .then(() => {
+        setUserEntries((list) => {
+          return list.filter((el) => {
+            return el.id !== id;
+          });
+        });
+      });
   };
 
   const resetUser = () => {

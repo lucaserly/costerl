@@ -50,22 +50,22 @@ export default {
       }
       return result;
     },
-    postHelper: (cleaner, arr, api, cb, list, ext, id) => {
-      const cleanedObj = cleaner(arr);
-      api(cleanedObj, ext, id)
-        .then((data) => {
-          cb([...list, data]);
-        });
-    },
+    // postHelper: (cleaner, arr, api, cb, list, ext, id) => {
+    //   const cleanedObj = cleaner(arr);
+    //   api(cleanedObj, ext, id)
+    //     .then((data) => {
+    //       cb([...list, data]);
+    //     });
+    // },
     delHelper: (api, id, cb) => {
-      api(id)
-        .then(() => {
-          cb((list) => {
-            return list.filter((el) => {
-              return el.id !== id;
-            });
-          });
-        });
+      // api(id)
+      //   .then(() => {
+      //     cb((list) => {
+      //       return list.filter((el) => {
+      //         return el.id !== id;
+      //       });
+      //     });
+      //   });
     },
     dataParser: (arr) => {
       const obj = {};
