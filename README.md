@@ -55,9 +55,9 @@ cd client && npm start
 
 ## Observations
 
-- Looking back I would invest more resources in UX & UI
+- Looking back I would invest more resources in UX & UI and maybe transfer more logic to the back-end
 - At some point I realized that I lost too much time in trying to make reusable components
-- I need to learn clean code practices, how to properly structure a project and improve naming conventions
+- I need to learn clean-code practices, how to properly structure a project and improve naming conventions
 
 ## Developer
 Lucas Erlacher:
