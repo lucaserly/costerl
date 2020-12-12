@@ -55,11 +55,17 @@ cd client && npm start
 
 ## Observations
 
-- Looking back I would invest more resources in UX && UI
+- Looking back I would invest more resources in UX & UI
 - At some point I realized that I lost too much time in trying to make reusable components
 
 ## Developer
-- Lucas Erlacher:
+Lucas Erlacher:
   - [GitHub](https://github.com/lucaserly)
   - [LinkedIn](https://www.linkedin.com/in/lucaserlacher/)
   - [e-mail](mailto:l.erlacher@icloud.com)
+
+## Contributors
+Thank you for all the improvements and tips:
+  - [Benjamin Bayet](https://github.com/ophren)
+  - [Joachim Koch](https://github.com/Kochlyfe)
+  
