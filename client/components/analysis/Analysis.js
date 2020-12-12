@@ -363,7 +363,7 @@ const Analysis = ({ entries }) => {
 
         <View style={styles.pieChart}>
           <View style={styles.textBox}>
-            <Text style={styles.text}>PIE CHART</Text>
+            <Text style={styles.text}>LINE CHART</Text>
           </View>
           <LineChart
             data={dataGraph}

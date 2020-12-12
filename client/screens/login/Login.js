@@ -38,7 +38,7 @@ const Login = ({ navigation, createUser, currentUser, getUserData, loginUser }) 
   return (
 
     <View style={styles.container}>
-      <Text style={styles.text}>LOGIN</Text>
+      {/* <Text style={styles.text}>LOGIN</Text> */}
       <View style={styles.loginFormBox}>
         {tobeRendered ? <Ui currentUser={currentUser} getUserData={getUserData} navigation={navigation} /> : loginRender()}
       </View>
