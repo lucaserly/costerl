@@ -6,7 +6,7 @@ const Home = ({ navigation, resetUser }) => {
     <>
       <SafeAreaView>
         <View style={styles.container}>
-          <Text style={styles.text}>COSTERL APP</Text>
+          <Text style={styles.text}>COSTERL</Text>
 
           <View style={styles.loginBox}>
             <TouchableOpacity onPress={() => {
