@@ -4,7 +4,10 @@
 
 Cost-tracking app to: 
 - register expenses 
-- investigate the trends
+- investigate trends through: 
+  - line chart
+  - pie chart
+  - common-size analysis
 - get an overview of the outflow
 
 ## Screenshots
@@ -44,3 +47,19 @@ node server/index.js
 ```
 cd client && npm start
 ```
+
+## Built with
+- [React Native && Expo](https://reactnative.dev)
+- [Sequelize ORM](https://sequelize.org)
+- [Koa](https://koajs.com)
+
+## Observations
+
+- Looking back I would invest more resources in UX && UI
+- At some point I realized that I lost too much time in trying to make reusable components
+
+## Developer
+- Lucas Erlacher:
+  - [GitHub](https://github.com/lucaserly)
+  - [LinkedIn](https://www.linkedin.com/in/lucaserlacher/)
+  - [e-mail](mailto:l.erlacher@icloud.com)
