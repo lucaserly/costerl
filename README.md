@@ -49,7 +49,7 @@ cd client && npm start
 ```
 
 ## Built with
-- [React Native && Expo](https://reactnative.dev)
+- [React Native & Expo](https://reactnative.dev)
 - [Sequelize ORM](https://sequelize.org)
 - [Koa](https://koajs.com)
 
