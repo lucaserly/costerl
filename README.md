@@ -7,3 +7,7 @@ Cost-tracking app to:
 - investigate the trends
 - get an overview of the outflow
 
+## Screenshots
+
+![](readme_images/Untitled design-2.png)
+
