@@ -9,5 +9,5 @@ Cost-tracking app to:
 
 ## Screenshots
 
-![](readme_images/Untitled design-2.png)
+![](readme_images/Untitled%20design-2.png)
 
