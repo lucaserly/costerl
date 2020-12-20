@@ -14,7 +14,7 @@ Cost-tracking app to:
 
 ![](readme_images/Untitled%20design-2.png)
 
-## Gettin started
+## Getting started
 
 1. Clone the repo and open in your code editor of choice:
 ```
