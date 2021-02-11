@@ -1,7 +1,6 @@
-'use strict';
-
-const model = require('./../model/');
+/* eslint-disable no-console */
 const bcrypt = require('bcrypt');
+const model = require('../model');
 
 exports.getAll = async (ctx) => {
   try {
@@ -32,8 +31,8 @@ exports.deleteOne = async (ctx) => {
     const { id } = ctx.params;
     await model.entry.destroy({
       where: {
-        id
-      }
+        id,
+      },
     });
     ctx.status = 204;
   } catch (error) {
@@ -47,8 +46,8 @@ exports.createUser = async (ctx) => {
   const { email, password } = ctx.request.body;
   const user = await model.user.findAll({
     where: {
-      email: email
-    }
+      email,
+    },
   });
   try {
     if (user.length !== 0) throw new Error();
@@ -70,8 +69,8 @@ exports.login = async (ctx) => {
     const { email, password } = ctx.request.body;
     const user = await model.user.findAll({
       where: {
-        email: email
-      }
+        email,
+      },
     });
     const checkPassword = await bcrypt.compare(password, user[0].dataValues.password);
     if (!checkPassword) throw new Error();
@@ -101,10 +100,10 @@ exports.getAllUsers = async (ctx) => {
             'date',
             'createdAt',
             'updatedAt',
-            'userId'
-          ]
-        }
-      ]
+            'userId',
+          ],
+        },
+      ],
     });
     ctx.status = 200;
     ctx.body = users;
@@ -132,12 +131,12 @@ exports.profile = async (ctx) => {
             'date',
             'createdAt',
             'updatedAt',
-            'userId'
-          ]
+            'userId',
+          ],
       }],
       where: {
-        id: id
-      }
+        id,
+      },
     });
     ctx.status = 200;
     ctx.body = user;

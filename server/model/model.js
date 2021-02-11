@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = (sequelize, DataTypes) => {
   const entry = sequelize.define('entry', {
     item: DataTypes.STRING,
@@ -8,15 +6,15 @@ module.exports = (sequelize, DataTypes) => {
     payment: DataTypes.STRING,
     amount: {
       type: DataTypes.BIGINT,
-      allowNull: false
+      allowNull: false,
     },
     currency: DataTypes.STRING,
     date: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
+      defaultValue: DataTypes.NOW,
+    },
   });
-  entry.associate = model => {
+  entry.associate = (model) => {
     entry.belongsTo(model.user);
   };
   return entry;

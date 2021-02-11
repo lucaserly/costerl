@@ -1,6 +1,5 @@
-'use strict';
-
 const Koa = require('koa');
+
 const app = new Koa();
 const PORT = 3002;
 const bodyParser = require('koa-bodyparser');
@@ -13,9 +12,10 @@ app.use(bodyParser());
 
 app.use(router.routes());
 
-(async function bootstrap () {
+(async function bootstrap() {
   await db.sequelize.sync();
   app.listen(PORT, () => {
+    // eslint-disable-next-line no-console
     console.log(`Server listening at http://localhost:${PORT}`);
   });
-})();
+}());

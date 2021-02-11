@@ -10,11 +10,13 @@ const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, hand
 const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
 
   let renderDate;
+
   if (ext === 'entries') {
     renderDate = true;
   } else {
     renderDate = false;
   }
+
   const [date, setDate] = useState('');
   const [fields, setFields] = useState(
     form.map((field) => ({
