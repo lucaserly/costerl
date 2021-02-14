@@ -1,17 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  dateBox: {
+  container: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
     backgroundColor: 'white',
-    marginBottom: 10,
   },
-  fieldBox: {
-    marginBottom: 15,
-  },
-  buttonBox: {
-    marginBottom: 15,
+  text: {
   },
 });
 
 export default styles;
-

@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
+import styles from './styles';
+
+
 import FormC from '../../components/form/Form';
 import config from '../../config';
 
@@ -24,14 +27,3 @@ const Form = ({ postOne, currentUser }) => {
 };
 
 export default Form;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    paddingTop: 10,
-    backgroundColor: 'white'
-  },
-  text: {
-
-  }
-});

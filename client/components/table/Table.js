@@ -1,22 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert, FlatList, Button } from 'react-native';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
+import {
+  StyleSheet, View, Text, TouchableOpacity, Alert, FlatList, Button,
+} from 'react-native';
+import {
+  Table, TableWrapper, Row, Cell,
+} from 'react-native-table-component';
 
 const TableC = ({ entries, deleteOne }) => {
-
   const tableHead = [
     'id',
     'item',
     'category',
     'amount',
-    'delete'
+    'delete',
   ];
 
   const valuesExtractor = (arr) => {
     const result = [];
     arr.forEach((el) => {
-      let val = [];
-      for (let key in el) {
+      const val = [];
+      for (const key in el) {
         if (key !== 'flag'
           && key !== 'currency' && key !== 'createdAt' && key !== 'updatedAt'
           && key !== 'userId' && key !== 'flag' && key !== 'payment' && key !== 'date' && key !== 'description') {
@@ -30,38 +33,42 @@ const TableC = ({ entries, deleteOne }) => {
   };
 
   const alertDelete = (item) => {
-    Alert.alert(`The item has been deleted`);
+    Alert.alert('The item has been deleted');
   };
 
   const element = (data, id, index) => (
     <TouchableOpacity onPress={() => {
       alertDelete(data);
       deleteOne(id);
-    }
-    }>
+    }}
+    >
       <View style={styles.btn}>
         <Text style={styles.btnText}>🗑</Text>
       </View>
-    </TouchableOpacity >
+    </TouchableOpacity>
   );
 
-  const tableRender = () => {
-    return <Table borderStyle={{ borderColor: 'transparent' }}>
+  const tableRender = () => (
+    <Table borderStyle={{ borderColor: 'transparent' }}>
       <Row data={tableHead} style={styles.head} textStyle={styles.text} />
       {
         valuesExtractor(entries).map((rowData, index) => (
           <TableWrapper key={index} style={styles.row}>
             {
               rowData.map((cellData, cellIndex, cellRow, rowIndex) => (
-                <Cell key={cellIndex} data={cellIndex === 4 ? element(cellData,
-                  cellRow[0]) : cellData} textStyle={styles.text} />
+                <Cell
+                  key={cellIndex}
+                  data={cellIndex === 4 ? element(cellData,
+                    cellRow[0]) : cellData}
+                  textStyle={styles.text}
+                />
               ))
             }
           </TableWrapper>
         ))
       }
-    </Table>;
-  };
+    </Table>
+  );
 
   return (
     <>
@@ -75,7 +82,9 @@ const TableC = ({ entries, deleteOne }) => {
 export default TableC;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
+  container: {
+    flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff',
+  },
   head: { height: 40, backgroundColor: '#2aa198', marginBottom: 5 },
   text: { margin: 6, color: 'white' },
   row: { flexDirection: 'row', backgroundColor: '#268bd2', marginBottom: 10 },

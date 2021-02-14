@@ -1,24 +1,24 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ApiService from './ApiService';
-import Home from './screens/home/Home';
-import Login from './screens/login/Login';
-import Form from './screens/form/Form';
-import Entries from './screens/entries/Entries';
-import Search from './screens/search/Search';
-import Analysis from './screens/analysis/Analysis';
-import Ui from './screens/ui/Ui';
-import Overview from './screens/overview/Overview';
+import ApiService from './services/ApiService';
 import config from './config';
+import auth from './utils/auth';
+import { AuthProvider } from './providers/AuthProvider';
+import { ExpensesProvider } from './providers/ExpensesProvider';
+import { Providers } from './providers/Providers';
+import RootStack from './RootStack';
+import Test from './components2/Test';
 
 const { dataParser } = config.helperFunctions;
 const Stack = createStackNavigator();
+const initialState = auth.isAuthenticated();
 
-function App() {
+function App () {
   const [currentUser, setCurrentUser] = useState([]);
   const [userEntries, setUserEntries] = useState([]);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(initialState);
 
   const getUserData = (end, id) => {
     useEffect(() => {
@@ -65,89 +65,7 @@ function App() {
   };
 
   return (
-    <>
-      <NavigationContainer>
-        <Stack.Navigator>
-
-          <Stack.Screen name="Home">
-            {(props) => (
-              <Home
-                {...props}
-                component={Home}
-                resetUser={resetUser}
-              />
-            )}
-          </Stack.Screen>
-
-          <Stack.Screen name="Login">
-            {(props) => (
-              <Login
-                {...props}
-                createUser={createUser}
-                postUser={postUser}
-                currentUser={currentUser}
-                getUserData={getUserData}
-              />
-            )}
-          </Stack.Screen>
-
-          <Stack.Screen name="Ui">
-            {(props) => (
-              <Ui
-                {...props}
-                postUser={postUser}
-                userEntries={userEntries}
-                currentUser={currentUser}
-                getUserData={getUserData}
-              />
-            )}
-          </Stack.Screen>
-
-          <Stack.Screen name="Form">
-            {(props) => (
-              <Form
-                {...props}
-                postOne={postOne}
-                getUserData={getUserData}
-                userEntries={userEntries}
-                currentUser={currentUser}
-              />
-            )}
-          </Stack.Screen>
-
-          <Stack.Screen name="Entries">
-            {(props) => (
-              <Entries
-                {...props}
-                deleteOne={deleteOne}
-                currentUser={currentUser}
-                getUserData={getUserData}
-                userEntries={userEntries}
-              />
-            )}
-          </Stack.Screen>
-
-          <Stack.Screen name="Search">
-            {(props) => (
-              <Search
-                {...props}
-                userEntries={userEntries}
-                deleteOne={deleteOne}
-              />
-            )}
-          </Stack.Screen>
-
-          <Stack.Screen name="Analysis">
-            {(props) => <Analysis {...props} userEntries={userEntries} />}
-          </Stack.Screen>
-
-          <Stack.Screen name="Overview">
-            {(props) => <Overview {...props} userEntries={userEntries} deleteOne={deleteOne} />}
-          </Stack.Screen>
-
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+    <Providers />
   );
 }
 

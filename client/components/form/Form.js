@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { View, Alert, Button, Text, StyleSheet } from 'react-native';
+import {
+  View, Alert, StyleSheet,
+} from 'react-native';
 import ButtonApp from '../button/Button';
 import Field from '../field/Field';
 import DateInput from '../dateinput/DateInput';
 import config from '../../config';
+import styles from './styles';
 
-const { newFields, emptyFieldCheck, resetField, flagCheck, dateInputFinder, handleChangeForm, handleSubmitForm } = config.helperFunctions;
+const {
+  newFields, emptyFieldCheck, resetField, flagCheck, handleChangeForm, handleSubmitForm,
+} = config.helperFunctions;
 
-const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, currentUser }) => {
+const Form = (props) => {
+
+  const { form, postOne, filterList, ext, login, ext2, id, createUser, currentUser } = props;
 
   let renderDate;
 
@@ -21,8 +28,8 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
   const [fields, setFields] = useState(
     form.map((field) => ({
       name: field.label,
-      value: ''
-    }))
+      value: '',
+    })),
   );
 
   const handleChange = (text, target) => {
@@ -57,17 +64,15 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
     <View style={styles.container}>
 
       <View style={styles.dateBox}>
-        {renderDate ? <View>
-          <DateInput handleDateSub={handleDateSub} />
-        </View> : <></>
-        }
+        {renderDate ? (
+          <View>
+            <DateInput handleDateSub={handleDateSub} />
+          </View>
+        ) : <></>}
       </View>
 
       <View style={styles.fieldBox}>
-        {fields.map((el, i) => {
-          return <Field handleChange={handleChange} el={el} key={i} />;
-        })
-        }
+        {fields.map((el, i) => <Field handleChange={handleChange} el={el} key={i} />)}
       </View>
 
       <View styles={styles.buttonBox}>
@@ -82,17 +87,15 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
     <View>
 
       <View style={styles.dateBox}>
-        {renderDate ? <View>
-          <DateInput handleDateSub={handleDateSub} />
-        </View> : <></>
-        }
+        {renderDate ? (
+          <View>
+            <DateInput handleDateSub={handleDateSub} />
+          </View>
+        ) : <></>}
       </View>
 
       <View styles={styles.fieldBox}>
-        {fields.map((el, i) => {
-          return <Field handleChange={handleChange} el={el} key={i} />;
-        })
-        }
+        {fields.map((el, i) => <Field handleChange={handleChange} el={el} key={i} />)}
       </View>
 
       <View styles={styles.buttonBox}>
@@ -113,17 +116,4 @@ const Form = ({ form, postOne, filterList, ext, login, ext2, id, createUser, cur
 
 export default Form;
 
-
-const styles = StyleSheet.create({
-  dateBox: {
-    backgroundColor: 'white',
-    marginBottom: 10,
-  },
-  fieldBox: {
-    marginBottom: 15,
-  },
-  buttonBox: {
-    marginBottom: 15,
-  },
-});
 

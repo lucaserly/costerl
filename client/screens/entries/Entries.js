@@ -1,27 +1,27 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import TableC from '../../components/table/Table';
+import { ScrollView } from 'react-native';
+import TableRender from '../../components2/TableRender';
+import { useExpenses } from '../../providers/ExpensesProvider';
+import styles from './styles';
 
-const Entries = ({ deleteOne, userEntries }) => {
+const Entries = () => {
+  const [expenses, addExpense, deleteExpense] = useExpenses();
   return (
     <ScrollView style={styles.entriesBox}>
-      <TableC entries={userEntries.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateB - dateA;
-      })
-        .map((el) => {
-          el.flag = true;
-          return el;
-        })} deleteOne={deleteOne} />
+      <TableRender
+        expenses={expenses.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        })
+          .map((expense) => {
+            const flaggedExpense = { ...expense, flag: true };
+            return flaggedExpense;
+          })}
+        deleteExpense={deleteExpense}
+      />
     </ScrollView>
   );
 };
 
 export default Entries;
-
-const styles = StyleSheet.create({
-  entriesBox: {
-    padding: 8,
-  }
-});

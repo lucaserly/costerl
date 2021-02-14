@@ -3,12 +3,10 @@ const Router = require('koa-router');
 const router = new Router();
 const controller = require('./controller/controller');
 
-router.get('/entries', controller.getAll);
-router.post('/entries', controller.postOne);
-router.delete('/entries/:id', controller.deleteOne);
-router.get('/users', controller.getAllUsers);
-router.post('/register', controller.createUser);
-router.post('/login', controller.login);
-router.get('/users/:id', controller.profile);
+router.post('/login', controller.loginUser);
+router.post('/register', controller.registerUser);
+router.get('/user/:id', controller.getExpenses);
+router.delete('/user/:id', controller.deleteExpense);
+router.post('/entries', controller.postExpense);
 
 module.exports = router;
